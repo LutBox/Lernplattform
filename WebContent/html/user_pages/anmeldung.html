@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <title>HTML-Formular</title>
+ <style>
+  /* Elemente positionieren und Formular ausrichten */
+  label {
+   min-width: 6em;
+   display: inline-block;
+   text-align: left;
+  }
+
+  input {
+   width: 20em;
+  }
+
+  textarea {
+   width: 20em;
+   border: 1px solid black;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+   width: auto;
+  }
+
+  label {
+   vertical-align: top;
+  }
+
+  input[type="checkbox"],
+  button[type="submit"] {
+   margin-left: 8em;
+  }
+
+  button {
+   width: 10em;
+  }
+
+  /* Formular optisch stylen.		  *
+		 * Vorgehen: von innen nach außen */
+  fieldset {
+   width: 30em;
+   padding-top: 1.5em;
+   padding-left: 1.5em;
+   background: #e6eeff;
+   border: 1px solid #000330;
+   border-radius: 5px;
+  }
+
+  legend {
+   background: white;
+   padding: 0.2em;
+   border: 1px solid #000330;
+   border-radius: 5px;
+  }
+
+  /* Interaktionen über Pseudoklassen */
+  input:hover,
+  textarea:hover {
+   background: #fffff0;
+   border: 2px solid #efe816;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  button:hover {
+   background: #c9c9c9;
+   border: 2px solid #6c6c6c;
+  }
+
+  button:active {
+   background: #8f8f8f;
+  }
+
+
+  /* Damit Felder nicht zu dicht folgen */
+  form div {
+   padding: 0.2em;
+  }
+ </style>
+</head>
+
+<body>
+
+ <form id="myForm" method="post" action="demo02servlet">
+  <fieldset>
+   <legend>Anmelde-Formular</legend>
+   <div>
+    <label for="titel">Titel:</label>
+    <input type="text" list="titelList" name="titel" id="titel" autofocus>
+    <label for="titel"></label>
+    <datalist id="titelList">
+     <option value="Herr">
+     <option value="Frau">
+     <option value="Dr.">
+     <option value="Prof.">
+     <option value="Prof. Dr.">
+    </datalist>
+   </div>
+   <div>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" placeholder="Ihr Name">
+   </div>
+   <div>
+    <label for="vname">Vorname:</label>
+    <input type="text" name="vname" id="vname" placeholder="Ihr Vorname">
+   </div>
+   <div>
+    <label for="mail">E-Mail:</label>
+    <input type="email" name="mail" id="mail" placeholder="E-Mail-Adresse">
+    <label for="mail"></label>
+   </div>
+   <div>
+    <label for="geboren">Geburtsjahr:</label>
+    <input type="number" name="geboren" id="geboren" min="1920" max="2015" value="1990">
+   </div>
+   <div class="form_radio">
+    <label>Geschlecht:</label>
+    <input type="radio" name="geschlecht" id="male" value="male" checked>
+    <label for="male">Männlich</label>
+    <input type="radio" name="geschlecht" id="female" value="female">
+    <label for="female">Weiblich</label>
+   </div>
+   <div>
+    <label for="themen">Themen:</label>
+    <select multiple name="themen" id="themen" size="3">
+     <option value="html">HTML</option>
+     <option value="css" selected>CSS</option>
+     <option value="javascript">JavaScript</option>
+     <option value="servlets">Servlets</option>
+     <option value="jsf">JSP</option>
+     <option value="mvc">MVC</option>
+     <option value="ajax">Ajax</option>
+    </select>
+   </div>
+   <div>
+    <label class="textarea" for="nachricht">Ihre Nachricht:</label>
+    <textarea name="nachricht" id="nachricht" placeholder="Hier Nachricht eingeben..." rows="8"></textarea>
+    <label for="nachricht"></label>
+   </div>
+   <div>
+    <input type="checkbox" name="reply" id="reply" value="reply">
+    <label for="reply">Rückmeldung erwünscht</label>
+   </div>
+   <div>
+    <button type="submit" name="absenden" value="absenden">Absenden</button>
+    <button type="reset" name="reset" value="reset">Zurücksetzen</button>
+   </div>
+  </fieldset>
+ </form>
+ <footer class="foot"><br>Basiert auf: Wolf, Jürgen: HTML5 und CSS3, Das umfassende Handbuch, Bonn: Rheinwerk, 2015
+ </footer>
+</body>
+
+</html>
