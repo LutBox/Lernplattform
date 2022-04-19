@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>admin-startseite</title>
+</head>
+<body>
+	<header>
+		<h1>Admin Konsole</h1>
+		<ul>
+			<li><a href="#benutzerverwaltung">Benutzerverwalten</a></li>
+			<li><a href="#forenverwaltung">Forenverwaltung</a></li>
+			<li><a href="../../index.html">Abmelden</a></li>
+		</ul>
+	</header>
+	<main>
+		<section id="benutzerverwaltung">
+			<hr/>
+			<h2>Benutzerverwaltung</h2>
+			<form>
+				<label for="suche">Suche:</label>
+				<input name="suche" id="suche" type="text" placeholder="benutzername/e-mail/nachname/vorname"/>
+				<button type="submit">Suchen</button>
+			</form>
+			<br/>
+			<div>
+				<table border="solid black">
+					<thead>
+						<tr>
+							<th>Benutzername</th>
+							<th>E-Mailadresse</th>
+							<th>Nachname</th>
+							<th>Vorname</th>
+							<th>Punktestand</th>
+							<th>Bearbeiten</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Demo</td>
+							<td>demo.mail@domain.org</td>
+							<td>The Frog</td>
+							<td>Kermit</td>
+							<td>666.666</td>
+							<td><a href="./nutzeraktualisieren.html">UPDATE</a> <a href="#">DELETE</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<hr/>
+		</section>
+		<div>
+			<br/>
+			<br/>
+			<br/>
+		</div>
+		<section id="forenverwaltung">
+			<hr/>
+			<h2>Forenverwaltung</h2>
+			<ul>
+				<li>Blog 1 <a href="#">UPDATE</a> <a href="#">DELETE</a></li>
+				<li>Blog 2 <a href="#">UPDATE</a> <a href="#">DELETE</a></li>
+				<li>Blog 3 <a href="#">UPDATE</a> <a href="#">DELETE</a></li>
+				<li>Blog 4 <a href="#">UPDATE</a> <a href="#">DELETE</a></li>
+			</ul>
+			<hr/>
+		</section>
+		<div>
+			<br/>
+			<br/>
+			<br/>
+		</div>
+	</main>
+</body>
+</html>
