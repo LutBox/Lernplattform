@@ -14,12 +14,17 @@ Erstellt von Lukas Theinert
 
 <h1>Lernplattform Startseite</h1>
 
-     <li>Startseite</li> <!-- <li><a href="/">Startseite</a></li> -->
-     <li><a href="html/user_pages/user_main.html">Nutzerbereich</a></li> 
-     <li><a href="html/gaming_pages/quick_game.jsp">Schnelles Spiel</a></li>
-     <li><a href="html/forum_pages/forum_main.html">Forum</a></li>
+
+	<nav>
+		<%@include file="html/jspf/navigation.jspf"%>
+	</nav>   
+          
+<br>
+
      <li><a href="html/main_pages/impressum.html">Impressum</a></li>
      <li><a href="html/main_pages/kontaktformular.html">Kontaktformular</a></li>
+     
+<!-- Seiten von Merlin -->
      
 </body>
 </html>

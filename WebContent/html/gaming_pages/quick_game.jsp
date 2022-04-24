@@ -1,6 +1,7 @@
 <%--
 Erstellt von Lukas Theinert
 --%>
+
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -14,10 +15,10 @@ Erstellt von Lukas Theinert
 
 <h1>Schnelles Spiel</h1>
 
-     <li><a href="${pageContext.request.contextPath}/">Startseite</a></li>
-     <li><a href="../user_pages/user_main.html">Nutzerbereich</a></li> 
-     <li>Schnelles Spiel</li>
-     <li><a href="../forum_pages/forum_main.html">Forum</a></li>
+	<nav>
+		<%@include file="../jspf/navigation.jspf"%>
+	</nav>  
+
      
 </body>
 </html>
