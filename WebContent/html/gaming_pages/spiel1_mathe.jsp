@@ -19,6 +19,15 @@ Erstellt von Lukas Theinert
 		<%@include file="../jspf/navigation.jspf"%>
 	</nav>  
 
-     
+<br><h2>Danke fürs Spielen! :)</h2>
+<br><p>Schwierigkeitsgrad aus Servlet: ${schwierigkeitServlet}
+<br>Schwierigkeitsgrad aus Bean: ${spielStartenBean.schwierigkeit}</p>
+
+<br>
+
+<br><p>Spielart aus Servlet: ${spielartServlet}
+<br>Spielart aus Bean: ${spielStartenBean.spielart}</p>
+
+
 </body>
 </html>

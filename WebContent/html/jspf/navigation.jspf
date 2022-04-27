@@ -4,6 +4,6 @@ Erstellt von Lukas Theinert
 
 <a href="${pageContext.request.contextPath}/index.jsp">Startseite</a>
 <a href="${pageContext.request.contextPath}/html/user_pages/user_main.jsp">Nutzerbereich</a>
-<a href="${pageContext.request.contextPath}/html/gaming_pages/quick_game.jsp">Schnelles Spiel</a>
+<%-- <a href="${pageContext.request.contextPath}/html/gaming_pages/quick_game.jsp">Schnelles Spiel</a> --%>
 <a href="${pageContext.request.contextPath}/html/forum_pages/forum_main.jsp">Forum</a>
 <a href="${pageContext.request.contextPath}/html/gaming_pages/gaming_main_page.jsp">Spieleübericht</a>
