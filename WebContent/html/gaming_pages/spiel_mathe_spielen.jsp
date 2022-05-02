@@ -14,14 +14,22 @@ Erstellt von Lukas Theinert
 <body>
 
 	<h1>Viel Spaß!</h1>
-	
-	<br><p>Aufgabe 1: ${spielMatheBean.zahl1} + ${spielMatheBean.zahl2}=</p>
-	<input id="ergebnis1" type="text" />
+
+	<br>Schwierigkeitsgrad aus Bean: ${spielStartenBean.schwierigkeit}
+	</p>
+
+	<br>
+	<p>Aufgabe 1: ${spielMatheBean.zahl1} + ${spielMatheBean.zahl2}=</p>
 
 	<form id="Spielstarten"
 		action="${pageContext.request.contextPath}/SpielMatheErgebnisServlet"
 		method="post" accept-charset="UTF-8">
+		
+		<div>
+			<input name="NutzerErgebnis1" id="ne1" type="number">
+		</div>
 
+		<br>
 		<button name="spielen" type="submit">Fertig!</button>
 
 	</form>

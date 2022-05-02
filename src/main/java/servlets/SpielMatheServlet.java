@@ -4,6 +4,7 @@
 package servlets;
 
 import jakarta.servlet.http.HttpServlet;
+
 import java.io.IOException;
 import java.util.Random;
 
@@ -40,17 +41,41 @@ public class SpielMatheServlet extends HttpServlet {
 
 		//Attribute definieren d=Durchlauf z=Zahl
 		int [] zufallszahlen = new int[6];
+		
 		SpielMatheBean spielMatheBean = new SpielMatheBean();
+		SpielStartenBean spielStartenBean = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
 		
 		//6 Durchläufe
-		for(int i = 0; i < 6; i++) {
-			Random r = new Random();
-			int low = 1;
-			int high = 100;
-			int zahl = r.nextInt(high-low) + low;
-			
-			zufallszahlen[i] = zahl; 
+		//Schwierigkeit Leicht
+		if (spielStartenBean.getSchwierigkeit().equals("leicht")) {
+			for(int i = 0; i < 6; i++) {
+				Random r = new Random();
+				int low = 1;
+				int high = 10;
+				int zahl = r.nextInt(high-low) + low;
+				
+				zufallszahlen[i] = zahl; 
+			}
+		} else if (spielStartenBean.getSchwierigkeit().equals("mittel")){
+			for(int i = 0; i < 6; i++) {
+				Random r = new Random();
+				int low = 10;
+				int high = 100;
+				int zahl = r.nextInt(high-low) + low;
+				
+				zufallszahlen[i] = zahl; 
+			}
+		} else if (spielStartenBean.getSchwierigkeit().equals("schwer")){
+			for(int i = 0; i < 6; i++) {
+				Random r = new Random();
+				int low = 100;
+				int high = 1000;
+				int zahl = r.nextInt(high-low) + low;
+				
+				zufallszahlen[i] = zahl; 
+			}
 		}
+		
 		
 		spielMatheBean.setZahl1(zufallszahlen[0]); 
 		spielMatheBean.setZahl2(zufallszahlen[1]); 
@@ -69,11 +94,11 @@ public class SpielMatheServlet extends HttpServlet {
 		
 		//----------  BEAN   ------------------------------
 		//Infos werden nur für den einen Request gespeichert innerhalb einer Bean
-		request.setAttribute("spielMatheBean", spielMatheBean);
+		//request.setAttribute("spielMatheBean", spielMatheBean);
 	
 		//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
-		//final HttpSession session = request.getSession();
-		//session.setAttribute("from", from);
+		final HttpSession session = request.getSession();
+		session.setAttribute("spielMatheBean", spielMatheBean);
 
 		//Weiterleiten an JSP
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/gaming_pages/spiel_mathe_spielen.jsp");

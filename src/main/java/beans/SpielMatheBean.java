@@ -7,6 +7,7 @@ public class SpielMatheBean {
 	
 	private int zahl1, zahl2, zahl3, zahl4, zahl5, zahl6;
 	private int ergebnis1, ergebnis2, ergebnis3;
+	private int nutzerErgebnis1, nutzerErgebnis2, nutzerErgebnis3;
 	
 	public SpielMatheBean() {
 		super();
@@ -96,6 +97,30 @@ public class SpielMatheBean {
 
 	public void setErgebnis3(int ergebnis3) {
 		this.ergebnis3 = ergebnis3;
+	}
+
+	public int getNutzerErgebnis1() {
+		return nutzerErgebnis1;
+	}
+
+	public void setNutzerErgebnis1(int nutzerErgebnis1) {
+		this.nutzerErgebnis1 = nutzerErgebnis1;
+	}
+
+	public int getNutzerErgebnis2() {
+		return nutzerErgebnis2;
+	}
+
+	public void setNutzerErgebnis2(int nutzerErgebnis2) {
+		this.nutzerErgebnis2 = nutzerErgebnis2;
+	}
+
+	public int getNutzerErgebnis3() {
+		return nutzerErgebnis3;
+	}
+
+	public void setNutzerErgebnis3(int nutzerErgebnis3) {
+		this.nutzerErgebnis3 = nutzerErgebnis3;
 	}
 
 

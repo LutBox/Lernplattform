@@ -57,12 +57,11 @@ public class SpielStartenServlet extends HttpServlet {
 		//spielStartenBean.setSpielart("Spielart");
 		
 		//Infos werden nur für den einen Request gespeichert innerhalb einer Bean
-		request.setAttribute("spielStartenBean", spielStartenBean);
+		//request.setAttribute("spielStartenBean", spielStartenBean);
 
-	
 		//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
-		//final HttpSession session = request.getSession();
-		//session.setAttribute("from", from);
+		final HttpSession session = request.getSession();
+		session.setAttribute("spielStartenBean", spielStartenBean);
 
 		//Weiterleiten an JSP
 		if (spielartServlet.equals("mathe")) {
