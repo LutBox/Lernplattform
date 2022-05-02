@@ -9,17 +9,16 @@ Erstellt von Lukas Theinert
 <head>
 <base href="${pageContext.request.requestURI}"/>
 <meta charset="ISO-8859-1">
-<title>Schnelles Spiel</title>
+<title>Spiel Starten</title>
 </head>
 <body>
 
-<h1>Schnelles Spiel</h1>
+<h1>Spiel Starten</h1>
 
 	<nav>
 		<%@include file="../jspf/navigation.jspf"%>
 	</nav>  
 
-<br><h2>Danke fürs Spielen! :)</h2>
 <br><p>Schwierigkeitsgrad aus Servlet: ${schwierigkeitServlet}
 <br>Schwierigkeitsgrad aus Bean: ${spielStartenBean.schwierigkeit}</p>
 
@@ -27,6 +26,13 @@ Erstellt von Lukas Theinert
 
 <br><p>Spielart aus Servlet: ${spielartServlet}
 <br>Spielart aus Bean: ${spielStartenBean.spielart}</p>
+
+
+	<form id="Spielstarten" action="${pageContext.request.contextPath}/SpielMatheServlet" method="post" accept-charset="UTF-8">
+
+		<button name="spielen" type="submit">Spielen!</button>
+
+	</form>
 
 
 </body>

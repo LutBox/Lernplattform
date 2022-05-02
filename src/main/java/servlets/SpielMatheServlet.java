@@ -1,12 +1,13 @@
 //
 //Erstellt von Lukas Theinert
 //
-
 package servlets;
 
 import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
+import java.util.Random;
 
+import beans.SpielMatheBean;
 import beans.SpielStartenBean;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -16,16 +17,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class SpielStartenServlet
+ * Servlet implementation class SpielMatheServlet
  */
-@WebServlet("/SpielStartenServlet")
-public class SpielStartenServlet extends HttpServlet {
+@WebServlet("/SpielMatheServlet")
+public class SpielMatheServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SpielStartenServlet() {
+    public SpielMatheServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,45 +38,46 @@ public class SpielStartenServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
+		//Attribute definieren d=Durchlauf z=Zahl
+		int [] zufallszahlen = new int[6];
+		SpielMatheBean spielMatheBean = new SpielMatheBean();
+		
+		//6 Durchläufe
+		for(int i = 0; i < 6; i++) {
+			Random r = new Random();
+			int low = 1;
+			int high = 100;
+			int zahl = r.nextInt(high-low) + low;
+			
+			zufallszahlen[i] = zahl; 
+		}
+		
+		spielMatheBean.setZahl1(zufallszahlen[0]); 
+		spielMatheBean.setZahl2(zufallszahlen[1]); 
+		spielMatheBean.setZahl3(zufallszahlen[2]); 
+		spielMatheBean.setZahl4(zufallszahlen[3]); 
+		spielMatheBean.setZahl5(zufallszahlen[4]); 
+		spielMatheBean.setZahl6(zufallszahlen[5]); 
+	
+		spielMatheBean.setErgebnis1(zufallszahlen[0] + zufallszahlen[1]); 
+		spielMatheBean.setErgebnis2(zufallszahlen[2] + zufallszahlen[3]); 
+		spielMatheBean.setErgebnis3(zufallszahlen[4] + zufallszahlen[5]); 
+		
 		String spielartServlet = request.getParameter("Spielart");
 		String schwierigkeitServlet = request.getParameter("Schwierigkeit");
 
-		//---------- SERVLET ------------------------------
-		//Attribute (Schwierigkeit & Spieleart) von gaming_main_page.jsp abholen
-		//Infos werden nur für den einen Request gespeichert
-		request.setAttribute("schwierigkeitServlet", schwierigkeitServlet);
-		request.setAttribute("spielartServlet", spielartServlet);
 		
 		//----------  BEAN   ------------------------------
-		//Infos in der Bean speichern
-		SpielStartenBean spielStartenBean = new SpielStartenBean();
-		
-		spielStartenBean.setSchwierigkeit(request.getParameter("Schwierigkeit"));
-		spielStartenBean.setSpielart(request.getParameter("Spielart"));
-		
-		//spielStartenBean.setSchwierigkeit("Schwierigkeit");
-		//spielStartenBean.setSpielart("Spielart");
-		
 		//Infos werden nur für den einen Request gespeichert innerhalb einer Bean
-		request.setAttribute("spielStartenBean", spielStartenBean);
-
+		request.setAttribute("spielMatheBean", spielMatheBean);
 	
 		//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
 		//final HttpSession session = request.getSession();
 		//session.setAttribute("from", from);
 
 		//Weiterleiten an JSP
-		if (spielartServlet.equals("mathe")) {
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/gaming_pages/spiel_mathe_starten.jsp");
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/gaming_pages/spiel_mathe_spielen.jsp");
 			dispatcher.forward(request, response);
-
-		} else {
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-			dispatcher.forward(request, response);
-			
-		}
-		
-
 
         //Alternativ:
         //request.getRequestDispatcher("html/gaming_pages/quick_game.jsp").forward(request, response);
@@ -93,3 +95,4 @@ public class SpielStartenServlet extends HttpServlet {
 	}
 
 }
+
