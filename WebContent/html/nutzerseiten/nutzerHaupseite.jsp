@@ -21,7 +21,7 @@ Erstellt von Lukas Theinert
 		</li>
 		<li>Nutzerbereich</li>
 		<li><a href="./anmeldung.html">Anmeldung</a>
-			<p>Hier macht die Anmeldung natÃ¼rlich keinen Sinn. Ich
+			<p>Hier macht die Anmeldung natürlich keinen Sinn. Ich
 				m&uuml;chte nur einen test-commit absetzen.</p></li>
 	</ul>
 </body>
