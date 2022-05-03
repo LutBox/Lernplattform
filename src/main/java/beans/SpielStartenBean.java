@@ -8,7 +8,7 @@ public class SpielStartenBean implements Serializable {
 	private String schwierigkeit;
 	private String spielart;
 	
-	public SpielStartenBean() {
+	public SpielStartenBean() { 
 		
 	}
 	

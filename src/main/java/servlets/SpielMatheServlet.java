@@ -101,7 +101,7 @@ public class SpielMatheServlet extends HttpServlet {
 		session.setAttribute("spielMatheBean", spielMatheBean);
 
 		//Weiterleiten an JSP
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/gaming_pages/spiel_mathe_spielen.jsp");
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_mathe_spielen.jsp");
 			dispatcher.forward(request, response);
 
         //Alternativ:

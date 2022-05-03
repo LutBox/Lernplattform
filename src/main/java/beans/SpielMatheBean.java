@@ -9,7 +9,7 @@ public class SpielMatheBean {
 	private int ergebnis1, ergebnis2, ergebnis3;
 	private int nutzerErgebnis1, nutzerErgebnis2, nutzerErgebnis3;
 	
-	public SpielMatheBean() {
+	public SpielMatheBean() { 
 		super();
 	}
 

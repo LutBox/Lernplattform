@@ -26,7 +26,7 @@ Erstellt von Lukas Theinert
 		method="post" accept-charset="UTF-8">
 		
 		<div>
-			<input name="NutzerErgebnis1" id="ne1" type="number">
+			<input name="NutzerErgebnis1" id="ne1" type="number" required>
 		</div>
 
 		<br>

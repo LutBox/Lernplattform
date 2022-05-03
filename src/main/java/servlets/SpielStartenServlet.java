@@ -37,6 +37,7 @@ public class SpielStartenServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
+		//Parameter holen und als String speichern
 		String spielartServlet = request.getParameter("Spielart");
 		String schwierigkeitServlet = request.getParameter("Schwierigkeit");
 
@@ -47,14 +48,10 @@ public class SpielStartenServlet extends HttpServlet {
 		request.setAttribute("spielartServlet", spielartServlet);
 		
 		//----------  BEAN   ------------------------------
-		//Infos in der Bean speichern
+		//Neues Bean-Objekt erstellen und Informationen speichern
 		SpielStartenBean spielStartenBean = new SpielStartenBean();
-		
 		spielStartenBean.setSchwierigkeit(request.getParameter("Schwierigkeit"));
 		spielStartenBean.setSpielart(request.getParameter("Spielart"));
-		
-		//spielStartenBean.setSchwierigkeit("Schwierigkeit");
-		//spielStartenBean.setSpielart("Spielart");
 		
 		//Infos werden nur für den einen Request gespeichert innerhalb einer Bean
 		//request.setAttribute("spielStartenBean", spielStartenBean);
@@ -65,7 +62,7 @@ public class SpielStartenServlet extends HttpServlet {
 
 		//Weiterleiten an JSP
 		if (spielartServlet.equals("mathe")) {
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/gaming_pages/spiel_mathe_starten.jsp");
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_mathe_starten.jsp");
 			dispatcher.forward(request, response);
 
 		} else {
@@ -74,8 +71,6 @@ public class SpielStartenServlet extends HttpServlet {
 			
 		}
 		
-
-
         //Alternativ:
         //request.getRequestDispatcher("html/gaming_pages/quick_game.jsp").forward(request, response);
 		

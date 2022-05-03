@@ -50,7 +50,7 @@ public class SpielMatheErgebnisServlet extends HttpServlet {
 		session.setAttribute("spielMatheBean", spielMatheBean);
 
 		//Weiterleiten an JSP
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/gaming_pages/spiel_mathe_ergebnis.jsp");
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_mathe_ergebnis.jsp");
 			dispatcher.forward(request, response);
 
 	}
