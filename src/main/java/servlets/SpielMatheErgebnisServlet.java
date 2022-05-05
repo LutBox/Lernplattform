@@ -97,7 +97,7 @@ public class SpielMatheErgebnisServlet extends HttpServlet {
 		//DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT MAX(dt1_key), aufgabe, ergebnis, nutzerergebnis FROM dummy_table_1;")) {
+						"SELECT * FROM dummy_table_1 ORDER BY dt1_key DESC LIMIT 1;")) {
 
 			try(ResultSet rs = pstmt.executeQuery()) {
 				if (rs!= null && rs.next()) {
