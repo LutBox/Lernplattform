@@ -8,8 +8,11 @@ import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.util.Random;
 
+import javax.sql.DataSource;
+
 import beans.SpielMatheBean;
 import beans.SpielStartenBean;
+import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,7 +34,7 @@ public class SpielMatheServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -90,7 +93,7 @@ public class SpielMatheServlet extends HttpServlet {
 		
 		String spielartServlet = request.getParameter("Spielart");
 		String schwierigkeitServlet = request.getParameter("Schwierigkeit");
-
+		
 		
 		//----------  BEAN   ------------------------------
 		//Infos werden nur für den einen Request gespeichert innerhalb einer Bean
@@ -110,6 +113,7 @@ public class SpielMatheServlet extends HttpServlet {
 		//Direktes Senden an Seite:
 		//response.sendRedirect("html/gaming_pages/quick_game.jsp"); 
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

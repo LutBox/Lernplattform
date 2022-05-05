@@ -32,6 +32,10 @@ Erstellt von Lukas Theinert
 <br>Ergebnis: ${spielMatheBean.ergebnis1}</p>
 
 
+<br><p>Datenbankeintrag:
+<br><em>Aufgabe:</em>${datenDB.aufgabe}
+<br><em>Ergebnis:</em>${datenDB.ergebnis1}
+<br><em>Nutzerergebnis:</em>${datenDB.nutzerErgebnis1}</p>
 
 	<nav>
 		<%@include file="../jspf/navigation.jspf"%>

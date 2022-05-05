@@ -1,13 +1,12 @@
 package beans;
 
-import java.io.Serializable;
-
 public class SpielMatheBean {
 	private static final long serialVersionUID = 1L;
 	
 	private int zahl1, zahl2, zahl3, zahl4, zahl5, zahl6;
 	private int ergebnis1, ergebnis2, ergebnis3;
 	private int nutzerErgebnis1, nutzerErgebnis2, nutzerErgebnis3;
+	private String aufgabe;
 	
 	public SpielMatheBean() { 
 		super();
@@ -21,6 +20,16 @@ public class SpielMatheBean {
 		this.zahl4 = zahl4;
 		this.zahl5 = zahl5;
 		this.zahl6 = zahl6;
+	}
+
+	
+	
+	public String getAufgabe() {
+		return aufgabe;
+	}
+
+	public void setAufgabe(String aufgabe) {
+		this.aufgabe = aufgabe;
 	}
 
 	public int getZahl1() {
