@@ -16,7 +16,7 @@ Erstellt von Lukas Theinert
 	<h1>Viel Spaß!</h1>
 
 	<br>Schwierigkeitsgrad aus Bean: ${spielStartenBean.schwierigkeit}
-	</p>
+	
 
 	<br>
 	<p>Aufgabe 1: ${spielMatheBean.zahl1} + ${spielMatheBean.zahl2}=</p>
