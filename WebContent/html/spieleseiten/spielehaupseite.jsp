@@ -29,8 +29,18 @@ Erstellt von Lukas Theinert
 		</div>
 
 		<div>
-			<input type="radio" name="Spielart" id="deutsch" value="deutsch">
-			<label for="deutsch">Deutsch</label>
+			<input type="radio" name="Spielart" id="bilderWort" value="bilderWort">
+			<label for="bilderWort">4 Bilder 1 Wort</label>
+		</div>
+		
+		<div>
+			<input type="radio" name="Spielart" id="bilderOrdnen" value="bilderOrdnen">
+			<label for="bilderOrdnen">Bilder ordnen</label>
+		</div>
+		
+		<div>
+			<input type="radio" name="Spielart" id="bilderMemorie" value="bilderMemorie">
+			<label for="bilderMemorie">Bildermemorie</label>
 		</div>
 
 		<div>
@@ -40,10 +50,10 @@ Erstellt von Lukas Theinert
 
 		<br> <br>
 
-		<p>Schwierigkeitsgrad:</p>
+		<p>Mathe-Schwierigkeitsgrad:<br>NUR bei Mathe mit angeben!!!</p>
 
 		<div>
-			<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
+			<input type="radio" name="Schwierigkeit" id="leicht" value="leicht">
 			<label for="leicht">Zu jung zum sterben</label>
 		</div>
 
