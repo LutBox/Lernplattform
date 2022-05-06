@@ -1,3 +1,5 @@
+//Erstellt von Lukas Theinert
+
 package beans;
 
 public class SpielMatheBean {

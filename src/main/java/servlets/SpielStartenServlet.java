@@ -6,6 +6,7 @@ package servlets;
 
 import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
+import java.util.Random;
 
 import beans.SpielStartenBean;
 import jakarta.servlet.RequestDispatcher;
@@ -64,11 +65,30 @@ public class SpielStartenServlet extends HttpServlet {
 		if (spielartServlet.equals("mathe")) {
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_mathe_starten.jsp");
 			dispatcher.forward(request, response);
-
-		} else {
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		} else if(spielartServlet.equals("bilderWort")) {
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_starten.jsp");
 			dispatcher.forward(request, response);
-			
+		} else if(spielartServlet.equals("bilderOrdnen")) {
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
+			dispatcher.forward(request, response);
+		} else if(spielartServlet.equals("bilderMemorie")) {
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderMemorie_starten.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			int min = 1;
+			int max = 3;
+			Random random = new Random();
+			int value = random.nextInt(max + min) + min;
+			if(value == 1) {
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_starten.jsp");
+				dispatcher.forward(request, response);
+			} else if (value == 2) {
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderMemorie_starten.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
 		
         //Alternativ:
