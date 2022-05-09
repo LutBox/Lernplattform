@@ -5,8 +5,20 @@ public class SpielBilderMemorieBean {
 	private String bild1Stream;
 	private String bild1Kategorie;
 	private int bild1ID;
+	private byte[] bild1;
 	
 	
+	
+	public byte[] getBild1() {
+		return bild1;
+	}
+
+
+	public void setBild1(byte[] bild1) {
+		this.bild1 = bild1;
+	}
+
+
 	public SpielBilderMemorieBean() {
 		super();
 	}

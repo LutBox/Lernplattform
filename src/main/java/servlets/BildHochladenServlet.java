@@ -5,7 +5,10 @@
 package servlets;
 
 import jakarta.servlet.http.HttpServlet;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +19,7 @@ import beans.SpielBilderMemorieBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -26,9 +30,20 @@ import jakarta.servlet.http.Part;
  * Servlet implementation class BildHochladenServlet
  */
 @WebServlet("/BildHochladenServlet")
+@MultipartConfig(
+        maxFileSize=512*512*5,
+        maxRequestSize=512*512*5*5, 
+        location= "/tmp",
+        fileSizeThreshold=512*512)
+
+
+
 public class BildHochladenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
+	private DataSource ds;
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -37,35 +52,38 @@ public class BildHochladenServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
-	private DataSource ds;
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
+		
 		//Kategorie entgegennehmen 
 		String kategorie = request.getParameter("kategorie");
+		spielBilderMemorieBean.setBild1Kategorie(request.getParameter("kategorie"));
 		
+		/*
 		// Logausgabe über empfangene Parts
 		for (Part part : request.getParts()) {
 			log("Part received: " + part.getName());
 			if (part.getSubmittedFileName() != null)
 				log("Filename written via BinaryStream: " + part.getSubmittedFileName());
 		}
+		*/
 		
 		// Filebehandlung
 		Part filepart = request.getPart("image");
-		String fileName =filepart.getSubmittedFileName();
+		spielBilderMemorieBean.setBild1Stream(filepart.getSubmittedFileName());
+		
+		String fileName = filepart.getSubmittedFileName();
 		System.out.println("fileName: " + fileName);
 
-		/*		
+	/*
 		// Bild übertragen
 		try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			 InputStream in = filepart.getInputStream()	){
@@ -73,22 +91,23 @@ public class BildHochladenServlet extends HttpServlet {
 			while ((i = in.read()) != -1) {
 				baos.write(i);
 			}
-			form.setImage(baos.toByteArray());
+			spielBilderMemorieBean.setBild1(baos.toByteArray());
 			baos.flush();
 		} catch (IOException ex) {
 			throw new ServletException(ex.getMessage());
 		}
-*/
+		*/
+
 		
 		// DB-Zugriff
-		persist(kategorie, filepart);
+		persist(spielBilderMemorieBean, filepart);
 		SpielBilderMemorieBean datenDB = new SpielBilderMemorieBean();
-		datenDB = read();
+		//datenDB = read();
 		
 		// Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
 		final HttpSession session = request.getSession();
 		session.setAttribute("kategorie", kategorie);
-		session.setAttribute("datenDB", datenDB);
+		session.setAttribute("datenDB", spielBilderMemorieBean);
 		
 		// Weiterleiten an JSP
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/bildHochladenFertig.jsp");
@@ -97,77 +116,51 @@ public class BildHochladenServlet extends HttpServlet {
 
 	}
 
-	private void persist(String kategorie, Part filepart) throws ServletException {
+	private void persist(SpielBilderMemorieBean spielBilderMemorieBean, Part filepart) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"INSERT INTO wort (kategorie) VALUES (?);" +
-						"INSERT INTO bild (kategorie, stream) VALUES (?,?);")) {
+						"INSERT INTO wort (kategorie) VALUES (?)")) {
+		
+				pstmt.setString(1, spielBilderMemorieBean.getBild1Kategorie());
+			pstmt.executeUpdate();
 			
-			// Zugriff über Klasse java.sql.PreparedStatement
-			// Prüfuen, ob Kategorie existiert
-			boolean kategorieVorhanden = readKategorie(kategorie);
+			persist2(spielBilderMemorieBean, filepart);
 			
-			if(kategorieVorhanden) {
-				pstmt.setString(1, kategorie);
-			} else {
-				pstmt.setString(2,kategorie);
-				pstmt.setBinaryStream(3, filepart.getInputStream());
-			}
+		} catch (Exception ex) {
+			throw new ServletException(ex.getMessage());
+		}
+
+	}
+	
+	private void persist2(SpielBilderMemorieBean spielBilderMemorieBean, Part filepart) throws ServletException {
+		// DB-Zugriff
+		String[] generatedKeys = new String[] {"id"};	// Name der Spalte(n), die automatisch generiert wird(werden)
+		
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(
+
+						"INSERT INTO bild (kategorie, image) VALUES (?,?)", generatedKeys)) {
+			
+				pstmt.setString(1,spielBilderMemorieBean.getBild1Kategorie());
+				pstmt.setBinaryStream(2, filepart.getInputStream());
 
 			pstmt.executeUpdate();
 			
-		} catch (Exception ex) {
-			throw new ServletException(ex.getMessage());
-		}
-
-	}
-	
-	private boolean readKategorie(String kategorie) throws ServletException {
-		
-		// DB-Zugriff
-				try (Connection con = ds.getConnection();
-					 PreparedStatement pstmt = con.prepareStatement("SELECT * FROM wort WHERE kategorie = ?")) {
-					
-					pstmt.setString(1, kategorie);
-					try(ResultSet rs = pstmt.executeQuery()) {
-						if (rs!= null && rs.next()) {
-							return true;
-						}
-					}				
-					
-				} catch (Exception ex) {
-					throw new ServletException(ex.getMessage());
+			try (ResultSet rs = pstmt.getGeneratedKeys()) {
+				int i = 1;
+				while (rs.next()) {
+					if (i++ == 1)
+						spielBilderMemorieBean.setBild1ID(rs.getInt(1));
+					else
+						spielBilderMemorieBean.setBild1ID(rs.getInt(1));
 				}
-				
-				return false;
 			}
-	
-	private SpielBilderMemorieBean read() throws ServletException {
-		SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
-		
-		//DB-Zugriff
-		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT * FROM bild")) {
-
-			try(ResultSet rs = pstmt.executeQuery()) {
-				if (rs!= null && rs.next()) {
-					spielBilderMemorieBean.setBild1ID(rs.getInt("id"));
-					spielBilderMemorieBean.setBild1Kategorie(rs.getString("kategorie"));
-					spielBilderMemorieBean.setBild1Stream(rs.getString("stream"));
-				}
-			}		
-			
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());
 		}
-		
-		return spielBilderMemorieBean;
 
 	}
-	
-	
 	
 
 	/**

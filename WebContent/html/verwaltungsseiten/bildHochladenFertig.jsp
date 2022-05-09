@@ -18,8 +18,9 @@ Erstellt von Lukas Theinert
 
 <br><p>Datenbankeintrag:
 <br><em>Tabelle Bild - ID:</em>${datenDB.bild1ID}
-<br><em>Tabelle Bild - Kategorie:</em>${datenDB.bild1Kategorie}</p>
-<br><em>Tabelle Bild - Stream:</em>${datenDB.bild1Stream}</p>
+<br><em>Tabelle Bild - Kategorie:</em>${datenDB.bild1Kategorie}
+<br><em>Tabelle Bild - Stream:</em>${datenDB.bild1Stream}
+<br><em>Tabelle Bild - Bild:</em></em><img src="BildZeigenServlet?id=${datenDB.bild1ID}"></p>
 
 	<nav>
 		<%@include file="../jspf/navigation.jspf"%>
