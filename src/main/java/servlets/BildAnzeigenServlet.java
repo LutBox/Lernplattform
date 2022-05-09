@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 
 import javax.sql.DataSource;
 
+import beans.SpielBilderMemorieBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletOutputStream;
@@ -16,6 +17,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Bild11aServlet
@@ -23,6 +25,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/BildAnzeigenServlet")
 public class BildAnzeigenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
 	@Resource(lookup="java:jboss/datasources/MySqlThidbDS")
 	private DataSource ds;
@@ -34,15 +37,20 @@ public class BildAnzeigenServlet extends HttpServlet {
 		// Servlet zum Auslesen eines Bildes aus einer DB und Rückgabe als binärer Datenstrom
 		request.setCharacterEncoding("UTF-8");	// In diesem Format erwartet das Servlet jetzt die Formulardaten
 		Long id = Long.valueOf(request.getParameter("id"));
+		 
+		if(id == null) {
+			System.out.println("ID ist NULL!");
+		}
+
 		
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
-			 PreparedStatement pstmt = con.prepareStatement("SELECT id FROM bild WHERE id = ?") ) {
+			 PreparedStatement pstmt = con.prepareStatement("SELECT image FROM bild WHERE id = ?") ) {
 			pstmt.setLong(1, id);
 			try (ResultSet rs = pstmt.executeQuery()) {
 			
 				if (rs != null && rs.next()) {
-					Blob bild = rs.getBlob("file");
+					Blob bild = rs.getBlob("image");
 					response.reset();
 					long length = bild.length();
 					response.setHeader("Content-Length",String.valueOf(length));

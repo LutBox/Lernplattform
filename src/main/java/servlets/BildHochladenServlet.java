@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import javax.sql.DataSource;
 
 import beans.SpielBilderMemorieBean;
+import beans.SpielMatheBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -67,14 +68,14 @@ public class BildHochladenServlet extends HttpServlet {
 		String kategorie = request.getParameter("kategorie");
 		spielBilderMemorieBean.setBild1Kategorie(request.getParameter("kategorie"));
 		
-		/*
+
 		// Logausgabe über empfangene Parts
 		for (Part part : request.getParts()) {
 			log("Part received: " + part.getName());
 			if (part.getSubmittedFileName() != null)
 				log("Filename written via BinaryStream: " + part.getSubmittedFileName());
 		}
-		*/
+
 		
 		// Filebehandlung
 		Part filepart = request.getPart("image");
@@ -100,8 +101,20 @@ public class BildHochladenServlet extends HttpServlet {
 
 		
 		// DB-Zugriff
-		persist(spielBilderMemorieBean, filepart);
-		SpielBilderMemorieBean datenDB = new SpielBilderMemorieBean();
+		//Abfrage, ob Kategorie bereits vorhanden ist
+		boolean kategorieVorhanden;
+		kategorieVorhanden = read(spielBilderMemorieBean);
+		
+		if(kategorieVorhanden) {
+			persist2(spielBilderMemorieBean, filepart);
+		} else {
+			persist(spielBilderMemorieBean, filepart);
+			persist2(spielBilderMemorieBean, filepart);
+		}
+		
+
+
+		
 		//datenDB = read();
 		
 		// Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
@@ -115,6 +128,30 @@ public class BildHochladenServlet extends HttpServlet {
 		
 
 	}
+	
+	private boolean read(SpielBilderMemorieBean spielBilderMemorieBean) throws ServletException {
+		//SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
+		
+		// DB-Zugriff
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(
+						"Select kategorie from wort where kategorie = (?)")) {
+		
+			pstmt.setString(1,spielBilderMemorieBean.getBild1Kategorie());
+			try(ResultSet rs = pstmt.executeQuery()) {
+				if (rs!= null && rs.next()) {
+					//spielBilderMemorieBean.setBild1Kategorie(rs.getString("kategorie"));
+					return true;
+				}
+				return false;
+			}
+			
+		} catch (Exception ex) {
+			throw new ServletException(ex.getMessage());
+		}
+		
+	}
+	
 
 	private void persist(SpielBilderMemorieBean spielBilderMemorieBean, Part filepart) throws ServletException {
 		// DB-Zugriff
@@ -125,7 +162,6 @@ public class BildHochladenServlet extends HttpServlet {
 				pstmt.setString(1, spielBilderMemorieBean.getBild1Kategorie());
 			pstmt.executeUpdate();
 			
-			persist2(spielBilderMemorieBean, filepart);
 			
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());

@@ -13,15 +13,13 @@ Erstellt von Lukas Theinert
 <title>Upload</title>
 </head>
 <body>
-
-	<h1>Bild hochladen</h1>
 	
 		<nav>
 		<%@include file="../jspf/navigation.jspf"%>
 		</nav>   
           
-	
-	<form id="myForm" method="post" action="${pageContext.request.contextPath}/BildHochladenServlet" enctype="multipart/form-data">
+	<br>
+	<form id="form1" method="post" action="${pageContext.request.contextPath}/BildHochladenServlet" enctype="multipart/form-data">
 			<fieldset><legend>Bild hochladen</legend>
 				<div>
 				  <label for="number">Kategorie angeben:</label>
@@ -36,9 +34,17 @@ Erstellt von Lukas Theinert
 				  <button name="submit" type="submit">Absenden</button>
 				  <button name="reset" type="reset">Zurücksetzen</button>
 				</div>
-			</fieldset>
-			
+			</fieldset>			
 		</form>
+		
+	<br>
+	<form id="form2" method="post" action="${pageContext.request.contextPath}/AlleBilderAnzeigenServlet" enctype="multipart/form-data">
+			<fieldset><legend> Alle Bilder anzeigen lassen</legend>
+				<div>
+				  <button name="submit" type="submit">Absenden</button>
+				</div>
+			</fieldset>			
+		</form>		
 
 </body>
 </html>

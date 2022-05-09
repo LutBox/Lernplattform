@@ -1,14 +1,15 @@
 package beans;
 
+import java.sql.Blob;
+
 public class SpielBilderMemorieBean {
 	private static final long serialVersionUID = 1L;
 	private String bild1Stream;
 	private String bild1Kategorie;
-	private int bild1ID;
+	private long bild1ID;
 	private byte[] bild1;
-	
-	
-	
+
+
 	public byte[] getBild1() {
 		return bild1;
 	}
@@ -44,12 +45,12 @@ public class SpielBilderMemorieBean {
 	}
 
 
-	public int getBild1ID() {
+	public long getBild1ID() {
 		return bild1ID;
 	}
 
 
-	public void setBild1ID(int bild1id) {
+	public void setBild1ID(long bild1id) {
 		bild1ID = bild1id;
 	}
 	
