@@ -27,7 +27,7 @@ Erstellt von Lukas Theinert
 				</div>
 				<div>
 				  <label for="image">Bild hochladen:</label>
-				  <input type="file" name="image" id="image" accept="image/*" >
+				  <input type="file" name="image" id="image" accept="image/*">
 				</div>
 
 				<div>

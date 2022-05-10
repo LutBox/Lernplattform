@@ -32,10 +32,10 @@ import jakarta.servlet.http.Part;
  */
 @WebServlet("/BildHochladenServlet")
 @MultipartConfig(
-        maxFileSize=512*512*5,
-        maxRequestSize=512*512*5*5, 
+        maxFileSize=128*128*4,
+        maxRequestSize=128*128*4*4, 
         location= "/tmp",
-        fileSizeThreshold=512*512)
+        fileSizeThreshold=128*128)
 
 
 
@@ -82,7 +82,7 @@ public class BildHochladenServlet extends HttpServlet {
 		spielBilderMemorieBean.setBild1Stream(filepart.getSubmittedFileName());
 		
 		String fileName = filepart.getSubmittedFileName();
-		System.out.println("fileName: " + fileName);
+		//System.out.println("fileName: " + fileName);
 
 	/*
 		// Bild übertragen

@@ -6,15 +6,26 @@ package servlets;
 
 import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
+import javax.sql.DataSource;
+
+import beans.SpielBilderMemorieBean;
 import beans.SpielStartenBean;
+import jakarta.annotation.Resource;
+import jakarta.security.auth.message.callback.SecretKeyCallback.Request;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.xml.ws.Response;
 
 /**
  * Servlet implementation class SpielStartenServlet
@@ -22,6 +33,9 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/SpielStartenServlet")
 public class SpielStartenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	@Resource(lookup="java:jboss/datasources/MySqlThidbDS")
+	private DataSource ds;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -62,18 +76,45 @@ public class SpielStartenServlet extends HttpServlet {
 		session.setAttribute("spielStartenBean", spielStartenBean);
 
 		//Weiterleiten an JSP
+		//-------------------------------------------------
+		//---------- Mathe   ------------------------------
+		//-------------------------------------------------
 		if (spielartServlet.equals("mathe")) {
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_mathe_starten.jsp");
 			dispatcher.forward(request, response);
+			
+		//-------------------------------------------------
+		//---------- 4 Bilder 1 Wort   --------------------
+		//-------------------------------------------------	
 		} else if(spielartServlet.equals("bilderWort")) {
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_starten.jsp");
 			dispatcher.forward(request, response);
+			
+		//-------------------------------------------------
+		//---------- Bilder ordnen   ----------------------
+		//-------------------------------------------------
 		} else if(spielartServlet.equals("bilderOrdnen")) {
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
 			dispatcher.forward(request, response);
+			
+		//-------------------------------------------------
+		//---------- Bildermemorie   ----------------------
+		//-------------------------------------------------
 		} else if(spielartServlet.equals("bilderMemorie")) {
+			//8 Zufällige Bilder in Bean speichern
+			SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
+			spielBilderMemorieBean = spielBilderMemorie();
+			
+			//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
+			session.setAttribute("spielBilderMemorieBean", spielBilderMemorieBean);
+			
+			//Weiterleiten an JSP
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderMemorie_starten.jsp");
-			dispatcher.forward(request, response);
+			dispatcher.forward(request, response);	
+			
+		//-------------------------------------------------
+		//---------- Zufall   -----------------------------
+		//-------------------------------------------------
 		} else {
 			int min = 1;
 			int max = 3;
@@ -96,6 +137,56 @@ public class SpielStartenServlet extends HttpServlet {
 		
 		//Direktes Senden an Seite:
 		//response.sendRedirect("html/gaming_pages/quick_game.jsp"); 
+	}
+	
+	public void spielMathe() {
+		
+	}
+	
+	public void spielBilderWort() {
+		
+	}
+	
+	public void spielBilderOrdnen() {
+		
+	}
+	
+	private SpielBilderMemorieBean spielBilderMemorie() throws ServletException {
+		int durchlauf = 0;
+		SpielBilderMemorieBean spielBilder = new SpielBilderMemorieBean();
+		
+		//DB-Zugriff
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(
+						"SELECT * FROM bild ORDER BY RAND() LIMIT 8")) {
+
+			try(ResultSet rs = pstmt.executeQuery()) {
+				while (rs!= null && rs.next()) {
+					durchlauf++;
+					
+					if(durchlauf ==1) {
+						spielBilder.setBild1ID(rs.getLong("id"));
+					} else if(durchlauf ==2) {
+						spielBilder.setBild2ID(rs.getLong("id"));
+					} else if(durchlauf ==3) {
+						spielBilder.setBild3ID(rs.getLong("id"));
+					} else if(durchlauf ==4) {
+						spielBilder.setBild4ID(rs.getLong("id"));
+					} else if(durchlauf ==5) {
+						spielBilder.setBild5ID(rs.getLong("id"));
+					} else if(durchlauf ==6) {
+						spielBilder.setBild6ID(rs.getLong("id"));
+					} else if(durchlauf ==7) {
+						spielBilder.setBild7ID(rs.getLong("id"));
+					} else {
+						spielBilder.setBild8ID(rs.getLong("id"));
+					}
+				}
+			}	
+		} catch (Exception ex) {
+			throw new ServletException(ex.getMessage());
+		}
+		return spielBilder;		
 	}
 
 	/**
