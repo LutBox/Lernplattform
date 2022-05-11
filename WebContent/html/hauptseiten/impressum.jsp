@@ -10,7 +10,9 @@ Erstellt von Zohal Mohammadi
 </head>
 <body>
 <h1>Impressum</h1>
-<li><a href="../../index.html"> Startseite </a></li>
+            <nav>
+				<%@include file="../jspf/navigation.jspf"%>
+			</nav>
     <p> <strong>Adresse</strong></p>
     <p> Lernplattform Gmbh</p>
     <p> Beispielsstraﬂe 39</p>
