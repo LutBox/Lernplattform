@@ -1,8 +1,13 @@
+
+<%--
+Erstellt von Zohal Mohammadi
+--%>
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.request.requestURI}" />
 <meta charset="ISO-8859-1">
-<title>kontaktformular</title>
+<title>Kontaktformular</title>
 </head>
 <body>
 <h1> Kontaktformular</h1>

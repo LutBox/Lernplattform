@@ -1,8 +1,12 @@
+ <%--
+Erstellt von Zohal Mohammadi
+--%>
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.request.requestURI}" />
 <meta charset="ISO-8859-1">
-<title>impressum</title>
+<title>Impressum</title>
 </head>
 <body>
 <h1>Impressum</h1>
