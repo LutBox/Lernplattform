@@ -21,9 +21,7 @@ Erstellt von Lukas Theinert
           
 <br>
 
-     <li><a href="html/main_pages/impressum.html">Impressum</a></li>
-     <li><a href="html/main_pages/kontaktformular.html">Kontaktformular</a></li>
-
+    
      
 <!-- Seiten von Merlin -->
      

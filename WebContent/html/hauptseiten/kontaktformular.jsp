@@ -1,12 +1,19 @@
+
+<%--
+Erstellt von Zohal Mohammadi
+--%>
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.request.requestURI}" />
 <meta charset="ISO-8859-1">
-<title>kontaktformular</title>
+<title>Kontaktformular</title>
 </head>
 <body>
 <h1> Kontaktformular</h1>
-<li><a href="../../index.html"> Startseite </a></li>
+            <nav>
+				<%@include file="../jspf/navigation.jspf"%>
+			</nav>
    <form action="Kontaktformular" method="post">
           <p>Vorname:<br> <input type="text" name="vorname" size ="35" maxlength="40" placeholder="Ihr Vorname"></p>
 

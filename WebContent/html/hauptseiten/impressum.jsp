@@ -1,12 +1,18 @@
+ <%--
+Erstellt von Zohal Mohammadi
+--%>
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.request.requestURI}" />
 <meta charset="ISO-8859-1">
-<title>impressum</title>
+<title>Impressum</title>
 </head>
 <body>
 <h1>Impressum</h1>
-<li><a href="../../index.html"> Startseite </a></li>
+            <nav>
+				<%@include file="../jspf/navigation.jspf"%>
+			</nav>
     <p> <strong>Adresse</strong></p>
     <p> Lernplattform Gmbh</p>
     <p> Beispielsstraße 39</p>
