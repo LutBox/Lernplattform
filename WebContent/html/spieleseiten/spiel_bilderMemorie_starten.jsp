@@ -17,70 +17,106 @@ Erstellt von Lukas Theinert
 <body>
 
 	<h1>Bildermemorie</h1>
+	
+	<br>
 
 	<nav>
 		<%@include file="../jspf/navigation.jspf"%>
 	</nav>
 
-	<br><br>
+	<br>
+	
+	<div class="game">
+            <div class="controls">
+                <button>Start</button>
+                <div class="stats">
+                    <div class="moves">0 moves</div>
+                    <div class="timer">time: 0 sec</div>
+                </div>
+            </div>
+            <div class="board-container">
+                <div class="board" data-dimension="4"></div>
+                <div class="win">You won!</div>
+            </div>
+        </div>
+	
+	<br>
 
-	  <section class="memory-game">
-    <div class="memory-card" data-framework="aurelia">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild1ID}" alt="Aurelia" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
+	  <section class="spiel_bilderMemorie">
+    <div class="memorieKarte" data-framework="bild1">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild1ID}" alt="bild1" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
     </div>
-    <div class="memory-card" data-framework="aurelia">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild1ID}" alt="Aurelia" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
-    </div>
-
-    <div class="memory-card" data-framework="vue">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild2ID}" alt="Vue" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
-    </div>
-    <div class="memory-card" data-framework="vue">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild2ID}" alt="Vue" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
-    </div>
-
-    <div class="memory-card" data-framework="angular">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild3ID}" alt="Angular" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
-    </div>
-    <div class="memory-card" data-framework="angular">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild3ID}" alt="Angular" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
+    <div class="memorieKarte" data-framework="bild1">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild1ID}" alt="bild1" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
     </div>
 
-    <div class="memory-card" data-framework="ember">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild4ID}" alt="Ember" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
+    <div class="memorieKarte" data-framework="bild2">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild2ID}" alt="bild2" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogoe" />
     </div>
-    <div class="memory-card" data-framework="ember">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild4ID}" alt="Ember" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
-    </div>
-
-    <div class="memory-card" data-framework="backbone">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild5ID}" alt="Backbone" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
-    </div>
-    <div class="memory-card" data-framework="backbone">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild5ID}" alt="Backbone" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
+    <div class="memorieKarte" data-framework="bild2">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild2ID}" alt="bild2" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
     </div>
 
-    <div class="memory-card" data-framework="react">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild6ID}" alt="React" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
+    <div class="memorieKarte" data-framework="bild3">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild3ID}" alt="bild3" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
     </div>
-    <div class="memory-card" data-framework="react">
-      <img class="front-face" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild6ID}" alt="React" />
-      <img class="back-face" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="JS Badge" />
+    <div class="memorieKarte" data-framework="bild3">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild3ID}" alt="bild3" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
     </div>
+
+    <div class="memorieKarte" data-framework="bild4">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild4ID}" alt="bild4" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild4">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild4ID}" alt="bild4" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+
+    <div class="memorieKarte" data-framework="bild5">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild5ID}" alt="bild5" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild5">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild5ID}" alt="bild5" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+
+    <div class="memorieKarte" data-framework="bild6">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild6ID}" alt="bild6" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild6">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild6ID}" alt="bild6" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    
+    <div class="memorieKarte" data-framework="bild7">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild7ID}" alt="bild7" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild7">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild7ID}" alt="bild7" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+
+    <div class="memorieKarte" data-framework="bild8">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild8ID}" alt="bild8" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild8">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild8ID}" alt="bild8" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>    
   </section>
 
-  <script src="scripts.js"></script>
+
 
 </body>
 </html>
