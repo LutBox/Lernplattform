@@ -1,3 +1,6 @@
+//Erstellt von Lukas Theinert
+//Memorie-Idee von: https://github.com/code-sketch/memory-game/
+
 const karten = document.querySelectorAll('.memorieKarte');
 
 const selectors = {
@@ -38,10 +41,6 @@ function karteVorneDrehen() {
 	
 	state.totalFlips++
 	state.flippedCards++
-	
-	//if (state.gameStarted === false) {
-    //    startGame()
-    //}
 
 	this.classList.add('drehen');
 
@@ -62,11 +61,14 @@ function versuchChecken() {
 	isMatch ? kartenDeaktivieren() : karteHintenDrehen();
 
  if (flippedCards === document.querySelectorAll('.memorieKarte').length) {
+ //if (isMatch) {	
         setTimeout(() => {
-            selectors.boardContainer.classList.add('flipped')
+	        selectors.boardContainer.classList.add('flipped')
             selectors.win.innerHTML = `
                 <span class="win-text">
+                
                     You won!<br />
+                    
                     with <span class="highlight">${state.totalFlips}</span> moves<br />
                     under <span class="highlight">${state.totalTime}</span> seconds
                 </span>
@@ -115,7 +117,10 @@ const attachEventListeners = () => {
 		const eventTarget = event.target
 		const eventParent = eventTarget.parentElement
 
-		if (eventTarget.nodeName === 'BUTTON') {
+		if (eventTarget.nodeName === 'BUTTON' && state.gameStarted === false) {
+			startGame()
+		}
+		if (eventTarget.nodeName === 'IMG' && state.gameStarted === false) {
 			startGame()
 		}
 	})

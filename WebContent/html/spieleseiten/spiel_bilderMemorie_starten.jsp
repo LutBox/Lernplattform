@@ -28,19 +28,18 @@ Erstellt von Lukas Theinert
 	
 	<div class="game">
             <div class="controls">
-                <button>Start</button>
+                <button>Start</button><br>
                 <div class="stats">
                     <div class="moves">0 moves</div>
                     <div class="timer">time: 0 sec</div>
                 </div>
             </div>
             <div class="board-container">
-                <div class="board" data-dimension="4"></div>
-                <div class="win">You won!</div>
+                <div class="win"></div>
             </div>
         </div>
 	
-	<br>
+	<br><br><br><br><br><br>
 
 	  <section class="spiel_bilderMemorie">
     <div class="memorieKarte" data-framework="bild1">

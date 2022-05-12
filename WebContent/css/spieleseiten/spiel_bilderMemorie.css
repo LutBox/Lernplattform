@@ -1,6 +1,8 @@
+/* Erstellt von Lukas Theinert */
+
 * {
-  padding: 0;
-  margin: 0;
+  padding: 5 px;
+  margin: 5 px;
   box-sizing: border-box;
 }
 
@@ -8,6 +10,16 @@ html {
     width: 100%;
     height: 100%;
     background: linear-gradient(325deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%);
+}
+
+.controls {
+	position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #282A3A;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 10px 20px;
 }
 
 .spiel_bilderMemorie {
@@ -20,24 +32,15 @@ html {
 }
 
 button {
-    background: #282A3A;
-    color: #FFF;
+    background: #FFF;
+    color: #282A3A;
     border-radius: 5px;
     padding: 10px 20px;
     border: 0;
     cursor: pointer;
-    font-family: Fredoka;
     font-size: 18pt;
 }
 
-.board,
-.win {
-    border-radius: 5px;
-    box-shadow: 0 25px 50px rgb(33 33 33 / 25%);
-    background: linear-gradient(135deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%);
-    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
-    backface-visibility: hidden;
-}
 
 .memorieKarte {
   width: calc(25% - 10px);
@@ -74,15 +77,26 @@ button {
     transform: rotateY(180deg);
 }
 
+.board-container {
+    position: relative;
+}
+
+
+.board-container.flipped .win {
+    transform: rotateY(0) rotateZ(0);
+}
+
+
 .win {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background: #FDF8E6;
-    transform: rotateY(180deg);
+    border-radius: 5px;
+    box-shadow: 0 50px 50px rgb(33 33 33 / 25%);
+	background: #282A3A;    
+	transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+.board-container.flipped .win {
+    transform: rotateY(0) rotateZ(0);
 }
 
 .win-text {
@@ -90,6 +104,6 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 21pt;
-    color: #282A3A;
+    color: #FFF;
+    background: #282A3A;
 }
