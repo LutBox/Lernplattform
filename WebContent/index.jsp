@@ -24,6 +24,7 @@ Erstellt von Lukas Theinert
     
      
 <!-- Seiten von Merlin -->
+<%@include file="./html/jspf/signup-regist-tmp-nav.jspf"%>
      
 </body>
 </html>
