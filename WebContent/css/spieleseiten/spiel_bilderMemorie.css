@@ -1,0 +1,104 @@
+/* Erstellt von Lukas Theinert */
+
+* {
+  padding: 5 px;
+  margin: 5 px;
+  box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(325deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%);
+}
+
+.controls {
+	position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #282A3A;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+
+.spiel_bilderMemorie {
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+button {
+    background: #FFF;
+    color: #282A3A;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 0;
+    cursor: pointer;
+    font-size: 18pt;
+}
+
+
+.memorieKarte {
+  width: calc(25% - 10px);
+  height: calc(25% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+
+.memorieKarte:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+}
+
+.memorieKarte.drehen {
+	transform: rotateY(180deg);
+}
+
+.vorne,
+.hinten {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #282A3A;
+  backface-visibility: hidden;
+}
+
+.vorne {
+    transform: rotateY(180deg);
+}
+
+.board-container {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #282A3A;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 10px 20px;
+    visibility: hidden
+}
+
+
+
+.board-container.flipped .win {
+    transform: rotateY(0) rotateZ(0);
+}
+
+
+
+.board-container.flipped .win {
+    transform: rotateY(0) rotateZ(0);
+}
+
+
