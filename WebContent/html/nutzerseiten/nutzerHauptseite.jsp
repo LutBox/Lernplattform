@@ -1,12 +1,14 @@
 <%--
 Erstellt von Lukas Theinert
 --%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Nutzerbereich</title>
 </head>
 
@@ -20,9 +22,7 @@ Erstellt von Lukas Theinert
 			</nav>
 		</li>
 		<li>Nutzerbereich</li>
-		<li><a href="./anmeldung.html">Anmeldung</a>
-			<p>Hier macht die Anmeldung natürlich keinen Sinn. Ich
-				m&uuml;chte nur einen test-commit absetzen.</p></li>
+		<li><%@include file="../jspf/nutzernavigation.jspf"%></li>
 	</ul>
 </body>
 
