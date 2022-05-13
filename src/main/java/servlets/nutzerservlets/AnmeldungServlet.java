@@ -38,7 +38,7 @@ public class AnmeldungServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		// Nutzer zu Nutzernamen aus der Datenbank holen
-		NutzerBean nutzer = NutzerSQLDienst.gibMirNutzerMitDemNamen(request.getParameter("name"));
+		NutzerBean nutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(request.getParameter("name"));
 		HttpSession session = request.getSession();
 
 		if (nutzer.getName() != null) {

@@ -7,7 +7,7 @@ Erstellt von Lukas Theinert
 <html>
 <head>
 <base href="${pageContext.request.requestURI}"/>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>Lernplattform</title>
 </head>
 <body>

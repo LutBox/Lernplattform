@@ -14,18 +14,20 @@ import jakarta.servlet.http.HttpSession;
  */
 public class NutzerSQLDienst extends SQLDienst {
 	/**
-	 * @author Merlin Name der "Nutzer"-Datenbank
+	 * @author Merlin
+	 * Name der "Nutzer"-Datenbank
 	 */
 	private static final String tabellenname = "nutzer";
 
 	/**
 	 * @author Merlin
-	 * @param neuerNutzer Methode speichert einen Nutzer in der Datenbank ab
+	 * @param neuerNutzer 
+	 * @see Methode speichert einen Nutzer in der Datenbank ab
 	 */
 	public static void nutzerSpeichern(NutzerBean neuerNutzer) {
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement("INSERT INTO " + tabellenname
-						+ " (name,email,punkte,passwort,admin,dateiname,bild) VALUES (?,?,0,?,0,null,null)")) {
+				PreparedStatement pstmt = con.prepareStatement(
+						"INSERT INTO " + tabellenname + " (name,email,punkte,passwort,admin,dateiname,bild) VALUES (?,?,0,?,0,null,null)")) {
 			pstmt.setString(1, neuerNutzer.getName());
 			pstmt.setString(2, neuerNutzer.getEmail());
 			pstmt.setString(3, neuerNutzer.getPasswort());
@@ -40,11 +42,10 @@ public class NutzerSQLDienst extends SQLDienst {
 	 * @param name
 	 * @return
 	 */
-	public static NutzerViewBean gibMirNutzeranzeigeMitDemNamen(String name) {
+	public static NutzerViewBean gebeMirNutzeranzeigeMitDemNamen(String name) {
 		NutzerViewBean nutzerAnzeige = new NutzerViewBean();
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT name,email,admin,punkte,dateiname FROM " + tabellenname + " WHERE name = ? ")) {
+				PreparedStatement pstmt = con.prepareStatement("SELECT name,email,admin,punkte,dateiname FROM " + tabellenname + " WHERE name = ? ")) {
 			pstmt.setString(1, name);
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs != null && rs.next()) {
@@ -60,7 +61,7 @@ public class NutzerSQLDienst extends SQLDienst {
 		}
 		return nutzerAnzeige;
 	}
-
+	
 	/**
 	 * @author Merlin
 	 * @param name
@@ -69,7 +70,7 @@ public class NutzerSQLDienst extends SQLDienst {
 	 *      (Primaerschluessel).
 	 * 
 	 */
-	public static NutzerBean gibMirNutzerMitDemNamen(String name) {
+	public static NutzerBean gebeMirNutzerMitDemNamen(String name) {
 		NutzerBean nutzer = new NutzerBean();
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("SELECT * FROM " + tabellenname + " WHERE name = ? ")) {
@@ -163,63 +164,21 @@ public class NutzerSQLDienst extends SQLDienst {
 		}
 		return false;
 	}
-
+	
 	/**
 	 * @author Merlin
-	 * @param session
+	 * @param wunschname
 	 * @param neuerPunktestand
+	 * @see Methode setzt den Punktestand des angegbenen Nutzers. Diese Methode kann von den SpeieleServlets genutzt werden.
 	 */
-	public static void setzePunkteDesAngemeldetenNutzers(HttpSession session, int neuerPunktestand) {
+	public static void setzePunkteDesNutzersAuf(HttpSession session, int neuerPunktestand) {
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con
-						.prepareStatement("UPDATE " + tabellenname + " SET punkte = ? WHERE name = ? ")) {
+				PreparedStatement pstmt = con.prepareStatement("UPDATE "+tabellenname+" SET punkte = ? WHERE name = ?")) {
 			pstmt.setInt(1, neuerPunktestand);
 			pstmt.setString(2, ((NutzerViewBean) session.getAttribute(NutzerViewBean.attributName)).getName());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @author Merlin
-	 * @param name
-	 * @return punktestand
-	 */
-	public static int geibMirPunkteDesNutzers(String name) {
-		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con
-						.prepareStatement("SELECT punkte FROM " + tabellenname + " WHERE name = ? ")) {
-			pstmt.setString(1, name);
-			try (ResultSet rs = pstmt.executeQuery()) {
-				if (rs != null && rs.next()) {
-					return rs.getInt("punkte");
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
-	}
-
-	/**
-	 * @author Merlin
-	 * @param session
-	 * @return punkte
-	 */
-	public static int gibMirPunkteStandDesAngemeldetenNutzers(HttpSession session) {
-		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con
-						.prepareStatement("SELECT punkte FROM " + tabellenname + " WHERE name = ? ")) {
-			pstmt.setString(1, ((NutzerViewBean) session.getAttribute(NutzerViewBean.attributName)).getName());
-			try (ResultSet rs = pstmt.executeQuery()) {
-				if (rs != null && rs.next()) {
-					return rs.getInt("punkte");
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
 	}
 }

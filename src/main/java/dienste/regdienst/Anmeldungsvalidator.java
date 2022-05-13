@@ -21,7 +21,7 @@ public class Anmeldungsvalidator {
 	 */
 	public static void nutzerIstAdmin(HttpSession session) throws KeinAdminException {
 		NutzerViewBean tmp = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributName);
-		NutzerViewBean potAdmin = NutzerSQLDienst.gibMirNutzeranzeigeMitDemNamen(tmp.getName());
+		NutzerViewBean potAdmin = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(tmp.getName());
 		if (potAdmin.getAdmin() != 1) {
 			throw new KeinAdminException();
 		}
@@ -38,7 +38,11 @@ public class Anmeldungsvalidator {
 			throw new NichtAngemeldetException();
 		}
 	}
-
+	
+	/**
+	 * @author Merlin
+	 * @param session
+	 */
 	public static HttpSession nutzerAbmelden(HttpSession session) {
 		session.removeAttribute(NutzerViewBean.attributName);
 		return session;
