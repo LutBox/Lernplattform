@@ -1,5 +1,4 @@
 //Erstellt von Lukas Theinert
-//Memorie-Idee von: https://github.com/code-sketch/memory-game/
 
 const karten = document.querySelectorAll('.memorieKarte');
 
@@ -20,6 +19,7 @@ const state = {
 	loop: null
 }
 
+
 const startGame = () => {
 	state.gameStarted = true
 
@@ -31,23 +31,38 @@ const startGame = () => {
 	}, 1000)
 }
 
+
+const attachEventListeners = () => {
+	document.addEventListener('click', event => {
+		const eventTarget = event.target
+		const eventParent = eventTarget.parentElement
+
+		if (eventTarget.nodeName === 'BUTTON' && state.gameStarted === false) {
+			startGame()
+		}
+		if (eventTarget.nodeName === 'IMG' && state.gameStarted === false) {
+			startGame()
+		}
+	})
+}
+
+
+//Memorie-Idee von Tutorial: https://www.freecodecamp.org/news/vanilla-javascript-tutorial-build-a-memory-game-in-30-minutes-e542c4447eae
+//----------- Anfang ----------------------
 let istUmgedreht = false;
 let istAufgedeckt = false;
 let ersteKarte, zweiteKarte;
 
 function karteVorneDrehen() {
 	if (istAufgedeckt) return;
-	if (this === ersteKarte) return;
-	
+	if (this === ersteKarte) return;	
 	state.totalFlips++
 	state.flippedCards++
-
 	this.classList.add('drehen');
 
 	if (!istUmgedreht) {
 		istUmgedreht = true;
 		ersteKarte = this;
-
 		return;
 	}
 
@@ -57,27 +72,32 @@ function karteVorneDrehen() {
 
 function versuchChecken() {
 	let isMatch = ersteKarte.dataset.framework === zweiteKarte.dataset.framework;
-
 	isMatch ? kartenDeaktivieren() : karteHintenDrehen();
 
- if (flippedCards === document.querySelectorAll('.memorieKarte').length) {
- //if (isMatch) {	
+ if (state.flippedCards === document.querySelectorAll('.memorieKarte').length) {
+//  if(isMatch){
         setTimeout(() => {
 	        selectors.boardContainer.classList.add('flipped')
-            selectors.win.innerHTML = `
-                <span class="win-text">
-                
-                    You won!<br />
-                    
-                    with <span class="highlight">${state.totalFlips}</span> moves<br />
-                    under <span class="highlight">${state.totalTime}</span> seconds
-                </span>
+	        document.getElementById("controls").style.visibility = "hide";
+	        document.getElementById("board-container").style.visibility = "visible";
+            selectors.win.innerHTML = `       
+                    Du hast gewonnen!<br />       
+                    Versuche: <span class="highlight">${state.totalFlips}</span><br />
+                    Zeit: <span class="highlight">${state.totalTime}</span> Sekunden
             `
 
             clearInterval(state.loop)
         }, 1000)
     }
 }
+
+
+
+function unhideRestart(){
+		document.getElementByID().style.visability = 'restart';
+}
+
+
 
 function kartenDeaktivieren() {
 	ersteKarte.removeEventListener('click', karteVorneDrehen);
@@ -89,7 +109,8 @@ function kartenDeaktivieren() {
 function karteHintenDrehen() {
 	istAufgedeckt = true;
 	
-	state.flippedCards--
+		state.flippedCards--;
+		state.flippedCards--;
 
 	setTimeout(() => {
 		ersteKarte.classList.remove('drehen');
@@ -110,23 +131,7 @@ function versuchFalsch() {
 		karte.style.order = randomPos;
 	});
 })();
-
-
-const attachEventListeners = () => {
-	document.addEventListener('click', event => {
-		const eventTarget = event.target
-		const eventParent = eventTarget.parentElement
-
-		if (eventTarget.nodeName === 'BUTTON' && state.gameStarted === false) {
-			startGame()
-		}
-		if (eventTarget.nodeName === 'IMG' && state.gameStarted === false) {
-			startGame()
-		}
-	})
-}
-
-
+//----------- Ende ----------------------
 
 karten.forEach(karte => karte.addEventListener('click', karteVorneDrehen));
 attachEventListeners()

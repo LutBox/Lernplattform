@@ -27,18 +27,20 @@ Erstellt von Lukas Theinert
 	<br>
 	
 	<div class="game">
-            <div class="controls">
+            <div class="controls" id = "controls">
                 <button>Start</button><br>
                 <div class="stats">
                     <div class="moves">0 moves</div>
                     <div class="timer">time: 0 sec</div>
                 </div>
             </div>
-            <div class="board-container">
+            
+            <div class="board-container" id="board-container">
+            	<button onClick="window.location.reload();">Restart</button><br>
                 <div class="win"></div>
             </div>
         </div>
-	
+
 	<br><br><br><br><br><br>
 
 	  <section class="spiel_bilderMemorie">
