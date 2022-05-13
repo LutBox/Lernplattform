@@ -21,7 +21,7 @@ public class Anmeldungsvalidator {
 	 */
 	public static void nutzerIstAdmin(HttpSession session) throws KeinAdminException {
 		NutzerViewBean tmp = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributName);
-		NutzerViewBean potAdmin = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(tmp.getName());
+		NutzerViewBean potAdmin = NutzerSQLDienst.gibMirNutzeranzeigeMitDemNamen(tmp.getName());
 		if (potAdmin.getAdmin() != 1) {
 			throw new KeinAdminException();
 		}
