@@ -25,9 +25,14 @@ public class AufrufAdminseiteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession();
+		try {
 		Anmeldungsvalidator.nutzerIstAngemeldet(session);
 		Anmeldungsvalidator.nutzerIstAdmin(session);
-		response.sendRedirect("./html/admin/admin_startseite.jsp");
+		} catch (Exception e) {
+			System.out.println(e);
+			response.sendRedirect("./html/fehlerseiten/ungueltigerzugriff.html");
+		}
+		response.sendRedirect("./html/verwaltungsseiten/adminkonsole.jsp");
 	}
 
 	/**

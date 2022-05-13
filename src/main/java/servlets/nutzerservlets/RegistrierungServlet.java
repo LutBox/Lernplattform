@@ -63,7 +63,7 @@ public class RegistrierungServlet extends HttpServlet {
 			
 			session.setAttribute(NutzerViewBean.attributName, neuerNutzerAnzeige);
 			
-			zielseite = "./html/nutzerseiten/neuesmitglied.jsp";
+			zielseite = "./html/nutzerseiten/nutzerHauptseite.jsp";
 		}
 		response.sendRedirect(zielseite);
 	}

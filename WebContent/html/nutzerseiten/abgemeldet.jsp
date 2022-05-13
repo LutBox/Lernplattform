@@ -9,7 +9,7 @@
 <title>Abgemeldet</title>
 </head>
 <body>
-	<p>Auf wiedersehen!</p>
+	<h1>Auf wiedersehen!</h1>
 	<a href="../../index.jsp">Startseite</a>
 </body>
 </html>

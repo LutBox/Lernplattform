@@ -11,17 +11,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 /**
- * @author Merlin Servlet implementation class AufrufSpielekonfiguratorServlet
+ * Servlet implementation class AufrufKontaktanfragenServlet
  */
-@WebServlet("/AufrufSpielekonfiguratorServlet")
-public class AufrufSpielekonfiguratorServlet extends HttpServlet {
+@WebServlet("/AufrufKontaktanfragenServlet")
+public class AufrufKontaktanfragenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @author Merlin
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
-	 * @see Nutzer wird ueberpruft und dann auf den Konfigurator weitergeleitet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -33,7 +31,7 @@ public class AufrufSpielekonfiguratorServlet extends HttpServlet {
 			System.out.println(e);
 			response.sendRedirect("./html/fehlerseiten/ungueltigerzugriff.html");
 		}
-		response.sendRedirect("./html/verwaltungsseiten/adminkonsole.jsp");
+		response.sendRedirect("./html/verwaltungsseiten/kontaktanfragen.jsp");
 	}
 
 	/**

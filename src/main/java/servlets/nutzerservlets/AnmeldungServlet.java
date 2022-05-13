@@ -62,15 +62,15 @@ public class AnmeldungServlet extends HttpServlet {
 				} else {
 
 					// Nutzer ist kein Admin
-					response.sendRedirect("./html/nutzerseiten/nutzerHaupseite.jsp");
+					response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
 				}
 			} else {
 				session.setAttribute("anmeldunginfotext", "Bitte prüfen sie ihr Passwort.");
-				response.sendRedirect("./html/anmeldung.jsp");
+				response.sendRedirect("./html/nutzerseiten/anmeldung.jsp");
 			}
 		} else {
 			session.setAttribute("anmeldunginfotext", "Nutzer existiert nicht.");
-			response.sendRedirect("./html/anmeldung.jsp");
+			response.sendRedirect("./html/nutzerseiten/anmeldung.jsp");
 		}
 	}
 

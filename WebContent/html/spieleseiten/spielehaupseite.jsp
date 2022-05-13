@@ -8,7 +8,7 @@ Erstellt von Lukas Theinert
 <html>
 <head>
 <base href="${pageContext.request.requestURI}" />
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Games</title>
 </head>
 <body>

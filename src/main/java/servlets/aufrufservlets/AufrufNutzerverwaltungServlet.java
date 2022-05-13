@@ -19,19 +19,28 @@ public class AufrufNutzerverwaltungServlet extends HttpServlet {
 
 	/**
 	 * @author Merlin
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		final HttpSession session = request.getSession();
-		Anmeldungsvalidator.nutzerIstAngemeldet(session);
-		Anmeldungsvalidator.nutzerIstAdmin(session);
-		response.sendRedirect("./html/admin/nutzerverwaltung.jsp");
+		try {
+			Anmeldungsvalidator.nutzerIstAngemeldet(session);
+			Anmeldungsvalidator.nutzerIstAdmin(session);
+		} catch (Exception e) {
+			System.out.println(e);
+			response.sendRedirect("./html/fehlerseiten/ungueltigerzugriff.jsp");
+		}
+		response.sendRedirect("./html/verwaltungsseiten/nutzerverwaltung.jsp");
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
