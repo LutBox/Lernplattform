@@ -13,6 +13,7 @@ Erstellt von Lukas Theinert
 <body>
 
 	<h1>Nutzerbereich</h1>
+	<br/><%@include file="../jspf/nutzernavigation.jspf"%>
 	<ul>
 		<li>
 			<nav>

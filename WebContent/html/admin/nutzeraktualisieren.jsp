@@ -1,8 +1,12 @@
+<%-- Erstellt von Merlin Weinthaler --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>nutzer-aktualisieren</title>
+<title>Nutzer aktualisieren</title>
 </head>
 <body>
 	<p><a href="./admin_startseite.html">zur&uuml;ck zur Verwaltung</a></p>

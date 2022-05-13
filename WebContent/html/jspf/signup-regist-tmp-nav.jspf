@@ -1,0 +1,7 @@
+<%-- Erstellt von Merlin --%>
+<%-- Diese JSPF wird nicht im Produktivsystemverfügbar sein --%>
+<hr/>
+<p>Dieser Berich wurde nur zu Entwicklungszwecken eingefügt.</p>
+<br/><a href="${pageContext.request.contextPath}/html/nutzerseiten/anmeldung.jsp">Anmeldung</a>
+<br/><a href="${pageContext.request.contextPath}/html/nutzerseiten/registrierung.jsp">Registrierung</a>
+<hr/>
