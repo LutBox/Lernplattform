@@ -184,7 +184,7 @@ public class NutzerSQLDienst extends SQLDienst {
 	/**
 	 * @author Merlin
 	 * @param name
-	 * @return
+	 * @return punktestand
 	 */
 	public static int geibMirPunkteDesNutzers(String name) {
 		try (Connection con = ds.getConnection();
@@ -205,7 +205,7 @@ public class NutzerSQLDienst extends SQLDienst {
 	/**
 	 * @author Merlin
 	 * @param session
-	 * @return
+	 * @return punkte
 	 */
 	public static int gibMirPunkteStandDesAngemeldetenNutzers(HttpSession session) {
 		try (Connection con = ds.getConnection();
