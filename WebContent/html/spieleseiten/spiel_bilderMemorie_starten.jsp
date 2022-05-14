@@ -4,6 +4,7 @@ Erstellt von Lukas Theinert
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,9 @@ Erstellt von Lukas Theinert
 </head>
 <body>
 
+	<c:set var='time' value='${spielStartenBean.timer}'/>
+	<c:set var='val' value='${spielStartenBean.schwierigkeit}'/>
+
 	<h1>Bildermemorie</h1>
 	
 	<br>
@@ -24,14 +28,20 @@ Erstellt von Lukas Theinert
 		<%@include file="../jspf/navigation.jspf"%>
 	</nav>
 
-	<br>
-	
+
+
+
+
 	<div class="game">
             <div class="controls" id = "controls">
                 <button>Start</button><br>
                 <div class="stats">
                     <div class="moves">0 moves</div>
+                      <c:choose> 
+  					<c:when test="${time == 'timerAn'}">
                     <div class="timer">time: 0 sec</div>
+                      </c:when>
+					</c:choose>
                 </div>
             </div>
             
@@ -40,10 +50,22 @@ Erstellt von Lukas Theinert
                 <div class="win"></div>
             </div>
         </div>
-
+        
 	<br><br><br><br><br><br>
 
-	  <section class="spiel_bilderMemorie">
+  <c:choose> 
+  <c:when test="${val == 'leicht'}">
+     <section class="spiel_bilderMemorieLeicht">
+  </c:when>
+  <c:when test="${val == 'mittel'}">
+     <section class="spiel_bilderMemorieMittel">
+  </c:when>
+  <c:when test="${val == 'schwer'}">
+     <section class="spiel_bilderMemorieSchwer">
+  </c:when>
+</c:choose>
+	  
+	  
     <div class="memorieKarte" data-framework="bild1">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild1ID}" alt="bild1" />
       <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
@@ -114,7 +136,95 @@ Erstellt von Lukas Theinert
     <div class="memorieKarte" data-framework="bild8">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild8ID}" alt="bild8" />
       <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
-    </div>    
+    </div> 
+  
+  
+  <c:choose> 
+  <c:when test="${val == 'mittel' || val == 'schwer'}">
+  
+    <div class="memorieKarte test" data-framework="bild9">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild9ID}" alt="bild9" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte test" data-framework="bild9">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild9ID}" alt="bild9" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+
+    <div class="memorieKarte test" data-framework="bild10">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild10ID}" alt="bild10" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogoe" />
+    </div>
+    <div class="memorieKarte test" data-framework="bild10">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild10ID}" alt="bild10" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild11">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild11ID}" alt="bild11" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild11">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild11ID}" alt="bild11" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+
+    <div class="memorieKarte" data-framework="bild12">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild12ID}" alt="bild12" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild12">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild12ID}" alt="bild12" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    
+  </c:when>
+</c:choose>
+
+
+  <c:choose> 
+  <c:when test="${val == 'schwer'}">
+
+    <div class="memorieKarte" data-framework="bild13">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild13ID}" alt="bild13" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild13">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild13ID}" alt="bild13" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+
+    <div class="memorieKarte" data-framework="bild14">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild14ID}" alt="bild14" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild14">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild14ID}" alt="bild14" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    
+    <div class="memorieKarte" data-framework="bild15">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild15ID}" alt="bild15" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild15">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild15ID}" alt="bild15" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+
+    <div class="memorieKarte" data-framework="bild16">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild16ID}" alt="bild16" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>
+    <div class="memorieKarte" data-framework="bild16">
+      <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild16ID}" alt="bild16" />
+      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+    </div>  
+    
+  </c:when>
+</c:choose>
+
+
+    
   </section>
 
 

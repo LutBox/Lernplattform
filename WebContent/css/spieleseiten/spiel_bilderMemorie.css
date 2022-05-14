@@ -22,9 +22,26 @@ html {
     padding: 10px 20px;
 }
 
-
-.spiel_bilderMemorie {
+.spiel_bilderMemorieLeicht {
   width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.spiel_bilderMemorieMittel {
+  width: 960px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.spiel_bilderMemorieSchwer {
+  width: 1280px;
   height: 640px;
   margin: auto;
   display: flex;
@@ -44,8 +61,8 @@ button {
 
 
 .memorieKarte {
-  width: calc(25% - 10px);
-  height: calc(25% - 10px);
+  width: calc(150px);
+  height: calc(150px);
   margin: 5px;
   position: relative;
   transform: scale(1);
@@ -53,6 +70,7 @@ button {
   transition: transform .5s;
   box-shadow: 1px 1px 1px rgba(0,0,0,.3);
 }
+
 
 .memorieKarte:active {
   transform: scale(0.97);

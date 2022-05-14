@@ -1,5 +1,1 @@
-package servlets;
-
-public class BestenlisteBilderMemorieAjax {
-
-}
+//Erstellt von Lukas Theinert
