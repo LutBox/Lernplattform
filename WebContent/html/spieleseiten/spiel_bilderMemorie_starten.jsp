@@ -31,7 +31,7 @@ Erstellt von Lukas Theinert
 
 	<div class="game">
             <div class="controls" id = "controls">
-                <button>Start</button><br>
+                <button id="start">Start</button><br>
                 <div class="stats">
                       <c:choose> 
   					<c:when test="${time == 'timerAn'}">
@@ -43,7 +43,8 @@ Erstellt von Lukas Theinert
             </div>
             
             <div class="board-container" id="board-container">
-            	<button onClick="window.location.reload();">Restart</button><br>
+            	<button onClick="window.location.reload();" id="restartButton">Restart</button><br>
+            	<button type="button" id="save">Speichern</button><br>
                 <div class="win"></div>
                 <form id="BestenlisteBilderMemorieAjax">
                     <b>Zusammenfassung:</b><br>

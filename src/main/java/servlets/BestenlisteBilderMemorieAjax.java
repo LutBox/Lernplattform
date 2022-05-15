@@ -59,6 +59,7 @@ public class BestenlisteBilderMemorieAjax extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		System.out.println("TEST TEST TEST TEST");
 		
 		// Dateien aus Bean in neues Objekt einfügen
 		SpielStartenBean bestenlisteBilderMemorieAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
@@ -108,35 +109,6 @@ public class BestenlisteBilderMemorieAjax extends HttpServlet {
 
 	}
 	
-	private void persist2(SpielBilderMemorieBean spielBilderMemorieBean, Part filepart) throws ServletException {
-		// DB-Zugriff
-		String[] generatedKeys = new String[] {"id"};	// Name der Spalte(n), die automatisch generiert wird(werden)
-		
-		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(
-
-						"INSERT INTO bild (kategorie, image) VALUES (?,?)", generatedKeys)) {
-			
-				pstmt.setString(1,spielBilderMemorieBean.getBild1Kategorie());
-				pstmt.setBinaryStream(2, filepart.getInputStream());
-
-			pstmt.executeUpdate();
-			
-			try (ResultSet rs = pstmt.getGeneratedKeys()) {
-				int i = 1;
-				while (rs.next()) {
-					if (i++ == 1)
-						spielBilderMemorieBean.setBild1ID(rs.getInt(1));
-					else
-						spielBilderMemorieBean.setBild1ID(rs.getInt(1));
-				}
-			}
-		} catch (Exception ex) {
-			throw new ServletException(ex.getMessage());
-		}
-
-	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -145,6 +117,7 @@ public class BestenlisteBilderMemorieAjax extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("TEST1 TEST1 TEST1 TEST1");
 		doGet(request, response);
 	}
 

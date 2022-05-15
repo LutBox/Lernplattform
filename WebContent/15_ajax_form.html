@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Umrechnen von Einheiten</title>
+		<script>
+			"use strict";
+			var xmlhttp = null;
+			document.addEventListener("DOMContentLoaded", init);
+			function init() {
+				document.getElementById("meter").addEventListener("keyup", recalculate);
+			}
+			
+			function recalculate() {
+				var value = document.getElementById("meter").value;
+				xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = parseReplyFromServer;
+				xmlhttp.open("POST", "demo15servlet", true);
+				xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				xmlhttp.send("meter="+value);
+			}
+			
+			function parseReplyFromServer() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var xml = xmlhttp.responseXML;
+					document.getElementById("meilen").value = xml.getElementsByTagName("meilen")[0].firstChild.nodeValue;
+					document.getElementById("yards").value = xml.getElementsByTagName("yards")[0].firstChild.nodeValue;
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h1>Umrechnen von Einheiten</h1>
+		<p>
+			<label for="meter">Meter</label>
+			<input type="number" id="meter" placeholder="Wert in Meter">
+			<label for="meilen">Meilen</label>
+			<input type="number" id="meilen" placeholder="Umrechnung in Meilen" readonly>
+			<label for="yards">Yards</label>
+			<input type="number" id="yards" placeholder="Umrechnung in Yards" readonly>
+		</p>
+	</body>
+</html>
