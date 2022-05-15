@@ -17,6 +17,7 @@ Erstellt von Lukas Theinert
 </head>
 <body>
 
+
 	<c:set var='time' value='${spielStartenBean.timer}'/>
 	<c:set var='val' value='${spielStartenBean.schwierigkeit}'/>
 
@@ -28,26 +29,32 @@ Erstellt von Lukas Theinert
 		<%@include file="../jspf/navigation.jspf"%>
 	</nav>
 
-
-
-
-
 	<div class="game">
             <div class="controls" id = "controls">
                 <button>Start</button><br>
                 <div class="stats">
-                    <div class="moves">0 moves</div>
                       <c:choose> 
   					<c:when test="${time == 'timerAn'}">
                     <div class="timer">time: 0 sec</div>
                       </c:when>
 					</c:choose>
+					
                 </div>
             </div>
             
             <div class="board-container" id="board-container">
             	<button onClick="window.location.reload();">Restart</button><br>
                 <div class="win"></div>
+                <form id="BestenlisteBilderMemorieAjax">
+                    <b>Zusammenfassung:</b><br>
+                    <div name="nutzer">Nutzer: ${nutzer.name}</div>
+                	<div name="kategorie">Spielart: ${spielStartenBean.spielart}</div>
+                	<div name="schwierigkeit">Schwierigkeit: ${spielStartenBean.schwierigkeit}</div>
+                	<div name="gewertet">Gewertet: ${spielStartenBean.gewertet}</div>
+                	<div name="timer">Timer: ${spielStartenBean.timer}</div>
+                	
+                    <div class="moves">0 moves</div>
+                                  </form>   
             </div>
         </div>
         

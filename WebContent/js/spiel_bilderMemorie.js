@@ -1,5 +1,37 @@
 //Erstellt von Lukas Theinert
 
+//Eintrag in Bestenliste
+
+/*
+"use strict";
+document.addEventListener("DOMContentLoaded", init);
+*/
+
+function datenbankEintrag() {
+	var nutzer = this.name;
+	var kategorie = this.spielart;
+	var schwierigkeit = this.schwierigkeit;
+	var gewertet = this.gewertet;
+	var timer = this.timer;
+	
+	var zeit = state.totalTime;
+	var versuche = state.totalFlips;
+	
+	var sendData = {nutzer: nutzer, kategorie: kategorie, schwierigkeit: schwierigkeit, gewertet: gewertet, timer: timer, zeit: zeit, versuche: versuche};
+
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("lastUpdatedUser").innerHTML = xmlhttp.responseText;
+		}
+	};
+	xmlhttp.open("POST", "../BestenlisteBilderMemorieAjax" , true);
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	xmlhttp.send(sendData);
+}
+
+
+//Spiel
 const karten = document.querySelectorAll('.memorieKarte');
 
 const selectors = {
@@ -55,7 +87,7 @@ let ersteKarte, zweiteKarte;
 
 function karteVorneDrehen() {
 	if (istAufgedeckt) return;
-	if (this === ersteKarte) return;	
+	if (this === ersteKarte) return;
 	state.totalFlips++
 	state.flippedCards++
 	this.classList.add('drehen');
@@ -74,27 +106,28 @@ function versuchChecken() {
 	let isMatch = ersteKarte.dataset.framework === zweiteKarte.dataset.framework;
 	isMatch ? kartenDeaktivieren() : karteHintenDrehen();
 
- if (state.flippedCards === document.querySelectorAll('.memorieKarte').length) {
-//  if(isMatch){
-        setTimeout(() => {
-	        selectors.boardContainer.classList.add('flipped')
-	        document.getElementById("controls").style.visibility = "hide";
-	        document.getElementById("board-container").style.visibility = "visible";
-            selectors.win.innerHTML = `       
+	if (state.flippedCards === document.querySelectorAll('.memorieKarte').length) {
+		//  if(isMatch){
+		setTimeout(() => {
+			selectors.boardContainer.classList.add('flipped')
+			document.getElementById("controls").style.visibility = "hide";
+			document.getElementById("board-container").style.visibility = "visible";
+			selectors.win.innerHTML = `       
                     Du hast gewonnen!<br />       
                     Versuche: <span class="highlight">${state.totalFlips}</span><br />
                     Zeit: <span class="highlight">${state.totalTime}</span> Sekunden
             `
 
-            clearInterval(state.loop)
-        }, 1000)
-    }
+			clearInterval(state.loop)
+			//datenbankEintrag();
+		}, 1000)
+	}
 }
 
 
 
-function unhideRestart(){
-		document.getElementByID().style.visability = 'restart';
+function unhideRestart() {
+	document.getElementByID().style.visability = 'restart';
 }
 
 
@@ -108,9 +141,9 @@ function kartenDeaktivieren() {
 
 function karteHintenDrehen() {
 	istAufgedeckt = true;
-	
-		state.flippedCards--;
-		state.flippedCards--;
+
+	state.flippedCards--;
+	state.flippedCards--;
 
 	setTimeout(() => {
 		ersteKarte.classList.remove('drehen');
