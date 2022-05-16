@@ -4,31 +4,18 @@
 
 
 "use strict";
-document.addEventListener("DOMContentLoaded", init);
-function init(){
-	document.getElementById("save").addEventListener("click", datenbankEintrag);
-}
+//document.addEventListener("DOMContentLoaded", datenbankEintrag);
+//function init(){
+//	document.getElementById("save").addEventListener("click", init);
+//}
 
 
 function datenbankEintrag() {
-	
-	
-//	var nutzer = document.getElementByName(nutzer);
-//	var kategorie = document.getElementByName(spielart);
-//	var schwierigkeit = document.getElementByName(schwierigkeit);
-//	var gewertet = document.getElementByName(gewertet);
-//	var timer = document.getElementByName(timer);
-	
+
 	var zeit = state.totalTime;
-//	console.log(state.totalTime);
-	alert (state.totalTime);
 	var versuche = state.totalFlips;
-	
-	
 
-//	var sendData = { nutzer: nutzer, kategorie: kategorie, schwierigkeit: schwierigkeit, gewertet: gewertet, timer: timer, zeit: zeit, versuche: versuche };
-	var sendData = { zeit: zeit, versuche: versuche };
-
+	var sendData = "zeit=" + zeit + "&versuche=" + versuche;
 
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
@@ -38,10 +25,9 @@ function datenbankEintrag() {
 	};
 	xmlhttp.open("POST", "BestenlisteBilderMemorieAjax", true);
 	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xmlhttp.send();
-	
-	alert ("Spiel in Datenbank gespeichert");
+	xmlhttp.send(sendData);
 
+	//alert("Spiel in Datenbank gespeichert");
 }
 
 
@@ -72,8 +58,16 @@ const startGame = () => {
 	state.loop = setInterval(() => {
 		state.totalTime++
 
-		selectors.moves.innerText = `${state.totalFlips} moves`
-		selectors.timer.innerText = `time: ${state.totalTime} sec`
+		//alert(document.getElementById("gewertet").innerHTML);
+			
+		if (document.getElementById("gewertet").innerHTML === "gewertetAn") {
+			selectors.moves.innerText = `Versuche: ${state.totalFlips} `
+		}
+		
+		if (document.getElementById("timerID").innerHTML === "timerAn") {
+			selectors.timer.innerText = `Zeit: ${state.totalTime} Sekunden`
+		}
+		
 	}, 1000)
 }
 
@@ -131,14 +125,22 @@ function versuchChecken() {
                     Versuche: <span class="highlight">${state.totalFlips}</span><br />
                     Zeit: <span class="highlight">${state.totalTime}</span> Sekunden
             `
-
-			clearInterval(state.loop)
-			//datenbankEintrag();
+			clearInterval(state.loop)			
+			//DatenbankEintrag
+			if (document.getElementById("nutzer").innerHTML !== "") {
+				datenbankEintrag();	
+			}
 		}, 1000)
 	}
 }
 
-
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 
 function unhideRestart() {
 	document.getElementByID().style.visability = 'restart';

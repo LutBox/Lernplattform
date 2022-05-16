@@ -35,7 +35,7 @@ Erstellt von Lukas Theinert
 						required><label for="mathe">Mathe</label>
 				</legend>
 				<div>
-					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht">
+					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
 					<label for="leicht">Zu jung zum sterben</label>
 
 					<input type="radio" name="Schwierigkeit" id="mittel" value="mittel">
@@ -81,11 +81,11 @@ Erstellt von Lukas Theinert
 			<fieldset>
 				<legend>
 					<input type="radio" name="Spielart" id="bilderMemorie"
-						value="bilderMemorie"> <label for="bilderMemorie">Bildermemorie</label>
+						value="bilderMemorie" checked="checked"> <label for="bilderMemorie">Bildermemorie</label>
 				</legend>
 				<br>
 				<div>
-					<input type="radio" name="Schwierigkeit" id="leichtBildermemorie" value="leicht">
+					<input type="radio" name="Schwierigkeit" id="leichtBildermemorie" value="leicht" checked="checked">
 					<label for="leichtBildermemorie">Zu jung zum sterben</label>
 
 					<input type="radio" name="Schwierigkeit" id="mittelBildermemorie" value="mittel">
@@ -96,14 +96,14 @@ Erstellt von Lukas Theinert
 				</div>
 				
 				<div>
-					<input type="radio" name="Timer" id="timerAnBildermemorie" value="timerAn">
+					<input type="radio" name="Timer" id="timerAnBildermemorie" value="timerAn" required checked="checked">
 					<label for="timerAnBildermemorie">Mit Zeit spielen</label>
 
-					<input type="radio" name="Timer" id="timerAusBildermemorie" value="TimerAus">
+					<input type="radio" name="Timer" id="timerAusBildermemorie" value="TimerAus" required>
 					<label for="timerAusBildermemorie">Ohne Zeit spielen</label>
 				</div>
 				<div>
-					<input type="radio" name="Gewertet" id="gewertetAnBildermemorie" value="gewertetAn">
+					<input type="radio" name="Gewertet" id="gewertetAnBildermemorie" value="gewertetAn" checked="checked">
 					<label for="gewertetAnBildermemorie">Spiel ist geweret</label>
 
 					<input type="radio" name="Gewertet" id="gewertetAusBildermemorie" value="gewertetAus">

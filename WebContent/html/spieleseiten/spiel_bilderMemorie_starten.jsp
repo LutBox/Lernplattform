@@ -19,11 +19,16 @@ Erstellt von Lukas Theinert
 
 
 	<c:set var='time' value='${spielStartenBean.timer}'/>
+	<c:set var='gewertet' value='${spielStartenBean.gewertet}'/>
 	<c:set var='val' value='${spielStartenBean.schwierigkeit}'/>
 
 	<h1>Bildermemorie</h1>
 	
 	<br>
+
+<div id="nutzer" hidden>${nutzer.name}</div>
+<div id="gewertet" hidden>${spielStartenBean.gewertet}</div>
+<div id="timerID" hidden>${spielStartenBean.timer}</div>
 
 	<nav>
 		<%@include file="../jspf/navigation.jspf"%>
@@ -33,9 +38,16 @@ Erstellt von Lukas Theinert
             <div class="controls" id = "controls">
                 <button id="start">Start</button><br>
                 <div class="stats">
+                
+                <c:choose> 
+  					<c:when test="${gewertet == 'gewertetAn'}">
+                <div class="moves">Versuche: 0</div>
+                      </c:when>
+					</c:choose>
+
                       <c:choose> 
   					<c:when test="${time == 'timerAn'}">
-                    <div class="timer">time: 0 sec</div>
+                    <div class="timer">Zeit: 0 Sekunden</div>
                       </c:when>
 					</c:choose>
 					
@@ -44,18 +56,7 @@ Erstellt von Lukas Theinert
             
             <div class="board-container" id="board-container">
             	<button onClick="window.location.reload();" id="restartButton">Restart</button><br>
-            	<button type="button" id="save">Speichern</button><br>
-                <div class="win"></div>
-                <form id="BestenlisteBilderMemorieAjax">
-                    <b>Zusammenfassung:</b><br>
-                    <div name="nutzer">Nutzer: ${nutzer.name}</div>
-                	<div name="kategorie">Spielart: ${spielStartenBean.spielart}</div>
-                	<div name="schwierigkeit">Schwierigkeit: ${spielStartenBean.schwierigkeit}</div>
-                	<div name="gewertet">Gewertet: ${spielStartenBean.gewertet}</div>
-                	<div name="timer">Timer: ${spielStartenBean.timer}</div>
-                	
-                    <div class="moves">0 moves</div>
-                                  </form>   
+                <div class="win"></div>  
             </div>
         </div>
         

@@ -21,6 +21,7 @@ import beans.SpielBilderMemorieBean;
 import beans.SpielMatheBean;
 import beans.SpielStartenBean;
 import beans.modelbeans.NutzerBean;
+import beans.viewbeans.NutzerViewBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -59,24 +60,22 @@ public class BestenlisteBilderMemorieAjax extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		System.out.println("TEST TEST TEST TEST");
 		
 		// Dateien aus Bean in neues Objekt einfügen
 		SpielStartenBean bestenlisteBilderMemorieAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
-		
+
 		bestenlisteBilderMemorieAjax.setZeit(Integer.valueOf(request.getParameter("zeit")));
 		bestenlisteBilderMemorieAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
 		
-
-		
-		NutzerBean aktuellerNutzer = (NutzerBean) request.getSession().getAttribute("nutzer");
+		NutzerViewBean aktuellerNutzer = (NutzerViewBean) request.getSession().getAttribute("nutzer");
+		//NutzerBean aktuellerNutzer = (NutzerBean) request.getSession().getAttribute("nutzer");
 		
 		// In Datenbank eintragen
 		persist(bestenlisteBilderMemorieAjax, aktuellerNutzer);
 		
 		// Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
-		final HttpSession session = request.getSession();
-		session.setAttribute("bestenlisteBilderMemorieAjax", bestenlisteBilderMemorieAjax);
+		//final HttpSession session = request.getSession();
+		//session.setAttribute("bestenlisteBilderMemorieAjax", bestenlisteBilderMemorieAjax);
 		
 		// Weiterleiten an JSP
 		//final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/bildHochladenFertig.jsp");
@@ -86,11 +85,11 @@ public class BestenlisteBilderMemorieAjax extends HttpServlet {
 	}
 	
 
-	private void persist(SpielStartenBean bestenlisteBilderMemorieAjax, NutzerBean aktuellerNutzer) throws ServletException {
+	private void persist(SpielStartenBean bestenlisteBilderMemorieAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"INSERT INTO bildermemorie (nutzer, kategorie, schwierigkeit, isgelistet, istimer, zeit, versuche, uhrzeit) VALUES (?,?,?,?,?,?,?, CURDATE()")) {
+						"INSERT INTO bildermemorie (nutzer, kategorie, schwierigkeit, isgelistet, istimer, zeit, versuche, uhrzeit) VALUES (?,?,?,?,?,?,?,NOW());")) {
 		
 				pstmt.setString(1, aktuellerNutzer.getName());
 				pstmt.setString(2, bestenlisteBilderMemorieAjax.getSpielart());
@@ -117,7 +116,6 @@ public class BestenlisteBilderMemorieAjax extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("TEST1 TEST1 TEST1 TEST1");
 		doGet(request, response);
 	}
 
