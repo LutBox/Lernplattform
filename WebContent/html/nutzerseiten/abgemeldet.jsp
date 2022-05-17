@@ -9,7 +9,9 @@
 <title>Abgemeldet</title>
 </head>
 <body>
+	<nav>
+		<%@include file="../jspf/navigation.jspf"%>
+	</nav>
 	<h1>Auf wiedersehen!</h1>
-	<a href="../../index.jsp">Startseite</a>
 </body>
 </html>

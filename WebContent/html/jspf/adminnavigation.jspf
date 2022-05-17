@@ -1,8 +1,0 @@
-<%-- Erstellt von Merlin Weinthaler --%>
-
-<form action="./adminkonsole.jsp">
-	<button type="submit" formaction="${pageContext.request.contextPath}/AufrufSpielekonfiguratorServlet">Spielekonfigurator</button>
-	<br/><button type="submit" formaction="${pageContext.request.contextPath}/AufrufNutzerverwaltungServlet">Nutzerverwaltung</button>
-	<br/><button type="submit" formaction="${pageContext.request.contextPath}/AufrufKontaktanfragenServlet">Kontakanfragen</button>
-	<br/><button type="submit" formaction="${pageContext.request.contextPath}/NutzerAbmeldenServlet">Abmelden</button>
-</form>

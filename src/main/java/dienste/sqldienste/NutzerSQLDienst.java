@@ -177,7 +177,7 @@ public class NutzerSQLDienst extends SQLDienst {
 				PreparedStatement pstmt = con
 						.prepareStatement("UPDATE " + tabellenname + " SET punkte = ? WHERE name = ?")) {
 			pstmt.setInt(1, neuerPunktestand);
-			pstmt.setString(2, ((NutzerViewBean) session.getAttribute(NutzerViewBean.attributName)).getName());
+			pstmt.setString(2, ((NutzerViewBean) session.getAttribute(NutzerViewBean.attributname)).getName());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

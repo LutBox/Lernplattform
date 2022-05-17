@@ -20,7 +20,7 @@ public class Anmeldungsvalidator {
 	 * @throws KeinAdminException
 	 */
 	public static void nutzerIstAdmin(HttpSession session) throws KeinAdminException {
-		NutzerViewBean tmp = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributName);
+		NutzerViewBean tmp = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributname);
 		NutzerViewBean potAdmin = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(tmp.getName());
 		if (potAdmin.getAdmin() != 1) {
 			throw new KeinAdminException();
@@ -33,7 +33,7 @@ public class Anmeldungsvalidator {
 	 * @throws NichtAngemeldetException
 	 */
 	public static void nutzerIstAngemeldet(HttpSession session) throws NichtAngemeldetException {
-		NutzerViewBean potNutzer = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributName);
+		NutzerViewBean potNutzer = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributname);
 		if (potNutzer.getName() == null) {
 			throw new NichtAngemeldetException();
 		}
@@ -44,7 +44,7 @@ public class Anmeldungsvalidator {
 	 * @param session
 	 */
 	public static HttpSession nutzerAbmelden(HttpSession session) {
-		session.removeAttribute(NutzerViewBean.attributName);
+		session.removeAttribute(NutzerViewBean.attributname);
 		return session;
 	}
 }

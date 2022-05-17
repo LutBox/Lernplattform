@@ -7,24 +7,14 @@ Erstellt von Lukas Theinert
 <html>
 <head>
 <base href="${pageContext.request.requestURI}"/>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Lernplattform</title>
 </head>
 <body>
-
-<h1>Lernplattform Startseite</h1>
-
-
-	<nav>
+	<header>
 		<%@include file="html/jspf/navigation.jspf"%>
-	</nav>   
-          
-<br>
-
-    
-     
-<!-- Seiten von Merlin -->
-<%@include file="./html/jspf/signup-regist-tmp-nav.jspf"%>
-     
+	</header>
+	<h1>Lernplattform Startseite</h1>
+	<br>
 </body>
 </html>
