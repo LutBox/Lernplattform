@@ -1,14 +1,6 @@
 //Erstellt von Lukas Theinert
 
-//Eintrag in Bestenliste
-
-
 "use strict";
-//document.addEventListener("DOMContentLoaded", datenbankEintrag);
-//function init(){
-//	document.getElementById("save").addEventListener("click", init);
-//}
-
 
 function datenbankEintrag() {
 
@@ -23,7 +15,7 @@ function datenbankEintrag() {
 			document.getElementById("nutzer").innerHTML = xmlhttp.responseText;
 		}
 	};
-	xmlhttp.open("POST", "BestenlisteBilderMemorieAjax", true);
+	xmlhttp.open("POST", "BilderMemorieAjax", true);
 	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xmlhttp.send(sendData);
 

@@ -18,6 +18,12 @@ Erstellt von Lukas Theinert
 	<nav>
 		<%@include file="../jspf/navigation.jspf"%>
 	</nav>
+	
+	<form id="Spielstarten" action="${pageContext.request.contextPath}/BestenlisteBilderMemorieAjax" method="post" accept-charset="UTF-8">
+
+		<button name="spielen" type="submit">Bestenliste</button>
+
+	</form>
 
 	<form id="Spielstarten"
 		action="${pageContext.request.contextPath}/SpielStartenServlet"

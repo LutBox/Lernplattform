@@ -6,31 +6,21 @@ package servlets;
 
 import jakarta.servlet.http.HttpServlet;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import beans.SpielBilderMemorieBean;
-import beans.SpielMatheBean;
-import beans.SpielStartenBean;
-import beans.modelbeans.NutzerBean;
-import beans.viewbeans.NutzerViewBean;
+import beans.Bestenliste;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.Part;
 
 /**
  * Servlet implementation class BildHochladenServlet
@@ -60,52 +50,78 @@ public class BestenlisteBilderMemorieAjax extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		ArrayList<Bestenliste> bestenlisteBilderMemorieAjax = new ArrayList<Bestenliste>();
 		
-		// Dateien aus Bean in neues Objekt einfügen
-		SpielStartenBean bestenlisteBilderMemorieAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
 
-		bestenlisteBilderMemorieAjax.setZeit(Integer.valueOf(request.getParameter("zeit")));
-		bestenlisteBilderMemorieAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
+		// Alle Nutzer auslesen
+		bestenlisteBilderMemorieAjax = readNutzer(bestenlisteBilderMemorieAjax);
 		
-		NutzerViewBean aktuellerNutzer = (NutzerViewBean) request.getSession().getAttribute("nutzer");
-		//NutzerBean aktuellerNutzer = (NutzerBean) request.getSession().getAttribute("nutzer");
+		for(Bestenliste b : bestenlisteBilderMemorieAjax) {
+			readSpieleInsgesamt(b);
+		}
 		
-		// In Datenbank eintragen
-		persist(bestenlisteBilderMemorieAjax, aktuellerNutzer);
-		
-		// Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
-		//final HttpSession session = request.getSession();
-		//session.setAttribute("bestenlisteBilderMemorieAjax", bestenlisteBilderMemorieAjax);
-		
-		// Weiterleiten an JSP
-		//final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/bildHochladenFertig.jsp");
-		//dispatcher.forward(request, response);
-		
+        request.setAttribute("bestenlisteBilderMemorieAjax", bestenlisteBilderMemorieAjax);
+
+
+		//Weiterleiten an JSP
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/hauptseiten/bestenliste.jsp");
+		dispatcher.forward(request, response);
 
 	}
 	
 
-	private void persist(SpielStartenBean bestenlisteBilderMemorieAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
+	private void readSpieleInsgesamt(Bestenliste b) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"INSERT INTO bildermemorie (nutzer, kategorie, schwierigkeit, isgelistet, istimer, zeit, versuche, uhrzeit) VALUES (?,?,?,?,?,?,?,NOW());")) {
-		
-				pstmt.setString(1, aktuellerNutzer.getName());
-				pstmt.setString(2, bestenlisteBilderMemorieAjax.getSpielart());
-				pstmt.setString(3, bestenlisteBilderMemorieAjax.getSchwierigkeit());
-				pstmt.setString(4, bestenlisteBilderMemorieAjax.getGewertet());
-				pstmt.setString(5, bestenlisteBilderMemorieAjax.getTimer());
-				pstmt.setInt(6, bestenlisteBilderMemorieAjax.getZeit());
-				pstmt.setInt(7, bestenlisteBilderMemorieAjax.getVersuche());
-				
-			pstmt.executeUpdate();
+						"SELECT COUNT(*) AS spiele, "
+						+ "(SELECT (SUM(zeit)/COUNT(zeit)) FROM bildermemorie WHERE schwierigkeit = 'leicht' AND nutzer = ?) as zeitLeicht, "
+						+ "(SELECT (SUM(zeit)/COUNT(zeit)) FROM bildermemorie WHERE schwierigkeit = 'mittel' AND nutzer = ?) as zeitMittel, "
+						+ "(SELECT (SUM(zeit)/COUNT(zeit)) FROM bildermemorie WHERE schwierigkeit = 'schwer' AND nutzer = ?) as zeitSchwer "
+						+ "FROM bildermemorie WHERE nutzer = ? AND isGelistet = 'gewertetAn' "
+						+ "ORDER BY zeitLeicht ASC, zeitMittel ASC, zeitSchwer ASC;")) {
 			
+		pstmt.setString(1, b.getNutzer());
+		pstmt.setString(2, b.getNutzer());
+		pstmt.setString(3, b.getNutzer());
+		pstmt.setString(4, b.getNutzer());
+		//log(b.getNutzer());
+			try(ResultSet rs = pstmt.executeQuery()) {
+				if (rs!= null && rs.next()) {
+					
+					b.setSpieleInsgesamt(rs.getInt("spiele"));
+					b.setDurchschnittZeitLeicht(rs.getInt("zeitLeicht"));
+					b.setDurchschnittZeitMittel(rs.getInt("zeitMittel"));
+					b.setDurchschnittZeitSchwer(rs.getInt("zeitSchwer"));
+				}
+			}
+				
+						
+		} catch (Exception ex) {
+			throw new ServletException(ex.getMessage());
+		}
+	}
+	
+	private ArrayList<Bestenliste> readNutzer(ArrayList<Bestenliste> bestenlisteBilderMemorieAjax) throws ServletException {
+		// DB-Zugriff
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(
+						"SELECT name, punkte FROM nutzer WHERE admin = 0 ORDER BY punkte DESC, name ASC;")) {
+		
+			try(ResultSet rs = pstmt.executeQuery()) {
+				while (rs!= null && rs.next()) {
+					Bestenliste bestenliste = new Bestenliste();
+					bestenliste.setNutzer(rs.getString("name"));
+					bestenliste.setPunkte(rs.getInt("punkte"));
+					bestenlisteBilderMemorieAjax.add(bestenliste);
+				}
+			}
+				
 			
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());
 		}
-
+		return bestenlisteBilderMemorieAjax;
 	}
 	
 

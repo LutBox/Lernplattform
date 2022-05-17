@@ -20,7 +20,6 @@ public class SpielStartenBean implements Serializable {
 	}
 	
 	
-	
 	public int getZeit() {
 		return zeit;
 	}

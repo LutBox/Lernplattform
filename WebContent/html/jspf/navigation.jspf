@@ -8,3 +8,4 @@ Erstellt von Lukas Theinert
 <a href="${pageContext.request.contextPath}/html/spieleseiten/spielehaupseite.jsp">Spieleübericht</a>
 <a href="${pageContext.request.contextPath}/html/hauptseiten/impressum.jsp">Impressum</a>
 <a href="${pageContext.request.contextPath}/html/hauptseiten/kontaktformular.jsp">Kontaktformular</a>
+<a href="${pageContext.request.contextPath}/html/hauptseiten/bestenliste.jsp">Bestenliste</a>
