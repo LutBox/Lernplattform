@@ -19,8 +19,8 @@
 		<br/><input name="name" id="name" type="text" placeholder="Nutzername" maxlength="64" required="required"><c:out value="${name}" default=""/></input>
 		<br/><label for="passwort">Passwort: </label>
 		<br><input name="passwort" id="passwort" type="password" maxlength="128" required="required"></input>
-		<br/><br/><c:out value="${anmeldunginfotext}" default="Bitte geben sie ihre Anmeldedaten an."/>
-		<br/><button type="submit">Absenden</button>
+		<br/><c:out value="${anmeldunginfotext}" default="Bitte geben sie ihre Anmeldedaten an."/>
+		<br/><br/><button type="submit">Absenden</button>
 		<br/>
 		<br><button type="reset">Zurücksetzen</button>
 	</form>
