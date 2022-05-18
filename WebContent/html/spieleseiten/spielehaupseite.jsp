@@ -7,8 +7,11 @@ Erstellt von Lukas Theinert
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
+
 <base href="${pageContext.request.requestURI}" />
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Games</title>
 </head>
 <body>
@@ -19,10 +22,8 @@ Erstellt von Lukas Theinert
 		<%@include file="../jspf/navigation.jspf"%>
 	</nav>
 	
-	<form id="Spielstarten" action="${pageContext.request.contextPath}/BestenlisteBilderMemorieAjax" method="post" accept-charset="UTF-8">
-
+	<form id="Bestenliste" action="${pageContext.request.contextPath}/BestenlisteBilderMemorieAjax" method="post" accept-charset="UTF-8">
 		<button name="spielen" type="submit">Bestenliste</button>
-
 	</form>
 
 	<form id="Spielstarten"
@@ -31,109 +32,210 @@ Erstellt von Lukas Theinert
 
 		<p>Spieleauswahl:</p>
 
+<div class="spielart">
+		
+<table style="width:100%">
 <%-- 
 ---------- Mathe ---------- 
 --%>
-		<div>
-			<fieldset>
-				<legend>
-					<input type="radio" name="Spielart" id="mathe" value="mathe"
-						required><label for="mathe">Mathe</label>
-				</legend>
-				<div>
+<tr><td>
+		<div class="flip-card">
+			<div class="flip-card-inner">
+				<div class="flip-card-front">
+				
+				<img src="../../bilder/mathe.png" alt="mathe" style="width:256px;height:256px;">
+
+		</div>
+				<div class="flip-card-back">
 					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
 					<label for="leicht">Zu jung zum sterben</label>
-
+					
+					<br>
+					
 					<input type="radio" name="Schwierigkeit" id="mittel" value="mittel">
 					<label for="mittel">Albtraum</label>
-
+					
+					<br>
+					
 					<input type="radio" name="Schwierigkeit" id="schwer" value="schwer">
 					<label for="schwer">Todesmarsch</label>
+					
+					<br>
+					
+						<button name="Spielart" id="mathe" value="mathe" type="submit">Starten!</button>
+
 				</div>
-			</fieldset>
-		</div>
-	
-<br>
+				
+		</div>	
+</div>
+	</td>
 <%-- 
 ---------- 4 Bilder 1 Wort ---------- 
 --%>
-		<div>
-			<fieldset>
-				<legend>
-					<input type="radio" name="Spielart" id="bilderWort"
-						value="bilderWort"> <label for="bilderWort">4
-						Bilder 1 Wort</label>
-				</legend>
-			</fieldset>
+<td>
+		<div class="flip-card">
+			<div class="flip-card-inner">
+				<div class="flip-card-front">
+				
+				<img src="../../bilder/bilderWort.png" alt="bilderWort" style="width:256px;height:256px;">
+
 		</div>
-<br>
+				<div class="flip-card-back">
+					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
+					<label for="leicht">Zu jung zum sterben</label>
+					
+					<br>
+					
+					<input type="radio" name="Schwierigkeit" id="mittel" value="mittel">
+					<label for="mittel">Albtraum</label>
+					
+					<br>
+					
+					<input type="radio" name="Schwierigkeit" id="schwer" value="schwer">
+					<label for="schwer">Todesmarsch</label>
+					
+					<br>
+					
+						<button name="Spielart" id="bilderWort" value="bilderWort" type="submit">Starten!</button>
+
+				</div>
+				
+		</div>	
+</div>
+</td></tr>
 <%-- 
 ---------- Bilder-Ordnen ---------- 
 --%>
-		<div>
-			<fieldset>
-				<legend>
-					<input type="radio" name="Spielart" id="bilderOrdnen"
-						value="bilderOrdnen"> <label for="bilderOrdnen">Bilder
-						ordnen</label>
-				</legend>
-			</fieldset>
+<tr><td>
+		<div class="flip-card">
+			<div class="flip-card-inner">
+				<div class="flip-card-front">
+				
+				<img src="../../bilder/bilderOrdnen.png" alt="bilderOrdnen" style="width:256px;height:256px;">
+
 		</div>
-<br>
+				<div class="flip-card-back">
+					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
+					<label for="leicht">Zu jung zum sterben</label>
+					
+					<br>
+					
+					<input type="radio" name="Schwierigkeit" id="mittel" value="mittel">
+					<label for="mittel">Albtraum</label>
+					
+					<br>
+					
+					<input type="radio" name="Schwierigkeit" id="schwer" value="schwer">
+					<label for="schwer">Todesmarsch</label>
+					
+					<br>
+					
+						<button name="Spielart" id="bilderOrdnen" value="bilderOrdnen" type="submit">Starten!</button>
+						
+				</div>
+				
+		</div>	
+</div>
+</td>
 <%-- 
 ---------- Bilder-Memorie ---------- 
 --%>
-		<div>
-			<fieldset>
-				<legend>
-					<input type="radio" name="Spielart" id="bilderMemorie"
-						value="bilderMemorie" checked="checked"> <label for="bilderMemorie">Bildermemorie</label>
-				</legend>
-				<br>
-				<div>
-					<input type="radio" name="Schwierigkeit" id="leichtBildermemorie" value="leicht" checked="checked">
-					<label for="leichtBildermemorie">Zu jung zum sterben</label>
-
-					<input type="radio" name="Schwierigkeit" id="mittelBildermemorie" value="mittel">
-					<label for="mittelBildermemorie">Albtraum</label>
-
-					<input type="radio" name="Schwierigkeit" id="schwerBildermemorie" value="schwer">
-					<label for="schwerBildermemorie">Todesmarsch</label>
-				</div>
+<td>
+		<div class="flip-card">
+			<div class="flip-card-inner">
+				<div class="flip-card-front">
 				
-				<div>
+				<img src="../../bilder/bildermemorie.png" alt="mathe" style="width:256px;height:256px;">
+
+		</div>
+				<div class="flip-card-back">
+					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
+					<label for="leicht">Zu jung zum sterben</label>
+					
+					<br>
+					
+					<input type="radio" name="Schwierigkeit" id="mittel" value="mittel">
+					<label for="mittel">Albtraum</label>
+					
+					<br>
+					
+					<input type="radio" name="Schwierigkeit" id="schwer" value="schwer">
+					<label for="schwer">Todesmarsch</label>
+					
+					<br>
+					<br>
+					
+					<div>
 					<input type="radio" name="Timer" id="timerAnBildermemorie" value="timerAn" required checked="checked">
 					<label for="timerAnBildermemorie">Mit Zeit spielen</label>
-
+					
+					<br>
+					
 					<input type="radio" name="Timer" id="timerAusBildermemorie" value="TimerAus" required>
 					<label for="timerAusBildermemorie">Ohne Zeit spielen</label>
 				</div>
+				
+				<br>
+				
 				<div>
 					<input type="radio" name="Gewertet" id="gewertetAnBildermemorie" value="gewertetAn" checked="checked">
 					<label for="gewertetAnBildermemorie">Spiel ist geweret</label>
-
+					
+					<br>
+					
 					<input type="radio" name="Gewertet" id="gewertetAusBildermemorie" value="gewertetAus">
 					<label for="gewertetAusBildermemorie">Spiel ist nicht gewertet</label>
 				</div>
-			</fieldset>
-		</div>
-<br>
+				
+					<br>
+
+						<button name="Spielart" id="bilderMemorie" value="bilderMemorie" type="submit">Starten!</button>
+						
+				</div>
+				
+		</div>	
+</div>
+			
+</td></tr>
 <%-- 
 ---------- Zufall ---------- 
 --%>
-		<div>
-			<fieldset>
-				<legend>
-					<input type="radio" name="Spielart" id="zufall" value="zufall">
-					<label for="zufall">Zufall</label>
-				</legend>
-			</fieldset>
-		</div>
+<tr><td>
+		<div class="flip-card">
+			<div class="flip-card-inner">
+				<div class="flip-card-front">
+				
+				<img src="../../bilder/zufall.png" alt="zufall" style="width:256px;height:256px;">
 
+		</div>
+				<div class="flip-card-back">
+					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
+					<label for="leicht">Zu jung zum sterben</label>
+					
+					<br>
+					
+					<input type="radio" name="Schwierigkeit" id="mittel" value="mittel">
+					<label for="mittel">Albtraum</label>
+					
+					<br>
+					
+					<input type="radio" name="Schwierigkeit" id="schwer" value="schwer">
+					<label for="schwer">Todesmarsch</label>
+					
+					<br>
+					
+						<button name="Spielart" id="zufall" value="zufall" type="submit">Starten!</button>
+						
+				</div>
+				
+		</div>	
+</div>
+
+</div>
 		<br> <br> <br> <br>
 
-		<button name="spielen" type="submit">Spielen!</button>
-
+</td></tr>
+</table>
 	</form>
 
 </body>

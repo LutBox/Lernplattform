@@ -7,8 +7,9 @@ Erstellt von Lukas Theinert
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/hauptseiten/bestenliste.css" />
 <%--
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spiel_bilderMemorie.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bestenliste.js" defer></script>
 --%>
 <base href="${pageContext.request.requestURI}" />
@@ -27,19 +28,19 @@ Erstellt von Lukas Theinert
             <br><br><br>
 
 
-        <h3>Bildermemorie-Bestenliste</h3>
+        <h3>Bestenliste: Bildermemorie</h3>
 
         <div>
             <table>
                 <thead>
                 <tr>
                     <th>Platz</th>
-                    <th>Punkte</th>
                     <th>Name</th>
-                    <th>Insgesamt gespielte Spiele</th>
-                    <th>Durchschnittliche Zeit leicht</th>
-                    <th>Durchschnittliche Zeit mittel</th>
-                    <th>Durchschnittliche Zeit schwer</th>
+                    <th>Punkte</th>
+                    <th>Gespielte Spiele</th>
+                    <th>Durchschnittliche Zeit: Leicht</th>
+                    <th>Durchschnittliche Zeit: Mittel</th>
+                    <th>Durchschnittliche Zeit: Schwer</th>
                 </tr>
                 </thead>
 
@@ -48,8 +49,8 @@ Erstellt von Lukas Theinert
                 <c:forEach var="b" items="${bestenlisteBilderMemorieAjax}" varStatus="status">
                     <tr>
                         <td>${status.count}</td>
-                        <td>${b.punkte}</td>
                         <td>${b.nutzer}</td>
+                        <td>${b.punkte}</td>
                         <td>${b.spieleInsgesamt}</td>
                         <td>${b.durchschnittZeitLeicht}sek</td>
                         <td>${b.durchschnittZeitMittel}sek</td>
