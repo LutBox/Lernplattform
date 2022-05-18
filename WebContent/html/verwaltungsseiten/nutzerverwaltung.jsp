@@ -9,7 +9,7 @@
 <title>Nutzerverwaltung</title>
 </head>
 <body>
-	<%@include file="../jspf/adminnavigation.jspf"%>
+	<%@include file="../jspf/navigation.jspf"%>
 	<h1>Nutzerverwaltung</h1>
 	<form>
 	Suche:<input type="text"></input><button type="reset">Suchen</button>

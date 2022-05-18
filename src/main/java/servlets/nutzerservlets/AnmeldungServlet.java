@@ -5,6 +5,7 @@ import java.io.IOException;
 import beans.modelbeans.NutzerBean;
 import beans.viewbeans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -30,6 +31,17 @@ public class AnmeldungServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/nutzerseiten/anmeldung.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 * @author Merlin
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// Was erwarte ich
 		request.setCharacterEncoding("UTF-8");
 
@@ -52,13 +64,13 @@ public class AnmeldungServlet extends HttpServlet {
 				nutzerAnzeige.setName(nutzer.getName());
 				nutzerAnzeige.setEmail(nutzer.getEmail());
 				nutzerAnzeige.setAdmin(nutzer.getAdmin());
-				session.setAttribute(NutzerViewBean.attributName, nutzerAnzeige);
+				session.setAttribute(NutzerViewBean.attributname, nutzerAnzeige);
 
 				// Entscheidung welchen Funktionsumfang der Nutzer bekommt
 				if (nutzer.getAdmin() == 1) {
 
 					// Nutzer ist Admin
-					response.sendRedirect("./AufrufAdminseiteServlet");
+					response.sendRedirect("./html/verwaltungsseiten/adminkonsole.jsp");
 				} else {
 
 					// Nutzer ist kein Admin
@@ -72,15 +84,5 @@ public class AnmeldungServlet extends HttpServlet {
 			session.setAttribute("anmeldunginfotext", "Nutzer existiert nicht.");
 			response.sendRedirect("./html/nutzerseiten/anmeldung.jsp");
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 * @author Merlin
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
 	}
 }
