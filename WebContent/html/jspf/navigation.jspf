@@ -1,4 +1,4 @@
-<%-- @author Merlin --%>
+<%-- Erstellt von Lukas, Merlin, Zohal --%>
 <%-- 
 a) Nutzer ist als Admin angemeldet.
 b) Nutzer ist als normaler Nutzer angemeldet.
@@ -16,7 +16,7 @@ c) Nutzer ist nicht als Nutzer angemeldet.
 		<c:when test="${nutzer.admin == 0}">
 			<a href="${pageContext.request.contextPath}/index.jsp">Startseite</a>
 			<a href="${pageContext.request.contextPath}/html/nutzerseiten/nutzerHaupseite.jsp">Nutzerbereich</a>
-			<a href="${pageContext.request.contextPath}/html/spieleseiten/spielehaupseite.jsp">Spieleübericht</a>
+			<a href="${pageContext.request.contextPath}/html/spieleseiten/spielehaupseite.jsp">SpieleÃ¼bericht</a>
 			<a href="${pageContext.request.contextPath}/NutzerAbmeldenServlet">Abmelden</a>
 			<a href="${pageContext.request.contextPath}/html/hauptseiten/impressum.jsp">Impressum</a>
 			<a href="${pageContext.request.contextPath}/html/hauptseiten/kontaktformular.jsp">Kontaktformular</a>
@@ -30,3 +30,4 @@ c) Nutzer ist nicht als Nutzer angemeldet.
 		</c:otherwise>
 	</c:choose>
 </nav>
+

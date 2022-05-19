@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import javax.sql.DataSource;
@@ -18,14 +16,12 @@ import javax.sql.DataSource;
 import beans.SpielBilderMemorieBean;
 import beans.SpielStartenBean;
 import jakarta.annotation.Resource;
-import jakarta.security.auth.message.callback.SecretKeyCallback.Request;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.xml.ws.Response;
 
 /**
  * Servlet implementation class SpielStartenServlet
@@ -67,6 +63,8 @@ public class SpielStartenServlet extends HttpServlet {
 		SpielStartenBean spielStartenBean = new SpielStartenBean();
 		spielStartenBean.setSchwierigkeit(request.getParameter("Schwierigkeit"));
 		spielStartenBean.setSpielart(request.getParameter("Spielart"));
+		spielStartenBean.setTimer(request.getParameter("Timer"));
+		spielStartenBean.setGewertet(request.getParameter("Gewertet"));
 		
 		//Infos werden nur für den einen Request gespeichert innerhalb einer Bean
 		//request.setAttribute("spielStartenBean", spielStartenBean);
@@ -158,7 +156,7 @@ public class SpielStartenServlet extends HttpServlet {
 		//DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT * FROM bild ORDER BY RAND() LIMIT 8")) {
+						"SELECT * FROM bild ORDER BY RAND() LIMIT 16")) {
 
 			try(ResultSet rs = pstmt.executeQuery()) {
 				while (rs!= null && rs.next()) {
@@ -178,8 +176,24 @@ public class SpielStartenServlet extends HttpServlet {
 						spielBilder.setBild6ID(rs.getLong("id"));
 					} else if(durchlauf ==7) {
 						spielBilder.setBild7ID(rs.getLong("id"));
-					} else {
+					} else if(durchlauf ==8){
 						spielBilder.setBild8ID(rs.getLong("id"));
+					} else if(durchlauf ==9) {
+						spielBilder.setBild9ID(rs.getLong("id"));
+					} else if(durchlauf ==10) {
+						spielBilder.setBild10ID(rs.getLong("id"));
+					} else if(durchlauf ==11) {
+						spielBilder.setBild11ID(rs.getLong("id"));
+					} else if(durchlauf ==12) {
+						spielBilder.setBild12ID(rs.getLong("id"));
+					} else if(durchlauf ==13) {
+						spielBilder.setBild13ID(rs.getLong("id"));
+					} else if(durchlauf ==14) {
+						spielBilder.setBild14ID(rs.getLong("id"));
+					} else if(durchlauf ==15) {
+						spielBilder.setBild15ID(rs.getLong("id"));
+					} else {
+						spielBilder.setBild16ID(rs.getLong("id"));
 					}
 				}
 			}	
