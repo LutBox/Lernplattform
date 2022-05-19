@@ -24,9 +24,6 @@ Erstellt von Lukas Theinert
 		<%@include file="../jspf/navigation.jspf"%>
 	</nav>
 	
-	<form id="Bestenliste" action="${pageContext.request.contextPath}/BestenlisteBilderMemorieAjax" method="post" accept-charset="UTF-8">
-		<button name="spielen" type="submit">Bestenliste</button>
-	</form>
 
 	<form id="Spielstarten"
 		action="${pageContext.request.contextPath}/SpielStartenServlet"
