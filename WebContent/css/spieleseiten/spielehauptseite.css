@@ -1,3 +1,5 @@
+/* Erstellt von Lukas Theinert */
+
 @charset "UTF-8";
 
 * {
@@ -12,13 +14,25 @@ html {
     background: linear-gradient(45deg, #FFFFFF, #C6E7DE);
 }
 
-.flip-card {
-  background-color: transparent;
-  width: 256px;
-  height: 256px;
-  perspective: 1000px;
+.spielart {
+  width: 800px;
+  height: 527px;
   margin: auto;
-  color: #FFF;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.flip-card {
+
+  width: calc(256px);
+  height: calc(256px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+
  
 }
 
@@ -51,7 +65,7 @@ html {
 }
 
 .mathe{
-	  background-color: #282A3A;
+  background-color: #282A3A;
   border-radius: 5px;
   padding: 20px 20px;
   border: 0;
@@ -61,7 +75,35 @@ html {
 }
 
 .flip-card-back {
-  background-color: #2980b9;
+
+  margin: auto;
+  padding-top: 10px;
+  padding-left: 30px;
+  text-align: left;
+  background-color: #282A3A;
   color: white;
   transform: rotateY(180deg);
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #008F7A;
+  border: none;
+  border-radius: 15px;
+
+}
+
+.button:hover {background-color: #008E9B}
+
+.button:active {
+  background-color: #008E9B;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

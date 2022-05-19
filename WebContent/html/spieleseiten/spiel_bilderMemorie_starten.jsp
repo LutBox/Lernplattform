@@ -77,74 +77,74 @@ Erstellt von Lukas Theinert
 	  
     <div class="memorieKarte" data-framework="bild1">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild1ID}" alt="bild1" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild1">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild1ID}" alt="bild1" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
 
     <div class="memorieKarte" data-framework="bild2">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild2ID}" alt="bild2" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogoe" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogoe" />
     </div>
     <div class="memorieKarte" data-framework="bild2">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild2ID}" alt="bild2" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
 
     <div class="memorieKarte" data-framework="bild3">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild3ID}" alt="bild3" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild3">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild3ID}" alt="bild3" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
 
     <div class="memorieKarte" data-framework="bild4">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild4ID}" alt="bild4" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild4">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild4ID}" alt="bild4" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
 
     <div class="memorieKarte" data-framework="bild5">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild5ID}" alt="bild5" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild5">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild5ID}" alt="bild5" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
 
     <div class="memorieKarte" data-framework="bild6">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild6ID}" alt="bild6" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild6">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild6ID}" alt="bild6" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     
     <div class="memorieKarte" data-framework="bild7">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild7ID}" alt="bild7" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild7">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild7ID}" alt="bild7" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
 
     <div class="memorieKarte" data-framework="bild8">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild8ID}" alt="bild8" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild8">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild8ID}" alt="bild8" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div> 
   
   
@@ -153,37 +153,37 @@ Erstellt von Lukas Theinert
   
     <div class="memorieKarte test" data-framework="bild9">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild9ID}" alt="bild9" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte test" data-framework="bild9">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild9ID}" alt="bild9" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
 
     <div class="memorieKarte test" data-framework="bild10">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild10ID}" alt="bild10" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogoe" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogoe" />
     </div>
     <div class="memorieKarte test" data-framework="bild10">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild10ID}" alt="bild10" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild11">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild11ID}" alt="bild11" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild11">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild11ID}" alt="bild11" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
 
     <div class="memorieKarte" data-framework="bild12">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild12ID}" alt="bild12" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild12">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild12ID}" alt="bild12" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     
   </c:when>
@@ -195,38 +195,38 @@ Erstellt von Lukas Theinert
 
     <div class="memorieKarte" data-framework="bild13">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild13ID}" alt="bild13" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild13">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild13ID}" alt="bild13" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
 
     <div class="memorieKarte" data-framework="bild14">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild14ID}" alt="bild14" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild14">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild14ID}" alt="bild14" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     
     <div class="memorieKarte" data-framework="bild15">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild15ID}" alt="bild15" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild15">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild15ID}" alt="bild15" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
 
     <div class="memorieKarte" data-framework="bild16">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild16ID}" alt="bild16" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>
     <div class="memorieKarte" data-framework="bild16">
       <img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild16ID}" alt="bild16" />
-      <img class="hinten" src="${pageContext.request.contextPath}/css/spieleseiten/logo.png" alt="bildLogo" />
+      <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo" />
     </div>  
     
   </c:when>

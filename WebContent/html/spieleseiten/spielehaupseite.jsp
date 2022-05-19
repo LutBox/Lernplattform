@@ -7,7 +7,9 @@ Erstellt von Lukas Theinert
 <!DOCTYPE html>
 <html>
 <head>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
 
 <base href="${pageContext.request.requestURI}" />
@@ -38,7 +40,7 @@ Erstellt von Lukas Theinert
 <%-- 
 ---------- Mathe ---------- 
 --%>
-<tr><td>
+
 		<div class="flip-card">
 			<div class="flip-card-inner">
 				<div class="flip-card-front">
@@ -47,32 +49,32 @@ Erstellt von Lukas Theinert
 
 		</div>
 				<div class="flip-card-back">
-					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
-					<label for="leicht">Zu jung zum sterben</label>
+					<input type="radio" name="Schwierigkeit" id="leicht" value="leichtMathe" required>
+					<label for="leichtMathe">Zu jung zum sterben</label>
 					
 					<br>
 					
-					<input type="radio" name="Schwierigkeit" id="mittel" value="mittel">
-					<label for="mittel">Albtraum</label>
+					<input type="radio" name="Schwierigkeit" id="mittelMathe" value="mittel">
+					<label for="mittelMathe">Albtraum</label>
 					
 					<br>
 					
-					<input type="radio" name="Schwierigkeit" id="schwer" value="schwer">
-					<label for="schwer">Todesmarsch</label>
+					<input type="radio" name="Schwierigkeit" id="schwerMathe" value="schwer">
+					<label for="schwerMathe">Todesmarsch</label>
 					
-					<br>
+					<br><br>
 					
-						<button name="Spielart" id="mathe" value="mathe" type="submit">Starten!</button>
+						<button class="button" name="Spielart" id="mathe" value="mathe" type="submit">Starten!</button>
 
 				</div>
 				
 		</div>	
 </div>
-	</td>
+
 <%-- 
 ---------- 4 Bilder 1 Wort ---------- 
 --%>
-<td>
+
 		<div class="flip-card">
 			<div class="flip-card-inner">
 				<div class="flip-card-front">
@@ -81,32 +83,32 @@ Erstellt von Lukas Theinert
 
 		</div>
 				<div class="flip-card-back">
-					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
-					<label for="leicht">Zu jung zum sterben</label>
+					<input type="radio" name="Schwierigkeit" id="leichtBilderWort" value="leicht" required>
+					<label for="leichtBilderWort">Zu jung zum sterben</label>
 					
 					<br>
 					
-					<input type="radio" name="Schwierigkeit" id="mittel" value="mittel">
-					<label for="mittel">Albtraum</label>
+					<input type="radio" name="Schwierigkeit" id="mittelBilderWort" value="mittel">
+					<label for="mittelBilderWort">Albtraum</label>
 					
 					<br>
 					
-					<input type="radio" name="Schwierigkeit" id="schwer" value="schwer">
-					<label for="schwer">Todesmarsch</label>
+					<input type="radio" name="Schwierigkeit" id="schwerBilderWort" value="schwer">
+					<label for="schwerBilderWort">Todesmarsch</label>
 					
-					<br>
+					<br><br>
 					
-						<button name="Spielart" id="bilderWort" value="bilderWort" type="submit">Starten!</button>
+						<button class="button" name="Spielart" id="bilderWort" value="bilderWort" type="submit">Starten!</button>
 
 				</div>
 				
 		</div>	
 </div>
-</td></tr>
+
 <%-- 
 ---------- Bilder-Ordnen ---------- 
 --%>
-<tr><td>
+
 		<div class="flip-card">
 			<div class="flip-card-inner">
 				<div class="flip-card-front">
@@ -115,32 +117,32 @@ Erstellt von Lukas Theinert
 
 		</div>
 				<div class="flip-card-back">
-					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
-					<label for="leicht">Zu jung zum sterben</label>
+					<input type="radio" name="Schwierigkeit" id="leichtBilderOrdnen" value="leicht" required>
+					<label for="leichtBilderOrdnen">Zu jung zum sterben</label>
 					
 					<br>
 					
-					<input type="radio" name="Schwierigkeit" id="mittel" value="mittel">
-					<label for="mittel">Albtraum</label>
+					<input type="radio" name="Schwierigkeit" id="mittelBilderOrdnen" value="mittel">
+					<label for="mittelBilderOrdnen">Albtraum</label>
 					
 					<br>
 					
-					<input type="radio" name="Schwierigkeit" id="schwer" value="schwer">
-					<label for="schwer">Todesmarsch</label>
+					<input type="radio" name="Schwierigkeit" id="schwerBilderOrdnen" value="schwer">
+					<label for="schwerBilderOrdnen">Todesmarsch</label>
 					
-					<br>
+					<br><br>
 					
-						<button name="Spielart" id="bilderOrdnen" value="bilderOrdnen" type="submit">Starten!</button>
+						<button class="button" name="Spielart" id="bilderOrdnen" value="bilderOrdnen" type="submit">Starten!</button>
 						
 				</div>
 				
 		</div>	
 </div>
-</td>
+
 <%-- 
 ---------- Bilder-Memorie ---------- 
 --%>
-<td>
+
 		<div class="flip-card">
 			<div class="flip-card-inner">
 				<div class="flip-card-front">
@@ -149,18 +151,18 @@ Erstellt von Lukas Theinert
 
 		</div>
 				<div class="flip-card-back">
-					<input type="radio" name="Schwierigkeit" id="leicht" value="leicht" required>
-					<label for="leicht">Zu jung zum sterben</label>
+					<input type="radio" name="Schwierigkeit" id="leichtBilderMemorie" value="leicht" checked="checked" required>
+					<label for="leichtBilderMemorie">Zu jung zum sterben</label>
 					
 					<br>
 					
-					<input type="radio" name="Schwierigkeit" id="mittel" value="mittel">
-					<label for="mittel">Albtraum</label>
+					<input type="radio" name="Schwierigkeit" id="mittelBilderMemorie" value="mittel">
+					<label for="mittelBilderMemorie">Albtraum</label>
 					
 					<br>
 					
-					<input type="radio" name="Schwierigkeit" id="schwer" value="schwer">
-					<label for="schwer">Todesmarsch</label>
+					<input type="radio" name="Schwierigkeit" id="schwerBilderMemorie" value="schwer">
+					<label for="schwerBilderMemorie">Todesmarsch</label>
 					
 					<br>
 					<br>
@@ -189,18 +191,18 @@ Erstellt von Lukas Theinert
 				
 					<br>
 
-						<button name="Spielart" id="bilderMemorie" value="bilderMemorie" type="submit">Starten!</button>
+						<button class="button" name="Spielart" id="bilderMemorie" value="bilderMemorie" type="submit">Starten!</button>
 						
 				</div>
 				
 		</div>	
 </div>
 			
-</td></tr>
+
 <%-- 
 ---------- Zufall ---------- 
 --%>
-<tr><td>
+
 		<div class="flip-card">
 			<div class="flip-card-inner">
 				<div class="flip-card-front">
@@ -222,9 +224,9 @@ Erstellt von Lukas Theinert
 					<input type="radio" name="Schwierigkeit" id="schwer" value="schwer">
 					<label for="schwer">Todesmarsch</label>
 					
-					<br>
+					<br><br>
 					
-						<button name="Spielart" id="zufall" value="zufall" type="submit">Starten!</button>
+						<button class="button" name="Spielart" id="zufall" value="zufall" type="submit">Starten!</button>
 						
 				</div>
 				
@@ -234,7 +236,7 @@ Erstellt von Lukas Theinert
 </div>
 		<br> <br> <br> <br>
 
-</td></tr>
+
 </table>
 	</form>
 

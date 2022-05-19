@@ -61,7 +61,7 @@ public class BilderMemorieAjax extends HttpServlet {
 		// In Datenbank eintragen
 		persist(bilderMemorieAjax, aktuellerNutzer);
 		
-		if(bilderMemorieAjax.getGewertet().equals("gewertetAn") && bilderMemorieAjax.getTimer().equals("timerAn")) {
+		if(bilderMemorieAjax.getGewertet().equals("gewertetAn")) {
 				persist2(bilderMemorieAjax, aktuellerNutzer);
 		}
 		

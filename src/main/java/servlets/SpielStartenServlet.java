@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import javax.sql.DataSource;
@@ -18,14 +16,12 @@ import javax.sql.DataSource;
 import beans.SpielBilderMemorieBean;
 import beans.SpielStartenBean;
 import jakarta.annotation.Resource;
-import jakarta.security.auth.message.callback.SecretKeyCallback.Request;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.xml.ws.Response;
 
 /**
  * Servlet implementation class SpielStartenServlet
