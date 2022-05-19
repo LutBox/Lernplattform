@@ -1,4 +1,0 @@
-<%-- Erstellt von Merlin --%>
-<form action="${pageContext.request.contextPath}/NutzerAbmeldenServlet">
-<button type="submit">Abmelden</button>
-</form>

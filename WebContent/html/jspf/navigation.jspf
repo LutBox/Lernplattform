@@ -1,11 +1,33 @@
-<%--
-Erstellt von Lukas Theinert
---%>
+<%-- Erstellt von Lukas, Merlin, Zohal --%>
+<%-- 
+a) Nutzer ist als Admin angemeldet.
+b) Nutzer ist als normaler Nutzer angemeldet.
+c) Nutzer ist nicht als Nutzer angemeldet.
+ --%>
+<nav>
+	<c:choose>
+		<c:when test="${nutzer.admin == 1}">
+			<a href="${pageContext.request.contextPath}/index.jsp">Startseite</a>
+			<a href="${pageContext.request.contextPath}/html/verwaltungsseiten/nutzerverwaltung.jsp">Nutzerverwaltung</a>
+			<a href="${pageContext.request.contextPath}/html/verwaltungsseiten/spielekonfigurator.jsp">Spielekonfigurator</a>
+			<a href="${pageContext.request.contextPath}/html/hauptseiten/impressum.jsp">Kontaktanfragen</a>
+			<a href="${pageContext.request.contextPath}/NutzerAbmeldenServlet">Abmelden</a>
+		</c:when>
+		<c:when test="${nutzer.admin == 0}">
+			<a href="${pageContext.request.contextPath}/index.jsp">Startseite</a>
+			<a href="${pageContext.request.contextPath}/html/nutzerseiten/nutzerHaupseite.jsp">Nutzerbereich</a>
+			<a href="${pageContext.request.contextPath}/html/spieleseiten/spielehaupseite.jsp">SpieleÃ¼bericht</a>
+			<a href="${pageContext.request.contextPath}/NutzerAbmeldenServlet">Abmelden</a>
+			<a href="${pageContext.request.contextPath}/html/hauptseiten/impressum.jsp">Impressum</a>
+			<a href="${pageContext.request.contextPath}/html/hauptseiten/kontaktformular.jsp">Kontaktformular</a>
+		</c:when>
+		<c:otherwise>
+			<a href="${pageContext.request.contextPath}/index.jsp">Startseite</a>
+			<a href="${pageContext.request.contextPath}/html/nutzerseiten/anmeldung.jsp">Anmelden</a>
+			<a href="${pageContext.request.contextPath}/html/nutzerseiten/registrierung.jsp">Registrierung</a>
+			<a href="${pageContext.request.contextPath}/html/hauptseiten/impressum.jsp">Impressum</a>
+			<a href="${pageContext.request.contextPath}/html/hauptseiten/kontaktformular.jsp">Kontaktformular</a>
+		</c:otherwise>
+	</c:choose>
+</nav>
 
-<a href="${pageContext.request.contextPath}/index.jsp">Startseite</a>
-<a href="${pageContext.request.contextPath}/html/nutzerseiten/nutzerHaupseite.jsp">Nutzerbereich</a>
-<a href="${pageContext.request.contextPath}/html/forumseiten/forumhauptseite.jsp">Forum</a>
-<a href="${pageContext.request.contextPath}/html/spieleseiten/spielehaupseite.jsp">Spieleübericht</a>
-<a href="${pageContext.request.contextPath}/html/hauptseiten/impressum.jsp">Impressum</a>
-<a href="${pageContext.request.contextPath}/html/hauptseiten/kontaktformular.jsp">Kontaktformular</a>
-<a href="${pageContext.request.contextPath}/html/hauptseiten/bestenliste.jsp">Bestenliste</a>

@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class NutzerViewBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	public static final String attributName = "nutzer";
+	public static final String attributname = "nutzer";
 	private String name;
 	private String email;
 	private int punkte;

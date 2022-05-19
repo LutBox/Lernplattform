@@ -9,7 +9,7 @@
 <title>Kontaktanfragen</title>
 </head>
 <body>
-	<%@include file="../jspf/adminnavigation.jspf"%>
+	<%@include file="../jspf/navigation.jspf"%>
 	<h1>Kontaktanfragen</h1>
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.io.IOException;
 import beans.modelbeans.NutzerBean;
 import beans.viewbeans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,10 +23,10 @@ public class RegistrierungServlet extends HttpServlet {
 
 	/**
 	 * @author Merlin
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Was erware ich
 		request.setCharacterEncoding("UTF-8");
@@ -33,11 +34,6 @@ public class RegistrierungServlet extends HttpServlet {
 		// Was schicke ich zurueck
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
-
-		// Vorbereiteung der response
-		String zielseite = "./html/registrierung.jsp";
-		final HttpSession session = request.getSession();
-		session.setAttribute(infotextname, "Bitte geben Sie ihre Daten zur Registrierung an.");
 
 		NutzerBean neuerNutzer = new NutzerBean();
 		neuerNutzer.setName(request.getParameter("name"));
@@ -49,33 +45,28 @@ public class RegistrierungServlet extends HttpServlet {
 		neuerNutzer.setBild(request.getParameter("bild"));
 
 		if (NutzerSQLDienst.istNutzernameVergeben(neuerNutzer.getName())) {
-			session.setAttribute(infotextname, "Der von ihnen angegebene Nutzername ist bereits vergeben.");
+
+			request.setAttribute(infotextname, "Der von ihnen angegebene Nutzername ist bereits vergeben.");
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/nutzerseiten/registrierung.jsp");
+			dispatcher.forward(request, response);
+
 		} else {
+
+			final HttpSession session = request.getSession();
+
 			NutzerSQLDienst.nutzerSpeichern(neuerNutzer);
-			
+
 			NutzerViewBean neuerNutzerAnzeige = new NutzerViewBean();
 			neuerNutzerAnzeige.setName(neuerNutzer.getName());
 			neuerNutzerAnzeige.setEmail(neuerNutzer.getEmail());
 			neuerNutzerAnzeige.setPunkte(0);
 			neuerNutzerAnzeige.setAdmin(0);
 			neuerNutzerAnzeige.setDateiname(neuerNutzer.getDateiname());
-			
-			
-			session.setAttribute(NutzerViewBean.attributName, neuerNutzerAnzeige);
-			
-			zielseite = "./html/nutzerseiten/nutzerHauptseite.jsp";
-		}
-		response.sendRedirect(zielseite);
-	}
 
-	/**
-	 * @author Merlin
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+			session.setAttribute(NutzerViewBean.attributname, neuerNutzerAnzeige);
+
+			response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
+		}
 	}
 
 }

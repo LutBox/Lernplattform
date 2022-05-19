@@ -16,15 +16,15 @@ import jakarta.servlet.http.HttpSession;
  */
 @WebServlet("/NutzerAbmeldenServlet")
 public class NutzerAbmeldenServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @author Merlin
-	 * @see Diese Methode Meldet den Nutzer ab
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.removeAttribute(NutzerViewBean.attributName);
+		session.removeAttribute(NutzerViewBean.attributname);
 		response.sendRedirect("./html/nutzerseiten/abgemeldet.jsp");
 	}
 
@@ -34,5 +34,4 @@ public class NutzerAbmeldenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

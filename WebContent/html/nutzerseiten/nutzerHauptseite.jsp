@@ -6,24 +6,14 @@ Erstellt von Lukas Theinert
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-
 <head>
-<meta charset="UTF-8">
-<title>Nutzerbereich</title>
+	<meta charset="UTF-8">
+	<title>Nutzerbereich</title>
 </head>
-
 <body>
-
+	<header>
+		<%@include file="../jspf/navigation.jspf"%>
+	</header>
 	<h1>Nutzerbereich</h1>
-	<ul>
-		<li>
-			<nav>
-				<%@include file="../jspf/navigation.jspf"%>
-			</nav>
-		</li>
-		<li>Nutzerbereich</li>
-		<li><%@include file="../jspf/nutzernavigation.jspf"%></li>
-	</ul>
 </body>
-
 </html>
