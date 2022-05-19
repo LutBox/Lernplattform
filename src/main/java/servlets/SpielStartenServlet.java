@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,6 +18,7 @@ import javax.sql.DataSource;
 
 import beans.SpielBilderMemorieBean;
 import beans.SpielStartenBean;
+import beans.SpielVierBilderEinWortBean;
 import jakarta.annotation.Resource;
 import jakarta.security.auth.message.callback.SecretKeyCallback.Request;
 import jakarta.servlet.RequestDispatcher;
@@ -87,7 +89,13 @@ public class SpielStartenServlet extends HttpServlet {
 		//---------- 4 Bilder 1 Wort   --------------------
 		//-------------------------------------------------	
 		} else if(spielartServlet.equals("bilderWort")) {
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_starten.jsp");
+			SpielVierBilderEinWortBean spielBilderEinwort = new SpielVierBilderEinWortBean();
+			spielBilderEinwort=spielBilderWort();
+			
+			//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
+			session.setAttribute("spielVierBilderEinWortBean", spielBilderEinwort);
+			
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_spielen.jsp");
 			dispatcher.forward(request, response);
 			
 		//-------------------------------------------------
@@ -143,9 +151,6 @@ public class SpielStartenServlet extends HttpServlet {
 		
 	}
 	
-	public void spielBilderWort() {
-		
-	}
 	
 	public void spielBilderOrdnen() {
 		
@@ -189,6 +194,51 @@ public class SpielStartenServlet extends HttpServlet {
 		return spielBilder;		
 	}
 
+	
+	
+	private SpielVierBilderEinWortBean spielBilderWort() throws ServletException {
+		
+		String  kategorie;
+		// 1) zufälliges Wort aus der Datenbank laden
+		//Order by Rand() Limt 1//
+		      try( Connection con = ds.getConnection();
+		    		  PreparedStatement pstmt= con.prepareStatement("Select kategorie from wort order by Rand() limit 1")){
+		    	  
+		    	      ResultSet rs = pstmt.executeQuery();
+		    	      rs.next();
+		    	      kategorie = rs.getString(1);
+		      } catch (SQLException ex) {
+				// TODO Auto-generated catch block
+				ex.printStackTrace();
+				throw new ServletException(ex);
+			}	
+		      
+		      int[] imageIds = new int[4];
+		      
+		      try( Connection con = ds.getConnection();
+		    		  PreparedStatement pstmt= con.prepareStatement("select id from bild where kategorie=?")){
+		    	      pstmt.setString(1, kategorie);
+		    	      ResultSet rs = pstmt.executeQuery();
+		    	      for(int i = 0; i < 4; i++) {
+		    	    	  rs.next();
+
+		    	    	  imageIds[i] = rs.getInt(1);
+		    	    	  log("Kategorie-ID: " + imageIds[i]);
+		    	      }
+		      } catch (SQLException ex) {
+				// TODO Auto-generated catch block
+				ex.printStackTrace();
+				throw new ServletException(ex);
+			}	
+		    // 3) Ids in die Bean schreiben (z.B. als Attribute, Array, etc)
+		    SpielVierBilderEinWortBean bean = new SpielVierBilderEinWortBean();
+		    bean.setBild1(imageIds[0]);
+		    bean.setBild2(imageIds[1]);
+		    bean.setBild3(imageIds[2]);
+		    bean.setBild4(imageIds[3]);
+		    
+		return bean;
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

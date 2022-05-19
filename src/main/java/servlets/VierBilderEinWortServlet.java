@@ -41,15 +41,15 @@ public class VierBilderEinWortServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		int wortid=0;
+		String  kategorie;
 		// 1) zufälliges Wort aus der Datenbank laden
 		//Order by Rand() Limt 1//
 		      try( Connection con = ds.getConnection();
-		    		  PreparedStatement pstmt= con.prepareStatement("Select id from wort order by Rand() limit 1")){
+		    		  PreparedStatement pstmt= con.prepareStatement("Select kategorie from wort order by Rand() limit 1")){
 		    	  
 		    	      ResultSet rs = pstmt.executeQuery();
 		    	      rs.next();
-		    	      wortid = rs.getInt(1);
+		    	      kategorie = rs.getString(1);
 		      } catch (SQLException ex) {
 				// TODO Auto-generated catch block
 				ex.printStackTrace();
@@ -59,8 +59,8 @@ public class VierBilderEinWortServlet extends HttpServlet {
 		      int[] imageIds = new int[4];
 		      
 		      try( Connection con = ds.getConnection();
-		    		  PreparedStatement pstmt= con.prepareStatement("select id from bild where wortId=?")){
-		    	      pstmt.setInt(1, wortid);
+		    		  PreparedStatement pstmt= con.prepareStatement("select id from bild where kategorie=?")){
+		    	      pstmt.setString(1, kategorie);
 		    	      ResultSet rs = pstmt.executeQuery();
 		    	      for(int i = 0; i < 4; i++) {
 		    	    	  rs.next();

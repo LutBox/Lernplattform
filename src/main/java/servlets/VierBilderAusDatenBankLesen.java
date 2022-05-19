@@ -43,13 +43,13 @@ public class VierBilderAusDatenBankLesen extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		Integer id = Integer.valueOf(request.getParameter("id"));
+		String  id = String.valueOf(request.getParameter("kategorie"));
 		
 	// 2) 4 bilder (IDs) passend zum ausgewählten Wort
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
-			 PreparedStatement pstmt = con.prepareStatement("SELECT image FROM bild where id=?")) {
-			pstmt.setInt(1, id);
+			 PreparedStatement pstmt = con.prepareStatement("SELECT image FROM bild where kategorie=?")) {
+			pstmt.setString(1, id);
   	      try (ResultSet rs = pstmt.executeQuery()) {
   			
 				if (rs != null && rs.next()) {
