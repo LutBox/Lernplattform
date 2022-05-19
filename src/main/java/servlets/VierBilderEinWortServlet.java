@@ -11,11 +11,13 @@ import java.sql.Statement;
 import javax.sql.DataSource;
 
 import beans.SpielVierBilderEinWortBean;
+import beans.VierBilderEinWortScoreBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 //select * from bild where wortId=( Select id from wort order by Rand() Limit 1);
 /**
  * Servlet implementation class VierBilderEinWortServlet
@@ -74,6 +76,7 @@ public class VierBilderEinWortServlet extends HttpServlet {
 			}	
 		    // 3) Ids in die Bean schreiben (z.B. als Attribute, Array, etc)
 		    SpielVierBilderEinWortBean bean = new SpielVierBilderEinWortBean();
+		    bean.setWort(kategorie);
 		    bean.setBild1(imageIds[0]);
 		    bean.setBild2(imageIds[1]);
 		    bean.setBild3(imageIds[2]);
@@ -89,9 +92,17 @@ public class VierBilderEinWortServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	HttpSession  session =   request.getSession(); // Gibt eine Session
+	// 
+	VierBilderEinWortScoreBean  score =(VierBilderEinWortScoreBean) session.getAttribute("vierBilderEinWort");
+	score.setVersuche(score.getVersuche()+1);
+	if (request.getParameter("userEingabe").equalsIgnoreCase(request.getParameter("loesung"))) {
+		score.setRichtigeErgebnis(score.getRichtigeErgebnis()+1);
 		
-		
-		doGet(request, response);
+	}
+	
+	// Wenn Zeit abgelaufen ist stattdessen auf Ergebnisseite
+		response.sendRedirect("VierBilderEinWortServlet");
 	}
 
 }

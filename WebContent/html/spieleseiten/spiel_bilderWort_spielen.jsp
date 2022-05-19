@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/spiel_bilderWort.js" defer></script>
+
 <meta charset="ISO-8859-1">
 <title>VierBilderEinWort</title>
 </head>
 <body>
+${vierBilderEinWort.richtigeErgebnis}/${vierBilderEinWort.versuche}
 <img src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielVierBilderEinWortBean.bild1}" alt="bild1"> 
 <img src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielVierBilderEinWortBean.bild2}" alt="bild2"> 
 <img src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielVierBilderEinWortBean.bild3}" alt="bild3"> 

@@ -3,8 +3,14 @@ package beans;
 import java.io.Serializable;
 
 public class SpielVierBilderEinWortBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int bild1, bild2, bild3, bild4;
 	private String wort; 
+// Zeit hier 
+	
 
 	
 	public String getWort() {

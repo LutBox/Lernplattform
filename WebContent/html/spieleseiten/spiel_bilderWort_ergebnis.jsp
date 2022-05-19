@@ -11,4 +11,8 @@
 <body>
 
 </body>
+
+
+// Schöner Darstellen 
+//z.B Du hast so viele Punkte von so vielen erreicht
 </html>

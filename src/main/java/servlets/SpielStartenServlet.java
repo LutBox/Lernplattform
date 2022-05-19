@@ -19,6 +19,7 @@ import javax.sql.DataSource;
 import beans.SpielBilderMemorieBean;
 import beans.SpielStartenBean;
 import beans.SpielVierBilderEinWortBean;
+import beans.VierBilderEinWortScoreBean;
 import jakarta.annotation.Resource;
 import jakarta.security.auth.message.callback.SecretKeyCallback.Request;
 import jakarta.servlet.RequestDispatcher;
@@ -89,14 +90,18 @@ public class SpielStartenServlet extends HttpServlet {
 		//---------- 4 Bilder 1 Wort   --------------------
 		//-------------------------------------------------	
 		} else if(spielartServlet.equals("bilderWort")) {
-			SpielVierBilderEinWortBean spielBilderEinwort = new SpielVierBilderEinWortBean();
-			spielBilderEinwort=spielBilderWort();
+			//SpielVierBilderEinWortBean spielBilderEinwort = new SpielVierBilderEinWortBean();
+			//spielBilderEinwort=spielBilderWort();
 			
 			//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
-			session.setAttribute("spielVierBilderEinWortBean", spielBilderEinwort);
+			//session.setAttribute("spielVierBilderEinWortBean", spielBilderEinwort);
 			
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_spielen.jsp");
-			dispatcher.forward(request, response);
+			//final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_spielen.jsp");
+			//dispatcher.forward(request, response);
+			// Clean up, damit die Punkte aus dem Spiel 
+			session.setAttribute("vierBilderEinWort", new VierBilderEinWortScoreBean());
+			response.sendRedirect("VierBilderEinWortServlet");
+			
 			
 		//-------------------------------------------------
 		//---------- Bilder ordnen   ----------------------
