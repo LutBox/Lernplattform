@@ -1,0 +1,31 @@
+/* Erstellt von Lukas Theinert */
+
+footer {
+	display: flex;	
+	align-items: center;
+	justify-content: center;
+	
+	background-color: #000000e0;
+	border-radius: 10px;
+	list-style-type: none;
+	margin: auto;
+	padding: 0;
+	overflow: hidden;
+	top: 0;
+}
+
+footer a {
+	padding: 18px;
+	font-family: "Open Sans";
+	text-transform: uppercase;
+	font-size: 18px;
+	text-decoration: none;
+	display: block;
+	color: #ffffff;
+	text-align: center;
+}
+
+footer a:hover {
+	background: #ffffff1A;
+	color: #ffffff;
+}

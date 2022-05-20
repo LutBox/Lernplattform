@@ -9,9 +9,8 @@ Erstellt von Lukas Theinert
 <head>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hauptseiten/bestenliste.css" />
-<%--
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/bestenliste.js" defer></script>
---%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+
 <base href="${pageContext.request.requestURI}" />
 <meta charset="ISO-8859-1">
 <title>Bestenliste</title>

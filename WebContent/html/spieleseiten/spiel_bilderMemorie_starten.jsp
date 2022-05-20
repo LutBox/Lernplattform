@@ -10,6 +10,7 @@ Erstellt von Lukas Theinert
 <head>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spiel_bilderMemorie.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/spiel_bilderMemorie.js" defer></script>
 
 

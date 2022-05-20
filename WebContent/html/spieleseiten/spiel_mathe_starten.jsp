@@ -7,6 +7,9 @@ Erstellt von Lukas Theinert
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+
 <base href="${pageContext.request.requestURI}"/>
 <meta charset="ISO-8859-1">
 <title>Spiel Starten</title>

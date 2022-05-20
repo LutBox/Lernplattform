@@ -9,8 +9,10 @@ Erstellt von Lukas Theinert
 <head>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/navigation.js" defer></script>
 
 <base href="${pageContext.request.requestURI}" />
 <meta charset="UTF-8">
