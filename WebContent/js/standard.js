@@ -16,12 +16,12 @@ function init_goToTop() {
 document.getElementById("goToTopButton").addEventListener("click", goToTop);
 } 
 
-window.onscroll = function() {myFunction()};
+window.onscroll = function() {myFunctionGoToTop()};
 
 var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
 
-function myFunction() {
+function myFunctionGoToTop() {
   if (window.pageYOffset >= sticky) {
     navbar.classList.add("sticky")
   } else {

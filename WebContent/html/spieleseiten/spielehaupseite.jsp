@@ -12,7 +12,7 @@ Erstellt von Lukas Theinert
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/navigation.js" defer></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
 <base href="${pageContext.request.requestURI}" />
 <meta charset="UTF-8">
@@ -20,18 +20,27 @@ Erstellt von Lukas Theinert
 </head>
 <body>
 
-	<h1>Übersichtsseite: Spiele</h1>
-
-	<nav>
+	<header>
+		<h1>Spieleübersicht</h1>	
 		<%@include file="../jspf/navigation.jspf"%>
-	</nav>
+	</header>
 	
+	<!-- Flex-Item 1 -->
+	<div id="flexarea">
+	
+		<!-- Flex-Item 1 -->
+		<aside>
+			<h2>Top-News</h2>
+			<p>Forum-Threads</p>
+		</aside>
+		
+		<!-- Flex-Item 2 -->
+		<article>
 
 	<form id="Spielstarten"
 		action="${pageContext.request.contextPath}/SpielStartenServlet"
 		method="post" accept-charset="UTF-8">
 
-		<p>Spieleauswahl:</p>
 
 <div class="spielart">
 		
@@ -238,6 +247,20 @@ Erstellt von Lukas Theinert
 
 </table>
 	</form>
+				<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+	
+	</article>
+		<!-- Flex-Item 3 -->
+		<aside>
+			<h2>Beschreibungen</h2>
+		</aside>
+		
+	</div>
+	<!-- Ende der FLEXBOX -->
+	<br> <br> <br> <br>
+	<footer>
+			<%@include file="../jspf/footer.jspf"%>
+	</footer>
 
 </body>
 </html>

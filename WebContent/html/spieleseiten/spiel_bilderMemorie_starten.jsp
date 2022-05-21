@@ -9,8 +9,10 @@ Erstellt von Lukas Theinert
 <html>
 <head>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spiel_bilderMemorie.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spiel_bilderMemorie.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/spiel_bilderMemorie.js" defer></script>
 
 
@@ -23,7 +25,10 @@ Erstellt von Lukas Theinert
 	<c:set var='gewertet' value='${spielStartenBean.gewertet}'/>
 	<c:set var='val' value='${spielStartenBean.schwierigkeit}'/>
 
-	<h1>Bildermemorie</h1>
+	<header>
+		<h1>Bildermemorie</h1>	
+		<%@include file="../jspf/navigation.jspf"%>
+	</header>
 	
 	<br>
 
@@ -31,10 +36,12 @@ Erstellt von Lukas Theinert
 <div id="gewertet" hidden>${spielStartenBean.gewertet}</div>
 <div id="timerID" hidden>${spielStartenBean.timer}</div>
 
-	<nav>
-		<%@include file="../jspf/navigation.jspf"%>
-	</nav>
-
+	<!-- Begin der FLEXBOX = Flex-Container -->
+	<div id="flexarea">
+	
+		<!-- Flex-Item 2 -->
+		<article>
+		
 	<div class="game">
             <div class="controls" id = "controls">
                 <button id="start">Start</button><br>
@@ -61,7 +68,7 @@ Erstellt von Lukas Theinert
             </div>
         </div>
         
-	<br><br><br><br><br><br>
+	<br><br><br><br>
 
   <c:choose> 
   <c:when test="${val == 'leicht'}">
@@ -232,12 +239,18 @@ Erstellt von Lukas Theinert
     
   </c:when>
 </c:choose>
-
-
-    
+  
   </section>
+  			<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+  
+  </article>
 
-
+	</div>
+	<!-- Ende der FLEXBOX -->
+	
+	<footer>
+			<%@include file="../jspf/footer.jspf"%>
+	</footer>
 
 </body>
 </html>

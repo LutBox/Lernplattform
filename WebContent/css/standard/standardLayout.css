@@ -18,15 +18,21 @@ Erstellt von Lukas Theinert
 	flex-flow: row wrap;
 }
 
+header {
+	text-align: center;
+}
+
 article {
 	flex: 3;
 }
 
 aside {
 	flex: 1;
+	background-color: rgba(225,225,225,0.5);
+	box-shadow: 0 0 15px 5px #000000;
 }
 
-header, nav, article, aside, footer {
+article, aside {
 	/* border: 1px solid; */
 	padding: 10px;
 	margin: 10px;
@@ -37,6 +43,8 @@ html {
     width: 100%;
     height: 100%;
     background: linear-gradient(45deg, #FFFFFF, #C6E7DE);
+    background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 @font-face {
     font-family: Heebo-Regular;
@@ -93,6 +101,7 @@ html {
         border: 1px solid #000330;
         border-radius: 5px;
     }
+    
     input:hover, textarea:hover {
         background: #f0fffa;
         box-shadow: 0 0 10px #000000;
@@ -114,12 +123,7 @@ html {
         color: green;
         content: " âœ“â€�";
     }
-    form div {
-        padding: 0.2em;
-    }
-    article {
-        padding: 0.5em;
-    }
+
     #searchInput {
         background-color: #b3ffff;
     }

@@ -1,6 +1,7 @@
 <%--
 Erstellt von Lukas Theinert
 --%>
+
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -22,6 +23,7 @@ Erstellt von Lukas Theinert
 		<h1>Lernplattform</h1>	
 		<%@include file="html/jspf/navigation.jspf"%>
 	</header>
+	
 	
 	<!-- Begin der FLEXBOX = Flex-Container -->
 	<div id="flexarea">

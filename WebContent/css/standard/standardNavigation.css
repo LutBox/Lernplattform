@@ -2,23 +2,19 @@
 Erstellt von Lukas Theinert
  */
 
-nav {
-	display: flex;
-	
-}
-
 nav ul { 
   background-color: #000000e0;
-  border-radius: 10px;
-  list-style-type: none;
-  margin: auto;
-  padding: 0;
-  overflow: hidden;
-  top: 0;
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+  text-align: center;
+  top: 0px;
 }
 
 nav ul li {
   display: inline-block;
+  
 }
 
 nav ul li a {
@@ -40,7 +36,5 @@ nav ul li a:hover {
 
 .sticky {
   position: fixed;
-  top: 0;
-  width: 95%;
-  text-align: center;
+  margin-top: 0;
 }
