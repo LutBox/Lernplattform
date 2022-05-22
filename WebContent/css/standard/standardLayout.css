@@ -13,6 +13,7 @@ Erstellt von Lukas Theinert
 	box-sizing: border-box;
 }
 
+
 #flexarea {
 	display: flex;
 	flex-flow: row wrap;
@@ -64,7 +65,7 @@ html {
     }
     
 	label {
-        min-width: 6em;
+        min-width: 2em;
         display: inline-block;
         text-align: left;
     }
@@ -72,6 +73,7 @@ html {
     input {
         width: 20em;
     }
+    
     textarea {
         width: 20em;
         border: 1px solid black;
@@ -109,19 +111,15 @@ html {
 
     input:required+span::after {
         color: red;
-        content: " *";
     }
     textarea:required+span::after {
         color: red;
-        content: " *";
     }
     input[type="email"]:valid+span::after {
         color: green;
-        content: " âœ“â€�";
     }
     textarea:valid+span::after {
         color: green;
-        content: " âœ“â€�";
     }
 
     #searchInput {
@@ -145,22 +143,16 @@ html {
     }
     
     label {
-        min-width: 6em;
+        min-width: 2em;
         display: inline-block;
         text-align: left;
     }
-    
-    input {
-        width: 18em;
-    }
+
     textarea {
         width: 18em;
         border: 1px solid black;
     }
     
-    input[type="checkbox"], input[type="radio"] {
-        margin-left: 8em;
-    }
     
     label.textarea {
         vertical-align: top;
@@ -191,26 +183,17 @@ html {
 
     input:required+span::after {
         color: red;
-        content: " *";
     }
     textarea:required+span::after {
         color: red;
-        content: " *";
     }
     input[type="email"]:valid+span::after {
         color: green;
-        content: " Ã¢Å“â€�";
     }
     textarea:valid+span::after {
         color: green;
-        content: " Ã¢Å“â€�";
     }
-    form div {
-        padding: 0.2em;
-    }
-    article {
-        padding: 0.5em;
-    }
+
     #searchInput {
         background-color: #b3ffff;
     }
@@ -228,17 +211,13 @@ html {
     
     body {
 		font-family: Heebo-Regular;
-		font-size: 14px;
+		font-size: 12px;
     }
     
     label {
-        min-width: 6em;
+        min-width: 2em;
         display: block;
         text-align: left;
-    }
-    
-    input {
-        width: 16em;
     }
     
     textarea {
@@ -276,45 +255,23 @@ html {
     }
     
     input:hover, textarea:hover {
-        background: #fffff0;
-        border: 2px solid #efe816;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background: #f0fffa;
+        box-shadow: 0 0 10px #000000;
     }
-    button:hover {
-        /*
-        background: #c9c9c9;
-        border: 2px solid #6c6c6c;
-         */
-        background: #00ff80;
-        border: 2px solid #008000;
-    }
-    button:active {
-        background: #8f8f8f;
-        box-shadow: 0 5px #666;
-        transform: translateY(4px);
-    }
+
     input:required+span::after {
         color: red;
-        content: " *";
     }
     textarea:required+span::after {
         color: red;
-        content: " *";
     }
     input[type="email"]:valid+span::after {
         color: green;
-        content: " âœ“â€�";
     }
     textarea:valid+span::after {
         color: green;
-        content: " âœ“â€�";
     }
-    form div {
-        padding: 0.2em;
-    }
-    article {
-        padding: 0.5em;
-    }
+
     #searchInput {
         background-color: #b3ffff;
     }

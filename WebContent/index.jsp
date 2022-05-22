@@ -31,7 +31,7 @@ Erstellt von Lukas Theinert
 		<!-- Flex-Item 1 -->
 		<aside>
 			<h2>Top-News</h2>
-			<p>Forum-Threads</p>
+			<p>Bildermemorie jetzt verfügbar!</p>
 		</aside>
 		
 		<!-- Flex-Item 2 -->
@@ -58,7 +58,10 @@ Erstellt von Lukas Theinert
 		
 		<!-- Flex-Item 3 -->
 		<aside>
-			<h2>Beschreibungen</h2>
+		
+			<h3>Top 3 Spieler</h3>
+			<p id="liste1">Listeneinträge</p>
+
 		</aside>
 		
 	</div>

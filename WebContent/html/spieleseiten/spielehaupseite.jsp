@@ -58,17 +58,17 @@ Erstellt von Lukas Theinert
 		</div>
 				<div class="flip-card-back">
 					<input type="radio" name="Schwierigkeit" id="leicht" value="leichtMathe" required>
-					<label for="leichtMathe">Zu jung zum sterben</label>
+					<label for="leichtMathe">Leicht</label>
 					
 					<br>
 					
 					<input type="radio" name="Schwierigkeit" id="mittelMathe" value="mittel">
-					<label for="mittelMathe">Albtraum</label>
+					<label for="mittelMathe">Mittel</label>
 					
 					<br>
 					
 					<input type="radio" name="Schwierigkeit" id="schwerMathe" value="schwer">
-					<label for="schwerMathe">Todesmarsch</label>
+					<label for="schwerMathe">Schwer</label>
 					
 					<br><br>
 					
@@ -157,44 +157,37 @@ Erstellt von Lukas Theinert
 				
 				<img src="../../bilder/bildermemorie.png" alt="mathe" style="width:256px;height:256px;">
 
-		</div>
+		</div>		
 				<div class="flip-card-back">
+				Schwierigkeit:<br>
 					<input type="radio" name="Schwierigkeit" id="leichtBilderMemorie" value="leicht" checked="checked" required>
-					<label for="leichtBilderMemorie">Zu jung zum sterben</label>
-					
-					<br>
-					
+					<label for="leichtBilderMemorie">Leicht</label>
+				
 					<input type="radio" name="Schwierigkeit" id="mittelBilderMemorie" value="mittel">
-					<label for="mittelBilderMemorie">Albtraum</label>
-					
-					<br>
+					<label for="mittelBilderMemorie">Mittel</label>					
 					
 					<input type="radio" name="Schwierigkeit" id="schwerBilderMemorie" value="schwer">
-					<label for="schwerBilderMemorie">Todesmarsch</label>
+					<label for="schwerBilderMemorie">Schwer</label>
 					
-					<br>
-					<br>
+					<br><br>					
 					
 					<div>
+					Timer:<br>
 					<input type="radio" name="Timer" id="timerAnBildermemorie" value="timerAn" required checked="checked">
-					<label for="timerAnBildermemorie">Mit Zeit spielen</label>
-					
-					<br>
+					<label for="timerAnBildermemorie">An</label>
 					
 					<input type="radio" name="Timer" id="timerAusBildermemorie" value="TimerAus" required>
-					<label for="timerAusBildermemorie">Ohne Zeit spielen</label>
+					<label for="timerAusBildermemorie">Aus</label>
 				</div>
 				
-				<br>
-				
+<br>		
 				<div>
+				Gewertet:<br>
 					<input type="radio" name="Gewertet" id="gewertetAnBildermemorie" value="gewertetAn" checked="checked">
-					<label for="gewertetAnBildermemorie">Spiel ist geweret</label>
-					
-					<br>
+					<label for="gewertetAnBildermemorie">An</label>					
 					
 					<input type="radio" name="Gewertet" id="gewertetAusBildermemorie" value="gewertetAus">
-					<label for="gewertetAusBildermemorie">Spiel ist nicht gewertet</label>
+					<label for="gewertetAusBildermemorie">Aus</label>
 				</div>
 				
 					<br>
