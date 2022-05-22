@@ -18,21 +18,23 @@
 			enctype="multipart/form-data">
 			<fieldset>
 				<div class="eingabefeld">
-					<label for="name">Nutzername: </label> <br /> <input name="name"
-						id="name" type="text" placeholder="Nutzername" maxlength="64"
-						required="required" value="${nutzer.name}" /> <br /> <label for="email">E-Mail:</label>
-					<br /> <input name="email" id="email" type="email"
-						value="${nutzer.email}" placeholder="e-mail" maxlength="64"
-						required="required"/> <br /> <label for="passwort">Passwort:</label>
-					<br /> <input name="passwort" id="passwort" type="password"
+					<label for="neuerName">Neuer Nutzername: </label> <br /> <input
+						name="neuerName" id="neuerName" type="text"
+						placeholder="Neuer Nutzername" maxlength="64"
+						value="${nutzer.name}" required="required" /> <br /> <label
+						for="email">Neue E-Mail:</label> <br /> <input name="neueEmail"
+						id="neuEmail" type="email" value="${nutzer.email}"
+						placeholder="e-mail" maxlength="64" /> <br /> <label
+						for="neuesPasswort">Neues Passwort:</label> <br /> <input
+						name="neuesPasswort" id="neuesPasswort" type="password"
 						maxlength="128" required="required"
 						title="Das Passwort muss mindestens 8 Zeichen lang, mindestens eine Ziffer, mindestens einen Großbuchstaben und mindestens einen Kleinbuchstaben beinhalten." />
-					<br /> <label for="passwort2">Passwort wiederholen:</label> <br>
+					<br /> <label for="passwort2">Neues Passwort wiederholen:</label> <br>
 					<input name="passwort2" id="passwort2" type="password"
-						maxlength="128" required="required"
-						titel="Die Passwörter müssen übereinstimmen." /> <br /> <label
-						for="profilbild">Profilbild hochladen:</label> <br /> <input
-						type="file" name="profilbild" id="profilbild" accept="image/*" />
+						maxlength="128" titel="Die Passwörter müssen übereinstimmen."
+						required="required" /> <br /> <label for="profilbild">Profilbild
+						hochladen:</label> <br /> <input type="file" name="profilbild"
+						id="profilbild" accept="image/*" />
 				</div>
 				<div class="infotext">
 					<c:out value="${registrierunginfotext}"
@@ -42,6 +44,7 @@
 					<button type="submit">Absenden</button>
 					<br />
 					<button type="reset">Zurücksetzen</button>
+					<br /> <a href="./nutzerhauptseite.jsp">Abbrechen</a>
 				</div>
 			</fieldset>
 		</form>

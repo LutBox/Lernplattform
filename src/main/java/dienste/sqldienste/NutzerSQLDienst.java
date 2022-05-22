@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 
 import beans.modelbeans.NutzerBean;
 import beans.viewbeans.NutzerViewBean;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -21,9 +22,10 @@ public class NutzerSQLDienst extends SQLDienst {
 	/**
 	 * @author Merlin
 	 * @param neuerNutzer
+	 * @throws ServletException
 	 * @see Methode speichert einen Nutzer in der Datenbank ab
 	 */
-	public static void nutzerSpeichern(NutzerBean neuerNutzer) {
+	public static void nutzerSpeichern(NutzerBean neuerNutzer) throws ServletException {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("INSERT INTO " + tabellenname
 						+ " (name,email,punkte,passwort,admin,bild) VALUES (?,?,?,?,?,?)")) {
@@ -35,7 +37,7 @@ public class NutzerSQLDienst extends SQLDienst {
 			pstmt.setBinaryStream(6, neuerNutzer.getBild().getInputStream());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ServletException(e.getMessage());
 		}
 	}
 
@@ -43,8 +45,9 @@ public class NutzerSQLDienst extends SQLDienst {
 	 * @author Merlin
 	 * @param name
 	 * @return NutzerViewBean
+	 * @throws ServletException
 	 */
-	public static NutzerViewBean gebeMirNutzeranzeigeMitDemNamen(String name) {
+	public static NutzerViewBean gebeMirNutzeranzeigeMitDemNamen(String name) throws ServletException {
 		NutzerViewBean nutzerAnzeige = new NutzerViewBean();
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
@@ -60,7 +63,7 @@ public class NutzerSQLDienst extends SQLDienst {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ServletException(e.getMessage());
 		}
 		return nutzerAnzeige;
 	}
@@ -69,11 +72,12 @@ public class NutzerSQLDienst extends SQLDienst {
 	 * @author Merlin
 	 * @param name
 	 * @return NutzerBean
+	 * @throws ServletException
 	 * @see Diese Methode liefert ein "Nutzer"-Objekt zum angegenen Namen
 	 *      (Primaerschluessel).
 	 * 
 	 */
-	public static NutzerBean gebeMirNutzerMitDemNamen(String name) {
+	public static NutzerBean gebeMirNutzerMitDemNamen(String name) throws ServletException {
 		NutzerBean nutzer = new NutzerBean();
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("SELECT * FROM " + tabellenname + " WHERE name = ? ")) {
@@ -86,10 +90,11 @@ public class NutzerSQLDienst extends SQLDienst {
 					nutzer.setAdmin(rs.getInt("admin"));
 					nutzer.setPunkte(rs.getInt("punkte"));
 					nutzer.setBildnr(rs.getInt("bildnr"));
+					nutzer.setBild(rs.getBlob("bild"));
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ServletException(e.getMessage());
 		}
 		return nutzer;
 	}
@@ -97,16 +102,17 @@ public class NutzerSQLDienst extends SQLDienst {
 	/**
 	 * @author Merlin
 	 * @param name
+	 * @throws ServletException
 	 * @see Diese Methode leoscht den Nutzer mit dem angegebenen namen aus der
 	 *      Datenbank.
 	 */
-	public static void loescheNutzerMitDemNamen(String name) {
+	public static void loescheNutzerMitDemNamen(String name) throws ServletException {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("DELETE FROM " + tabellenname + " WHERE name = ? ")) {
 			pstmt.setString(1, name);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ServletException(e.getMessage());
 		}
 	}
 
@@ -114,18 +120,19 @@ public class NutzerSQLDienst extends SQLDienst {
 	 * @author Merlin
 	 * @param alteMail
 	 * @param neueMail
+	 * @throws ServletException
 	 * @see Diese Methode aktualisiert die E-Mailadresse des angegebenen Nutzers zur
 	 *      angegebnen E-Mailadresse.
 	 */
-	public static void aktualisiereEmailDesNutzers(String neueMail, String alteMail) {
+	public static void aktualisiereEmailDesNutzers(String neueMail, String name) throws ServletException {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con
 						.prepareStatement("UPDATE " + tabellenname + " SET email = ? WHERE name = ? ")) {
 			pstmt.setString(1, neueMail);
-			pstmt.setString(2, alteMail);
+			pstmt.setString(2, name);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ServletException(e.getMessage());
 		}
 	}
 
@@ -133,9 +140,10 @@ public class NutzerSQLDienst extends SQLDienst {
 	 * @author Merlin
 	 * @param alterName
 	 * @param neuerName
+	 * @throws ServletException
 	 * @see Methode zur aktualisierung des Nutzernamens
 	 */
-	public static void aktualisiereDenNutzernamen(String neuerName, String alterName) {
+	public static void aktualisiereDenNutzernamen(String neuerName, String alterName) throws ServletException {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con
 						.prepareStatement("UPDATE " + tabellenname + " SET name = ? WHERE name = ? ")) {
@@ -143,16 +151,34 @@ public class NutzerSQLDienst extends SQLDienst {
 			pstmt.setString(2, alterName);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ServletException(e.getMessage());
+		}
+	}
+
+	/**
+	 * @param neuesPasswort
+	 * @param name
+	 * @throws ServletException
+	 */
+	public static void aktualisiereDasPasswortDesNutzers(String neuesPasswort, String name) throws ServletException {
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con
+						.prepareStatement("UPDATE " + tabellenname + " SET passwort = ? WHERE name = ? ")) {
+			pstmt.setString(1, neuesPasswort);
+			pstmt.setString(2, name);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw new ServletException(e.getMessage());
 		}
 	}
 
 	/**
 	 * @author Merlin
 	 * @return boolean
+	 * @throws ServletException
 	 * @see Diese Methode ueberprueft ob ein Nutzername bereits vergeben ist.
 	 */
-	public static boolean istNutzernameVergeben(String wunschname) {
+	public static boolean istNutzernameVergeben(String wunschname) throws ServletException {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("SELECT * FROM " + tabellenname + " WHERE name = ? ")) {
 			pstmt.setString(1, wunschname);
@@ -162,7 +188,7 @@ public class NutzerSQLDienst extends SQLDienst {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ServletException(e.getMessage());
 		}
 		return false;
 	}
@@ -171,10 +197,11 @@ public class NutzerSQLDienst extends SQLDienst {
 	 * @author Merlin
 	 * @param wunschname
 	 * @param neuerPunktestand
+	 * @throws ServletException
 	 * @see Methode setzt den Punktestand des angegbenen Nutzers. Diese Methode kann
 	 *      von den SpeieleServlets genutzt werden.
 	 */
-	public static void setzePunkteDesNutzersAuf(HttpSession session, int neuerPunktestand) {
+	public static void setzePunkteDesNutzersAuf(HttpSession session, int neuerPunktestand) throws ServletException {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con
 						.prepareStatement("UPDATE " + tabellenname + " SET punkte = ? WHERE name = ?")) {
@@ -182,7 +209,7 @@ public class NutzerSQLDienst extends SQLDienst {
 			pstmt.setString(2, ((NutzerViewBean) session.getAttribute(NutzerViewBean.attributname)).getName());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ServletException(e.getMessage());
 		}
 	}
 }

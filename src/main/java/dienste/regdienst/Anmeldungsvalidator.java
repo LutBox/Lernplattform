@@ -4,6 +4,7 @@ import beans.viewbeans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
 import exceptions.KeinAdminException;
 import exceptions.NichtAngemeldetException;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -17,9 +18,9 @@ public class Anmeldungsvalidator {
 	/**
 	 * @author Merlin
 	 * @param request
-	 * @throws KeinAdminException
+	 * @throws ServletException 
 	 */
-	public static void nutzerIstAdmin(HttpSession session) throws KeinAdminException {
+	public static void nutzerIstAdmin(HttpSession session) throws ServletException {
 		NutzerViewBean tmp = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributname);
 		NutzerViewBean potAdmin = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(tmp.getName());
 		if (potAdmin.getAdmin() != 1) {
