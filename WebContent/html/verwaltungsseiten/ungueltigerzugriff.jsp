@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>UngÃ¼ltiger Zugriff</title>
+<title>Ungültiger Zugriff</title>
 </head>
 <body>
 	<h1>Fehler</h1>
-	<p>Bitte melden sie sich fÃ¼r diese Aktion mit dem Entsprechenden Konto an.</p>
+	<p>Bitte melden sie sich für diese Aktion mit dem Entsprechenden Konto an.</p>
 	<ul>
 		<li><a href="../../index.jsp">Startseite</a></li>
 		<li><a href="../nutzerseiten/anmeldung.jsp">Anmelden</a></li>
