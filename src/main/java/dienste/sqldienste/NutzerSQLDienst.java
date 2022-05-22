@@ -26,10 +26,13 @@ public class NutzerSQLDienst extends SQLDienst {
 	public static void nutzerSpeichern(NutzerBean neuerNutzer) {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("INSERT INTO " + tabellenname
-						+ " (name,email,punkte,passwort,admin,dateiname,bild) VALUES (?,?,0,?,0,null,null)")) {
+						+ " (name,email,punkte,passwort,admin,bild) VALUES (?,?,?,?,?,?)")) {
 			pstmt.setString(1, neuerNutzer.getName());
 			pstmt.setString(2, neuerNutzer.getEmail());
-			pstmt.setString(3, neuerNutzer.getPasswort());
+			pstmt.setInt(3, 0);
+			pstmt.setString(4, neuerNutzer.getPasswort());
+			pstmt.setInt(5, 0);
+			pstmt.setBinaryStream(6, neuerNutzer.getBild().getInputStream());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,13 +42,13 @@ public class NutzerSQLDienst extends SQLDienst {
 	/**
 	 * @author Merlin
 	 * @param name
-	 * @return
+	 * @return NutzerViewBean
 	 */
 	public static NutzerViewBean gebeMirNutzeranzeigeMitDemNamen(String name) {
 		NutzerViewBean nutzerAnzeige = new NutzerViewBean();
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT name,email,admin,punkte,dateiname FROM " + tabellenname + " WHERE name = ? ")) {
+						"SELECT name,email,admin,punkte,bildnr FROM " + tabellenname + " WHERE name = ? ")) {
 			pstmt.setString(1, name);
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs != null && rs.next()) {
@@ -53,7 +56,7 @@ public class NutzerSQLDienst extends SQLDienst {
 					nutzerAnzeige.setEmail(rs.getString("email"));
 					nutzerAnzeige.setAdmin(rs.getInt("admin"));
 					nutzerAnzeige.setPunkte(rs.getInt("punkte"));
-					nutzerAnzeige.setDateiname(rs.getString("dateiname"));
+					nutzerAnzeige.setBildnr(rs.getInt("bildnr"));
 				}
 			}
 		} catch (Exception e) {
@@ -82,8 +85,7 @@ public class NutzerSQLDienst extends SQLDienst {
 					nutzer.setPasswort(rs.getString("passwort"));
 					nutzer.setAdmin(rs.getInt("admin"));
 					nutzer.setPunkte(rs.getInt("punkte"));
-					nutzer.setDateiname(rs.getString("dateiname"));
-					nutzer.setBild(rs.getObject("bild"));
+					nutzer.setBildnr(rs.getInt("bildnr"));
 				}
 			}
 		} catch (Exception e) {
@@ -183,6 +185,4 @@ public class NutzerSQLDienst extends SQLDienst {
 			e.printStackTrace();
 		}
 	}
-
-	// Bilder laden und abspeichern koennen hier noch ergaenzt werden
 }

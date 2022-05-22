@@ -14,15 +14,15 @@ public class NutzerViewBean implements Serializable {
 	private String email;
 	private Integer punkte;
 	private Integer admin;
-	private String dateiname;
-	
-	public NutzerViewBean(String name, String email, Integer punkte, Integer admin, String dateiname) {
+	private Integer bildnr;
+
+	public NutzerViewBean(String name, String email, Integer punkte, Integer admin, Integer bildnr) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.punkte = punkte;
 		this.admin = admin;
-		this.dateiname = dateiname;
+		this.bildnr = bildnr;
 	}
 
 	public NutzerViewBean() {
@@ -60,11 +60,14 @@ public class NutzerViewBean implements Serializable {
 		this.admin = admin;
 	}
 
-	public String getDateiname() {
-		return dateiname;
+	public Integer getBildnr() {
+		return bildnr;
 	}
 
-	public void setDateiname(String dateiname) {
-		this.dateiname = dateiname;
+	public void setBildnr(Integer bildnr) {
+		this.bildnr = bildnr;
 	}
+
+
+
 }
