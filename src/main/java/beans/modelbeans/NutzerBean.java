@@ -6,19 +6,24 @@ public class NutzerBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String email;
-	private int punkte;
+	private Integer punkte;
 	private String passwort;
-	private int admin;
+	private Integer admin;
 	private String dateiname;
 	private Object bild;
 	
+	public NutzerBean(String name, String email, Integer punkte, String passwort, Integer admin, String dateiname,
+			Object bild) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.punkte = punkte;
+		this.passwort = passwort;
+		this.admin = admin;
+		this.dateiname = dateiname;
+		this.bild = bild;
+	}
 	public NutzerBean() {
-		this.name = null;
-		this.email = null;
-		this.punkte = 0;
-		this.admin = 0;
-		this.dateiname = null;
-		this.bild = null;
 	}
 	public String getName() {
 		return name;
@@ -32,16 +37,16 @@ public class NutzerBean implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPunkte() {
+	public Integer getPunkte() {
 		return punkte;
 	}
-	public void setPunkte(int punkte) {
+	public void setPunkte(Integer punkte) {
 		this.punkte = punkte;
 	}
-	public int getAdmin() {
+	public Integer getAdmin() {
 		return admin;
 	}
-	public void setAdmin(int admin) {
+	public void setAdmin(Integer admin) {
 		this.admin = admin;
 	}
 	public String getDateiname() {
