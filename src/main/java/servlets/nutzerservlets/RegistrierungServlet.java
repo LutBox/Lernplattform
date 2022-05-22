@@ -39,17 +39,16 @@ public class RegistrierungServlet extends HttpServlet {
 		anfrage.setAdmin(0);
 		anfrage.setPunkte(0);
 
-		Part filePart = request.getPart("profilbild");
-		anfrage.setBild(filePart);
+		Part profilbild = request.getPart("profilbild");
 
 		final HttpSession session = request.getSession();
-		
+
 		if (NutzerSQLDienst.istNutzernameVergeben(anfrage.getName())) {
 			session.setAttribute(infotextname, "Der von ihnen angegebene Nutzername ist bereits vergeben.");
-			session.setAttribute("anfrage",anfrage);
+			session.setAttribute("anfrage", anfrage);
 			response.sendRedirect("./html/nutzerseiten/registrierung.jsp");
 		} else {
-			NutzerSQLDienst.nutzerSpeichern(anfrage);
+			NutzerSQLDienst.nutzerSpeichern(anfrage, profilbild);
 			request.setAttribute("name", anfrage.getName());
 			request.setAttribute("passwort", anfrage.getPasswort());
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("./AnmeldungServlet");

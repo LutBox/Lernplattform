@@ -14,8 +14,8 @@
 	<main>
 		<h1>Mitgliederbereich</h1>
 		<div>
-			<img src="../../ProfilbildLadenServlet?bildnr=${nutzer.bildnr}" />
-			<br />Nutzername: ${nutzer.name} <br />Email: ${nutzer.email} <br />Punktestand:
+			<img src="../../ProfilbildLadenServlet?bildnr=${nutzer.bildnr}" /> <br />Nutzername:
+			${nutzer.name} <br />Email: ${nutzer.email} <br />Punktestand:
 			${nutzer.punkte} <br />Dateiname: ${nutzer.bildnr}
 		</div>
 		<div>

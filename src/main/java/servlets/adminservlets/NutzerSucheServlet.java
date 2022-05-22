@@ -1,21 +1,18 @@
-package servlets.nutzerservlets;
+package servlets.adminservlets;
 
 import java.io.IOException;
 
-import beans.viewbeans.NutzerViewBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
- * @author Merlin Servlet implementation class NutzerAbmeldenServlet
+ * @author Merlin Servlet implementation class NutzerSucheServlet
  */
-@WebServlet("/NutzerAbmeldenServlet")
-public class NutzerAbmeldenServlet extends HttpServlet {
-
+@WebServlet("/NutzerSucheServlet")
+public class NutzerSucheServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -24,9 +21,8 @@ public class NutzerAbmeldenServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.removeAttribute(NutzerViewBean.attributname);
-		response.sendRedirect("./html/nutzerseiten/abgemeldet.jsp");
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -35,6 +31,8 @@ public class NutzerAbmeldenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

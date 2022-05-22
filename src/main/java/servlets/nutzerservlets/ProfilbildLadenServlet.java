@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ProfilbildLadenServlet
+ * @author Merlin Servlet implementation class ProfilbildLadenServlet
  */
 @WebServlet("/ProfilbildLadenServlet")
 @MultipartConfig(maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5

@@ -8,6 +8,7 @@ import beans.modelbeans.NutzerBean;
 import beans.viewbeans.NutzerViewBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 
 /**
  * @author Merlin Diese Klasse führt die Datenbankzugriffe des
@@ -25,7 +26,7 @@ public class NutzerSQLDienst extends SQLDienst {
 	 * @throws ServletException
 	 * @see Methode speichert einen Nutzer in der Datenbank ab
 	 */
-	public static void nutzerSpeichern(NutzerBean neuerNutzer) throws ServletException {
+	public static void nutzerSpeichern(NutzerBean neuerNutzer, Part bild) throws ServletException {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("INSERT INTO " + tabellenname
 						+ " (name,email,punkte,passwort,admin,bild) VALUES (?,?,?,?,?,?)")) {
@@ -34,7 +35,7 @@ public class NutzerSQLDienst extends SQLDienst {
 			pstmt.setInt(3, 0);
 			pstmt.setString(4, neuerNutzer.getPasswort());
 			pstmt.setInt(5, 0);
-			pstmt.setBinaryStream(6, neuerNutzer.getBild().getInputStream());
+			pstmt.setBinaryStream(6, bild.getInputStream());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
@@ -90,7 +91,6 @@ public class NutzerSQLDienst extends SQLDienst {
 					nutzer.setAdmin(rs.getInt("admin"));
 					nutzer.setPunkte(rs.getInt("punkte"));
 					nutzer.setBildnr(rs.getInt("bildnr"));
-					nutzer.setBild(rs.getBlob("bild"));
 				}
 			}
 		} catch (Exception e) {

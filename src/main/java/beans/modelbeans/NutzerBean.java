@@ -2,8 +2,6 @@ package beans.modelbeans;
 
 import java.io.Serializable;
 
-import jakarta.servlet.http.Part;
-
 public class NutzerBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
@@ -12,9 +10,8 @@ public class NutzerBean implements Serializable {
 	private String passwort;
 	private Integer admin;
 	private Integer bildnr;
-	private Part bild;
 
-	public NutzerBean(String name, String email, Integer punkte, String passwort, Integer admin, Integer bildnr, Part bild) {
+	public NutzerBean(String name, String email, Integer punkte, String passwort, Integer admin, Integer bildnr) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -22,14 +19,6 @@ public class NutzerBean implements Serializable {
 		this.passwort = passwort;
 		this.admin = admin;
 		this.bildnr = bildnr;
-	}
-
-	public Part getBild() {
-		return bild;
-	}
-
-	public void setBild(Part bild) {
-		this.bild = bild;
 	}
 
 	public NutzerBean() {

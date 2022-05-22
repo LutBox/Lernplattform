@@ -29,12 +29,12 @@
 						name="neuesPasswort" id="neuesPasswort" type="password"
 						maxlength="128" required="required"
 						title="Das Passwort muss mindestens 8 Zeichen lang, mindestens eine Ziffer, mindestens einen Großbuchstaben und mindestens einen Kleinbuchstaben beinhalten." />
-					<br /> <label for="passwort2">Neues Passwort wiederholen:</label> <br>
-					<input name="passwort2" id="passwort2" type="password"
+					<br /> <label for="passwort2">Neues Passwort wiederholen:</label>
+					<br> <input name="passwort2" id="passwort2" type="password"
 						maxlength="128" titel="Die Passwörter müssen übereinstimmen."
 						required="required" /> <br /> <label for="profilbild">Profilbild
-						hochladen:</label> <br /> <input type="file" name="profilbild"
-						id="profilbild" accept="image/*" />
+						hochladen:</label> <br /> <input type="file" name="neuesProfilbild"
+						id="neuesProfilbild" accept="image/*" required="required" />
 				</div>
 				<div class="infotext">
 					<c:out value="${registrierunginfotext}"
