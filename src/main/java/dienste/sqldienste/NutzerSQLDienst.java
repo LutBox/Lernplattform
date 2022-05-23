@@ -3,6 +3,7 @@ package dienste.sqldienste;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import beans.modelbeans.NutzerBean;
 import beans.viewbeans.NutzerViewBean;
@@ -170,6 +171,46 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
+	}
+
+	/**
+	 * @author Merlin
+	 * @param anzahlErgebnisse
+	 * @param fragment
+	 * @return Liste mit Nutzer die frament im Namen enthalten
+	 * @throws ServletException
+	 */
+	public static ArrayList<NutzerViewBean> gibMirXNutzerMitNamenWie(int anzahlErgebnisse, String fragment)
+			throws ServletException {
+		ArrayList<NutzerViewBean> ergebnis = new ArrayList<NutzerViewBean>();
+		fragment = "%" + fragment + "%";
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(
+						"SELECT name,email,punkte,admin,bildnr FROM " + tabellenname + " WHERE name LIKE ? LIMIT ?")) {
+			pstmt.setString(1, fragment);
+			pstmt.setInt(2, anzahlErgebnisse);
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+				while (rs.next()) {
+					NutzerViewBean tmp = new NutzerViewBean();
+					String name = rs.getString("name");
+					tmp.setName(name);
+					String email = rs.getString("email");
+					tmp.setEmail(email);
+					Integer punkte = rs.getInt("punkte");
+					tmp.setPunkte(punkte);
+					Integer admin = rs.getInt("admin");
+					tmp.setAdmin(admin);
+					Integer bildnr = rs.getInt("bildnr");
+					tmp.setBildnr(bildnr);
+
+					ergebnis.add(tmp);
+				}
+			}
+		} catch (Exception e) {
+			throw new ServletException(e.getMessage());
+		}
+		return ergebnis;
 	}
 
 	/**
