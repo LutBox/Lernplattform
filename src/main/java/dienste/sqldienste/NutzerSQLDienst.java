@@ -180,25 +180,27 @@ public class NutzerSQLDienst extends SQLDienst {
 	 * @return Liste mit Nutzer die frament im Namen enthalten
 	 * @throws ServletException
 	 */
-	public static ArrayList<NutzerViewBean> gibMirXNutzerMitNamenWie(int anzahlErgebnisse, String fragment)
+	public static ArrayList<NutzerBean> gibMirXNutzerMitNamenWie(int anzahlErgebnisse, String fragment)
 			throws ServletException {
-		ArrayList<NutzerViewBean> ergebnis = new ArrayList<NutzerViewBean>();
+		ArrayList<NutzerBean> ergebnis = new ArrayList<NutzerBean>();
 		fragment = "%" + fragment + "%";
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT name,email,punkte,admin,bildnr FROM " + tabellenname + " WHERE name LIKE ? LIMIT ?")) {
+				PreparedStatement pstmt = con.prepareStatement("SELECT name,email,punkte,passwort,admin,bildnr FROM "
+						+ tabellenname + " WHERE name LIKE ? LIMIT ?")) {
 			pstmt.setString(1, fragment);
 			pstmt.setInt(2, anzahlErgebnisse);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 				while (rs.next()) {
-					NutzerViewBean tmp = new NutzerViewBean();
+					NutzerBean tmp = new NutzerBean();
 					String name = rs.getString("name");
 					tmp.setName(name);
 					String email = rs.getString("email");
 					tmp.setEmail(email);
 					Integer punkte = rs.getInt("punkte");
 					tmp.setPunkte(punkte);
+					String passwort = rs.getString("passwort");
+					tmp.setPasswort(passwort);
 					Integer admin = rs.getInt("admin");
 					tmp.setAdmin(admin);
 					Integer bildnr = rs.getInt("bildnr");
@@ -252,5 +254,9 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
+	}
+
+	public static void aktualisiereProfilbildDesNutzers(Part part, Integer bildnr) {
+
 	}
 }

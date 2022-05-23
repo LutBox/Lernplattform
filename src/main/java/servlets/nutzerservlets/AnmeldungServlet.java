@@ -47,7 +47,7 @@ public class AnmeldungServlet extends HttpServlet {
 				} else {
 
 					// Nutzer ist kein Admin
-					response.sendRedirect("./html/nutzerseiten/nutzerhauptseite.jsp");
+					response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
 				}
 			} else {
 				session.setAttribute("anmeldunginfotext", "Bitte prüfen sie ihr Passwort.");

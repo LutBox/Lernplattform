@@ -8,12 +8,14 @@ c) Nutzer ist nicht als Nutzer angemeldet.
 	<c:choose>
 		<c:when test="${nutzer.admin == 1}">
 			<a href="${pageContext.request.contextPath}/index.jsp">Startseite</a>
+			<a href="${pageContext.request.contextPath}/html/verwaltungsseiten/adminkonsole.jsp">Konsole</a>
 			<a href="${pageContext.request.contextPath}/html/verwaltungsseiten/nutzerverwaltung.jsp">Nutzerverwaltung</a>
 			<a href="${pageContext.request.contextPath}/html/verwaltungsseiten/spielekonfigurator.jsp">Spielekonfigurator</a>
-			<a href="${pageContext.request.contextPath}/html/hauptseiten/impressum.jsp">Kontaktanfragen</a>
+			<a href="${pageContext.request.contextPath}/html/verwaltungsseiten/kontaktanfragen.jsp">Kontaktanfragen</a>
 			<a href="${pageContext.request.contextPath}/NutzerAbmeldenServlet">Abmelden</a>
 		</c:when>
 		<c:when test="${nutzer.admin == 0}">
+			<a href="${pageContext.request.contextPath}/index.jsp">Startseite</a>
 			<a href="${pageContext.request.contextPath}/html/nutzerseiten/nutzerhauptseite.jsp">Mitgliederbereich</a>
 			<a href="${pageContext.request.contextPath}/html/nutzerseiten/profilbearbeiten.jsp">Profil bearbeiten</a>
 			<a href="${pageContext.request.contextPath}/html/spieleseiten/spielehaupseite.jsp">Spieleübericht</a>

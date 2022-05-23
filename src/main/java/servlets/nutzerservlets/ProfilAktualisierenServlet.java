@@ -33,19 +33,27 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 		NutzerViewBean nutzerView = (NutzerViewBean) session.getAttribute("nutzer");
 		NutzerBean nutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(nutzerView.getName());
 
+		String alterName = nutzer.getName();
 		String neuerName = request.getParameter("neuerName");
 		String neueEmail = request.getParameter("neueEmail");
 		String neuesPasswort = request.getParameter("neuesPasswort");
 		Part neuesProfilbild = request.getPart("neuesProfilbild");
 
-		nutzer.setName(neuerName);
-		nutzer.setEmail(neueEmail);
-		nutzer.setPasswort(neuesPasswort);
+		if (!neuesPasswort.isBlank() && neuesPasswort != null && !neuesPasswort.equals(nutzer.getPasswort())) {
+			NutzerSQLDienst.aktualisiereDasPasswortDesNutzers(neuesPasswort, alterName);
+		}
+		if (!neueEmail.isBlank() && neueEmail != null && !neueEmail.equals(nutzer.getEmail())) {
+			NutzerSQLDienst.aktualisiereEmailDesNutzers(neueEmail, alterName);
+			nutzerView.setEmail(neueEmail);
+		}
+		if (neuesProfilbild != null) {
+			NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, nutzerView.getBildnr());
+		}
+		if (!neuerName.isBlank() && neuerName != null && !neuerName.equals(alterName)) {
+			NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
+			nutzerView.setName(neuerName);
+		}
 
-		NutzerSQLDienst.nutzerSpeichern(nutzer, neuesProfilbild);
-		NutzerSQLDienst.loescheNutzerMitDemNamen(nutzerView.getName());
-
-		nutzerView = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(neuerName);
 
 		session.setAttribute(NutzerViewBean.attributname, nutzerView);
 		response.sendRedirect("./html/nutzerseiten/nutzerhauptseite.jsp");

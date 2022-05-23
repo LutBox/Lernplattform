@@ -3,7 +3,7 @@ package servlets.adminservlets;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import beans.viewbeans.NutzerViewBean;
+import beans.modelbeans.NutzerBean;
 import dienste.sqldienste.NutzerSQLDienst;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -27,7 +27,7 @@ public class NutzerSucheServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String fragment = request.getParameter("fragment");
 		int anzahlErgebnisse = Integer.parseInt(request.getParameter("anzahlErgebnisse"));
-		ArrayList<NutzerViewBean> suchergebnisse = NutzerSQLDienst.gibMirXNutzerMitNamenWie(anzahlErgebnisse, fragment);
+		ArrayList<NutzerBean> suchergebnisse = NutzerSQLDienst.gibMirXNutzerMitNamenWie(anzahlErgebnisse, fragment);
 		final HttpSession session = request.getSession();
 		session.setAttribute("suchergebnisse", suchergebnisse);
 		response.sendRedirect("./html/verwaltungsseiten/suchergebnisse.jsp");

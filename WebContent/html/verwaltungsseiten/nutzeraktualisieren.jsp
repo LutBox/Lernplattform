@@ -1,7 +1,7 @@
 <%-- @author Merlin --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,38 +9,47 @@
 <title>Nutzer aktualisieren</title>
 </head>
 <body>
-	<p><a href="./admin_startseite.html">zur&uuml;ck zur Verwaltung</a></p>
+	<p>
+		<a href="./admin_startseite.html">zur&uuml;ck zur Verwaltung</a>
+	</p>
 	<h1>Nutzer aktualisieren</h1>
-	
+
 	<form id="myForm" method="post" action="demo02servlet">
-			<fieldset><legend>Benutzer aktualisieren</legend>
-				<div>
-				  <label for="benutzername">Benutzername:</label>
-				  <input type="text" name="benutzername" id="Nachname" placeholder="Vorbelegung BN">
+		<fieldset>
+			<div class="eingabefeld">
+					<label for="neuerName">Neuer Nutzername: </label> <br /> <input
+						name="neuerName" id="neuerName" type="text"
+						placeholder="Neuer Nutzername" maxlength="64"
+						value="${zuverwaltendernutzer.name}" required="required" /> <br /> <label
+						for="email">Neue E-Mail:</label> <br /> <input name="neueEmail"
+						id="neuEmail" type="email" value="${zuverwaltendernutzer.email}"
+						placeholder="e-mail" maxlength="64" /> <br /> <label
+						for="neuesPasswort">Neues Passwort:</label> <br /> <input
+						name="neuesPasswort" id="neuesPasswort" type="password"
+						maxlength="128" value="${zuverwaltendernutzer.passwort}" required="required"
+						title="Das Passwort muss mindestens 8 Zeichen lang, mindestens eine Ziffer, mindestens einen Großbuchstaben und mindestens einen Kleinbuchstaben beinhalten." />
+					<br /> <label for="passwort2">Neues Passwort wiederholen:</label>
+					<br> <input name="passwort2" id="passwort2" type="password"
+						maxlength="128" titel="Die Passwörter müssen übereinstimmen."
+						required="required" /> <br /> <label for="profilbild">Profilbild
+						hochladen:</label> <br /> <input type="file" name="neuesProfilbild"
+						id="neuesProfilbild" accept="image/*" required="required" />
 				</div>
-				<div>
-				  <label for="Nachname">Nachname:</label>
-				  <input type="text" name="Nachname" id="name" placeholder="Vorbelegung NN">
+				<div class="infotext">
+					<c:out value="${registrierunginfotext}"
+						default="Bitte geben sie ihre Daten an." />
 				</div>
-				<div>
-				  <label for="vname">Vorname:</label>
-				  <input type="text" name="vname" id="vname" placeholder="Vorbelegung VN">
+				<div class="formularknopf">
+					<button type="submit">Absenden</button>
+					<br />
+					<button type="reset">Zurücksetzen</button>
+					<br /> <a href="./nutzerhauptseite.jsp">Abbrechen</a>
 				</div>
-				<div>
-				  <label for="passwort">Passwort:</label>
-				  <input type="password" name="passwort" id="passwort" placeholder="Vorbelegung PW">
-				</div>
-				<div>
-				  <input type="checkbox" name="reply" id="reply" value="reply">
-				  <label for="reply">Benutzer informieren</label>
-				</div>
-				<div>
-				  <button type="submit" name="absenden" value="absenden">Absenden</button>
-				  <button type="reset" name="reset" value="reset">Zurücksetzen</button>
-				</div>
-			</fieldset>
-		</form>
-	
-	<p><a href="./admin_startseite.html">zur&uuml;ck zur Verwaltung</a></p>
+		</fieldset>
+	</form>
+	<p>
+		<a href="./suchergebnisse.jsp">zur&uuml;ck zu den Suchergebnissen</a>
+		<a href="./adminkonsole.jsp">zur&uuml;ck zur Verwaltung</a>
+	</p>
 </body>
 </html>

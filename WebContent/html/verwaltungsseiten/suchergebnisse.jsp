@@ -12,24 +12,29 @@
 	<header>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	<h1>Suchergebnisse</h1>
-	<table border="solid">
-		<tr>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Löschen</th>
-			<th>Bearbeiten</th>
-			<th>Zum Admin machen</th>
-		</tr>
-		<c:forEach items="${suchergebnisse}" var="ergebniss">
+	<main>
+		<h1>Suchergebnisse</h1>
+		<table border="solid">
 			<tr>
-				<td>${ergebniss.name}
-				<td>${ergebniss.email}</td>
-				<td><a href="#">löschen</a></td>
-				<td><a href="#">bearbeiten</a></td>
-				<td><a href="#">zum Admin machen</a></td>
-			<tr />
-		</c:forEach>
-	</table>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Passwort</th>
+				<th>Punkte</th>
+				<th>Status</th>
+				<th>Bearbeiten</th>
+			</tr>
+			<c:forEach items="${suchergebnisse}" var="ergebnis">
+				<tr>
+					<td>${ergebnis.name}</td>
+					<td>${ergebnis.email}</td>
+					<td>${ergebnis.passwort}</td>
+					<td>${ergebnis.punkte}</td>
+					<td><c:if test="${ergebnis.admin==0}">Nutzer</c:if> <c:if
+							test="${ergebnis.admin==1}">Admin</c:if></td>
+					<td><a href="./nutzeraktualisieren.jsp">bearbeiten</a></td>
+				<tr />
+			</c:forEach>
+		</table>
+	</main>
 </body>
 </html>
