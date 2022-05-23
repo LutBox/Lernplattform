@@ -9,8 +9,10 @@ Erstellt von Lukas Theinert
 <head>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
 <base href="${pageContext.request.requestURI}" />
 <meta charset="UTF-8">
@@ -18,18 +20,27 @@ Erstellt von Lukas Theinert
 </head>
 <body>
 
-	<h1>Übersichtsseite: Spiele</h1>
-
-	<nav>
+	<header>
+		<h1>Spieleübersicht</h1>	
 		<%@include file="../jspf/navigation.jspf"%>
-	</nav>
+	</header>
 	
+	<!-- Flex-Item 1 -->
+	<div id="flexarea">
+	
+		<!-- Flex-Item 1 -->
+		<aside>
+			<h2>Top-News</h2>
+			<p>Forum-Threads</p>
+		</aside>
+		
+		<!-- Flex-Item 2 -->
+		<article>
 
 	<form id="Spielstarten"
 		action="${pageContext.request.contextPath}/SpielStartenServlet"
 		method="post" accept-charset="UTF-8">
 
-		<p>Spieleauswahl:</p>
 
 <div class="spielart">
 		
@@ -47,17 +58,17 @@ Erstellt von Lukas Theinert
 		</div>
 				<div class="flip-card-back">
 					<input type="radio" name="Schwierigkeit" id="leicht" value="leichtMathe" required>
-					<label for="leichtMathe">Zu jung zum sterben</label>
+					<label for="leichtMathe">Leicht</label>
 					
 					<br>
 					
 					<input type="radio" name="Schwierigkeit" id="mittelMathe" value="mittel">
-					<label for="mittelMathe">Albtraum</label>
+					<label for="mittelMathe">Mittel</label>
 					
 					<br>
 					
 					<input type="radio" name="Schwierigkeit" id="schwerMathe" value="schwer">
-					<label for="schwerMathe">Todesmarsch</label>
+					<label for="schwerMathe">Schwer</label>
 					
 					<br><br>
 					
@@ -146,44 +157,37 @@ Erstellt von Lukas Theinert
 				
 				<img src="../../bilder/bildermemorie.png" alt="mathe" style="width:256px;height:256px;">
 
-		</div>
+		</div>		
 				<div class="flip-card-back">
+				Schwierigkeit:<br>
 					<input type="radio" name="Schwierigkeit" id="leichtBilderMemorie" value="leicht" checked="checked" required>
-					<label for="leichtBilderMemorie">Zu jung zum sterben</label>
-					
-					<br>
-					
+					<label for="leichtBilderMemorie">Leicht</label>
+				
 					<input type="radio" name="Schwierigkeit" id="mittelBilderMemorie" value="mittel">
-					<label for="mittelBilderMemorie">Albtraum</label>
-					
-					<br>
+					<label for="mittelBilderMemorie">Mittel</label>					
 					
 					<input type="radio" name="Schwierigkeit" id="schwerBilderMemorie" value="schwer">
-					<label for="schwerBilderMemorie">Todesmarsch</label>
+					<label for="schwerBilderMemorie">Schwer</label>
 					
-					<br>
-					<br>
+					<br><br>					
 					
 					<div>
+					Timer:<br>
 					<input type="radio" name="Timer" id="timerAnBildermemorie" value="timerAn" required checked="checked">
-					<label for="timerAnBildermemorie">Mit Zeit spielen</label>
-					
-					<br>
+					<label for="timerAnBildermemorie">An</label>
 					
 					<input type="radio" name="Timer" id="timerAusBildermemorie" value="TimerAus" required>
-					<label for="timerAusBildermemorie">Ohne Zeit spielen</label>
+					<label for="timerAusBildermemorie">Aus</label>
 				</div>
 				
-				<br>
-				
+<br>		
 				<div>
+				Gewertet:<br>
 					<input type="radio" name="Gewertet" id="gewertetAnBildermemorie" value="gewertetAn" checked="checked">
-					<label for="gewertetAnBildermemorie">Spiel ist geweret</label>
-					
-					<br>
+					<label for="gewertetAnBildermemorie">An</label>					
 					
 					<input type="radio" name="Gewertet" id="gewertetAusBildermemorie" value="gewertetAus">
-					<label for="gewertetAusBildermemorie">Spiel ist nicht gewertet</label>
+					<label for="gewertetAusBildermemorie">Aus</label>
 				</div>
 				
 					<br>
@@ -236,6 +240,20 @@ Erstellt von Lukas Theinert
 
 </table>
 	</form>
+				<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+	
+	</article>
+		<!-- Flex-Item 3 -->
+		<aside>
+			<h2>Beschreibungen</h2>
+		</aside>
+		
+	</div>
+	<!-- Ende der FLEXBOX -->
+	<br> <br> <br> <br>
+	<footer>
+			<%@include file="../jspf/footer.jspf"%>
+	</footer>
 
 </body>
 </html>

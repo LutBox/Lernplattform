@@ -1,0 +1,8 @@
+/* Erstellt von Lukas Theinert */
+
+.goToTopButton {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 10%;
+}
