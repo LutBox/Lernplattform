@@ -60,12 +60,12 @@ public class BilderMemorieAjax extends HttpServlet {
 		
 		// In Datenbank eintragen
 		persist(bilderMemorieAjax, aktuellerNutzer);
-		
+	
 		if(bilderMemorieAjax.getGewertet().equals("gewertetAn")) {
 				persist2(bilderMemorieAjax, aktuellerNutzer);
+			//log("HAT GEKLAPPT");	
 		}
 		
-
 	}
 	
 
@@ -84,7 +84,7 @@ public class BilderMemorieAjax extends HttpServlet {
 				pstmt.setInt(7, bilderMemorieAjax.getVersuche());
 				
 			pstmt.executeUpdate();
-			
+			//log("HAT GEKLAPPT: "+aktuellerNutzer.getName());
 			
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());

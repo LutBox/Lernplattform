@@ -198,6 +198,40 @@ Erstellt von Lukas Theinert
 				
 		</div>	
 </div>
+
+<%-- 
+---------- Jump n Run ---------- 
+--%>
+
+		<div class="flip-card">
+			<div class="flip-card-inner">
+				<div class="flip-card-front">
+				
+				<img src="../../bilder/jumpnrun.png" alt="jumpnrun" style="width:256px;height:256px;">
+
+		</div>
+				<div class="flip-card-back">
+					<input type="radio" name="Schwierigkeit" id="leichtjumpnrun" value="leicht" required>
+					<label for="leichtjumpnrun">Zu jung zum sterben</label>
+					
+					<br>
+					
+					<input type="radio" name="Schwierigkeit" id="mitteljumpnrun" value="mittel">
+					<label for="mitteljumpnrun">Albtraum</label>
+					
+					<br>
+					
+					<input type="radio" name="Schwierigkeit" id="schwerjumpnrun" value="schwer">
+					<label for="schwerjumpnrun">Todesmarsch</label>
+					
+					<br><br>
+					
+						<button class="button" name="Spielart" id="jumpnrun" value="jumpnrun" type="submit">Starten!</button>
+						
+				</div>
+				
+		</div>	
+</div>
 			
 
 <%-- 

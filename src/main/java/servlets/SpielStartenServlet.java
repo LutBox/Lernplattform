@@ -14,6 +14,7 @@ import java.util.Random;
 import javax.sql.DataSource;
 
 import beans.SpielBilderMemorieBean;
+import beans.SpielBilderOrdnenBean;
 import beans.SpielStartenBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
@@ -91,7 +92,14 @@ public class SpielStartenServlet extends HttpServlet {
 		//-------------------------------------------------
 		//---------- Bilder ordnen   ----------------------
 		//-------------------------------------------------
-		} else if(spielartServlet.equals("bilderOrdnen")) {
+		} else if(spielartServlet.equals("bilderOrdnen")) {			
+			//8 Zufällige Bilder in Bean speichern
+			SpielBilderOrdnenBean spielBilderOrdnen = new SpielBilderOrdnenBean();
+			spielBilderOrdnen = spielBilderOrdnen();
+			
+			//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
+			session.setAttribute("spielBilderOrdnen", spielBilderOrdnen);
+			
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
 			dispatcher.forward(request, response);
 			
@@ -108,6 +116,13 @@ public class SpielStartenServlet extends HttpServlet {
 			
 			//Weiterleiten an JSP
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderMemorie_starten.jsp");
+			dispatcher.forward(request, response);	
+
+		//-------------------------------------------------
+		//---------- Jump n run   -------------------------
+		//-------------------------------------------------	
+		} else if(spielartServlet.equals("jumpnrun")) {
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_jumpnrun_starten.jsp");
 			dispatcher.forward(request, response);	
 			
 		//-------------------------------------------------
@@ -145,8 +160,74 @@ public class SpielStartenServlet extends HttpServlet {
 		
 	}
 	
-	public void spielBilderOrdnen() {
+	public SpielBilderOrdnenBean spielBilderOrdnen() throws ServletException {
+		int durchlauf = 0;
+		SpielBilderOrdnenBean spielBilder = new SpielBilderOrdnenBean();
 		
+		//DB-Zugriff
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(
+						"SELECT * FROM bild ORDER BY RAND() LIMIT 16")) {
+
+			try(ResultSet rs = pstmt.executeQuery()) {
+				while (rs!= null && rs.next()) {
+					durchlauf++;
+					
+					if(durchlauf ==1) {
+						spielBilder.setBild1ID(rs.getLong("id"));
+						spielBilder.setBild1Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==2) {
+						spielBilder.setBild2ID(rs.getLong("id"));
+						spielBilder.setBild2Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==3) {
+						spielBilder.setBild3ID(rs.getLong("id"));
+						spielBilder.setBild3Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==4) {
+						spielBilder.setBild4ID(rs.getLong("id"));
+						spielBilder.setBild4Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==5) {
+						spielBilder.setBild5ID(rs.getLong("id"));
+						spielBilder.setBild5Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==6) {
+						spielBilder.setBild6ID(rs.getLong("id"));
+						spielBilder.setBild6Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==7) {
+						spielBilder.setBild7ID(rs.getLong("id"));
+						spielBilder.setBild7Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==8){
+						spielBilder.setBild8ID(rs.getLong("id"));
+						spielBilder.setBild8Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==9) {
+						spielBilder.setBild9ID(rs.getLong("id"));
+						spielBilder.setBild9Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==10) {
+						spielBilder.setBild10ID(rs.getLong("id"));
+						spielBilder.setBild10Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==11) {
+						spielBilder.setBild11ID(rs.getLong("id"));
+						spielBilder.setBild11Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==12) {
+						spielBilder.setBild12ID(rs.getLong("id"));
+						spielBilder.setBild12Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==13) {
+						spielBilder.setBild13ID(rs.getLong("id"));
+						spielBilder.setBild13Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==14) {
+						spielBilder.setBild14ID(rs.getLong("id"));
+						spielBilder.setBild14Kategorie(rs.getString("kategorie"));
+					} else if(durchlauf ==15) {
+						spielBilder.setBild15ID(rs.getLong("id"));
+						spielBilder.setBild15Kategorie(rs.getString("kategorie"));
+					} else {
+						spielBilder.setBild16ID(rs.getLong("id"));
+						spielBilder.setBild16Kategorie(rs.getString("kategorie"));
+					}
+				}
+			}	
+		} catch (Exception ex) {
+			throw new ServletException(ex.getMessage());
+		}
+		return spielBilder;
 	}
 	
 	private SpielBilderMemorieBean spielBilderMemorie() throws ServletException {

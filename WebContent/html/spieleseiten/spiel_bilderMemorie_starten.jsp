@@ -23,7 +23,7 @@ Erstellt von Lukas Theinert
 
 	<c:set var='time' value='${spielStartenBean.timer}'/>
 	<c:set var='gewertet' value='${spielStartenBean.gewertet}'/>
-	<c:set var='val' value='${spielStartenBean.schwierigkeit}'/>
+	<c:set var='val' value='${spielStartenBean.schwierigkeit}'/>,
 
 	<header>
 		<h1>Bildermemorie</h1>	
@@ -32,6 +32,7 @@ Erstellt von Lukas Theinert
 	
 	<br>
 
+<div id="temp" hidden></div>
 <div id="nutzer" hidden>${nutzer.name}</div>
 <div id="gewertet" hidden>${spielStartenBean.gewertet}</div>
 <div id="timerID" hidden>${spielStartenBean.timer}</div>
