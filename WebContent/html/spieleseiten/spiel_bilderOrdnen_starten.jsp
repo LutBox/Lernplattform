@@ -38,35 +38,28 @@ Erstellt von Lukas Theinert
 		--%>
 
 		<!-- Flex-Item 2: Spalte Mitte -->
-		<article>			
-			
-	<div class="app">
+		<article>						
 	
 		<header>
 			<h1>DRAG n DROP</h1>
 		</header>
 		
-		<div class="lists">
-			<div class="list">
-			
-				<div class="list-item" draggable="true">
-					<img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild1ID}" alt="bild1" />
-				</div>
-				
-				<div class="list-item" draggable="true">
-					<img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild2ID}" alt="bild2" />
-				</div>
-				
-				<div class="list-item" draggable="true">
-					<img class="vorne" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild3ID}" alt="bild3" />
-				</div>
-				
-			</div>
-			
-			<div class="list"></div>
-			<div class="list"></div>
-		</div>
-	</div>
+  <section class="draggable-elements">
+  <img class="bild1 draggable" draggable="true" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild1ID}" id="${spielBilderOrdnen.bild1Kategorie}" />
+  <img class="bild2 draggable" draggable="true" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild2ID}" id="${spielBilderOrdnen.bild2Kategorie}" />
+  <img class="bild3 draggable" draggable="true" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild3ID}" id="${spielBilderOrdnen.bild3Kategorie}" />
+  <img class="bild4 draggable" draggable="true" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild4ID}" id="${spielBilderOrdnen.bild4Kategorie}" />
+
+
+  </section>
+  <section class="droppable-elements">
+    <div class="droppable" data-draggable-id="${spielBilderOrdnen.bild1Kategorie}"><span>${spielBilderOrdnen.bild1Kategorie}</span></div>
+    <div class="droppable" data-draggable-id="${spielBilderOrdnen.bild2Kategorie}"><span>${spielBilderOrdnen.bild2Kategorie}</span></div>
+    <div class="droppable" data-draggable-id="${spielBilderOrdnen.bild3Kategorie}"><span>${spielBilderOrdnen.bild3Kategorie}</span></div>
+    <div class="droppable" data-draggable-id="${spielBilderOrdnen.bild4Kategorie}"><span>${spielBilderOrdnen.bild4Kategorie}</span></div>
+    
+  </section>
+	
 
 			<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
 		</article>

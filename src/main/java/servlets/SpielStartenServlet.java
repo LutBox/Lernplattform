@@ -167,7 +167,7 @@ public class SpielStartenServlet extends HttpServlet {
 		//DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT * FROM bild ORDER BY RAND() LIMIT 16")) {
+						"SELECT * FROM bild GROUP BY(kategorie) ORDER BY RAND() LIMIT 16")) {
 
 			try(ResultSet rs = pstmt.executeQuery()) {
 				while (rs!= null && rs.next()) {

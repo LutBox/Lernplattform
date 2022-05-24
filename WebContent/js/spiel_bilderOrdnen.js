@@ -1,47 +1,64 @@
 //Erstellt von Lukas Theinert
 
-const list_items = document.querySelectorAll('.list-item');
-const lists = document.querySelectorAll('.list');
+const draggableElements = document.querySelectorAll(".draggable");
+const droppableElements = document.querySelectorAll(".droppable");
 
-let draggedItem = null;
+draggableElements.forEach(elem => {
+  elem.addEventListener("dragstart", dragStart); // Fires as soon as the user starts dragging an item - This is where we can define the drag data
+  // elem.addEventListener("drag", drag); // Fires when a dragged item (element or text selection) is dragged
+  // elem.addEventListener("dragend", dragEnd); // Fires when a drag operation ends (such as releasing a mouse button or hitting the Esc key) - After the dragend event, the drag and drop operation is complete
+});
 
-for (let i = 0; i < list_items.length; i++) {
-	const item = list_items[i];
+droppableElements.forEach(elem => {
+  elem.addEventListener("dragenter", dragEnter); // Fires when a dragged item enters a valid drop target
+  elem.addEventListener("dragover", dragOver); // Fires when a dragged item is being dragged over a valid drop target, repeatedly while the draggable item is within the drop zone
+  elem.addEventListener("dragleave", dragLeave); // Fires when a dragged item leaves a valid drop target
+  elem.addEventListener("drop", drop); // Fires when an item is dropped on a valid drop target
+});
 
-	item.addEventListener('dragstart', function () {
-		draggedItem = item;
-		setTimeout(function () {
-			item.style.display = 'none';
-		}, 0)
-	});
+// Drag and Drop Functions
 
-	item.addEventListener('dragend', function () {
-		setTimeout(function () {
-			draggedItem.style.display = 'block';
-			draggedItem = null;
-		}, 0);
-	})
+//Events fired on the drag target
 
-	for (let j = 0; j < lists.length; j ++) {
-		const list = lists[j];
+function dragStart(event) {
+  event.dataTransfer.setData("text", event.target.id); // or "text/plain" but just "text" would also be fine since we are not setting any other type/format for data value
+}
 
-		list.addEventListener('dragover', function (e) {
-			e.preventDefault();
-		});
-		
-		list.addEventListener('dragenter', function (e) {
-			e.preventDefault();
-			this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
-		});
+//Events fired on the drop target
 
-		list.addEventListener('dragleave', function (e) {
-			this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
-		});
+function dragEnter(event) {
+  if(!event.target.classList.contains("dropped")) {
+    event.target.classList.add("droppable-hover");
+  }
+}
 
-		list.addEventListener('drop', function (e) {
-			console.log('drop');
-			this.append(draggedItem);
-			this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
-		});
-	}
+function dragOver(event) {
+  if(!event.target.classList.contains("dropped")) {
+    event.preventDefault(); // Prevent default to allow drop
+  }
+}
+
+function dragLeave(event) {
+  if(!event.target.classList.contains("dropped")) {
+    event.target.classList.remove("droppable-hover");
+  }
+}
+
+function drop(event) {
+  event.preventDefault(); // This is in order to prevent the browser default handling of the data
+  event.target.classList.remove("droppable-hover");
+  const draggableElementData = event.dataTransfer.getData("text"); // Get the dragged data. This method will return any data that was set to the same type in the setData() method
+  const droppableElementData = event.target.getAttribute("data-draggable-id");
+  //alert("Draggable: " + draggableElementData + " -> Droppable: " + droppableElementData);
+  const isCorrectMatching = draggableElementData === droppableElementData;
+  
+  if(isCorrectMatching) {
+    const draggableElement = document.getElementById(draggableElementData);
+    event.target.classList.add("dropped");
+    // event.target.style.backgroundColor = draggableElement.style.color; // This approach works only for inline styles. A more general approach would be the following: 
+    event.target.style.backgroundColor = window.getComputedStyle(draggableElement).color;
+    draggableElement.classList.add("dragged");
+    draggableElement.setAttribute("draggable", "false");
+    event.target.insertAdjacentHTML("afterbegin", `<i class="fas fa-${draggableElementData}"></i>`);
+  }
 }
