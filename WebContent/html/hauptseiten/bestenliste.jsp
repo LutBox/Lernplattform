@@ -38,7 +38,7 @@ Erstellt von Lukas Theinert
 
 
 
-        <h3>Bestenliste: Bildermemorie</h3>
+        <center><h3>Bildermemorie</h3></center>
 
         <div>
             <table>
@@ -65,6 +65,42 @@ Erstellt von Lukas Theinert
                         <td>${b.durchschnittZeitLeicht}sek</td>
                         <td>${b.durchschnittZeitMittel}sek</td>
                         <td>${b.durchschnittZeitSchwer}sek</td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+            </table>
+        </div>
+        
+        <br><br>
+        
+        <center><h3>Bilder ordnen</h3></center>
+
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Platz</th>
+                    <th>Name</th>
+                    <th>Punkte</th>
+                    <th>Gespielte Spiele</th>
+                    <th>Durchschnittliche Zeit: Leicht</th>
+                    <th>Durchschnittliche Zeit: Mittel</th>
+                    <th>Durchschnittliche Zeit: Schwer</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <c:forEach var="c" items="${bestenlisteBilderOrdnenAjax}" varStatus="status">
+                    <tr>
+                        <td>${status.count}</td>
+                        <td>${c.nutzer}</td>
+                        <td>${c.punkte}</td>
+                        <td>${c.spieleInsgesamt}</td>
+                        <td>${c.durchschnittZeitLeicht}sek</td>
+                        <td>${c.durchschnittZeitMittel}sek</td>
+                        <td>${c.durchschnittZeitSchwer}sek</td>
                     </tr>
                 </c:forEach>
 

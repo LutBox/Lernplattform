@@ -23,7 +23,7 @@ Erstellt von Lukas Theinert
 
 	<c:set var='time' value='${spielStartenBean.timer}'/>
 	<c:set var='gewertet' value='${spielStartenBean.gewertet}'/>
-	<c:set var='val' value='${spielStartenBean.schwierigkeit}'/>,
+	<c:set var='val' value='${spielStartenBean.schwierigkeit}'/>
 
 	<header>
 		<h1>Bildermemorie</h1>	
@@ -42,7 +42,7 @@ Erstellt von Lukas Theinert
 	
 		<!-- Flex-Item 2 -->
 		<article>
-		
+	<br>	
 	<div class="game">
             <div class="controls" id = "controls">
                 <button id="start">Start</button><br>
@@ -69,7 +69,7 @@ Erstellt von Lukas Theinert
             </div>
         </div>
         
-	<br><br><br><br>
+	<br><br><br>
 
   <c:choose> 
   <c:when test="${val == 'leicht'}">
