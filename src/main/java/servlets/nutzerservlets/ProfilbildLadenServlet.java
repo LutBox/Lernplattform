@@ -38,25 +38,27 @@ public class ProfilbildLadenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement("SELECT bild FROM `nutzer` WHERE bildnr = ?")) {
-			Integer bildnr = Integer.parseInt(request.getParameter("bildnr"));
-			pstmt.setLong(1, bildnr);
+				PreparedStatement pstmt = con.prepareStatement("SELECT bild FROM `nutzer` WHERE name = ?")) {
+			String nutzername = request.getParameter("nn");
+			pstmt.setString(1, nutzername);
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs != null && rs.next()) {
 					Blob bild = rs.getBlob("bild");
-					response.reset();
-					long length = bild.length();
-					response.setHeader("Content-Length", String.valueOf(length));
+					if (bild != null) {
+						response.reset();
+						long length = bild.length();
+						response.setHeader("Content-Length", String.valueOf(length));
 
-					try (InputStream in = bild.getBinaryStream();) {
-						final int bufferSize = 256;
-						byte[] buffer = new byte[bufferSize];
+						try (InputStream in = bild.getBinaryStream();) {
+							final int bufferSize = 256;
+							byte[] buffer = new byte[bufferSize];
 
-						ServletOutputStream out = response.getOutputStream();
-						while ((length = in.read(buffer)) != -1) {
-							out.write(buffer, 0, (int) length);
+							ServletOutputStream out = response.getOutputStream();
+							while ((length = in.read(buffer)) != -1) {
+								out.write(buffer, 0, (int) length);
+							}
+							out.flush();
 						}
-						out.flush();
 					}
 				}
 			}

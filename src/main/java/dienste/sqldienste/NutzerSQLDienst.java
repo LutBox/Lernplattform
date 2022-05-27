@@ -41,6 +41,7 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
+		System.out.println("Neuer Nutzer angelegt");
 	}
 
 	/**
@@ -91,7 +92,6 @@ public class NutzerSQLDienst extends SQLDienst {
 					nutzer.setPasswort(rs.getString("passwort"));
 					nutzer.setAdmin(rs.getInt("admin"));
 					nutzer.setPunkte(rs.getInt("punkte"));
-					nutzer.setBildnr(rs.getInt("bildnr"));
 				}
 			}
 		} catch (Exception e) {
@@ -115,6 +115,7 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
+		System.out.println("Nutzer gelöscht");
 	}
 
 	/**
@@ -135,6 +136,7 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
+		System.out.println("Email aktualisiert");
 	}
 
 	/**
@@ -154,6 +156,7 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
+		System.out.println("Nutzername aktualisiert");
 	}
 
 	/**
@@ -171,6 +174,7 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
+		System.out.println("Nutzerpasswort aktualisiert");
 	}
 
 	/**
@@ -203,8 +207,6 @@ public class NutzerSQLDienst extends SQLDienst {
 					tmp.setPasswort(passwort);
 					Integer admin = rs.getInt("admin");
 					tmp.setAdmin(admin);
-					Integer bildnr = rs.getInt("bildnr");
-					tmp.setBildnr(bildnr);
 
 					ergebnis.add(tmp);
 				}
@@ -254,9 +256,30 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
+		System.out.println("Punkte aktualisiert");
 	}
 
-	public static void aktualisiereProfilbildDesNutzers(Part part, Integer bildnr) {
+	public static void aktualisiereProfilbildDesNutzers(Part bild, String name) throws ServletException {
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con
+						.prepareStatement("UPDATE " + tabellenname + " SET bild = ? WHERE name = ? ")) {
+			pstmt.setBinaryStream(1, bild.getInputStream());
+			pstmt.setString(2, name);
+		} catch (Exception e) {
+			throw new ServletException(e.getMessage());
+		}
+		System.out.println("Profilbild aktualissiert");
+	}
 
+	public static void aktualisiereStatusDesNutzers(Integer status, String name) throws ServletException {
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con
+						.prepareStatement("UPDATE " + tabellenname + " SET admin = ? WHERE name = ? ")) {
+			pstmt.setInt(1, status);
+			pstmt.setString(2, name);
+		} catch (Exception e) {
+			throw new ServletException(e.getMessage());
+		}
+		System.out.println("Status des Nutzers aktualisiert");
 	}
 }

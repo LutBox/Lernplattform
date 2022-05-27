@@ -9,16 +9,14 @@ public class NutzerBean implements Serializable {
 	private Integer punkte;
 	private String passwort;
 	private Integer admin;
-	private Integer bildnr;
 
-	public NutzerBean(String name, String email, Integer punkte, String passwort, Integer admin, Integer bildnr) {
+	public NutzerBean(String name, String email, Integer punkte, String passwort, Integer admin) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.punkte = punkte;
 		this.passwort = passwort;
 		this.admin = admin;
-		this.bildnr = bildnr;
 	}
 
 	public NutzerBean() {
@@ -54,14 +52,6 @@ public class NutzerBean implements Serializable {
 
 	public void setAdmin(Integer admin) {
 		this.admin = admin;
-	}
-
-	public Integer getBildnr() {
-		return bildnr;
-	}
-
-	public void setBildnr(Integer bildnr) {
-		this.bildnr = bildnr;
 	}
 
 	public String getPasswort() {
