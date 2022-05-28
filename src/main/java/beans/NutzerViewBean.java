@@ -1,4 +1,4 @@
-package beans.viewbeans;
+package beans;
 
 import java.io.Serializable;
 
@@ -12,16 +12,20 @@ public class NutzerViewBean implements Serializable {
 	public static final String attributname = "nutzer";
 	private String name;
 	private String email;
-	private int punkte;
-	private int admin;
-	private String dateiname;
-	
+	private Integer punkte;
+	private Integer admin;
+	private Integer bildnr;
+
+	public NutzerViewBean(String name, String email, Integer punkte, Integer admin, Integer bildnr) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.punkte = punkte;
+		this.admin = admin;
+		this.bildnr = bildnr;
+	}
+
 	public NutzerViewBean() {
-		this.name = null;
-		this.email = null;
-		this.punkte = 0;
-		this.admin = 0;
-		this.dateiname = null;
 	}
 
 	public String getName() {
@@ -40,27 +44,30 @@ public class NutzerViewBean implements Serializable {
 		this.email = email;
 	}
 
-	public int getPunkte() {
+	public Integer getPunkte() {
 		return punkte;
 	}
 
-	public void setPunkte(int punkte) {
+	public void setPunkte(Integer punkte) {
 		this.punkte = punkte;
 	}
 
-	public int getAdmin() {
+	public Integer getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(int admin) {
+	public void setAdmin(Integer admin) {
 		this.admin = admin;
 	}
 
-	public String getDateiname() {
-		return dateiname;
+	public Integer getBildnr() {
+		return bildnr;
 	}
 
-	public void setDateiname(String dateiname) {
-		this.dateiname = dateiname;
+	public void setBildnr(Integer bildnr) {
+		this.bildnr = bildnr;
 	}
+
+
+
 }

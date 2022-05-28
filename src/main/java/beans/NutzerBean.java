@@ -1,4 +1,4 @@
-package beans.modelbeans;
+package beans;
 
 import java.io.Serializable;
 
@@ -6,59 +6,58 @@ public class NutzerBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String email;
-	private int punkte;
+	private Integer punkte;
 	private String passwort;
-	private int admin;
-	private String dateiname;
-	private Object bild;
-	
-	public NutzerBean() {
-		this.name = null;
-		this.email = null;
-		this.punkte = 0;
-		this.admin = 0;
-		this.dateiname = null;
-		this.bild = null;
+	private Integer admin;
+
+	public NutzerBean(String name, String email, Integer punkte, String passwort, Integer admin) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.punkte = punkte;
+		this.passwort = passwort;
+		this.admin = admin;
 	}
+
+	public NutzerBean() {
+	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPunkte() {
+
+	public Integer getPunkte() {
 		return punkte;
 	}
-	public void setPunkte(int punkte) {
+
+	public void setPunkte(Integer punkte) {
 		this.punkte = punkte;
 	}
-	public int getAdmin() {
+
+	public Integer getAdmin() {
 		return admin;
 	}
-	public void setAdmin(int admin) {
+
+	public void setAdmin(Integer admin) {
 		this.admin = admin;
 	}
-	public String getDateiname() {
-		return dateiname;
-	}
-	public void setDateiname(String dateiname) {
-		this.dateiname = dateiname;
-	}
-	public Object getBild() {
-		return bild;
-	}
-	public void setBild(Object bild) {
-		this.bild = bild;
-	}
+
 	public String getPasswort() {
 		return passwort;
 	}
+
 	public void setPasswort(String passwort) {
 		this.passwort = passwort;
 	}
