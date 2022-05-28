@@ -2,8 +2,8 @@ package servlets.nutzerservlets;
 
 import java.io.IOException;
 
-import beans.modelbeans.NutzerBean;
-import beans.viewbeans.NutzerViewBean;
+import beans.NutzerBean;
+import beans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -39,7 +39,7 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 		String neuesPasswort = request.getParameter("neuesPasswort");
 		Part neuesProfilbild = request.getPart("neuesProfilbild");
 
-		if (neuesProfilbild != null) {
+		if (neuesProfilbild != null && request.getParameter("filename") != null) {
 			NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
 		}
 		if (neuesPasswort != null && neuesPasswort != null && !neuesPasswort.equals(nutzer.getPasswort())
@@ -50,7 +50,6 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 			NutzerSQLDienst.aktualisiereEmailDesNutzers(neueEmail, alterName);
 			nutzerView.setEmail(neueEmail);
 		}
-
 		if (neuerName != null && neuerName != null && !neuerName.equals(alterName) && !neuerName.equals("")) {
 			NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
 			nutzerView.setName(neuerName);

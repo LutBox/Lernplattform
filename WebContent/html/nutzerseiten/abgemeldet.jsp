@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Abgemeldet</title>
+<link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
 </head>
 <body>
 	<nav>

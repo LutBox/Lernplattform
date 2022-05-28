@@ -2,7 +2,7 @@ package servlets.adminservlets;
 
 import java.io.IOException;
 
-import beans.modelbeans.NutzerBean;
+import beans.NutzerBean;
 import dienste.sqldienste.NutzerSQLDienst;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -44,7 +44,7 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 		NutzerBean zuverwaltendernutzer = (NutzerBean) session.getAttribute("zuverwaltendernutzer");
 		String alterName = zuverwaltendernutzer.getName();
 
-		if (neuesProfilbild != null && neuesProfilbild.getInputStream() != null) {
+		if (neuesProfilbild != null && neuesProfilbild.getSize() > 0) {
 			NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
 		}
 		if (neuesPasswort != null && neuesPasswort != null
@@ -60,7 +60,7 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 		if (neuerName != null && neuerName != null && !neuerName.equals(alterName)) {
 			NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
 		}
-		response.sendRedirect("./html/verwaltungsseiten/adminkonsole.jsp");
+		response.sendRedirect("./html/verwaltungsseiten/nutzerverwaltung.jsp");
 	}
 
 }

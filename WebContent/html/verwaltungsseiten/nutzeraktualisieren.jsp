@@ -5,8 +5,8 @@
    <html>
 
    <head>
-    <meta charset="utf-8">
     <title>Nutzer aktualisieren</title>
+    <link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
    </head>
 
    <body>

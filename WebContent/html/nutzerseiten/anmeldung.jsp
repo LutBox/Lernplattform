@@ -6,6 +6,7 @@
 <html>
 <head>
 <title>Anmeldung</title>
+<link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
 </head>
 <body>
 	<header>
@@ -20,7 +21,7 @@
 						id="name" type="text" placeholder="Nutzername" maxlength="64"
 						required="required" /> <br /> <label for="passwort">Passwort:
 					</label> <br> <input name="passwort" id="passwort" type="password"
-						maxlength="128" required="required" />
+						maxlength="128" placeholder="****" required="required" />
 				</div>
 				<div class="infotext">
 					<c:out value="${anmeldunginfotext}"

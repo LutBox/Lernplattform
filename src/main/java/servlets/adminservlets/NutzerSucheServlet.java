@@ -3,7 +3,7 @@ package servlets.adminservlets;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import beans.modelbeans.NutzerBean;
+import beans.NutzerBean;
 import dienste.sqldienste.NutzerSQLDienst;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

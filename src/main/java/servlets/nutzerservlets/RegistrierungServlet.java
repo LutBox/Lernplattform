@@ -2,7 +2,7 @@ package servlets.nutzerservlets;
 
 import java.io.IOException;
 
-import beans.modelbeans.NutzerBean;
+import beans.NutzerBean;
 import dienste.sqldienste.NutzerSQLDienst;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

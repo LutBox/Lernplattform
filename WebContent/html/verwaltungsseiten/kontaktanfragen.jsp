@@ -5,29 +5,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Kontaktanfragen</title>
+<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
 	<%@include file="../jspf/navigation.jspf"%>
-	<h1>Kontaktanfragen</h1>
-	<table border="solid">
-		<thead>
-			<tr>
-				<th>Gelesen</th>
-				<th>Nachname</th>
-				<th>Vorname</th>
-				<th>Adresse</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
-		</tbody>
-	</table>
+	<main>
+		<h1>Kontaktanfragen</h1>
+		<table border="solid">
+			<thead>
+				<tr>
+					<th>Gelesen</th>
+					<th>Name</th>
+					<th>Adresse</th>
+					<th>MSG</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>nutzernameX</td>
+					<td>nutzer@mail.com</td>
+					<td>msg</td>
+					<td><a href="#">Antworten</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
 </body>
 </html>

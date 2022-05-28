@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Mitgliederbereich</title>
+<link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
 </head>
 <body>
 	<header>

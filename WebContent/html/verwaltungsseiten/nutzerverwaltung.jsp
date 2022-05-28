@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Nutzerverwaltung</title>
+<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
 	<header>

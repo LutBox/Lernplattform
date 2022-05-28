@@ -4,19 +4,18 @@
 
 package servlets;
 
-import jakarta.servlet.http.HttpServlet;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import javax.sql.DataSource;
 
+import beans.NutzerViewBean;
 import beans.SpielStartenBean;
-import beans.viewbeans.NutzerViewBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 

@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Suchergebnisse</title>
+<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
 	<header>
@@ -22,7 +22,8 @@
 				<th>Passwort</th>
 				<th>Punkte</th>
 				<th>Status</th>
-				<th></th>
+				<th>Bearbeiten</th>
+				<th>Löschen</th>
 			</tr>
 			<c:forEach items="${suchergebnisse}" var="ergebnis">
 				<tr>
@@ -34,9 +35,16 @@
 					<td>${ergebnis.punkte}</td>
 					<td><c:if test="${ergebnis.admin==0}">Nutzer</c:if> <c:if
 							test="${ergebnis.admin==1}">Admin</c:if></td>
-					<td><form method="post" action="../../NutzerBearbeitenServlet?nn=${ergebnis.name}">
+					<td><form method="post"
+							action="../../NutzerBearbeitenServlet?nn=${ergebnis.name}">
 							<button>Bearbeiten</button>
 						</form></td>
+					<td>
+						<form method="post"
+							action="../../NutzerLoeschenServlet?zuloeschenderNutzer=${ergebnis.name}">
+							<button>Löschen</button>
+						</form>
+					</td>
 				<tr />
 			</c:forEach>
 		</table>

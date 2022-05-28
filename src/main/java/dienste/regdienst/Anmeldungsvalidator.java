@@ -1,6 +1,6 @@
 package dienste.regdienst;
 
-import beans.viewbeans.NutzerViewBean;
+import beans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
 import exceptions.KeinAdminException;
 import exceptions.NichtAngemeldetException;

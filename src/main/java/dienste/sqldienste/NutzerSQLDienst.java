@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import beans.modelbeans.NutzerBean;
-import beans.viewbeans.NutzerViewBean;
+import beans.NutzerBean;
+import beans.NutzerViewBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
@@ -19,7 +19,7 @@ public class NutzerSQLDienst extends SQLDienst {
 	/**
 	 * @author Merlin Name der "Nutzer"-Datenbank
 	 */
-	private static final String tabellenname = "nutzer";
+	private static final String tabellenname = "`nutzer`";
 
 	/**
 	 * @author Merlin
@@ -41,7 +41,6 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
-		System.out.println("Neuer Nutzer angelegt");
 	}
 
 	/**
@@ -115,7 +114,6 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
-		System.out.println("Nutzer gelöscht");
 	}
 
 	/**
@@ -136,7 +134,6 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
-		System.out.println("Email aktualisiert");
 	}
 
 	/**
@@ -156,7 +153,6 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
-		System.out.println("Nutzername aktualisiert");
 	}
 
 	/**
@@ -174,7 +170,6 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
-		System.out.println("Nutzerpasswort aktualisiert");
 	}
 
 	/**
@@ -256,7 +251,6 @@ public class NutzerSQLDienst extends SQLDienst {
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
-		System.out.println("Punkte aktualisiert");
 	}
 
 	public static void aktualisiereProfilbildDesNutzers(Part bild, String name) throws ServletException {
@@ -265,21 +259,21 @@ public class NutzerSQLDienst extends SQLDienst {
 						.prepareStatement("UPDATE " + tabellenname + " SET bild = ? WHERE name = ? ")) {
 			pstmt.setBinaryStream(1, bild.getInputStream());
 			pstmt.setString(2, name);
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
-		System.out.println("Profilbild aktualissiert");
 	}
 
 	public static void aktualisiereStatusDesNutzers(Integer status, String name) throws ServletException {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con
-						.prepareStatement("UPDATE " + tabellenname + " SET admin = ? WHERE name = ? ")) {
+						.prepareStatement("update " + tabellenname + " set admin = ? where name = ?")) {
 			pstmt.setInt(1, status);
 			pstmt.setString(2, name);
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
-		System.out.println("Status des Nutzers aktualisiert");
 	}
 }

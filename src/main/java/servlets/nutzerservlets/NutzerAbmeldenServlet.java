@@ -2,7 +2,7 @@ package servlets.nutzerservlets;
 
 import java.io.IOException;
 
-import beans.viewbeans.NutzerViewBean;
+import beans.NutzerViewBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

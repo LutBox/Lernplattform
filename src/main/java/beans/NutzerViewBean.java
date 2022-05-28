@@ -1,4 +1,4 @@
-package beans.viewbeans;
+package beans;
 
 import java.io.Serializable;
 
