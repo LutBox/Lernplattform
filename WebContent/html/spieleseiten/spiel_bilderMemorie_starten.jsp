@@ -32,6 +32,7 @@ Erstellt von Lukas Theinert
 	
 	<br>
 
+<div id="temp" hidden></div>
 <div id="nutzer" hidden>${nutzer.name}</div>
 <div id="gewertet" hidden>${spielStartenBean.gewertet}</div>
 <div id="timerID" hidden>${spielStartenBean.timer}</div>
@@ -41,7 +42,7 @@ Erstellt von Lukas Theinert
 	
 		<!-- Flex-Item 2 -->
 		<article>
-		
+	<br>	
 	<div class="game">
             <div class="controls" id = "controls">
                 <button id="start">Start</button><br>
@@ -68,7 +69,7 @@ Erstellt von Lukas Theinert
             </div>
         </div>
         
-	<br><br><br><br>
+	<br><br><br>
 
   <c:choose> 
   <c:when test="${val == 'leicht'}">
