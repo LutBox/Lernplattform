@@ -14,17 +14,20 @@
 	href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/standard.js" defer></script>
-<title>Abgemeldet</title>
+<title>Spielekonfigurator</title>
 <link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
-	<nav>
-		<h1>Auf wiedersehen!</h1>
+	<header>
+		<h1>Spielekonfigurator</h1>
 		<%@include file="../jspf/navigation.jspf"%>
-	</nav>
+	</header>
 	<main>
-		<p>Vielen Dank für ihren Besuch. Wir hoffen sie hatten viel Spaß
-			und besuchen uns bald wieder.</p>
+		<ul>
+			<li><a href="">Bild bearbeiten</a></li>
+			<li><a href="">Bilder Anzeigen</a></li>
+			<li><a href="">Bild hochladen</a></li>
+		</ul>
 	</main>
 	<footer>
 		<%@include file="../jspf/footer.jspf"%>

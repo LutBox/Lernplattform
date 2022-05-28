@@ -35,8 +35,6 @@ public class RegistrierungServlet extends HttpServlet {
 		anfrage.setName(request.getParameter("name"));
 		anfrage.setEmail(request.getParameter("email"));
 		anfrage.setPasswort(request.getParameter("passwort"));
-		anfrage.setAdmin(0);
-		anfrage.setPunkte(0);
 
 		Part profilbild = request.getPart("profilbild");
 
