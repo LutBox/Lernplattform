@@ -1,39 +1,55 @@
+/*
+ * Erstellt von Lukas Theinert
+ */
+ 
 .game{
-    width: 500px;
-    height: 200px;
+    width: 1000px;
+    height: 500px;
     border: 1px solid black;
     margin: auto;
+    background-image: url(../../bilder/jumpnrun/background1.png);
+    
 }
 #character{
-    width: 20px;
-    height: 50px;
-    background-color: red;
-    position:relative;
-    top: 150px;
+    width: 75px;
+    height: 105px;
+    position: relative;
+    top: 345px;
 }
 .animate{
     animation: jump 0.3s linear;
 }
 @keyframes jump{
-    0%{top: 150px;}
-    30%{top: 100px;}
-    70%{top: 100px;}
-    100%{top: 150px;}
+    0%{top: 300px;}
+    30%{top: 200px;}
+    70%{top: 200px;}
+    100%{top: 300px;}
+}
+
+.ducken{
+    animation: ducken 0.3s linear;
+}
+@keyframes ducken{
+    0%{top: 320px;}
+    30%{top: 420px;}
+    70%{top: 420px;}
+    100%{top: 320px;}
 }
 
 #block{
     background-color: blue;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     position: relative;
-    top: 130px;
-    left: 500px;
-    animation: block 1s infinite linear;
-}
+    top: 260px;
+    left: 1000px;
+   animation: block 1s infinite linear;
+} 
 @keyframes block{
-    0%{left: 500px}
-    100%{left: -20px}
+    0%{left: 1000px}
+    100%{left: -40px}
 }
 p{
     text-align: center;
 }
+    

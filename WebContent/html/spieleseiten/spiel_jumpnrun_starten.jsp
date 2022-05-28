@@ -36,7 +36,7 @@ Erstellt von Lukas Theinert
 		
 <body>
     <div class="game">
-        <div id="character"></div>
+        <img id="character"></img>
         <div id="block"></div>
     </div>
     <p>Score: <span id="scoreSpan"></span></p>
