@@ -16,6 +16,14 @@ create table nutzer (
     bild blob
 );
 
+insert into nutzer (name,email,passwort,admin) values
+('admin','-','apw',1),
+('admin2','-','apw',1),
+('admin3','-','apw',1),
+('Kermit','kermit@sesamstrasse.de','npw',0),
+('Susi','susi@sorglos-gmbh.de','npw',0),
+('Hugo','hugo@demo-domain.com','npw',0);
+
 //----------------------------------------------------------------------------------
 
 CREATE TABLE wort (
