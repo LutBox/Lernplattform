@@ -1,20 +1,17 @@
 //----------------------------------------------------------------------------------
 /* Schema nutzertabelle */
 use thidb;
-drop table nutzer;
 
-create table nutzer (
-    name varchar(64) primary key,
-    email varchar(64) not null,
-    passwort varchar(128) not null,
-    admin tinyint(1) not null default 0,
-    punkteBilderMemorie int default 0,
-	punkteBilderOrdnen int default 0,
-	punkteBilderBilderWort int default 0,
-	punkteMathe int default 0,
-	punkteJumpnrun int default 0,
-    bild blob
+//----------------------------------------------------------------------------------
+
+create table kontaktanfragen (
+	kanr int auto_increment primary key,
+	gelesen tinyint not null default 0,
+	email varchar(64) not null,
+	nachricht varchar(256) not null
 );
+
+//----------------------------------------------------------------------------------
 
 insert into nutzer (name,email,passwort,admin) values
 ('admin','-','apw',1),
@@ -33,7 +30,7 @@ CREATE TABLE wort (
 //----------------------------------------------------------------------------------
 
 CREATE TABLE bild (
-   id int KEY AUTO_INCREMENTL,
+   id int KEY AUTO_INCREMENT,
    kategorie varchar(30) DEFAULT NULL,
    image mediumblob DEFAULT NULL,
    CONSTRAINT FK_bild FOREIGN KEY (kategorie) REFERENCES wort(kategorie)
