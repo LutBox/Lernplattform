@@ -1,0 +1,16 @@
+/* Schema nutzertabelle */
+use thidb;
+drop table nutzer;
+
+create table nutzer (
+    name varchar(64) primary key,
+    email varchar(64) not null,
+    passwort varchar(128) not null,
+    admin tinyint(1) not null default 0,
+    punkteBilderMemorie int default 0,
+	punkteBilderOrdnen int default 0,
+	punkteBilderBilderWort int default 0,
+	punkteMathe int default 0,
+	punkteJumpnrun int default 0,
+    bild blob
+);
