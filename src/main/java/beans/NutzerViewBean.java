@@ -12,17 +12,68 @@ public class NutzerViewBean implements Serializable {
 	public static final String attributname = "nutzer";
 	private String name;
 	private String email;
-	private Integer punkte;
 	private Integer admin;
-	private Integer bildnr;
+	private Integer punkteBilderMemorie;
+	private Integer punkteBilderOrdnen;
+	private Integer punkteBilderBilderWort;
+	private Integer punkteMathe;
+	private Integer punkteJumpnrun;
 
-	public NutzerViewBean(String name, String email, Integer punkte, Integer admin, Integer bildnr) {
+	public NutzerViewBean(String name, String email, Integer admin, Integer bildnr, Integer punkteBilderMemorie,
+			Integer punkteBilderOrdnen, Integer punkteBilderBilderWort, Integer punkteMathe, Integer punkteJumpnrun) {
 		super();
 		this.name = name;
 		this.email = email;
-		this.punkte = punkte;
 		this.admin = admin;
-		this.bildnr = bildnr;
+		this.punkteBilderMemorie = punkteBilderMemorie;
+		this.punkteBilderOrdnen = punkteBilderOrdnen;
+		this.punkteBilderBilderWort = punkteBilderBilderWort;
+		this.punkteMathe = punkteMathe;
+		this.punkteJumpnrun = punkteJumpnrun;
+	}
+
+	public Integer getPunkteBilderMemorie() {
+		return punkteBilderMemorie;
+	}
+
+	public void setPunkteBilderMemorie(Integer punkteBilderMemorie) {
+		this.punkteBilderMemorie = punkteBilderMemorie;
+	}
+
+	public Integer getPunkteBilderOrdnen() {
+		return punkteBilderOrdnen;
+	}
+
+	public void setPunkteBilderOrdnen(Integer punkteBilderOrdnen) {
+		this.punkteBilderOrdnen = punkteBilderOrdnen;
+	}
+
+	public Integer getPunkteBilderBilderWort() {
+		return punkteBilderBilderWort;
+	}
+
+	public void setPunkteBilderBilderWort(Integer punkteBilderBilderWort) {
+		this.punkteBilderBilderWort = punkteBilderBilderWort;
+	}
+
+	public Integer getPunkteMathe() {
+		return punkteMathe;
+	}
+
+	public void setPunkteMathe(Integer punkteMathe) {
+		this.punkteMathe = punkteMathe;
+	}
+
+	public Integer getPunkteJumpnrun() {
+		return punkteJumpnrun;
+	}
+
+	public void setPunkteJumpnrun(Integer punkteJumpnrun) {
+		this.punkteJumpnrun = punkteJumpnrun;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public NutzerViewBean() {
@@ -44,14 +95,6 @@ public class NutzerViewBean implements Serializable {
 		this.email = email;
 	}
 
-	public Integer getPunkte() {
-		return punkte;
-	}
-
-	public void setPunkte(Integer punkte) {
-		this.punkte = punkte;
-	}
-
 	public Integer getAdmin() {
 		return admin;
 	}
@@ -59,15 +102,5 @@ public class NutzerViewBean implements Serializable {
 	public void setAdmin(Integer admin) {
 		this.admin = admin;
 	}
-
-	public Integer getBildnr() {
-		return bildnr;
-	}
-
-	public void setBildnr(Integer bildnr) {
-		this.bildnr = bildnr;
-	}
-
-
 
 }

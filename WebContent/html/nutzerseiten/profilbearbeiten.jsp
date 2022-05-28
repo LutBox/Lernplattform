@@ -5,15 +5,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 <title>Profil bearbeiten</title>
 <link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
 </head>
 <body>
 	<header>
+		<h1>Profil bearbeiten</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	<main>
-		<h1>Profil bearbeiten</h1>
 		<form method="post" action="../../ProfilAktualisierenServlet"
 			enctype="multipart/form-data">
 			<fieldset>
@@ -46,5 +51,8 @@
 			</fieldset>
 		</form>
 	</main>
+		<footer>
+		<%@include file="../jspf/footer.jspf"%>
+	</footer>
 </body>
 </html>
