@@ -8,27 +8,37 @@ Erstellt von Lukas Theinert
 <html>
 <head>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hauptseiten/bestenliste.css" />
-<%--
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/bestenliste.js" defer></script>
---%>
+
 <base href="${pageContext.request.requestURI}" />
 <meta charset="ISO-8859-1">
 <title>Bestenliste</title>
 </head>
 <body>
 
-	<h1>Bestenliste</h1>
-
-	<nav>
+	<header>
+		<h1>Bestenliste</h1>	
 		<%@include file="../jspf/navigation.jspf"%>
-	</nav>
+	</header>
+	
+	<!-- Flex-Item 1 -->
+	<div id="flexarea">
+	
+	<!-- Flex-Item 1 -->
+		<aside>
+			<h2>Top-News</h2>
+			<p>Forum-Threads</p>
+		</aside>
+		
+		<!-- Flex-Item 2 -->
+		<article>
 
-            <button name="aktualisieren" id="aktualisieren" type="button">Bestenliste aktualisieren!</button>
-            <br><br><br>
 
 
-        <h3>Bestenliste: Bildermemorie</h3>
+        <center><h3>Bildermemorie</h3></center>
 
         <div>
             <table>
@@ -61,6 +71,57 @@ Erstellt von Lukas Theinert
                 </tbody>
             </table>
         </div>
+        
+        <br><br>
+        
+        <center><h3>Bilder ordnen</h3></center>
 
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Platz</th>
+                    <th>Name</th>
+                    <th>Punkte</th>
+                    <th>Gespielte Spiele</th>
+                    <th>Durchschnittliche Zeit: Leicht</th>
+                    <th>Durchschnittliche Zeit: Mittel</th>
+                    <th>Durchschnittliche Zeit: Schwer</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <c:forEach var="c" items="${bestenlisteBilderOrdnenAjax}" varStatus="status">
+                    <tr>
+                        <td>${status.count}</td>
+                        <td>${c.nutzer}</td>
+                        <td>${c.punkte}</td>
+                        <td>${c.spieleInsgesamt}</td>
+                        <td>${c.durchschnittZeitLeicht}sek</td>
+                        <td>${c.durchschnittZeitMittel}sek</td>
+                        <td>${c.durchschnittZeitSchwer}sek</td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+            </table>
+        </div>
+
+				<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+	
+	</article>
+		<!-- Flex-Item 3 -->
+		<aside>
+			<h2>Beschreibungen</h2>
+		</aside>
+		
+	</div>
+	<!-- Ende der FLEXBOX -->
+	<br> <br> <br> <br>
+	<footer>
+			<%@include file="../jspf/footer.jspf"%>
+	</footer>
+	
 </body>
 </html>

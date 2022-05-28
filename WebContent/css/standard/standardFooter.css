@@ -1,0 +1,30 @@
+/* Erstellt von Lukas Theinert */
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #000000e0;
+	width: 100vw;
+	position: relative;
+	margin-left: -50vw;
+	left: 50%;
+	text-align: center;
+	bottom: 0px;
+	margin-bottom: 0;
+}
+
+footer a {
+	padding: 18px;
+	font-family: "Open Sans";
+	text-transform: uppercase;
+	font-size: 18px;
+	text-decoration: none;
+	display: block;
+	color: #ffffff;
+	text-align: center;
+}
+
+footer a:hover {
+	background: #ffffff1A;
+	color: #ffffff;
+}

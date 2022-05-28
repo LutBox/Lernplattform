@@ -1,0 +1,4 @@
+<%-- Erstellt von Lukas, Merlin, Zohal --%>
+
+			<a href="${pageContext.request.contextPath}/html/hauptseiten/impressum.jsp">Impressum</a>
+			<a href="${pageContext.request.contextPath}/html/hauptseiten/kontaktformular.jsp">Kontaktformular</a>

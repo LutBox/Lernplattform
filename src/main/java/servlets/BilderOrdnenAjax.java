@@ -4,27 +4,28 @@
 
 package servlets;
 
+import jakarta.servlet.http.HttpServlet;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import javax.sql.DataSource;
 
-import beans.NutzerViewBean;
 import beans.SpielStartenBean;
+import beans.viewbeans.NutzerViewBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class BildHochladenServlet
  */
-@WebServlet("/BilderMemorieAjax")
+@WebServlet("/BilderOrdnenAjax")
 
-public class BilderMemorieAjax extends HttpServlet {
+public class BilderOrdnenAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
@@ -33,7 +34,7 @@ public class BilderMemorieAjax extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BilderMemorieAjax() {
+	public BilderOrdnenAjax() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -49,38 +50,38 @@ public class BilderMemorieAjax extends HttpServlet {
 		
 		
 		// Dateien aus Bean in neues Objekt einfügen
-		SpielStartenBean bilderMemorieAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
+		SpielStartenBean bilderOrdnenAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
 
-		bilderMemorieAjax.setZeit(Integer.valueOf(request.getParameter("zeit")));
-		bilderMemorieAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
+		bilderOrdnenAjax.setZeit(Integer.valueOf(request.getParameter("zeit")));
+		bilderOrdnenAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
 		
 		NutzerViewBean aktuellerNutzer = (NutzerViewBean) request.getSession().getAttribute("nutzer");
 		//NutzerBean aktuellerNutzer = (NutzerBean) request.getSession().getAttribute("nutzer");
 		
 		// In Datenbank eintragen
-		persist(bilderMemorieAjax, aktuellerNutzer);
+		persist(bilderOrdnenAjax, aktuellerNutzer);
 	
-		if(bilderMemorieAjax.getGewertet().equals("gewertetAn")) {
-				persist2(bilderMemorieAjax, aktuellerNutzer);
+		if(bilderOrdnenAjax.getGewertet().equals("gewertetAn")) {
+				persist2(bilderOrdnenAjax, aktuellerNutzer);
 			//log("HAT GEKLAPPT");	
 		}
 		
 	}
 	
 
-	private void persist(SpielStartenBean bilderMemorieAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
+	private void persist(SpielStartenBean bilderOrdnenAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"INSERT INTO bildermemorie (nutzer, kategorie, schwierigkeit, isgelistet, istimer, zeit, versuche, uhrzeit) VALUES (?,?,?,?,?,?,?,NOW());")) {
+						"INSERT INTO bilderordnen (nutzer, kategorie, schwierigkeit, isgelistet, istimer, zeit, versuche, uhrzeit) VALUES (?,?,?,?,?,?,?,NOW());")) {
 		
 				pstmt.setString(1, aktuellerNutzer.getName());
-				pstmt.setString(2, bilderMemorieAjax.getSpielart());
-				pstmt.setString(3, bilderMemorieAjax.getSchwierigkeit());
-				pstmt.setString(4, bilderMemorieAjax.getGewertet());
-				pstmt.setString(5, bilderMemorieAjax.getTimer());
-				pstmt.setInt(6, bilderMemorieAjax.getZeit());
-				pstmt.setInt(7, bilderMemorieAjax.getVersuche());
+				pstmt.setString(2, bilderOrdnenAjax.getSpielart());
+				pstmt.setString(3, bilderOrdnenAjax.getSchwierigkeit());
+				pstmt.setString(4, bilderOrdnenAjax.getGewertet());
+				pstmt.setString(5, bilderOrdnenAjax.getTimer());
+				pstmt.setInt(6, bilderOrdnenAjax.getZeit());
+				pstmt.setInt(7, bilderOrdnenAjax.getVersuche());
 				
 			pstmt.executeUpdate();
 			//log("HAT GEKLAPPT: "+aktuellerNutzer.getName());
@@ -92,40 +93,40 @@ public class BilderMemorieAjax extends HttpServlet {
 	}
 	
 
-	private void persist2(SpielStartenBean bilderMemorieAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
+	private void persist2(SpielStartenBean bilderOrdnenAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
 						"UPDATE nutzer SET punkte = punkte + ? WHERE name = ?;")) {
 			
-			int zeit = bilderMemorieAjax.getZeit();
-			int versuche = bilderMemorieAjax.getVersuche();
+			int zeit = bilderOrdnenAjax.getZeit();
+			int versuche = bilderOrdnenAjax.getVersuche();
 			
-			String schwierigkeit = bilderMemorieAjax.getSchwierigkeit();
+			String schwierigkeit = bilderOrdnenAjax.getSchwierigkeit();
 			
 			if(schwierigkeit.equals("leicht")) {
-				if(zeit <= 24 && versuche <= 24) {
+				if(zeit <= 15 && versuche <= 8) {
 					pstmt.setInt(1, 2);
-				} else if(zeit <= 34 && versuche <= 30) {
+				} else if(zeit <= 20 && versuche <= 9) {
 					pstmt.setInt(1, 1);
 				} else {
 					pstmt.setInt(1, 0);
 				}
 			} else if(schwierigkeit.equals("mittel")) {
-				if(zeit <= 50 && versuche <= 40) {
-					pstmt.setInt(1, 6);
-				} else if(zeit <= 70 && versuche <= 50) {
-					pstmt.setInt(1, 4);
-				} else {
+				if(zeit <= 18 && versuche <= 12) {
+					pstmt.setInt(1, 3);
+				} else if(zeit <= 23 && versuche <= 14) {
 					pstmt.setInt(1, 2);
+				} else {
+					pstmt.setInt(1, 1);
 				}
 			} else if(schwierigkeit.equals("schwer")) {
-				if(zeit <= 80 && versuche <= 60) {
-					pstmt.setInt(1, 10);
-				} else if(zeit <= 120 && versuche <= 70) {
-					pstmt.setInt(1, 8);
+				if(zeit <= 25 && versuche <= 16) {
+					pstmt.setInt(1, 4);
+				} else if(zeit <= 30 && versuche <= 19) {
+					pstmt.setInt(1, 3);
 				} else {
-					pstmt.setInt(1, 6);
+					pstmt.setInt(1, 2);
 				}
 			}
 			

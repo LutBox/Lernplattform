@@ -1,15 +1,14 @@
-//Erstellt von Lukas Theinert
-
 package beans;
 
-public class SpielBilderMemorieBean {
+public class SpielBilderOrdnenBean {
+
+	
 	private static final long serialVersionUID = 1L;
 	private String bild1Stream, bild2Stream, bild3Stream, bild4Stream, bild5Stream, bild6Stream, bild7Stream, bild8Stream, bild9Stream, bild10Stream, bild11Stream, bild12Stream, bild13Stream, bild14Stream, bild15Stream, bild16Stream;
 	private String bild1Kategorie, bild2Kategorie, bild3Kategorie, bild4Kategorie, bild5Kategorie, bild6Kategorie, bild7Kategorie, bild8Kategorie, bild9Kategorie, bild10Kategorie, bild11Kategorie, bild12Kategorie, bild13Kategorie, bild14Kategorie, bild15Kategorie, bild16Kategorie;
 	private long bild1ID, bild2ID, bild3ID, bild4ID, bild5ID, bild6ID, bild7ID, bild8ID, bild9ID, bild10ID, bild11ID, bild12ID, bild13ID, bild14ID, bild15ID, bild16ID;
-	private byte[] bild1, bild2, bild3, bild4, bild5, bild6, bild7, bild8, bild9, bild10, bild11, bild12, bild13, bild14, bild15, bild16;
 
-	public SpielBilderMemorieBean() {
+	public SpielBilderOrdnenBean() {
 		super();
 	}
 
@@ -396,134 +395,5 @@ public class SpielBilderMemorieBean {
 	public void setBild16ID(long bild16id) {
 		bild16ID = bild16id;
 	}
-
-	public byte[] getBild1() {
-		return bild1;
-	}
-
-	public void setBild1(byte[] bild1) {
-		this.bild1 = bild1;
-	}
-
-	public byte[] getBild2() {
-		return bild2;
-	}
-
-	public void setBild2(byte[] bild2) {
-		this.bild2 = bild2;
-	}
-
-	public byte[] getBild3() {
-		return bild3;
-	}
-
-	public void setBild3(byte[] bild3) {
-		this.bild3 = bild3;
-	}
-
-	public byte[] getBild4() {
-		return bild4;
-	}
-
-	public void setBild4(byte[] bild4) {
-		this.bild4 = bild4;
-	}
-
-	public byte[] getBild5() {
-		return bild5;
-	}
-
-	public void setBild5(byte[] bild5) {
-		this.bild5 = bild5;
-	}
-
-	public byte[] getBild6() {
-		return bild6;
-	}
-
-	public void setBild6(byte[] bild6) {
-		this.bild6 = bild6;
-	}
-
-	public byte[] getBild7() {
-		return bild7;
-	}
-
-	public void setBild7(byte[] bild7) {
-		this.bild7 = bild7;
-	}
-
-	public byte[] getBild8() {
-		return bild8;
-	}
-
-	public void setBild8(byte[] bild8) {
-		this.bild8 = bild8;
-	}
-
-	public byte[] getBild9() {
-		return bild9;
-	}
-
-	public void setBild9(byte[] bild9) {
-		this.bild9 = bild9;
-	}
-
-	public byte[] getBild10() {
-		return bild10;
-	}
-
-	public void setBild10(byte[] bild10) {
-		this.bild10 = bild10;
-	}
-
-	public byte[] getBild11() {
-		return bild11;
-	}
-
-	public void setBild11(byte[] bild11) {
-		this.bild11 = bild11;
-	}
-
-	public byte[] getBild12() {
-		return bild12;
-	}
-
-	public void setBild12(byte[] bild12) {
-		this.bild12 = bild12;
-	}
-
-	public byte[] getBild13() {
-		return bild13;
-	}
-
-	public void setBild13(byte[] bild13) {
-		this.bild13 = bild13;
-	}
-
-	public byte[] getBild14() {
-		return bild14;
-	}
-
-	public void setBild14(byte[] bild14) {
-		this.bild14 = bild14;
-	}
-
-	public byte[] getBild15() {
-		return bild15;
-	}
-
-	public void setBild15(byte[] bild15) {
-		this.bild15 = bild15;
-	}
-
-	public byte[] getBild16() {
-		return bild16;
-	}
-
-	public void setBild16(byte[] bild16) {
-		this.bild16 = bild16;
-	}
-
 
 }

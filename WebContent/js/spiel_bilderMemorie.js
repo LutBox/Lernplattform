@@ -12,7 +12,7 @@ function datenbankEintrag() {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			document.getElementById("nutzer").innerHTML = xmlhttp.responseText;
+			document.getElementById("temp").innerHTML = xmlhttp.responseText;
 		}
 	};
 	xmlhttp.open("POST", "BilderMemorieAjax", true);
@@ -121,6 +121,7 @@ function versuchChecken() {
 			//DatenbankEintrag
 			if (document.getElementById("nutzer").innerHTML !== "") {
 				datenbankEintrag();	
+				//alert(document.getElementById("nutzer").innerHTML);
 			}
 		}, 1000)
 	}
