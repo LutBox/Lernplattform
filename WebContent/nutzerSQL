@@ -1,3 +1,4 @@
+//----------------------------------------------------------------------------------
 /* Schema nutzertabelle */
 use thidb;
 drop table nutzer;
@@ -14,3 +15,50 @@ create table nutzer (
 	punkteJumpnrun int default 0,
     bild blob
 );
+
+//----------------------------------------------------------------------------------
+
+CREATE TABLE wort (
+    kategorie varchar(30) PRIMARY KEY
+);
+
+//----------------------------------------------------------------------------------
+
+CREATE TABLE bild (
+   id int KEY AUTO_INCREMENTL,
+   kategorie varchar(30) DEFAULT NULL,
+   image mediumblob DEFAULT NULL,
+   CONSTRAINT FK_bild FOREIGN KEY (kategorie) REFERENCES wort(kategorie)
+)
+
+//----------------------------------------------------------------------------------
+
+CREATE TABLE bildermemorie(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nutzer VARCHAR(30),
+    kategorie VARCHAR(30),
+    CONSTRAINT FK_name FOREIGN KEY (nutzer) REFERENCES nutzer(name),
+    Schwierigkeit VARCHAR(30),
+    IsGelistet VARCHAR(30),
+    IsTimer VARCHAR(30),
+    Zeit INT,
+    versuche INT,
+    uhrzeit datetime
+);
+
+//----------------------------------------------------------------------------------
+
+CREATE TABLE bilderordnen(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nutzer VARCHAR(30),
+    kategorie VARCHAR(30),
+    CONSTRAINT FK2_name FOREIGN KEY (nutzer) REFERENCES nutzer(name),
+    Schwierigkeit VARCHAR(30),
+    IsGelistet VARCHAR(30),
+    IsTimer VARCHAR(30),
+    Zeit INT,
+    versuche INT,
+    uhrzeit datetime
+);
+
+//----------------------------------------------------------------------------------
