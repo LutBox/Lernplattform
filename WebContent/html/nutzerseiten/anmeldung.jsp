@@ -1,30 +1,40 @@
 <%-- @author Merlin --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Anmeldung</title>
+<title>Anmeldung</title>
+<link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
 </head>
 <body>
 	<header>
-		<nav>
-			<a href="../../index.jsp">Startseite</a>
-			<a href="./registrierung.jsp">Registrierung</a>
-		</nav>
+		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	<h1>Anmeldung</h1>
-	<form method="POST" action="../../AnmeldungServlet">
-		<label for="name">Nutzername: </label>
-		<br/><input name="name" id="name" type="text" placeholder="Nutzername" maxlength="64" required="required"><c:out value="${name}" default=""/></input>
-		<br/><label for="passwort">Passwort: </label>
-		<br><input name="passwort" id="passwort" type="password" maxlength="128" required="required"></input>
-		<br/>
-		<br/><button type="submit">Absenden</button>
-		<br/>
-		<br><button type="reset">Zurücksetzen</button>
-	</form>
-	<br/><c:out value="${anmeldunginfotext}" default="Bitte geben sie ihre Anmeldedaten an."/>
+	<main>
+		<h1>Anmeldung</h1>
+		<form method="post" action="../../AnmeldungServlet">
+			<fieldset>
+				<div class="eingabefeld">
+					<label for="name">Nutzername: </label> <br /> <input name="name"
+						id="name" type="text" placeholder="Nutzername" maxlength="64"
+						required="required" /> <br /> <label for="passwort">Passwort:
+					</label> <br> <input name="passwort" id="passwort" type="password"
+						maxlength="128" placeholder="****" required="required" />
+				</div>
+				<div class="infotext">
+					<c:out value="${anmeldunginfotext}"
+						default="Bitte geben sie ihre Anmeldedaten an." />
+				</div>
+				<div class="formularknopf">
+					<button type="submit">Absenden</button>
+					<br />
+					<button type="reset">Zurücksetzen</button>
+				</div>
+			</fieldset>
+		</form>
+	</main>
+
 </body>
 </html>

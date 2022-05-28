@@ -2,8 +2,8 @@ package servlets.nutzerservlets;
 
 import java.io.IOException;
 
-import beans.modelbeans.NutzerBean;
-import beans.viewbeans.NutzerViewBean;
+import beans.NutzerBean;
+import beans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,24 +20,12 @@ public class AnmeldungServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @author Merlin
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
-	 * @see Diese Methode preuft ob der Nutzer aus dem Anmeldeformular existiert und
-	 *      ob die Passworteingabe mit dem Datenbankeinstrag uebereinstimmt. Des
-	 *      weiteren wird entschieden, ob ein Nutzer die Adminfuktionen bekommnt
-	 *      oder als normaler nutze angemeldet wird.
+	 * @author Merlin
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Was erwarte ich
-		request.setCharacterEncoding("UTF-8");
-
-		// Was sende ich zurueck
-		response.setContentType("text/html");
-		response.setCharacterEncoding("UTF-8");
-
-		// Nutzer zu Nutzernamen aus der Datenbank holen
 		NutzerBean nutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(request.getParameter("name"));
 		HttpSession session = request.getSession();
 
@@ -48,17 +36,14 @@ public class AnmeldungServlet extends HttpServlet {
 			if (nutzer.getPasswort().equals(request.getParameter("passwort"))) {
 
 				// Nutzer in den Sessionscope legen und so verfuegbar machen
-				NutzerViewBean nutzerAnzeige = new NutzerViewBean();
-				nutzerAnzeige.setName(nutzer.getName());
-				nutzerAnzeige.setEmail(nutzer.getEmail());
-				nutzerAnzeige.setAdmin(nutzer.getAdmin());
-				session.setAttribute(NutzerViewBean.attributName, nutzerAnzeige);
+				NutzerViewBean nutzerAnzeige = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(nutzer.getName());
+				session.setAttribute(NutzerViewBean.attributname, nutzerAnzeige);
 
 				// Entscheidung welchen Funktionsumfang der Nutzer bekommt
 				if (nutzer.getAdmin() == 1) {
 
 					// Nutzer ist Admin
-					response.sendRedirect("./AufrufAdminseiteServlet");
+					response.sendRedirect("./html/verwaltungsseiten/adminkonsole.jsp");
 				} else {
 
 					// Nutzer ist kein Admin
@@ -72,15 +57,5 @@ public class AnmeldungServlet extends HttpServlet {
 			session.setAttribute("anmeldunginfotext", "Nutzer existiert nicht.");
 			response.sendRedirect("./html/nutzerseiten/anmeldung.jsp");
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 * @author Merlin
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
 	}
 }

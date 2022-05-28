@@ -1,0 +1,282 @@
+/*
+Erstellt von Lukas Theinert
+ */
+@import "standardButton.css";
+@import "standardNavigation.css";
+@import "standardFooter.css";
+@import "standardGoToTop.css";
+
+/* Box fuer Anordnung */
+* {
+	padding: 5 px;
+	margin: 5 px;
+	box-sizing: border-box;
+}
+
+
+#flexarea {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+header {
+	text-align: center;
+}
+
+article {
+	flex: 3;
+}
+
+aside {
+	flex: 1;
+	background-color: rgba(225,225,225,0.5);
+	box-shadow: 0 0 15px 5px #000000;
+}
+
+article, aside {
+	/* border: 1px solid; */
+	padding: 10px;
+	margin: 10px;
+}
+
+
+html {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FFFFFF, #C6E7DE);
+    background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+@font-face {
+    font-family: Heebo-Regular;
+    src: url(./ressourcen/Heebo-Regular.ttf);
+}
+
+/* Responsive Design - Seitenumbruch bei PC */
+@media screen and (min-width: 960px) {
+	
+	#flexarea, nav {
+        flex-direction: row;       
+    }
+    
+    body {
+		font-family: Heebo-Regular;
+		font-size: 16px;
+    }
+    
+	label {
+        min-width: 2em;
+        display: inline-block;
+        text-align: left;
+    }
+    
+    input {
+        width: 20em;
+    }
+    
+    textarea {
+        width: 20em;
+        border: 1px solid black;
+    }
+    
+    input[type="checkbox"], input[type="radio"] {
+        width: auto;
+    }
+    
+    label.textarea {
+        vertical-align: top;
+    }
+    
+    fieldset {
+        width: 30em;
+        padding-top: 1.5em;
+        padding-left: 1.5em;
+		background: #ffffff;
+		box-shadow: 0 0 15px 5px #000000;
+        border: 0px solid black;
+        border-radius: 5px;
+    }
+    
+    legend {
+        background: white;
+        padding: 0.2em;
+        border: 1px solid #000330;
+        border-radius: 5px;
+    }
+    
+    input:hover, textarea:hover {
+        background: #f0fffa;
+        box-shadow: 0 0 10px #000000;
+    }
+
+    input:required+span::after {
+        color: red;
+    }
+    textarea:required+span::after {
+        color: red;
+    }
+    input[type="email"]:valid+span::after {
+        color: green;
+    }
+    textarea:valid+span::after {
+        color: green;
+    }
+
+    #searchInput {
+        background-color: #b3ffff;
+    }
+    .responsive_table {
+        overflow-x: auto;
+    }
+
+}
+
+/* Responsive Design - Seitenumbruch bei Tablet */
+@media screen and (min-width: 480px) and (max-width: 960px) {
+#flexarea {
+        flex-direction: column;       
+    }
+    
+    body {
+		font-family: Heebo-Regular;
+		font-size: 14px;
+    }
+    
+    label {
+        min-width: 2em;
+        display: inline-block;
+        text-align: left;
+    }
+
+    textarea {
+        width: 18em;
+        border: 1px solid black;
+    }
+    
+    
+    label.textarea {
+        vertical-align: top;
+    }
+    
+    
+    fieldset {
+        width: 30em;
+        padding-top: 1.5em;
+        padding-left: 1.5em;
+		background: #ffffff;
+		box-shadow: 0 0 15px 5px #000000;
+        border: 0px solid black;
+        border-radius: 5px;
+    }
+    
+    legend {
+        background: white;
+        padding: 0.2em;
+        border: 1px solid #000330;
+        border-radius: 5px;
+    }
+    
+    input:hover, textarea:hover {
+        background: #f0fffa;
+        box-shadow: 0 0 10px #000000;
+    }
+
+    input:required+span::after {
+        color: red;
+    }
+    textarea:required+span::after {
+        color: red;
+    }
+    input[type="email"]:valid+span::after {
+        color: green;
+    }
+    textarea:valid+span::after {
+        color: green;
+    }
+
+    #searchInput {
+        background-color: #b3ffff;
+    }
+    .responsive_table {
+        overflow-x: auto;
+    }
+
+}
+
+/* Responsive Design - Seitenumbruch bei Smartphone */
+@media screen and (max-width: 480px) {
+    #flexarea, nav, footer {
+        flex-direction: column;
+    }
+    
+    body {
+		font-family: Heebo-Regular;
+		font-size: 12px;
+    }
+    
+    label {
+        min-width: 2em;
+        display: block;
+        text-align: left;
+    }
+    
+    textarea {
+        width: 16em;
+        border: 1px solid black;
+    }
+    
+    input[type="checkbox"], input[type="radio"] {
+        width: auto;
+    }
+    
+    label.textarea {
+        vertical-align: top;
+    }
+    
+    input[type="checkbox"], button[type="submit"], button[type="reset"] {
+        margin-left: 8em;
+    }
+    
+    fieldset {
+        width: 30em;
+        padding-top: 1.5em;
+        padding-left: 1.5em;
+		background: #ffffff;
+		box-shadow: 0 0 15px 5px #000000;
+        border: 0px solid black;
+        border-radius: 5px;
+    }
+    
+    legend {
+        background: white;
+        padding: 0.2em;
+        border: 1px solid #000330;
+        border-radius: 5px;
+    }
+    
+    input:hover, textarea:hover {
+        background: #f0fffa;
+        box-shadow: 0 0 10px #000000;
+    }
+
+    input:required+span::after {
+        color: red;
+    }
+    textarea:required+span::after {
+        color: red;
+    }
+    input[type="email"]:valid+span::after {
+        color: green;
+    }
+    textarea:valid+span::after {
+        color: green;
+    }
+
+    #searchInput {
+        background-color: #b3ffff;
+    }
+    .responsive_table {
+        overflow-x: auto;
+    }
+
+}

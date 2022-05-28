@@ -5,11 +5,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Abgemeldet</title>
+<link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
 </head>
 <body>
+	<nav>
+		<%@include file="../jspf/navigation.jspf"%>
+	</nav>
 	<h1>Auf wiedersehen!</h1>
-	<a href="../../index.jsp">Startseite</a>
 </body>
 </html>

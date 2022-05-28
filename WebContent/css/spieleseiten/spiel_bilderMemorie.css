@@ -1,15 +1,11 @@
 /* Erstellt von Lukas Theinert */
 
-* {
-  padding: 5 px;
-  margin: 5 px;
-  box-sizing: border-box;
-}
-
 html {
     width: 100%;
     height: 100%;
     background: linear-gradient(325deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%);
+    background-repeat: no-repeat;
+	background-attachment: fixed;    
 }
 
 .controls {
@@ -22,8 +18,7 @@ html {
     padding: 10px 20px;
 }
 
-
-.spiel_bilderMemorie {
+.spiel_bilderMemorieLeicht {
   width: 640px;
   height: 640px;
   margin: auto;
@@ -32,27 +27,42 @@ html {
   perspective: 1000px;
 }
 
-button {
+.spiel_bilderMemorieMittel {
+  width: 960px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.spiel_bilderMemorieSchwer {
+  width: 1280px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+#start {
     background: #FFF;
     color: #282A3A;
-    border-radius: 5px;
-    padding: 10px 20px;
-    border: 0;
-    cursor: pointer;
+    border-radius: 10px;
     font-size: 18pt;
 }
 
 
 .memorieKarte {
-  width: calc(25% - 10px);
-  height: calc(25% - 10px);
+  width: calc(150px);
+  height: calc(150px);
   margin: 5px;
   position: relative;
   transform: scale(1);
   transform-style: preserve-3d;
   transition: transform .5s;
-  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
 }
+
 
 .memorieKarte:active {
   transform: scale(0.97);

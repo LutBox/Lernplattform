@@ -7,13 +7,28 @@ Erstellt von Lukas Theinert
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+
 <base href="${pageContext.request.requestURI}"/>
 <meta charset="ISO-8859-1">
-<title>Spielergebnis</title>
+<title>Mathespielergebnis</title>
 </head>
 <body>
 
-<h1>Spielergebnis</h1>
+	<header>
+		<h1>Spieleübersicht</h1>	
+		<%@include file="../jspf/navigation.jspf"%>
+	</header>
+	
+	<!-- Flex-Item 1 -->
+	<div id="flexarea">
+	
+	<!-- Flex-Item 2 -->
+	<article>
+
+<h1>Matheergebnis</h1>
 
 	<c:set var="nutzerErgebnis" value="${spielMatheBean.nutzerErgebnis1}"/>
 	<c:set var="ergebnis" value="${spielMatheBean.ergebnis1}"/>
@@ -37,9 +52,16 @@ Erstellt von Lukas Theinert
 <br><em>Ergebnis:</em>${datenDB.ergebnis1}
 <br><em>Nutzerergebnis:</em>${datenDB.nutzerErgebnis1}</p>
 
-	<nav>
-		<%@include file="../jspf/navigation.jspf"%>
-	</nav>  
+				<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+	
+	</article>
+		
+	</div>
+	<!-- Ende der FLEXBOX -->
+	<br> <br> <br> <br>
+	<footer>
+			<%@include file="../jspf/footer.jspf"%>
+	</footer>
 
 </body>
 </html>

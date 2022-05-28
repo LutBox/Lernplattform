@@ -1,9 +1,10 @@
 package dienste.regdienst;
 
-import beans.viewbeans.NutzerViewBean;
+import beans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
 import exceptions.KeinAdminException;
 import exceptions.NichtAngemeldetException;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -17,10 +18,10 @@ public class Anmeldungsvalidator {
 	/**
 	 * @author Merlin
 	 * @param request
-	 * @throws KeinAdminException
+	 * @throws ServletException 
 	 */
-	public static void nutzerIstAdmin(HttpSession session) throws KeinAdminException {
-		NutzerViewBean tmp = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributName);
+	public static void nutzerIstAdmin(HttpSession session) throws ServletException {
+		NutzerViewBean tmp = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributname);
 		NutzerViewBean potAdmin = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(tmp.getName());
 		if (potAdmin.getAdmin() != 1) {
 			throw new KeinAdminException();
@@ -33,7 +34,7 @@ public class Anmeldungsvalidator {
 	 * @throws NichtAngemeldetException
 	 */
 	public static void nutzerIstAngemeldet(HttpSession session) throws NichtAngemeldetException {
-		NutzerViewBean potNutzer = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributName);
+		NutzerViewBean potNutzer = (NutzerViewBean) session.getAttribute(NutzerViewBean.attributname);
 		if (potNutzer.getName() == null) {
 			throw new NichtAngemeldetException();
 		}
@@ -44,7 +45,7 @@ public class Anmeldungsvalidator {
 	 * @param session
 	 */
 	public static HttpSession nutzerAbmelden(HttpSession session) {
-		session.removeAttribute(NutzerViewBean.attributName);
+		session.removeAttribute(NutzerViewBean.attributname);
 		return session;
 	}
 }

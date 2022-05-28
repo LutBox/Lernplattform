@@ -1,0 +1,41 @@
+/*
+Erstellt von Lukas Theinert
+ */
+
+nav ul { 
+  background-color: #000000e0;
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+  text-align: center;
+  top: 0px;
+  z-index:99
+}
+
+nav ul li {
+  display: inline-block;
+  
+}
+
+nav ul li a {
+  padding: 18px;
+  font-family: "Open Sans";
+  text-transform:uppercase;
+  font-size: 18px;
+  text-decoration: none;
+  display: block;
+  color: #ffffff;
+  
+}
+
+nav ul li a:hover {
+  background: #ffffff1A;
+  color: #ffffff;
+
+}
+
+.sticky {
+  position: fixed;
+  margin-top: 0;
+}

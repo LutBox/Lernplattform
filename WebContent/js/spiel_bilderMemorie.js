@@ -1,5 +1,29 @@
 //Erstellt von Lukas Theinert
 
+"use strict";
+
+function datenbankEintrag() {
+
+	var zeit = state.totalTime;
+	var versuche = state.totalFlips;
+
+	var sendData = "zeit=" + zeit + "&versuche=" + versuche;
+
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("temp").innerHTML = xmlhttp.responseText;
+		}
+	};
+	xmlhttp.open("POST", "BilderMemorieAjax", true);
+	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xmlhttp.send(sendData);
+
+	//alert("Spiel in Datenbank gespeichert");
+}
+
+
+//Spiel
 const karten = document.querySelectorAll('.memorieKarte');
 
 const selectors = {
@@ -26,8 +50,16 @@ const startGame = () => {
 	state.loop = setInterval(() => {
 		state.totalTime++
 
-		selectors.moves.innerText = `${state.totalFlips} moves`
-		selectors.timer.innerText = `time: ${state.totalTime} sec`
+		//alert(document.getElementById("gewertet").innerHTML);
+			
+		if (document.getElementById("gewertet").innerHTML === "gewertetAn") {
+			selectors.moves.innerText = `Versuche: ${state.totalFlips} `
+		}
+		
+		if (document.getElementById("timerID").innerHTML === "timerAn") {
+			selectors.timer.innerText = `Zeit: ${state.totalTime} Sekunden`
+		}
+		
 	}, 1000)
 }
 
@@ -55,7 +87,7 @@ let ersteKarte, zweiteKarte;
 
 function karteVorneDrehen() {
 	if (istAufgedeckt) return;
-	if (this === ersteKarte) return;	
+	if (this === ersteKarte) return;
 	state.totalFlips++
 	state.flippedCards++
 	this.classList.add('drehen');
@@ -74,27 +106,37 @@ function versuchChecken() {
 	let isMatch = ersteKarte.dataset.framework === zweiteKarte.dataset.framework;
 	isMatch ? kartenDeaktivieren() : karteHintenDrehen();
 
- if (state.flippedCards === document.querySelectorAll('.memorieKarte').length) {
-//  if(isMatch){
-        setTimeout(() => {
-	        selectors.boardContainer.classList.add('flipped')
-	        document.getElementById("controls").style.visibility = "hide";
-	        document.getElementById("board-container").style.visibility = "visible";
-            selectors.win.innerHTML = `       
+	if (state.flippedCards === document.querySelectorAll('.memorieKarte').length) {
+		//  if(isMatch){
+		setTimeout(() => {
+			selectors.boardContainer.classList.add('flipped')
+			document.getElementById("controls").style.visibility = "hide";
+			document.getElementById("board-container").style.visibility = "visible";
+			selectors.win.innerHTML = `       
                     Du hast gewonnen!<br />       
                     Versuche: <span class="highlight">${state.totalFlips}</span><br />
                     Zeit: <span class="highlight">${state.totalTime}</span> Sekunden
             `
-
-            clearInterval(state.loop)
-        }, 1000)
-    }
+			clearInterval(state.loop)			
+			//DatenbankEintrag
+			if (document.getElementById("nutzer").innerHTML !== "") {
+				datenbankEintrag();	
+				//alert(document.getElementById("nutzer").innerHTML);
+			}
+		}, 1000)
+	}
 }
 
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 
-
-function unhideRestart(){
-		document.getElementByID().style.visability = 'restart';
+function unhideRestart() {
+	document.getElementByID().style.visability = 'restart';
 }
 
 
@@ -108,9 +150,9 @@ function kartenDeaktivieren() {
 
 function karteHintenDrehen() {
 	istAufgedeckt = true;
-	
-		state.flippedCards--;
-		state.flippedCards--;
+
+	state.flippedCards--;
+	state.flippedCards--;
 
 	setTimeout(() => {
 		ersteKarte.classList.remove('drehen');

@@ -1,29 +1,27 @@
-<%--
-Erstellt von Lukas Theinert
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
-<title>Nutzerbereich</title>
+<title>Mitgliederbereich</title>
+<link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
 </head>
-
 <body>
-
-	<h1>Nutzerbereich</h1>
-	<ul>
-		<li>
-			<nav>
-				<%@include file="../jspf/navigation.jspf"%>
-			</nav>
-		</li>
-		<li>Nutzerbereich</li>
-		<li><%@include file="../jspf/nutzernavigation.jspf"%></li>
-	</ul>
+	<header>
+		<%@include file="../jspf/navigation.jspf"%>
+	</header>
+	<main>
+		<h1>Mitgliederbereich</h1>
+		<div>
+			<img src="../../ProfilbildLadenServlet?nn=${nutzer.name}" /> <br />Nutzername:
+			${nutzer.name} <br />Email: ${nutzer.email} <br />Punktestand:
+			${nutzer.punkte} <br />Dateiname: ${nutzer.bildnr}
+		</div>
+		<div>
+			<a href="../spieleseiten/spielehaupseite.jsp">Spieleübersicht</a>
+		</div>
+	</main>
 </body>
-
 </html>
