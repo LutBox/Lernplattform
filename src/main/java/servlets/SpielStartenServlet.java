@@ -9,6 +9,15 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import java.sql.SQLException;
+import java.text.DateFormat; 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import java.util.Random;
 
 import javax.sql.DataSource;
@@ -16,6 +25,8 @@ import javax.sql.DataSource;
 import beans.SpielBilderMemorieBean;
 import beans.SpielBilderOrdnenBean;
 import beans.SpielStartenBean;
+import beans.SpielVierBilderEinWortBean;
+import beans.VierBilderEinWortScoreBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -55,7 +66,7 @@ public class SpielStartenServlet extends HttpServlet {
 
 		//---------- SERVLET ------------------------------
 		//Attribute (Schwierigkeit & Spieleart) von gaming_main_page.jsp abholen
-		//Infos werden nur für den einen Request gespeichert
+		//Infos werden nur fÃ¼r den einen Request gespeichert
 		request.setAttribute("schwierigkeitServlet", schwierigkeitServlet);
 		request.setAttribute("spielartServlet", spielartServlet);
 		
@@ -67,10 +78,10 @@ public class SpielStartenServlet extends HttpServlet {
 		spielStartenBean.setTimer(request.getParameter("Timer"));
 		spielStartenBean.setGewertet(request.getParameter("Gewertet"));
 		
-		//Infos werden nur für den einen Request gespeichert innerhalb einer Bean
+		//Infos werden nur fÃ¼r den einen Request gespeichert innerhalb einer Bean
 		//request.setAttribute("spielStartenBean", spielStartenBean);
 
-		//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
+		//Infos werden nur fÃ¼r mehrere Requests gespeichert innerhalb einer Bean
 		final HttpSession session = request.getSession();
 		session.setAttribute("spielStartenBean", spielStartenBean);
 
@@ -86,18 +97,46 @@ public class SpielStartenServlet extends HttpServlet {
 		//---------- 4 Bilder 1 Wort   --------------------
 		//-------------------------------------------------	
 		} else if(spielartServlet.equals("bilderWort")) {
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_starten.jsp");
-			dispatcher.forward(request, response);
+			//SpielVierBilderEinWortBean spielBilderEinwort = new SpielVierBilderEinWortBean();
+			//spielBilderEinwort=spielBilderWort();
+			
+			//Infos werden nur fÃ¼r mehrere Requests gespeichert innerhalb einer Bean
+			//session.setAttribute("spielVierBilderEinWortBean", spielBilderEinwort);
+			
+			//final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_spielen.jsp");
+			//dispatcher.forward(request, response);
+			
+			// Clean up, damit die Punkte aus dem Spiel 
+			VierBilderEinWortScoreBean bean= new VierBilderEinWortScoreBean();
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			int sekunden=60;
+			if(schwierigkeitServlet.equals("mittel")) {
+				sekunden=45;
+			}
+			if(schwierigkeitServlet.equals("schwer")) {
+				sekunden=30;
+			}
+			
+			bean.setZeit ( format.format(addSecondsToJavaUtilDate(new Date(), sekunden)));
+			
+			
+			
+			session.setAttribute("vierBilderEinWort", bean);
+			
+			response.sendRedirect("VierBilderEinWortServlet");
+			
+			
 			
 		//-------------------------------------------------
 		//---------- Bilder ordnen   ----------------------
 		//-------------------------------------------------
 		} else if(spielartServlet.equals("bilderOrdnen")) {			
-			//8 Zufällige Bilder in Bean speichern
+			//8 ZufÃ¤llige Bilder in Bean speichern
 			SpielBilderOrdnenBean spielBilderOrdnen = new SpielBilderOrdnenBean();
 			spielBilderOrdnen = spielBilderOrdnen();
 			
-			//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
+			//Infos werden nur fÃ¼r mehrere Requests gespeichert innerhalb einer Bean
 			session.setAttribute("spielBilderOrdnen", spielBilderOrdnen);
 			
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
@@ -107,11 +146,11 @@ public class SpielStartenServlet extends HttpServlet {
 		//---------- Bildermemorie   ----------------------
 		//-------------------------------------------------
 		} else if(spielartServlet.equals("bilderMemorie")) {
-			//8 Zufällige Bilder in Bean speichern
+			//8 ZufÃ¤llige Bilder in Bean speichern
 			SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
 			spielBilderMemorieBean = spielBilderMemorie();
 			
-			//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
+			//Infos werden nur fÃ¼r mehrere Requests gespeichert innerhalb einer Bean
 			session.setAttribute("spielBilderMemorieBean", spielBilderMemorieBean);
 			
 			//Weiterleiten an JSP
@@ -151,14 +190,19 @@ public class SpielStartenServlet extends HttpServlet {
 		//Direktes Senden an Seite:
 		//response.sendRedirect("html/gaming_pages/quick_game.jsp"); 
 	}
+	// Quelle: https://www.baeldung.com/java-add-hours-date
+	// Abgewandelt
+	private Date addSecondsToJavaUtilDate(Date zeit, int seconds) {
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.setTime(zeit);
+	    calendar.add(Calendar.SECOND,seconds);
+	    return calendar.getTime();
+	}
 	
 	public void spielMathe() {
 		
 	}
 	
-	public void spielBilderWort() {
-		
-	}
 	
 	public SpielBilderOrdnenBean spielBilderOrdnen() throws ServletException {
 		int durchlauf = 0;
@@ -284,6 +328,51 @@ public class SpielStartenServlet extends HttpServlet {
 		return spielBilder;		
 	}
 
+	
+	
+	private SpielVierBilderEinWortBean spielBilderWort() throws ServletException {
+		
+		String  kategorie;
+		// 1) zufÃ¤lliges Wort aus der Datenbank laden
+		//Order by Rand() Limt 1//
+		      try( Connection con = ds.getConnection();
+		    		  PreparedStatement pstmt= con.prepareStatement("Select kategorie from wort order by Rand() limit 1")){
+		    	  
+		    	      ResultSet rs = pstmt.executeQuery();
+		    	      rs.next();
+		    	      kategorie = rs.getString(1);
+		      } catch (SQLException ex) {
+				// TODO Auto-generated catch block
+				ex.printStackTrace();
+				throw new ServletException(ex);
+			}	
+		      
+		      int[] imageIds = new int[4];
+		      
+		      try( Connection con = ds.getConnection();
+		    		  PreparedStatement pstmt= con.prepareStatement("select id from bild where kategorie=?")){
+		    	      pstmt.setString(1, kategorie);
+		    	      ResultSet rs = pstmt.executeQuery();
+		    	      for(int i = 0; i < 4; i++) {
+		    	    	  rs.next();
+
+		    	    	  imageIds[i] = rs.getInt(1);
+		    	    	  log("Kategorie-ID: " + imageIds[i]);
+		    	      }
+		      } catch (SQLException ex) {
+				// TODO Auto-generated catch block
+				ex.printStackTrace();
+				throw new ServletException(ex);
+			}	
+		    // 3) Ids in die Bean schreiben (z.B. als Attribute, Array, etc)
+		    SpielVierBilderEinWortBean bean = new SpielVierBilderEinWortBean();
+		    bean.setBild1(imageIds[0]);
+		    bean.setBild2(imageIds[1]);
+		    bean.setBild3(imageIds[2]);
+		    bean.setBild4(imageIds[3]);
+		    
+		return bean;
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
