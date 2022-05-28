@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>4 Bilder ein Wort spiel starten</title>
 </head>
 <body>
 
-	<h1>4 Bilder 1 Wort</h1>
+	<h1>Viel spaß!</h1>
 	
 		<nav>
 			<%@include file="../jspf/navigation.jspf"%>
