@@ -99,6 +99,12 @@ public class VierBilderEinWortServlet extends HttpServlet {
 	if (request.getParameter("userEingabe").equalsIgnoreCase(request.getParameter("loesung"))) {
 		score.setRichtigeErgebnis(score.getRichtigeErgebnis()+1);
 		
+		// Die Zeit  in die Bean liegen
+         
+		// Zeit auslesen
+		//Zeit jetzt und vergangenen Zeit vergleichen 
+		
+		
 	}
 	
 	// Wenn Zeit abgelaufen ist stattdessen auf Ergebnisseite

@@ -10,7 +10,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -98,9 +102,27 @@ public class SpielStartenServlet extends HttpServlet {
 			
 			//final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_spielen.jsp");
 			//dispatcher.forward(request, response);
+			
 			// Clean up, damit die Punkte aus dem Spiel 
-			session.setAttribute("vierBilderEinWort", new VierBilderEinWortScoreBean());
+			VierBilderEinWortScoreBean bean= new VierBilderEinWortScoreBean();
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			int sekunden=60;
+			if(schwierigkeitServlet.equals("mittel")) {
+				sekunden=45;
+			}
+			if(schwierigkeitServlet.equals("schwer")) {
+				sekunden=30;
+			}
+			
+			bean.setZeit ( format.format(addSecondsToJavaUtilDate(new Date(), sekunden)));
+			
+			
+			
+			session.setAttribute("vierBilderEinWort", bean);
+			
 			response.sendRedirect("VierBilderEinWortServlet");
+			
 			
 			
 		//-------------------------------------------------
@@ -150,6 +172,14 @@ public class SpielStartenServlet extends HttpServlet {
 		
 		//Direktes Senden an Seite:
 		//response.sendRedirect("html/gaming_pages/quick_game.jsp"); 
+	}
+	// Quelle: https://www.baeldung.com/java-add-hours-date
+	// Abgewandelt
+	private Date addSecondsToJavaUtilDate(Date zeit, int seconds) {
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.setTime(zeit);
+	    calendar.add(Calendar.SECOND,seconds);
+	    return calendar.getTime();
 	}
 	
 	public void spielMathe() {

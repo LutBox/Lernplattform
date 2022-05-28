@@ -2,12 +2,33 @@ package beans;
 
 import java.io.Serializable;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 public class VierBilderEinWortScoreBean implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	int versuche; 
+	int richtigeErgebnis; 
+	//schwiriegkeit einfügen!
+	// Stiehl stellt dazu fragen!
+   String zeit;
+   String schwierigkeit;
+   
+	public String getSchwierigkeit() {
+	return schwierigkeit;
+}
+public void setSchwierigkeit(String schwierigkeit) {
+	this.schwierigkeit = schwierigkeit;
+}
+	public String getZeit() {
+		return zeit;
+	}
+	public void setZeit(String zeit) {
+		this.zeit =zeit;
+	}
 	public int getVersuche() {
 		return versuche;
 	}
@@ -20,7 +41,6 @@ public class VierBilderEinWortScoreBean implements Serializable {
 	public void setRichtigeErgebnis(int richtigeErgebnis) {
 		this.richtigeErgebnis = richtigeErgebnis;
 	}
-	int richtigeErgebnis; 
 	
 
 }

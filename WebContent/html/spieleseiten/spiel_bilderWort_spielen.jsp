@@ -6,6 +6,8 @@
 
 <meta charset="ISO-8859-1">
 <title>VierBilderEinWort</title>
+<script src="js/spiel_vierBilderEinWort.js">
+</script>
 </head>
 <body>
 ${vierBilderEinWort.richtigeErgebnis}/${vierBilderEinWort.versuche}
@@ -20,17 +22,10 @@ ${vierBilderEinWort.richtigeErgebnis}/${vierBilderEinWort.versuche}
 
 <input type ="hidden"  name ="loesung" value="${requestScope.spielVierBilderEinWortBean.wort}">
 
-mit der Methode soll doch dieser Servlet gar nicht aufgerufen werden
+<p class="timer" id=t1 data-endzeit="${vierBilderEinWort.zeit}">
+
+</p>
 </form>
 </body>
 </html>
 
-/* 4 runden Spielen * /
-// Ein Servlet was schaut ob die Lösung gestimmt hat und punkte addieren 
-// id speichern
-// Prüfen ist Lösung geleich userEingabe 
-// Zwei Variable
-// Für das neue Spiel die Variable zurücksetzen 
-// Ein Sevlet oder JSP: Um den User zu zeigen, dass er gewonnen hat
-// Problem: Begriff Ids in session speichern
-//Idee: Java Script die Zeit aus dem Session übergeben
