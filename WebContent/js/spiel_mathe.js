@@ -174,7 +174,7 @@ function datenbankEintrag() {
 	var zeit = punkteStand;
 	var versuche = punkteStand;
 
-	var sendData = "zeit=" + zeit + "&punkteStand=" + versuche;
+	var sendData = "zeit=" + zeit + "&versuche=" + versuche;
 	
 	//var sendData = "punkteStand=" + punkteStand;
 
