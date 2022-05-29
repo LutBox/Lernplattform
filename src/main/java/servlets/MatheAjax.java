@@ -19,12 +19,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class BildHochladenServlet
+/*
+ * 
  */
-@WebServlet("/BilderOrdnenAjax")
+@WebServlet("/MatheAjax")
 
-public class BilderOrdnenAjax extends HttpServlet {
+public class MatheAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
@@ -33,7 +33,7 @@ public class BilderOrdnenAjax extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BilderOrdnenAjax() {
+	public MatheAjax() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,40 +47,39 @@ public class BilderOrdnenAjax extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		
 		// Dateien aus Bean in neues Objekt einfügen
-		SpielStartenBean bilderOrdnenAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
+		SpielStartenBean matheAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
 
-		bilderOrdnenAjax.setZeit(Integer.valueOf(request.getParameter("zeit")));
-		bilderOrdnenAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
+		matheAjax.setZeit(Integer.valueOf(request.getParameter("zeit")));
+		matheAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
 		
 		NutzerViewBean aktuellerNutzer = (NutzerViewBean) request.getSession().getAttribute("nutzer");
 		//NutzerBean aktuellerNutzer = (NutzerBean) request.getSession().getAttribute("nutzer");
 		
 		// In Datenbank eintragen
-		persist(bilderOrdnenAjax, aktuellerNutzer);
+		persist(matheAjax, aktuellerNutzer);
 	
-		if(bilderOrdnenAjax.getGewertet().equals("gewertetAn")) {
-				persist2(bilderOrdnenAjax, aktuellerNutzer);
+		if(matheAjax.getGewertet().equals("gewertetAn")) {
+				persist2(matheAjax, aktuellerNutzer);
 			//log("HAT GEKLAPPT");	
 		}
 		
 	}
 	
 
-	private void persist(SpielStartenBean bilderOrdnenAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
+	private void persist(SpielStartenBean matheAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"INSERT INTO bilderordnen (nutzer, kategorie, schwierigkeit, isgelistet, istimer, zeit, versuche, uhrzeit) VALUES (?,?,?,?,?,?,?,NOW());")) {
+						"INSERT INTO mathe (nutzer, kategorie, schwierigkeit, isgelistet, istimer, zeit, versuche, uhrzeit) VALUES (?,?,?,?,?,?,?,NOW());")) {
 		
 				pstmt.setString(1, aktuellerNutzer.getName());
-				pstmt.setString(2, bilderOrdnenAjax.getSpielart());
-				pstmt.setString(3, bilderOrdnenAjax.getSchwierigkeit());
-				pstmt.setString(4, bilderOrdnenAjax.getGewertet());
-				pstmt.setString(5, bilderOrdnenAjax.getTimer());
-				pstmt.setInt(6, bilderOrdnenAjax.getZeit());
-				pstmt.setInt(7, bilderOrdnenAjax.getVersuche());
+				pstmt.setString(2, matheAjax.getSpielart());
+				pstmt.setString(3, matheAjax.getSchwierigkeit());
+				pstmt.setString(4, matheAjax.getGewertet());
+				pstmt.setString(5, matheAjax.getTimer());
+				pstmt.setInt(6, matheAjax.getZeit());
+				pstmt.setInt(7, matheAjax.getVersuche());
 				
 			pstmt.executeUpdate();
 			//log("HAT GEKLAPPT: "+aktuellerNutzer.getName());
@@ -92,37 +91,37 @@ public class BilderOrdnenAjax extends HttpServlet {
 	}
 	
 
-	private void persist2(SpielStartenBean bilderOrdnenAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
+	private void persist2(SpielStartenBean matheAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"UPDATE nutzer SET punkteBilderOrdnen = punkteBilderOrdnen + ? WHERE name = ?;")) {
+						"UPDATE nutzer SET punkteMathe = punkteMathe + ? WHERE name = ?;")) {
 			
-			int zeit = bilderOrdnenAjax.getZeit();
-			int versuche = bilderOrdnenAjax.getVersuche();
+			int zeit = matheAjax.getZeit();
+			int versuche = matheAjax.getVersuche();
 			
-			String schwierigkeit = bilderOrdnenAjax.getSchwierigkeit();
+			String schwierigkeit = matheAjax.getSchwierigkeit();
 			
 			if(schwierigkeit.equals("leicht")) {
-				if(zeit <= 15 && versuche <= 8) {
+				if(versuche >= 45) {
 					pstmt.setInt(1, 2);
-				} else if(zeit <= 20 && versuche <= 9) {
+				} else if(versuche >= 30) {
 					pstmt.setInt(1, 1);
 				} else {
 					pstmt.setInt(1, 0);
 				}
 			} else if(schwierigkeit.equals("mittel")) {
-				if(zeit <= 18 && versuche <= 12) {
+				if(versuche >= 30) {
 					pstmt.setInt(1, 3);
-				} else if(zeit <= 23 && versuche <= 14) {
+				} else if(versuche >= 20) {
 					pstmt.setInt(1, 2);
 				} else {
 					pstmt.setInt(1, 1);
 				}
 			} else if(schwierigkeit.equals("schwer")) {
-				if(zeit <= 25 && versuche <= 16) {
+				if(versuche >= 20) {
 					pstmt.setInt(1, 4);
-				} else if(zeit <= 30 && versuche <= 19) {
+				} else if(versuche >= 10) {
 					pstmt.setInt(1, 3);
 				} else {
 					pstmt.setInt(1, 2);
@@ -145,6 +144,7 @@ public class BilderOrdnenAjax extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		log("TEEEEEEEST");
 		doGet(request, response);
 	}
 

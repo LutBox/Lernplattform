@@ -24,7 +24,7 @@ Erstellt von Lukas Theinert
 				<tr>
 					<td>${status.count}</td>
 					<td>${b.nutzer}</td>
-					<td>${b.punkte}</td>
+					<td>${b.gesamtPunkte}</td>
 				</tr>
 			</c:forEach>
 

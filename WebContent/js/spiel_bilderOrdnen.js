@@ -177,7 +177,7 @@ function datenbankEintrag() {
 	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xmlhttp.send(sendData);
 
-	alert("Spiel in Datenbank gespeichert");
+	//alert("Spiel in Datenbank gespeichert");
 }
 
 attachEventListeners()

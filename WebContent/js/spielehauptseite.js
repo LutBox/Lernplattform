@@ -14,6 +14,10 @@ document.addEventListener('mouseover', event => {
 	if (eventTarget.nodeName === 'IMG' && event.target.id === 'KarteMathe') {
 		b1 = document.getElementById("leichtMathe");
 		b1.checked = true
+		b2 = document.getElementById("timerAnMathe");
+		b2.checked = true
+		b3 = document.getElementById("gewertetAnMathe");
+		b3.checked = true
 		document.getElementById("spieleBeschreibung").innerHTML = "Löse die Rechenaufgaben!";
 	}
 	

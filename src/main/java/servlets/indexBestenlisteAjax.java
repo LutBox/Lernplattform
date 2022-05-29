@@ -68,13 +68,13 @@ public class indexBestenlisteAjax extends HttpServlet {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT name, punkte FROM nutzer WHERE admin = 0 ORDER BY punkte DESC, name ASC LIMIT 3;")) {
+						"SELECT name, punkteBilderMemorie + punkteBilderBilderWort + punkteBilderOrdnen + punkteMathe + punkteJumpnrun as punkte FROM nutzer WHERE admin = 0 ORDER BY punkte DESC, name ASC LIMIT 3;")) {
 		
 			try(ResultSet rs = pstmt.executeQuery()) {
 				while (rs!= null && rs.next()) {
 					Bestenliste bestenliste = new Bestenliste();
 					bestenliste.setNutzer(rs.getString("name"));
-					bestenliste.setPunkte(rs.getInt("punkte"));
+					bestenliste.setGesamptPunkte(rs.getInt("punkte"));
 					bestenlisteBilderMemorieAjax.add(bestenliste);
 				}
 			}

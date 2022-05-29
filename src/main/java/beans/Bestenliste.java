@@ -8,7 +8,7 @@ public class Bestenliste implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int platz;
-	private int punkte;
+	private int punkteJumpnrun, punkteMathe, punkteBilderBilderWort, punkteBilderOrdnen, punkteBilderMemorie, gesamptPunkte;
 	private String nutzer;
 	private int spieleInsgesamt;
 	private int durchschnittZeitLeicht, durchschnittZeitMittel, durchschnittZeitSchwer;
@@ -25,13 +25,53 @@ public class Bestenliste implements Serializable {
 	public void setPlatz(int platz) {
 		this.platz = platz;
 	}
-
-	public int getPunkte() {
-		return punkte;
+	
+	public int getGesamptPunkte() {
+		return gesamptPunkte;
 	}
 
-	public void setPunkte(int punkte) {
-		this.punkte = punkte;
+	public void setGesamptPunkte(int gesamptPunkte) {
+		this.gesamptPunkte = gesamptPunkte;
+	}
+
+	public int getPunkteJumpnrun() {
+		return punkteJumpnrun;
+	}
+
+	public void setPunkteJumpnrun(int punkteJumpnrun) {
+		this.punkteJumpnrun = punkteJumpnrun;
+	}
+
+	public int getPunkteMathe() {
+		return punkteMathe;
+	}
+
+	public void setPunkteMathe(int punkteMathe) {
+		this.punkteMathe = punkteMathe;
+	}
+
+	public int getPunkteBilderBilderWort() {
+		return punkteBilderBilderWort;
+	}
+
+	public void setPunkteBilderBilderWort(int punkteBilderBilderWort) {
+		this.punkteBilderBilderWort = punkteBilderBilderWort;
+	}
+
+	public int getPunkteBilderOrdnen() {
+		return punkteBilderOrdnen;
+	}
+
+	public void setPunkteBilderOrdnen(int punkteBilderOrdnen) {
+		this.punkteBilderOrdnen = punkteBilderOrdnen;
+	}
+
+	public int getPunkteBilderMemorie() {
+		return punkteBilderMemorie;
+	}
+
+	public void setPunkteBilderMemorie(int punkteBilderMemorie) {
+		this.punkteBilderMemorie = punkteBilderMemorie;
 	}
 
 	public String getNutzer() {

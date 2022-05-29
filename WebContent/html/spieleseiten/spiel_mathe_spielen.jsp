@@ -11,8 +11,10 @@ Erstellt von Lukas Theinert
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/spiel_mathe.js" defer></script>
+
 <base href="${pageContext.request.requestURI}" />
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Mathespiel</title>
 </head>
 <body>
@@ -28,25 +30,40 @@ Erstellt von Lukas Theinert
 	<!-- Flex-Item 2 -->
 	<article>
 
-	<br>Schwierigkeitsgrad aus Bean: ${spielStartenBean.schwierigkeit}
-	
-
-	<br>
-	<p>Aufgabe 1: ${spielMatheBean.zahl1} + ${spielMatheBean.zahl2}=</p>
-
-	<form id="Spielstarten"
-		action="${pageContext.request.contextPath}/SpielMatheErgebnisServlet"
-		method="post" accept-charset="UTF-8">
-		
-		<div>
-			<input name="NutzerErgebnis1" id="ne1" type="number" required>
+		<div id="container">
+		<div id="score">
+			score: <span id="scorevalue" style="font-weight: 900">0</span>
 		</div>
-
-		<br>
-		<button name="spielen" type="submit">Fertig!</button>
-
-	</form>
-
+		<div id="correct">
+			Correct!
+		</div>
+		<div id="wrong">
+			Try again!
+		</div>
+		<div id="question">
+			
+		</div>
+		<div id="instruction">
+			Click on the correct answer.
+		</div>
+		<div id="choices">
+			
+			<div id="box1" class="box"> </div>
+			<div id="box2" class="box">	</div>
+			<div id="box3" class="box">	</div>
+			<div id="box4" class="box">	</div>	
+		</div>
+		<div id="startreset">
+			Start Game
+		</div>
+		<div id="timeremaining">
+			Time remaining:   <span id="timeremainingvalue" style="font-family: sans seriff; font-weight: bold; font-size 32px; color: black;">  60</span>
+		</div>
+		<div id="gameOver">
+			
+		</div>
+	</div>
+	
 
 				<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
 	
