@@ -108,21 +108,43 @@ Erstellt von Lukas Theinert
 				<img src="../../bilder/bilderWort.png" alt="bilderWort" style="width:256px;height:256px;" id="KarteBilderWort">
 
 		</div>
+			
 				<div class="flip-card-back">
+				Schwierigkeit:<br>
 					<input type="radio" name="Schwierigkeit" id="leichtBilderWort" value="leicht" required>
-					<label for="leichtBilderWort">Zu jung zum sterben</label>
+					<label for="leichtBilderWort">Leicht</label>
 					
 					<br>
 					
 					<input type="radio" name="Schwierigkeit" id="mittelBilderWort" value="mittel">
-					<label for="mittelBilderWort">Albtraum</label>
+					<label for="mittelBilderWort">Mittel</label>
 					
 					<br>
 					
 					<input type="radio" name="Schwierigkeit" id="schwerBilderWort" value="schwer">
-					<label for="schwerBilderWort">Todesmarsch</label>
+					<label for="schwerBilderWort">Schwer</label>
 					
 					<br><br>
+					
+					<div>
+					Timer:<br>
+					<input type="radio" name="Timer" id="timerAnBilderWort" value="timerAn" required checked="checked">
+					<label for="timerAnBilderWort">An</label>
+					
+					<input type="radio" name="Timer" id="timerAusBilderWort" value="TimerAus" required>
+					<label for="timerAusBilderWort">Aus</label>
+				</div>
+				
+<br>		
+				<div>
+				Gewertet:<br>
+					<input type="radio" name="Gewertet" id="gewertetAnBilderWort" value="gewertetAn" checked="checked">
+					<label for="gewertetAnBilderWort">An</label>					
+					
+					<input type="radio" name="Gewertet" id="gewertetAusBilderWort" value="gewertetAus">
+					<label for="gewertetAusBilderWort">Aus</label>
+				</div>
+				<br>
 					
 						<button class="button" name="Spielart" id="bilderWort" value="bilderWort" type="submit">Starten!</button>
 

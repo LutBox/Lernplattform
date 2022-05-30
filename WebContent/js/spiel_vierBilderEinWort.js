@@ -20,6 +20,9 @@ function timer() {
 
   // If the count down is over, write some text 
   if (distance < 0) {
+  	// Funktionsaufruf
+  	datenbankEintrag()
+  
     window.location.href = "html/spieleseiten/spiel_bilderWort_ergebnis.jsp"
   }
 
@@ -33,4 +36,27 @@ window.onload = function () {
     timer()
   }, 1000);
 
+}
+
+//Datenbankeintrag
+"use strict";
+
+function datenbankEintrag() {
+
+	var punkt =document.getElementById("insgesamt_Punkte");
+	var versuche = document.getElementByID("erreichte_Punkte");
+
+	var sendData = "punkt=" + punkt + "&versuche=" + versuche;
+
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("temp").innerHTML = xmlhttp.responseText;
+		}
+	};
+	xmlhttp.open("POST", "BilderWortAjax", true);
+	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xmlhttp.send(sendData);
+
+	alert("Spiel in Datenbank gespeichert");
 }
