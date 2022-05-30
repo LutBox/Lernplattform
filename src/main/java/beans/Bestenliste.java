@@ -8,14 +8,21 @@ public class Bestenliste implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int platz;
-	private int punkteJumpnrun, punkteMathe, punkteBilderBilderWort, punkteBilderOrdnen, punkteBilderMemorie, gesamptPunkte;
-	private String nutzer;
+	private int punkteJumpnrun, punkteMathe, punkteBilderBilderWort, punkteBilderOrdnen, punkteBilderMemorie, gesamtPunkte;
+	private String nutzer, kategorie;
 	private int spieleInsgesamt;
 	private int durchschnittZeitLeicht, durchschnittZeitMittel, durchschnittZeitSchwer;
 
+	public Bestenliste() {
 
-	public Bestenliste() { 
-		
+	}
+	
+	public String getKategorie() {
+		return kategorie;
+	}
+
+	public void setKategorie(String kategorie) {
+		this.kategorie = kategorie;
 	}
 
 	public int getPlatz() {
@@ -25,13 +32,13 @@ public class Bestenliste implements Serializable {
 	public void setPlatz(int platz) {
 		this.platz = platz;
 	}
-	
-	public int getGesamptPunkte() {
-		return gesamptPunkte;
+
+	public int getGesamtPunkte() {
+		return gesamtPunkte;
 	}
 
-	public void setGesamptPunkte(int gesamptPunkte) {
-		this.gesamptPunkte = gesamptPunkte;
+	public void setGesamtPunkte(int gesamptPunkte) {
+		this.gesamtPunkte = gesamptPunkte;
 	}
 
 	public int getPunkteJumpnrun() {
@@ -113,6 +120,5 @@ public class Bestenliste implements Serializable {
 	public void setDurchschnittZeitSchwer(int durchschnittZeitSchwer) {
 		this.durchschnittZeitSchwer = durchschnittZeitSchwer;
 	}
-
 
 }

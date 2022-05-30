@@ -19,7 +19,7 @@ Erstellt von Lukas Theinert
 
 		<tbody>
 
-			<c:forEach var="b" items="${bestenlisteBilderMemorieAjax}"
+			<c:forEach var="b" items="${besteSpielerAjax}"
 				varStatus="status">
 				<tr>
 					<td>${status.count}</td>

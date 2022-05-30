@@ -19,7 +19,7 @@ document.getElementById("start-restart").onclick = function() {
 		document.getElementById("punkte").innerHTML = punkteStand;
 		//show count
 		show("verbleibendeZeit");
-		verbleibendeZeit = 10;
+		verbleibendeZeit = 60;
 
 		document.getElementById("verbleibendeZeitWert").innerHTML = verbleibendeZeit;
 

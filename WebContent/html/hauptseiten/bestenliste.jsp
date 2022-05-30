@@ -155,9 +155,9 @@ Erstellt von Lukas Theinert
                     <th>Name</th>
                     <th>Punkte</th>
                     <th>Gespielte Spiele</th>
-                    <th>Punkte: Leicht</th>
-                    <th>Punkte: Mittel</th>
-                    <th>Punkte: Schwer</th>
+                    <th>Durchschnittliche Punkte: Leicht</th>
+                    <th>Durchschnittliche Punkte: Mittel</th>
+                    <th>Durchschnittliche Punkte: Schwer</th>
                 </tr>
                 </thead>
 

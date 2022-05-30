@@ -77,7 +77,7 @@ const startGame = () => {
 	});
 })();
 
-//Bilder-Ordnen-Idee von Tutorial: https://codepen.io/Coding_Journey/pen/YzKpLvE
+//Bilder-Ordnen-Idee:
 //----------- Anfang ----------------------
 draggableElements.forEach(elem => {
 	elem.addEventListener("dragstart", dragStart);
