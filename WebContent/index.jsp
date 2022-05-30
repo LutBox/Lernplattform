@@ -10,9 +10,10 @@ Erstellt von Lukas Theinert
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js" defer></script>
 
 <base href="${pageContext.request.requestURI}" />
+
 <meta charset="UTF-8">
 <title>Lernplattform</title>
 </head>
@@ -60,7 +61,10 @@ Erstellt von Lukas Theinert
 		<aside>
 		
 			<h3>Top 3 Spieler</h3>
-			<p id="liste1">Listeneinträge</p>
+			<p id="besteSpieler">Listeneinträge</p>
+			
+			<h3>Beliebteste Spiele</h3>
+			<p id="beliebtesteSpiele">Listeneinträge</p>
 
 		</aside>
 		

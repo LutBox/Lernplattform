@@ -96,7 +96,7 @@ public class BilderMemorieAjax extends HttpServlet {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"UPDATE nutzer SET punkte = punkte + ? WHERE name = ?;")) {
+						"UPDATE nutzer SET punkteBilderMemorie = punkteBilderMemorie + ? WHERE name = ?;")) {
 			
 			int zeit = bilderMemorieAjax.getZeit();
 			int versuche = bilderMemorieAjax.getVersuche();

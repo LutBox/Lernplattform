@@ -60,7 +60,7 @@ Erstellt von Lukas Theinert
                     <tr>
                         <td>${status.count}</td>
                         <td>${b.nutzer}</td>
-                        <td>${b.punkte}</td>
+                        <td>${b.punkteBilderMemorie}</td>
                         <td>${b.spieleInsgesamt}</td>
                         <td>${b.durchschnittZeitLeicht}sek</td>
                         <td>${b.durchschnittZeitMittel}sek</td>
@@ -96,7 +96,114 @@ Erstellt von Lukas Theinert
                     <tr>
                         <td>${status.count}</td>
                         <td>${c.nutzer}</td>
-                        <td>${c.punkte}</td>
+                        <td>${c.punkteBilderOrdnen}</td>
+                        <td>${c.spieleInsgesamt}</td>
+                        <td>${c.durchschnittZeitLeicht}sek</td>
+                        <td>${c.durchschnittZeitMittel}sek</td>
+                        <td>${c.durchschnittZeitSchwer}sek</td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+            </table>
+        </div>
+        
+        <br><br>
+        
+        <center><h3>4 Bilder 1 Wort</h3></center>
+
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Platz</th>
+                    <th>Name</th>
+                    <th>Punkte</th>
+                    <th>Gespielte Spiele</th>
+                    <th>Durchschnittliche Zeit: Leicht</th>
+                    <th>Durchschnittliche Zeit: Mittel</th>
+                    <th>Durchschnittliche Zeit: Schwer</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <c:forEach var="c" items="${bestenlisteBilderWortAjax}" varStatus="status">
+                    <tr>
+                        <td>${status.count}</td>
+                        <td>${c.nutzer}</td>
+                        <td>${c.punkteBilderBilderWort}</td>
+                        <td>${c.spieleInsgesamt}</td>
+                        <td>${c.durchschnittZeitLeicht}sek</td>
+                        <td>${c.durchschnittZeitMittel}sek</td>
+                        <td>${c.durchschnittZeitSchwer}sek</td>
+                    </tr>
+                </c:forEach>
+                
+                </tbody>
+            </table>
+        </div>
+                <br><br>
+        
+        <center><h3>Mathe</h3></center>
+
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Platz</th>
+                    <th>Name</th>
+                    <th>Punkte</th>
+                    <th>Gespielte Spiele</th>
+                    <th>Durchschnittliche Punkte: Leicht</th>
+                    <th>Durchschnittliche Punkte: Mittel</th>
+                    <th>Durchschnittliche Punkte: Schwer</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <c:forEach var="c" items="${bestenlisteMatheAjax}" varStatus="status">
+                    <tr>
+                        <td>${status.count}</td>
+                        <td>${c.nutzer}</td>
+                        <td>${c.punkteMathe}</td>
+                        <td>${c.spieleInsgesamt}</td>
+                        <td>${c.durchschnittZeitLeicht}</td>
+                        <td>${c.durchschnittZeitMittel}</td>
+                        <td>${c.durchschnittZeitSchwer}</td>
+                    </tr>
+                </c:forEach> 
+
+                </tbody>
+            </table>
+        </div>
+        
+                <br><br>
+        
+        <center><h3>Jumpnrun</h3></center>
+
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Platz</th>
+                    <th>Name</th>
+                    <th>Punkte</th>
+                    <th>Gespielte Spiele</th>
+                    <th>Durchschnittliche Zeit: Leicht</th>
+                    <th>Durchschnittliche Zeit: Mittel</th>
+                    <th>Durchschnittliche Zeit: Schwer</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <c:forEach var="c" items="${bestenlisteJumpnrunAjax}" varStatus="status">
+                    <tr>
+                        <td>${status.count}</td>
+                        <td>${c.nutzer}</td>
+                        <td>${c.punkteJumpnrun}</td>
                         <td>${c.spieleInsgesamt}</td>
                         <td>${c.durchschnittZeitLeicht}sek</td>
                         <td>${c.durchschnittZeitMittel}sek</td>

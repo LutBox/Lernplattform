@@ -57,20 +57,38 @@ Erstellt von Lukas Theinert
 
 		</div>
 				<div class="flip-card-back">
+				Schwierigkeit:<br>
 					<input type="radio" name="Schwierigkeit" id="leichtMathe" value="leicht" required>
 					<label for="leichtMathe">Leicht</label>
-					
-					<br>
-					
+
 					<input type="radio" name="Schwierigkeit" id="mittelMathe" value="mittel">
 					<label for="mittelMathe">Mittel</label>
-					
-					<br>
-					
+
 					<input type="radio" name="Schwierigkeit" id="schwerMathe" value="schwer">
 					<label for="schwerMathe">Schwer</label>
 					
 					<br><br>
+					
+					<div>
+					Timer:<br>
+					<input type="radio" name="Timer" id="timerAnMathe" value="timerAn" required checked="checked">
+					<label for="timerAnMathe">An</label>
+					
+					<input type="radio" name="Timer" id="timerAusMathe" value="TimerAus" required>
+					<label for="timerAusMathe">Aus</label>
+				</div>
+				
+<br>		
+				<div>
+				Gewertet:<br>
+					<input type="radio" name="Gewertet" id="gewertetAnMathe" value="gewertetAn" checked="checked">
+					<label for="gewertetAnMathe">An</label>					
+					
+					<input type="radio" name="Gewertet" id="gewertetAusMathe" value="gewertetAus">
+					<label for="gewertetAusMathe">Aus</label>
+				</div>
+				
+				<br>
 					
 						<button class="button" name="Spielart" id="mathe" value="mathe" type="submit">Starten!</button>
 
@@ -147,18 +165,15 @@ Erstellt von Lukas Theinert
 
 		</div>
 				<div class="flip-card-back">
+				Schwierigkeit:<br>
 					<input type="radio" name="Schwierigkeit" id="leichtBilderOrdnen" value="leicht" required>
-					<label for="leichtBilderOrdnen">Zu jung zum sterben</label>
-					
-					<br>
-					
+					<label for="leichtBilderOrdnen">Leicht</label>
+
 					<input type="radio" name="Schwierigkeit" id="mittelBilderOrdnen" value="mittel">
-					<label for="mittelBilderOrdnen">Albtraum</label>
-					
-					<br>
-					
+					<label for="mittelBilderOrdnen">Mittel</label>
+
 					<input type="radio" name="Schwierigkeit" id="schwerBilderOrdnen" value="schwer">
-					<label for="schwerBilderOrdnen">Todesmarsch</label>
+					<label for="schwerBilderOrdnen">Schwer</label>
 					
 					<br><br>
 					

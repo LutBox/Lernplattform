@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import beans.NutzerBean;
 import beans.NutzerViewBean;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 /**
@@ -29,14 +28,12 @@ public class NutzerSQLDienst extends SQLDienst {
 	 */
 	public static void nutzerSpeichern(NutzerBean neuerNutzer, Part bild) throws ServletException {
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement("INSERT INTO " + tabellenname
-						+ " (name,email,punkte,passwort,admin,bild) VALUES (?,?,?,?,?,?)")) {
+				PreparedStatement pstmt = con.prepareStatement(
+						"INSERT INTO " + tabellenname + " (name,email,passwort,bild) VALUES (?,?,?,?)")) {
 			pstmt.setString(1, neuerNutzer.getName());
 			pstmt.setString(2, neuerNutzer.getEmail());
-			pstmt.setInt(3, 0);
-			pstmt.setString(4, neuerNutzer.getPasswort());
-			pstmt.setInt(5, 0);
-			pstmt.setBinaryStream(6, bild.getInputStream());
+			pstmt.setString(3, neuerNutzer.getPasswort());
+			pstmt.setBinaryStream(4, bild.getInputStream());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw new ServletException(e.getMessage());
@@ -53,15 +50,19 @@ public class NutzerSQLDienst extends SQLDienst {
 		NutzerViewBean nutzerAnzeige = new NutzerViewBean();
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT name,email,admin,punkte,bildnr FROM " + tabellenname + " WHERE name = ? ")) {
+						"SELECT name,email,admin,punkteBilderMemorie,punkteBilderOrdnen,punkteBilderBilderWort,punkteMathe,punkteJumpnrun"
+								+ " FROM " + tabellenname + " WHERE name = ? ")) {
 			pstmt.setString(1, name);
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs != null && rs.next()) {
 					nutzerAnzeige.setName(rs.getString("name"));
 					nutzerAnzeige.setEmail(rs.getString("email"));
 					nutzerAnzeige.setAdmin(rs.getInt("admin"));
-					nutzerAnzeige.setPunkte(rs.getInt("punkte"));
-					nutzerAnzeige.setBildnr(rs.getInt("bildnr"));
+					nutzerAnzeige.setPunkteBilderMemorie(rs.getInt("punkteBilderMemorie"));
+					nutzerAnzeige.setPunkteBilderOrdnen(rs.getInt("punkteBilderOrdnen"));
+					nutzerAnzeige.setPunkteBilderBilderWort(rs.getInt("punkteBilderBilderWort"));
+					nutzerAnzeige.setPunkteMathe(rs.getInt("punkteMathe"));
+					nutzerAnzeige.setPunkteJumpnrun(rs.getInt("punkteJumpnrun"));
 				}
 			}
 		} catch (Exception e) {
@@ -90,7 +91,11 @@ public class NutzerSQLDienst extends SQLDienst {
 					nutzer.setEmail(rs.getString("email"));
 					nutzer.setPasswort(rs.getString("passwort"));
 					nutzer.setAdmin(rs.getInt("admin"));
-					nutzer.setPunkte(rs.getInt("punkte"));
+					nutzer.setPunkteBilderMemorie(rs.getInt("punkteBilderMemorie"));
+					nutzer.setPunkteBilderOrdnen(rs.getInt("punkteBilderOrdnen"));
+					nutzer.setPunkteBilderBilderWort(rs.getInt("punkteBilderBilderWort"));
+					nutzer.setPunkteMathe(rs.getInt("punkteMathe"));
+					nutzer.setPunkteJumpnrun(rs.getInt("punkteJumpnrun"));
 				}
 			}
 		} catch (Exception e) {
@@ -184,24 +189,23 @@ public class NutzerSQLDienst extends SQLDienst {
 		ArrayList<NutzerBean> ergebnis = new ArrayList<NutzerBean>();
 		fragment = "%" + fragment + "%";
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement("SELECT name,email,punkte,passwort,admin,bildnr FROM "
-						+ tabellenname + " WHERE name LIKE ? LIMIT ?")) {
+				PreparedStatement pstmt = con
+						.prepareStatement("SELECT * FROM " + tabellenname + " WHERE name LIKE ? LIMIT ?")) {
 			pstmt.setString(1, fragment);
 			pstmt.setInt(2, anzahlErgebnisse);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 				while (rs.next()) {
 					NutzerBean tmp = new NutzerBean();
-					String name = rs.getString("name");
-					tmp.setName(name);
-					String email = rs.getString("email");
-					tmp.setEmail(email);
-					Integer punkte = rs.getInt("punkte");
-					tmp.setPunkte(punkte);
-					String passwort = rs.getString("passwort");
-					tmp.setPasswort(passwort);
-					Integer admin = rs.getInt("admin");
-					tmp.setAdmin(admin);
+					tmp.setName(rs.getString("name"));
+					tmp.setEmail(rs.getString("email"));
+					tmp.setPasswort(rs.getString("passwort"));
+					tmp.setAdmin(rs.getInt("admin"));
+					tmp.setPunkteBilderMemorie(rs.getInt("punkteBilderMemorie"));
+					tmp.setPunkteBilderOrdnen(rs.getInt("punkteBilderOrdnen"));
+					tmp.setPunkteBilderBilderWort(rs.getInt("punkteBilderBilderWort"));
+					tmp.setPunkteMathe(rs.getInt("punkteMathe"));
+					tmp.setPunkteJumpnrun(rs.getInt("punkteJumpnrun"));
 
 					ergebnis.add(tmp);
 				}
@@ -231,26 +235,6 @@ public class NutzerSQLDienst extends SQLDienst {
 			throw new ServletException(e.getMessage());
 		}
 		return false;
-	}
-
-	/**
-	 * @author Merlin
-	 * @param wunschname
-	 * @param neuerPunktestand
-	 * @throws ServletException
-	 * @see Methode setzt den Punktestand des angegbenen Nutzers. Diese Methode kann
-	 *      von den SpeieleServlets genutzt werden.
-	 */
-	public static void setzePunkteDesNutzersAuf(HttpSession session, int neuerPunktestand) throws ServletException {
-		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con
-						.prepareStatement("UPDATE " + tabellenname + " SET punkte = ? WHERE name = ?")) {
-			pstmt.setInt(1, neuerPunktestand);
-			pstmt.setString(2, ((NutzerViewBean) session.getAttribute(NutzerViewBean.attributname)).getName());
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			throw new ServletException(e.getMessage());
-		}
 	}
 
 	public static void aktualisiereProfilbildDesNutzers(Part bild, String name) throws ServletException {

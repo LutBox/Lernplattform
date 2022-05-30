@@ -5,11 +5,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 <title>Kontaktanfragen</title>
 <link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
-	<%@include file="../jspf/navigation.jspf"%>
+	<header>
+		<h1>Kontaktanfragen</h1>
+		<%@include file="../jspf/navigation.jspf"%>
+	</header>
 	<main>
 		<h1>Kontaktanfragen</h1>
 		<table border="solid">
@@ -32,5 +44,8 @@
 			</tbody>
 		</table>
 	</main>
+		<footer>
+		<%@include file="../jspf/footer.jspf"%>
+	</footer>
 </body>
 </html>

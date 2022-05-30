@@ -5,17 +5,21 @@
    <html>
 
    <head>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
     <title>Nutzer aktualisieren</title>
     <link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
    </head>
 
    <body>
     <header>
-     <%@include file="../jspf/navigation.jspf" %>
+    	<h1>Nutzer aktualisieren</h1>
+    	<%@include file="../jspf/navigation.jspf" %>
     </header>
     <main>
-     <h1>Nutzer aktualisieren</h1>
-
      <form method="post" action="../../NutzerAktualisierenServlet" enctype="multipart/form-data">
       <fieldset>
        <div class="eingabefeld">
@@ -57,6 +61,9 @@
       <a href="./adminkonsole.jsp">zur&uuml;ck zur Adminkonsole</a>
      </p>
     </main>
+    	<footer>
+		<%@include file="../jspf/footer.jspf"%>
+	</footer>
    </body>
 
    </html>

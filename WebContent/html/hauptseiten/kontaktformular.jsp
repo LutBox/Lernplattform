@@ -17,6 +17,7 @@ Erstellt von Zohal Mohammadi
 </head>
 <body>
 	<header>
+
 		<h1>Kontaktformular</h1>	
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
@@ -28,6 +29,7 @@ Erstellt von Zohal Mohammadi
 		<!-- Flex-Item 2 -->
 		<article>
 	<h1> Kontaktformular</h1>
+
     <form method="post" action="../../KontaktanfrageServlet">
     	<p>Vorname:<br> <input type="text" name="vorname" size ="35" maxlength="40" placeholder="Ihr Vorname"></p>
         <p> Nachname: <br><input type ="text" name="nachname" size="35" maxlength="40" placeholder="Ihr Nachname" ></p>

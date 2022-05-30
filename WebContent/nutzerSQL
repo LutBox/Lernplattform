@@ -13,6 +13,19 @@ create table kontaktanfragen (
 
 //----------------------------------------------------------------------------------
 
+create table nutzer (
+  name varchar(64) primary key,
+  email varchar(64) not null,
+  passwort varchar(128) not null,
+  admin tinyint(1) not null default 0,
+  punkteBilderMemorie int default 0,
+  punkteBilderOrdnen int default 0,
+  punkteBilderBilderWort int default 0,
+  punkteMathe int default 0,
+  punkteJumpnrun int default 0,
+  bild blob
+);
+
 insert into nutzer (name,email,passwort,admin) values
 ('admin','-','apw',1),
 ('admin2','-','apw',1),
@@ -38,11 +51,56 @@ CREATE TABLE bild (
 
 //----------------------------------------------------------------------------------
 
-CREATE TABLE bildermemorie(
+CREATE TABLE bilderwort(
     id INT PRIMARY KEY AUTO_INCREMENT,
     nutzer VARCHAR(30),
     kategorie VARCHAR(30),
     CONSTRAINT FK_name FOREIGN KEY (nutzer) REFERENCES nutzer(name),
+    Schwierigkeit VARCHAR(30),
+    IsGelistet VARCHAR(30),
+    IsTimer VARCHAR(30),
+    Zeit INT,
+    versuche INT,
+    uhrzeit datetime
+);
+
+//----------------------------------------------------------------------------------
+
+CREATE TABLE mathe(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nutzer VARCHAR(30),
+    kategorie VARCHAR(30),
+    CONSTRAINT FK5_name FOREIGN KEY (nutzer) REFERENCES nutzer(name),
+    Schwierigkeit VARCHAR(30),
+    IsGelistet VARCHAR(30),
+    IsTimer VARCHAR(30),
+    Zeit INT,
+    versuche INT,
+    uhrzeit datetime
+);
+
+//----------------------------------------------------------------------------------
+
+CREATE TABLE jumpnrun(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nutzer VARCHAR(30),
+    kategorie VARCHAR(30),
+    CONSTRAINT FK4_name FOREIGN KEY (nutzer) REFERENCES nutzer(name),
+    Schwierigkeit VARCHAR(30),
+    IsGelistet VARCHAR(30),
+    IsTimer VARCHAR(30),
+    Zeit INT,
+    versuche INT,
+    uhrzeit datetime
+);
+
+//----------------------------------------------------------------------------------
+
+CREATE TABLE bildermemorie(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nutzer VARCHAR(30),
+    kategorie VARCHAR(30),
+    CONSTRAINT FK3_name FOREIGN KEY (nutzer) REFERENCES nutzer(name),
     Schwierigkeit VARCHAR(30),
     IsGelistet VARCHAR(30),
     IsTimer VARCHAR(30),
