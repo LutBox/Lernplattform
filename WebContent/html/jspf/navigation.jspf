@@ -17,7 +17,7 @@ c) Nutzer ist nicht als Nutzer angemeldet.
 		</c:when>
 		<c:when test="${nutzer.admin == 0}">
 			<li><a href="${pageContext.request.contextPath}/index.jsp">Startseite</a>
-			<li><a href="${pageContext.request.contextPath}/html/spieleseiten/spielehaupseite.jsp">SpieleÃ¼bericht</a></li>
+			<li><a href="${pageContext.request.contextPath}/html/spieleseiten/spielehaupseite.jsp">Spieleübericht</a></li>
 			<li><a href ="${pageContext.request.contextPath}/BestenlisteServlet">Bestenliste</a></li>
 			<li><a href="${pageContext.request.contextPath}/html/nutzerseiten/nutzerHauptseite.jsp">Nutzerbereich</a></li>	
       <li><a href="${pageContext.request.contextPath}/html/nutzerseiten/profilbearbeiten.jsp">Profil bearbeiten</a></li>
@@ -25,7 +25,7 @@ c) Nutzer ist nicht als Nutzer angemeldet.
 		</c:when>
 		<c:otherwise>
 			<li><a href="${pageContext.request.contextPath}/index.jsp">Startseite</a></li>
-			<li><a href="${pageContext.request.contextPath}/html/spieleseiten/spielehaupseite.jsp">SpieleÃ¼bericht</a></li>
+			<li><a href="${pageContext.request.contextPath}/html/spieleseiten/spielehaupseite.jsp">Spieleübericht</a></li>
 			<li><a href ="${pageContext.request.contextPath}/BestenlisteServlet">Bestenliste</a></li>
 			<li><a href="${pageContext.request.contextPath}/html/nutzerseiten/anmeldung.jsp">Anmelden</a></li>
 			<li><a href="${pageContext.request.contextPath}/html/nutzerseiten/registrierung.jsp">Registrieren</a></li>

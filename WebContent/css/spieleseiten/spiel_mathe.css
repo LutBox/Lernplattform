@@ -1,0 +1,122 @@
+/*
+ * Erstellt von Lukas Theinert
+ */
+ 
+
+#spiel{
+	Height: 500px;
+	width: 600px;
+	background-color: #282A3A;
+	margin: 100px auto;
+	padding: 20px;
+	border-radius: 10px;
+	position: relative;
+	color: #FFF;
+}
+
+#punktezahl {
+	background-color: #FFF;
+	color: black;
+	padding: 10px;
+	border-radius: 10px;
+	position: absolute;
+	left: 500px;
+}
+
+#richtig {
+	width: 200px;
+	height: 40px;
+	position: absolute;
+	left: 200px;
+	background-color: #99ff99;
+	color: black;
+	padding: 10px;
+	text-align: center;
+	border-radius: 10px;
+	display: none;	
+}
+#falsch {
+	width: 200px;
+	height: 40px;
+	position: absolute;
+	left: 200px;
+	background-color: #ffad99;
+	color: black;
+	padding: 10px;
+	text-align: center;
+	border-radius: 10px;
+	display: none;	
+}
+
+#aufgabe{
+	width: 400px;
+	height: 65px;
+	margin: auto;
+	background-color: white;
+	font-size: 50px;
+	text-align: center;
+	color: black;
+	border-radius: 10px;		
+}
+
+#ergebnisse {
+	width: 450px;
+	height: 100px;
+	margin: 5px auto;
+	color: black;
+}
+.box {
+	margin-right: 36px;
+	width: 85px;
+	height: 85px;
+	background-color: white;
+	float: left;
+	border-radius: 3px;	
+	cursor: pointer;
+	text-align: center;
+	line-height: 80px;
+	position: relative;
+	border-radius: 10px;
+}	
+
+#box4{
+	margin-right: 0;
+}
+
+#verbleibendeZeit {
+	background-color: #FFF;
+	color: black;
+	padding: 10px;
+	border-radius: 10px;
+	position: absolute;
+	top: 20px;
+	left: 15px;
+}
+
+#start-restart {
+	width: 200px;
+	height: 60px;
+	position: absolute;
+	left: 200px;
+	padding: 10px;
+	text-align: center;
+	top: 400px;
+}
+
+#spielVorbei {
+	left: 0px;
+	top: 0px;
+	Height: 300px;
+	width: 600px;
+	font-size: 40px;
+	background-color: #282A3A;
+	margin: 100px auto;
+	padding: 20px;
+	border-radius: 10px;
+	position: absolute;
+	color: #FFF;
+	text-align: center;
+	text-transform: uppercase;
+	z-index: 2;
+	display: none;
+}

@@ -77,7 +77,7 @@ const startGame = () => {
 	});
 })();
 
-//Bilder-Ordnen-Idee von Tutorial: https://codepen.io/Coding_Journey/pen/YzKpLvE
+//Bilder-Ordnen-Idee:
 //----------- Anfang ----------------------
 draggableElements.forEach(elem => {
 	elem.addEventListener("dragstart", dragStart);
@@ -177,7 +177,7 @@ function datenbankEintrag() {
 	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xmlhttp.send(sendData);
 
-	alert("Spiel in Datenbank gespeichert");
+	//alert("Spiel in Datenbank gespeichert");
 }
 
 attachEventListeners()

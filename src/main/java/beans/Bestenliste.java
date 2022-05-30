@@ -8,14 +8,21 @@ public class Bestenliste implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int platz;
-	private int punkte;
-	private String nutzer;
+	private int punkteJumpnrun, punkteMathe, punkteBilderBilderWort, punkteBilderOrdnen, punkteBilderMemorie, gesamtPunkte;
+	private String nutzer, kategorie;
 	private int spieleInsgesamt;
 	private int durchschnittZeitLeicht, durchschnittZeitMittel, durchschnittZeitSchwer;
 
+	public Bestenliste() {
 
-	public Bestenliste() { 
-		
+	}
+	
+	public String getKategorie() {
+		return kategorie;
+	}
+
+	public void setKategorie(String kategorie) {
+		this.kategorie = kategorie;
 	}
 
 	public int getPlatz() {
@@ -26,12 +33,52 @@ public class Bestenliste implements Serializable {
 		this.platz = platz;
 	}
 
-	public int getPunkte() {
-		return punkte;
+	public int getGesamtPunkte() {
+		return gesamtPunkte;
 	}
 
-	public void setPunkte(int punkte) {
-		this.punkte = punkte;
+	public void setGesamtPunkte(int gesamptPunkte) {
+		this.gesamtPunkte = gesamptPunkte;
+	}
+
+	public int getPunkteJumpnrun() {
+		return punkteJumpnrun;
+	}
+
+	public void setPunkteJumpnrun(int punkteJumpnrun) {
+		this.punkteJumpnrun = punkteJumpnrun;
+	}
+
+	public int getPunkteMathe() {
+		return punkteMathe;
+	}
+
+	public void setPunkteMathe(int punkteMathe) {
+		this.punkteMathe = punkteMathe;
+	}
+
+	public int getPunkteBilderBilderWort() {
+		return punkteBilderBilderWort;
+	}
+
+	public void setPunkteBilderBilderWort(int punkteBilderBilderWort) {
+		this.punkteBilderBilderWort = punkteBilderBilderWort;
+	}
+
+	public int getPunkteBilderOrdnen() {
+		return punkteBilderOrdnen;
+	}
+
+	public void setPunkteBilderOrdnen(int punkteBilderOrdnen) {
+		this.punkteBilderOrdnen = punkteBilderOrdnen;
+	}
+
+	public int getPunkteBilderMemorie() {
+		return punkteBilderMemorie;
+	}
+
+	public void setPunkteBilderMemorie(int punkteBilderMemorie) {
+		this.punkteBilderMemorie = punkteBilderMemorie;
 	}
 
 	public String getNutzer() {
@@ -73,6 +120,5 @@ public class Bestenliste implements Serializable {
 	public void setDurchschnittZeitSchwer(int durchschnittZeitSchwer) {
 		this.durchschnittZeitSchwer = durchschnittZeitSchwer;
 	}
-
 
 }

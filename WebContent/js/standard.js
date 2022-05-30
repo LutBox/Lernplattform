@@ -1,15 +1,9 @@
-/*
-Erstellt von Lukas Theinert
+//Erstellt von Lukas Theinert
+//Sticky-Navigation-Bar Grundfunktion von: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_navbar_sticky
+//Go-To-Top-Button Grundfunktion von: https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 
-Idee für den Scroll-To_Top Button ist von W3Schools übernommen, siehe:
-https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_navbar_sticky
-
-Idee für den Scroll-To_Top Button ist von W3Schools übernommen, siehe:
-https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
- */
  
 document.addEventListener("DOMContentLoaded", initial);
-document.addEventListener("DOMContentLoaded", datenBank);
 
 window.onscroll = function() {scrollFunction()};
 
@@ -38,22 +32,5 @@ function myFunctionGoToTop() {
 
 function goToTop() {
     document.documentElement.scrollTop = 0;
-}
-
-"use strict";
-
-function datenBank() {
-
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			document.getElementById("liste1").innerHTML = xmlhttp.responseText;
-		}
-	};
-	xmlhttp.open("POST", "indexBestenlisteAjax", true);
-	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xmlhttp.send();
-
-	//alert("Spiel in Datenbank gespeichert");
 }
 

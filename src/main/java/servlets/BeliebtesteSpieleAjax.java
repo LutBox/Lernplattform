@@ -25,9 +25,9 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class BildHochladenServlet
  */
-@WebServlet("/indexBestenlisteAjax")
+@WebServlet("/BeliebtesteSpieleAjax")
 
-public class indexBestenlisteAjax extends HttpServlet {
+public class BeliebtesteSpieleAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
@@ -36,7 +36,7 @@ public class indexBestenlisteAjax extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public indexBestenlisteAjax() {
+	public BeliebtesteSpieleAjax() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -50,32 +50,38 @@ public class indexBestenlisteAjax extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		ArrayList<Bestenliste> bestenlisteBilderMemorieAjax = new ArrayList<Bestenliste>();
+		Bestenliste beliebtesteSpieleAjax = new Bestenliste();
 		
 
-		// Alle Nutzer auslesen
-		bestenlisteBilderMemorieAjax = readNutzer(bestenlisteBilderMemorieAjax);
+		// Alle Spiele auslesen
+		readNutzer(beliebtesteSpieleAjax);
 		
-		request.setAttribute("bestenlisteBilderMemorieAjax", bestenlisteBilderMemorieAjax);
+		request.setAttribute("beliebtesteSpieleAjax", beliebtesteSpieleAjax);
 
 		//Weiterleiten an JSP
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/hauptseiten/indexLayoutRechts.jsp");
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/hauptseiten/beliebtesteSpieleListe.jsp");
 		dispatcher.forward(request, response);
 
 	}
 	
-	private ArrayList<Bestenliste> readNutzer(ArrayList<Bestenliste> bestenlisteBilderMemorieAjax) throws ServletException {
+	private void readNutzer(Bestenliste beliebtesteSpieleAjax ) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT name, punkte FROM nutzer WHERE admin = 0 ORDER BY punkte DESC, name ASC LIMIT 3;")) {
+						"SELECT"
+						+ "(SELECT COUNT(*) FROM bildermemorie WHERE kategorie = 'bildermemorie') as punkteBilderMemorie,"
+						+ "(SELECT COUNT(*) FROM bilderwort WHERE kategorie = 'bilderwort') as punkteBilderBilderWort,"
+						+ "(SELECT COUNT(*) FROM bilderordnen WHERE kategorie = 'bilderordnen') as punkteBilderOrdnen,"
+						+ "(SELECT COUNT(*) FROM mathe WHERE kategorie = 'mathe') as punkteMathe,"
+						+ "(SELECT COUNT(*) FROM jumpnrun WHERE kategorie = 'jumpnrun') as punkteJumpnrun;")) {
 		
 			try(ResultSet rs = pstmt.executeQuery()) {
 				while (rs!= null && rs.next()) {
-					Bestenliste bestenliste = new Bestenliste();
-					bestenliste.setNutzer(rs.getString("name"));
-					bestenliste.setPunkte(rs.getInt("punkte"));
-					bestenlisteBilderMemorieAjax.add(bestenliste);
+					beliebtesteSpieleAjax.setPunkteBilderMemorie(rs.getInt("punkteBilderMemorie"));
+					beliebtesteSpieleAjax.setPunkteBilderBilderWort(rs.getInt("punkteBilderBilderWort"));
+					beliebtesteSpieleAjax.setPunkteBilderOrdnen(rs.getInt("punkteBilderOrdnen"));
+					beliebtesteSpieleAjax.setPunkteMathe(rs.getInt("punkteMathe"));
+					beliebtesteSpieleAjax.setPunkteJumpnrun(rs.getInt("punkteJumpnrun"));
 				}
 			}
 				
@@ -83,7 +89,7 @@ public class indexBestenlisteAjax extends HttpServlet {
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());
 		}
-		return bestenlisteBilderMemorieAjax;
+
 	}
 	
 
