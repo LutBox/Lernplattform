@@ -24,6 +24,10 @@ document.addEventListener('mouseover', event => {
 	if (eventTarget.nodeName === 'IMG' && event.target.id === 'KarteBilderWort') {
 		b1 = document.getElementById("leichtBilderWort");
 		b1.checked = true
+		b2 = document.getElementById("timerAnBilderWort");
+		b2.checked = true
+		b3 = document.getElementById("gewertetAnBilderWort");
+		b3.checked = true
 		document.getElementById("spieleBeschreibung").innerHTML = "Errate zu den Bilder das passende Wort!";
 	}
 	

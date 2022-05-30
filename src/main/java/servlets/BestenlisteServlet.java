@@ -189,9 +189,9 @@ public class BestenlisteServlet extends HttpServlet {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
 						"SELECT COUNT(*) AS spiele, "
-						+ "(SELECT (SUM(zeit)/COUNT(zeit)) FROM bilderwort WHERE schwierigkeit = 'leicht' AND nutzer = ?) as zeitLeicht, "
-						+ "(SELECT (SUM(zeit)/COUNT(zeit)) FROM bilderwort WHERE schwierigkeit = 'mittel' AND nutzer = ?) as zeitMittel, "
-						+ "(SELECT (SUM(zeit)/COUNT(zeit)) FROM bilderwort WHERE schwierigkeit = 'schwer' AND nutzer = ?) as zeitSchwer "
+						+ "(SELECT (SUM(versuche)/COUNT(versuche)) FROM bilderwort WHERE schwierigkeit = 'leicht' AND nutzer = ?) as zeitLeicht, "
+						+ "(SELECT (SUM(versuche)/COUNT(versuche)) FROM bilderwort WHERE schwierigkeit = 'mittel' AND nutzer = ?) as zeitMittel, "
+						+ "(SELECT (SUM(versuche)/COUNT(versuche)) FROM bilderwort WHERE schwierigkeit = 'schwer' AND nutzer = ?) as zeitSchwer "
 						+ "FROM bilderwort WHERE nutzer = ? AND isGelistet = 'gewertetAn' "
 						+ "ORDER BY zeitLeicht ASC, zeitMittel ASC, zeitSchwer ASC;")) {
 			
