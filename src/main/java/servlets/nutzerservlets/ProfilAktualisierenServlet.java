@@ -39,7 +39,7 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 		String neuesPasswort = request.getParameter("neuesPasswort");
 		Part neuesProfilbild = request.getPart("neuesProfilbild");
 
-		if (neuesProfilbild != null && request.getParameter("filename") != null) {
+		if (neuesProfilbild != null && neuesProfilbild.getSize() > 0) {
 			NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
 		}
 		if (neuesPasswort != null && neuesPasswort != null && !neuesPasswort.equals(nutzer.getPasswort())

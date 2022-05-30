@@ -3,7 +3,9 @@ package servlets.adminservlets;
 import java.io.IOException;
 
 import beans.NutzerBean;
+import beans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -60,7 +62,9 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 		if (neuerName != null && neuerName != null && !neuerName.equals(alterName)) {
 			NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
 		}
-		response.sendRedirect("./html/verwaltungsseiten/nutzerverwaltung.jsp");
+		NutzerViewBean veranderternutzer = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(neuerName);
+		session.setAttribute("veranderternutzer", veranderternutzer);
+		response.sendRedirect("./html/verwaltungsseiten/nutzernachaktualisierung.jsp");
 	}
 
 }
