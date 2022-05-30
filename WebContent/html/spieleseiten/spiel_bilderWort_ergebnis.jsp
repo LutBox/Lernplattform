@@ -8,11 +8,13 @@
 <meta charset="UTF-8">
 <title>Herzlichen Glückwunsch</title>
 </head>
-<body>
-Zeit abgelaufen!
+<div id="temp" hidden></div>
+<div id="nutzer" hidden>${nutzer.name}</div>
+<div id="gewertet" hidden>${spielStartenBean.gewertet}</div>
+<div id="timerID" hidden>${spielStartenBean.timer}</div>
+<body>Zeit abgelaufen!
 </body>
 
 
-// Schöner Darstellen 
-//z.B Du hast so viele Punkte von so vielen erreicht
+
 </html>

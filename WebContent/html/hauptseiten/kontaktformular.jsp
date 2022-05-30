@@ -8,14 +8,25 @@ Erstellt von Zohal Mohammadi
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 <base href="${pageContext.request.requestURI}" />
 <meta charset="UTF-8">
 <title>Kontaktformular</title>
 </head>
 <body>
 	<header>
-			<%@include file="../jspf/navigation.jspf"%>
+		<h1>Kontaktformular</h1>	
+		<%@include file="../jspf/navigation.jspf"%>
 	</header>
+	
+	<!-- Flex-Item 1 -->
+	<div id="flexarea">
+		
+		
+		<!-- Flex-Item 2 -->
+		<article>
 	<h1> Kontaktformular</h1>
     <form method="post" action="../../KontaktanfrageServlet">
     	<p>Vorname:<br> <input type="text" name="vorname" size ="35" maxlength="40" placeholder="Ihr Vorname"></p>
@@ -26,5 +37,18 @@ Erstellt von Zohal Mohammadi
         </p>
         <button type ="submit" name="sendebutton" value="submit" >absenden</button>
 	</form>
+	
+	<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+	
+	</article>
+	
+		
+		
+	</div>
+	<!-- Ende der FLEXBOX -->
+	<br> <br> <br> <br>
+	<footer>
+			<%@include file="../jspf/footer.jspf"%>
+	</footer>
 </body>
 </html>
