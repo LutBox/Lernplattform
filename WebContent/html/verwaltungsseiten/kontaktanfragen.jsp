@@ -24,27 +24,79 @@
 	</header>
 	<main>
 		<h1>Kontaktanfragen</h1>
-		<table border="solid">
+		<p>
+			<span>${anzahlungelesene}</span> ungelesene Nachrichten<br /> <span>${anzahlarchivierte}</span>
+			Nachrichten archiviert
+		</p>
+		<c:choose>
+			<c:when test="${anzahlungelesene > 0}">
+				<table>
+					<thead>
+						<tr>
+							<th>Ungelesene Kontaktanfragen</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${ungelesene}" var="nachricht">
+							<tr>
+								<td>Von: ${nachricht.email}</td>
+								<td><a href="mailto:${nachricht.email}">Antworten</a></td>
+								<td>
+									<form method="post"
+										action="../../GelesenMarkierenServlet?kanr=${nachricht.kanr}">
+										<button type="submit">Als gelesen markieren</button>
+									</form>
+								</td>
+								<td>
+									<form method="post"
+										action="../../KontaktanfrageLoeschenServlet?kanr=${nachricht.kanr}">
+										<button type="submit">Löschen</button>
+									</form>
+								</td>
+							</tr>
+							<tr>
+								<td>${nachricht.nachricht}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:when>
+			<c:otherwise>
+				<h1>Keine ungelesenen Nachrichten</h1>
+			</c:otherwise>
+		</c:choose>
+		<table>
 			<thead>
 				<tr>
-					<th>Gelesen</th>
-					<th>Name</th>
-					<th>Adresse</th>
-					<th>MSG</th>
+					<th>Archivierte Kontaktanfragen</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td><input type="checkbox" /></td>
-					<td>nutzernameX</td>
-					<td>nutzer@mail.com</td>
-					<td>msg</td>
-					<td><a href="#">Antworten</a></td>
-				</tr>
+				<c:forEach items="${archiviert}" var="nachricht">
+					<tr>
+						<td>Von: ${nachricht.email}</td>
+						<td><a href="mailto:${nachricht.email}">Antworten</a></td>
+						<td>
+							<form method="post"
+								action="../../GelesenMarkierenServlet?kanr=${nachricht.kanr}">
+								<button type="submit">Als gelesen markieren</button>
+							</form>
+						</td>
+						<td>
+							<form method="post"
+								action="../../KontaktanfrageLoeschenServlet?kanr=${nachricht.kanr}">
+								<button type="submit">Löschen</button>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td>${nachricht.nachricht}</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</main>
-		<footer>
+	<footer>
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>

@@ -46,7 +46,7 @@
 					<button type="submit">Absenden</button>
 					<br />
 					<button type="reset">Zurücksetzen</button>
-					<br /> <a href="./nutzerhauptseite.jsp">Abbrechen</a>
+					<br /> <a href="./nutzerHauptseite.jsp">Abbrechen</a>
 				</div>
 			</fieldset>
 		</form>

@@ -27,49 +27,56 @@ public class KontaktanfragenSQLDienst extends SQLDienst {
 		}
 	}
 
-	public static KontaktanfrageBean gibMirKontaktanfrageMitDerNummer(Integer nanr) throws ServletException {
-		KontaktanfrageBean anfrage = new KontaktanfrageBean();
-		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement("SELECT * FROM " + tabellenname + " WHERE kanr = ?")) {
-			pstmt.setInt(1, nanr);
-			try (ResultSet rs = pstmt.executeQuery();) {
-				while (rs != null && rs.next()) {
-					anfrage.setKanr(rs.getInt("kanr"));
-					anfrage.setEmail(rs.getString("email"));
-					anfrage.setGelesen(rs.getInt("gelesen"));
-					anfrage.setNachricht(rs.getString("nachricht"));
-				}
-			}
-		} catch (Exception e) {
-			throw new ServletException(e.getMessage());
-		}
-		return anfrage;
-	}
-
-	public static ArrayList<KontaktanfrageBean> gibMirAnfragenDerEmail(String email) throws ServletException {
-		ArrayList<KontaktanfrageBean> anfragen = new ArrayList<KontaktanfrageBean>();
-		KontaktanfrageBean anfrage = new KontaktanfrageBean();
-		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement("SELECT * FROM " + tabellenname + " WHERE email = ?")) {
-			pstmt.setString(1, email);
-			try (ResultSet rs = pstmt.executeQuery();) {
-				while (rs != null && rs.next()) {
-					anfrage.setKanr(rs.getInt("kanr"));
-					anfrage.setEmail(rs.getString("email"));
-					anfrage.setGelesen(rs.getInt("gelesen"));
-					anfrage.setNachricht(rs.getString("nachricht"));
-					anfragen.add(anfrage);
-				}
-			}
-		} catch (Exception e) {
-			throw new ServletException(e.getMessage());
-		}
-		return anfragen;
-	}
-
 	public static void loescheKontaktanfrageMitDerNummer(Integer kanr) throws ServletException {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("DELETE FROM " + tabellenname + " WHERE kanr = ?")) {
+			pstmt.setInt(1, kanr);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw new ServletException(e.getMessage());
+		}
+	}
+
+	public static ArrayList<KontaktanfrageBean> gibAlleAnfragen_gelesen(boolean gelesen) throws ServletException {
+		ArrayList<KontaktanfrageBean> ungelesene = new ArrayList<KontaktanfrageBean>();
+		Integer nachrichtstatus = 0;
+		if (gelesen) {
+			nachrichtstatus = 1;
+		}
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement("SELECT * FROM `kontaktanfragen` WHERE gelesen = ?")) {
+			pstmt.setInt(1, nachrichtstatus);
+			try (ResultSet rs = pstmt.executeQuery();) {
+				while (rs != null && rs.next()) {
+					KontaktanfrageBean kontaktanfrage = new KontaktanfrageBean();
+					kontaktanfrage.setEmail(rs.getString("email"));
+					kontaktanfrage.setKanr(rs.getInt("kanr"));
+					kontaktanfrage.setNachricht(rs.getString("nachricht"));
+					kontaktanfrage.setGelesen(rs.getInt("gelesen"));
+					ungelesene.add(kontaktanfrage);
+				}
+			}
+		} catch (Exception e) {
+			throw new ServletException(e.getMessage());
+		}
+		return ungelesene;
+	}
+
+	public static void alsGelesenMarkieren(Integer kanr) throws ServletException {
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con
+						.prepareStatement("UPDATE " + tabellenname + " SET gelesen = 1 WHERE kanr = ? ")) {
+			pstmt.setInt(1, kanr);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw new ServletException(e.getMessage());
+		}
+	}
+
+	public static void alsUngelesenMarkieren(Integer kanr) throws ServletException {
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con
+						.prepareStatement("UPDATE " + tabellenname + " SET gelesen = 0 WHERE kanr = ? ")) {
 			pstmt.setInt(1, kanr);
 			pstmt.executeUpdate();
 		} catch (Exception e) {

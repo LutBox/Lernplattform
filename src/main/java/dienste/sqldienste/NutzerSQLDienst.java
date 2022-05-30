@@ -18,7 +18,7 @@ public class NutzerSQLDienst extends SQLDienst {
 	/**
 	 * @author Merlin Name der "Nutzer"-Datenbank
 	 */
-	private static final String tabellenname = "`nutzer`";
+	public static final String tabellenname = "`nutzer`";
 
 	/**
 	 * @author Merlin
@@ -193,7 +193,6 @@ public class NutzerSQLDienst extends SQLDienst {
 						.prepareStatement("SELECT * FROM " + tabellenname + " WHERE name LIKE ? LIMIT ?")) {
 			pstmt.setString(1, fragment);
 			pstmt.setInt(2, anzahlErgebnisse);
-
 			try (ResultSet rs = pstmt.executeQuery()) {
 				while (rs.next()) {
 					NutzerBean tmp = new NutzerBean();
