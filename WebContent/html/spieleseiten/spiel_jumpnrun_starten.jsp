@@ -6,7 +6,7 @@ Erstellt von Lukas Theinert
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html onclick="jump()">
+<html>
 <head>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
@@ -34,15 +34,22 @@ Erstellt von Lukas Theinert
 		<!-- Flex-Item 2 -->
 		<article>
 		
-<body>
     <div class="game">
-        <img id="character"></img>
-        <div id="block"></div>
+        <img id="figur"></img>
+        <img id="vogel"></img>
+        <img id="stein"></img>
+        
     </div>
-    <p>Score: <span id="scoreSpan"></span></p>
-</body>    
+    
+	<p>Score: <span id="scoreSpan"></span></p>
+	<p>Zeit-Stein: <span id="timerStein"></span></p>
+	<p>Zeit-Vogel: <span id="timerVogel"></span></p>
+	<p>Stone left: <span id="steinLinks"></span></p>
+    <p>Vogel left: <span id="vogelLinks"></span></p>
+	
+	<button type="button" id="start">Start</button>
   
-  </section>
+ 
   			<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
   
   </article>
