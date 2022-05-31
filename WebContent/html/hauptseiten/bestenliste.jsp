@@ -120,9 +120,9 @@ Erstellt von Lukas Theinert
                     <th>Name</th>
                     <th>Punkte</th>
                     <th>Gespielte Spiele</th>
-                    <th>Durchschnittliche Zeit: Leicht</th>
-                    <th>Durchschnittliche Zeit: Mittel</th>
-                    <th>Durchschnittliche Zeit: Schwer</th>
+                    <th>Durchschnittliche Punkte: Leicht</th>
+                    <th>Durchschnittliche Punkte: Mittel</th>
+                    <th>Durchschnittliche Punkte: Schwer</th>
                 </tr>
                 </thead>
 
@@ -134,9 +134,9 @@ Erstellt von Lukas Theinert
                         <td>${c.nutzer}</td>
                         <td>${c.punkteBilderBilderWort}</td>
                         <td>${c.spieleInsgesamt}</td>
-                        <td>${c.durchschnittZeitLeicht}sek</td>
-                        <td>${c.durchschnittZeitMittel}sek</td>
-                        <td>${c.durchschnittZeitSchwer}sek</td>
+                        <td>${c.durchschnittZeitLeicht}</td>
+                        <td>${c.durchschnittZeitMittel}</td>
+                        <td>${c.durchschnittZeitSchwer}</td>
                     </tr>
                 </c:forEach>
                 

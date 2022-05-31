@@ -113,14 +113,10 @@ Erstellt von Lukas Theinert
 				Schwierigkeit:<br>
 					<input type="radio" name="Schwierigkeit" id="leichtBilderWort" value="leicht" required>
 					<label for="leichtBilderWort">Leicht</label>
-					
-					<br>
-					
+
 					<input type="radio" name="Schwierigkeit" id="mittelBilderWort" value="mittel">
 					<label for="mittelBilderWort">Mittel</label>
-					
-					<br>
-					
+
 					<input type="radio" name="Schwierigkeit" id="schwerBilderWort" value="schwer">
 					<label for="schwerBilderWort">Schwer</label>
 					
