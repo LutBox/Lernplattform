@@ -20,11 +20,11 @@
     top: 345px;
 }
 
-/* Springen-dauer */
+/* Springen-dauer 
 .animate{
     animation: jump 0.3s linear;
 }
-
+*/
 /* Springen-Animationseigenschaften */
 @keyframes jump{
     0%{top: 345px;}
@@ -33,22 +33,21 @@
     100%{top: 345px;}
 }
 
-/* Ducken-dauer */
+/* Ducken-dauer 
 .ducken{
     animation: ducken 0.3s linear;
 }
-
+*/
 /* Ducken-Animationseigenschaften */
 @keyframes ducken{
     0%{top: 345px;}
-    30%{top: 420px;}
-    70%{top: 420px;}
+    30%{top: 395px;}
+    70%{top: 395px;}
     100%{top: 345px;}
 }
 
 /* Vogel-Hindernis */
-#vogel{
-    background-color: blue;	
+#vogel{	
     width: 40px;
     height: 40px;
     position: relative;
@@ -64,7 +63,7 @@
 
 /* Stein-Hindernis */
 #stein{
-    background-color: green;
+	background-image: url(../../bilder/jumpnrun/stein1.png); 
     width: 40px;
     height: 40px;
     position: relative;

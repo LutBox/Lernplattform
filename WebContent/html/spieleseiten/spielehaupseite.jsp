@@ -262,22 +262,40 @@ Erstellt von Lukas Theinert
 				
 				<img src="../../bilder/jumpnrun.png" alt="jumpnrun" style="width:256px;height:256px;" id="KarteJumpnrun">
 
-		</div>
+		</div>		
 				<div class="flip-card-back">
-					<input type="radio" name="Schwierigkeit" id="leichtJumpnrun" value="leicht" required>
-					<label for="leichtJumpnrun">Zu jung zum sterben</label>
-					
-					<br>
-					
+				Schwierigkeit:<br>
+					<input type="radio" name="Schwierigkeit" id="leichtJumpnrun" value="leicht" checked="checked" required>
+					<label for="leichtJumpnrun">Leicht</label>
+				
 					<input type="radio" name="Schwierigkeit" id="mittelJumpnrun" value="mittel">
-					<label for="mittelJumpnrun">Albtraum</label>
-					
-					<br>
+					<label for="mittelJumpnrun">Mittel</label>					
 					
 					<input type="radio" name="Schwierigkeit" id="schwerJumpnrun" value="schwer">
-					<label for="schwerJumpnrun">Todesmarsch</label>
+					<label for="schwerJumpnrun">Schwer</label>
 					
-					<br><br>
+					<br><br>					
+					
+					<div>
+					Timer:<br>
+					<input type="radio" name="Timer" id="timerAnJumpnrun" value="timerAn" required checked="checked">
+					<label for="timerAnJumpnrun">An</label>
+					
+					<input type="radio" name="Timer" id="timerAusJumpnrun value="TimerAus" required>
+					<label for="timerAusJumpnrun">Aus</label>
+				</div>
+				
+<br>		
+				<div>
+				Gewertet:<br>
+					<input type="radio" name="Gewertet" id="gewertetAnJumpnrun" value="gewertetAn" checked="checked">
+					<label for="gewertetAnJumpnrun">An</label>					
+					
+					<input type="radio" name="Gewertet" id="gewertetAusJumpnrun" value="gewertetAus">
+					<label for="gewertetAusJumpnrun">Aus</label>
+				</div>
+				
+					<br>
 					
 						<button class="button" name="Spielart" id="Jumpnrun" value="jumpnrun" type="submit">Starten!</button>
 						

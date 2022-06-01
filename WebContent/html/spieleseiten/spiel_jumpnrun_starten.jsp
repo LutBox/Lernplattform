@@ -26,7 +26,11 @@ Erstellt von Lukas Theinert
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	
-
+<div id="temp" hidden></div>
+<div id="nutzer" hidden>${nutzer.name}</div>
+<div id="schwierigkeit" hidden>${spielStartenBean.schwierigkeit}</div>
+<div id="gewertet" hidden>${spielStartenBean.gewertet}</div>
+<div id="timerID" hidden>${spielStartenBean.timer}</div>
 
 	<!-- Begin der FLEXBOX = Flex-Container -->
 	<div id="flexarea">
@@ -41,12 +45,15 @@ Erstellt von Lukas Theinert
         
     </div>
     
-	<p>Score: <span id="scoreSpan"></span></p>
-	<p>Zeit-Stein: <span id="timerStein"></span></p>
-	<p>Zeit-Vogel: <span id="timerVogel"></span></p>
-	<p>Stone left: <span id="steinLinks"></span></p>
-    <p>Vogel left: <span id="vogelLinks"></span></p>
-	
+	Punkte: <span id="scoreSpan"></span> <br>
+	Verbleibende Leben: <span id="leben"></span> <br>
+	Zeit: <span id="zeit"></span> <br>
+	<div >
+	Zeit-Stein: <span id="timerStein"></span> <br>
+	Zeit-Vogel: <span id="timerVogel"></span> <br>
+	Stone left: <span id="steinLinks"></span> <br>
+    Vogel left: <span id="vogelLinks"></span> <br>
+	</div>
 	<button type="button" id="start">Start</button>
   
  

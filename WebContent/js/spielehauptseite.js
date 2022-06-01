@@ -54,6 +54,10 @@ document.addEventListener('mouseover', event => {
 	if (eventTarget.nodeName === 'IMG' && event.target.id === 'KarteJumpnrun') {
 		b1 = document.getElementById("leichtJumpnrun");
 		b1.checked = true
+		b2 = document.getElementById("timerAnJumpnrun");
+		b2.checked = true
+		b3 = document.getElementById("gewertetAnJumpnrun");
+		b3.checked = true
 		document.getElementById("spieleBeschreibung").innerHTML = "Weiche den Hindernissen aus und überlebe so lange wie es geht!";
 	}
 	
