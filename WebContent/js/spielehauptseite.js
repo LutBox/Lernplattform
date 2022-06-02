@@ -1,7 +1,11 @@
 /**
  * Erstellt von Lukas Theinert
- */
 
+ 
+if (document.getElementById("nutzer").innerHTML !== "") {
+	document.getElementById("gastNutzer").style.visibility = "hidden";
+} 
+ */
 document.addEventListener('mouseover', event => {
 	const eventTarget = event.target
 

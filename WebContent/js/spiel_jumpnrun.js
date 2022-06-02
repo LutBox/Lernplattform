@@ -12,6 +12,11 @@ var bilderFigur = [];
 var bilderVogel = [];
 var indexFigur = 0;
 var indexVogel = 0;
+var timerAn = document.getElementById("timerID").innerHTML;
+var gewertetAn = document.getElementById("gewertet").innerHTML;
+
+
+document.getElementById("stein").src = 'bilder/jumpnrun/stein1.png';
 
 bilderFigur[0] = ['bilder/jumpnrun/figur1.png'];
 bilderFigur[1] = ['bilder/jumpnrun/figur2.png'];
@@ -56,8 +61,8 @@ var zeit = 0;
 function startZeit(){
 		actionZeit = setInterval(function() {
 		if(spielGestartet){
-			zeit++
-			document.getElementById("zeit").innerHTML = zeit;
+			zeit++			
+			if(timerAn === "timerAn"){document.getElementById("zeit").innerHTML = zeit;}			
 		}
 	}, 1000)
 }
@@ -68,6 +73,7 @@ function startZeit(){
 //------------------------------
 
 var anzahlLeben
+
 if(document.getElementById("schwierigkeit").innerHTML === "leicht"){
 	anzahlLeben = 3;
 } else if(document.getElementById("schwierigkeit").innerHTML === "mittel"){
@@ -81,7 +87,29 @@ function verloren(){
 	anzahlLeben--;
 	if(anzahlLeben === 0){
 		spielGestartet = false;
-		alert("Du hast verloren!");
+		
+		//DatenbankEintrag
+		if (document.getElementById("nutzer").innerHTML !== "") {
+			datenbank();
+			//alert(document.getElementById("nutzer").innerHTML);
+		}
+		
+		document.getElementById("buttonStart").style.visibility = "hidden";
+		document.getElementById("figur").style.display = "none";
+		document.getElementById("vogel").style.display = "none";
+		document.getElementById("stein").style.display = "none";
+		
+		if(timerAn === "timerAn"){
+			document.getElementById("zeitLayout").style.display = "none";
+		}
+		if(timerAn === "TimerAus" && gewertetAn === "gewertetAus"){
+			document.getElementById("infos").style.display = "none";
+		} else {
+			document.getElementById("lebenLayout").style.display = "none";
+		}
+		
+		document.getElementById("spielVorbei").style.display = "block";
+		
 	}
 	document.getElementById("leben").innerHTML = anzahlLeben;	
 }
@@ -111,18 +139,12 @@ function jump() {
 		setTimeout(function() {
 			figur.style.animation = "none";
 		}, 300);
-	} else if (counter >= 50 && counter < 70){
+	} else {
 		figur.style.animation = "jump 0.2s linear";
 		setTimeout(function() {
 			figur.style.animation = "none";
-		}, 300);
-	} else if (counter >= 70 && counter < 90){
-		figur.style.animation = "jump 0.1s linear";
-		setTimeout(function() {
-			figur.style.animation = "none";
-		}, 100);
-	}
-
+		}, 200);
+	} 
 }
 
 //Figur: Ducken
@@ -144,38 +166,32 @@ function ducken() {
 		setTimeout(function() {
 			figur.style.animation = "none";
 		}, 300);
-	} else if (counter >= 50 && counter < 70){
+	} else {
 		figur.style.animation = "ducken 0.2s linear";
 		setTimeout(function() {
 			figur.style.animation = "none";
-		}, 300);
-	} else if (counter >= 70 && counter < 90){
-		figur.style.animation = "ducken 0.1s linear";
-		setTimeout(function() {
-			figur.style.animation = "none";
-		}, 100);
-	}
+		}, 200);
+	} 
 	
 }
 
 //Hinderniss: Stein erscheinen lassen
 function hindernisStein() {
-	//Zufällig alle 1 - 4 Sekunden einen Stein erscheinen lassen -> mit 1 Nachkommastellen
-	 zeitStein = Math.round((Math.random() * (4 - 1 + 1) + 1)*10)/10;
+	//Zufällig alle 10 - 40 Sekunden einen Stein erscheinen lassen -> mit 1 Nachkommastellen
+	 zeitStein = Math.round(Math.random() * (60 - 20 + 10) + 20);
 	
 	if(spielGestartet){
 		actionStein = setInterval(function() {
-			zeitStein -= 1;
+			zeitStein -= 10;
 			document.getElementById("timerStein").innerHTML = zeitStein;
 			//alert("Zeit: " + zeitStein)
 	
-			if(zeitVogel < 1.5 && zeitStein < 1.5){
-				//nochmal()
+			if(zeitVogel < 15 && zeitStein < 15){
 				//alert("ZeitStein: " + zeitStein + " ZeitVogel: " + zeitVogel);
-				zeitStein = Math.round((Math.random() * (4 - 2 + 1) + 2)*10)/10;
+				zeitStein = Math.round(Math.random() * (60 - 20 + 10) + 20);
 			}
 	
-			if (zeitStein <= 1) {
+			if (zeitStein <= 10) {
 	      		stein.style.visibility = "visible";
 	      		
 	      		//Schwierigkeitsgrade
@@ -189,11 +205,9 @@ function hindernisStein() {
 					stein.style.animation = "stein 0.8s linear";
 				} else if (counter >= 40 && counter < 50){
 					stein.style.animation = "stein 0.7s linear";
-				} else if (counter >= 50 && counter < 60){
-					stein.style.animation = "stein 0.6s linear";
 				} else {
-					stein.style.animation = "stein 0.5s linear";
-				}
+					stein.style.animation = "stein 0.6s linear";
+				} 
 				
 				stopCountdownStein();
 				checkStein();
@@ -205,21 +219,21 @@ function hindernisStein() {
 //Hinderniss: Vogel erscheinen lassen
 function hindernisVogel() {
 	//Zufällig alle 6 - 2 Sekunden einen Vogel erscheinen lassen -> mit 1 Nachkommastellen
-	zeitVogel = Math.round((Math.random() * (6 - 2 + 1) + 2)*10)/10;
+	zeitVogel = zeitVogel = Math.round(Math.random() * (60 - 20 + 10) + 20);
+
 	
 	if(spielGestartet){
 		actionVogel = setInterval(function() {
-			zeitVogel -= 1;
+			zeitVogel -= 10;
 			document.getElementById("timerVogel").innerHTML = zeitVogel;
 	
 			//if(zeitVogel - zeitStein <= 2 && zeitVogel - zeitStein >= 0 || zeitStein - zeitVogel <= 2 && zeitStein - zeitVogel >= 0){
-			if(zeitVogel < 1.2 && zeitStein < 1.2){
-				//nochmal()
+			if(zeitVogel < 15 && zeitStein < 15){
 				//alert("ZeitStein: " + zeitStein + " ZeitVogel: " + zeitVogel);
-				zeitVogel = Math.round((Math.random() * (6 - 2 + 1) + 2)*10)/10;
+				zeitVogel = Math.round(Math.random() * (60 - 20 + 10) + 20);
 			}
 	
-			if (zeitVogel <= 1) {
+			if (zeitVogel <= 10) {
 	      		vogel.style.visibility = "visible";
 	      		
 	      		//Schwierigkeitsgrade
@@ -233,22 +247,15 @@ function hindernisVogel() {
 					vogel.style.animation = "vogel 0.8s linear";
 				} else if (counter >= 40 && counter < 50){
 					vogel.style.animation = "vogel 0.7s linear";
-				} else if (counter >= 50 && counter < 60){
-					vogel.style.animation = "vogel 0.6s linear";
 				} else {
-					vogel.style.animation = "vogel 0.5s linear";
-				}
+					vogel.style.animation = "vogel 0.6s linear";
+				} 
 				
 				stopCountdownVogel();
 				checkVogel();
 			}
 		}, 100);
 	}
-}
-
-function nochmal(){
-	//alert("ZeitStein: " + zeitStein + " ZeitVogel: " + zeitVogel);
-	zeitVogel = Math.round((Math.random() * (6 - 2 + 1) + 2)*10)/10;
 }
 
 
@@ -271,16 +278,16 @@ function stopCheckVogel() {
 function checkStein() {
 
 	checkGetroffenStein = setInterval(function() {
-		let figurTop = parseInt(window.getComputedStyle(figur).getPropertyValue("top"));
+		let figurTopp = parseInt(window.getComputedStyle(figur).getPropertyValue("top"));
 		let steinLinks = parseInt(window.getComputedStyle(stein).getPropertyValue("left"));
 
 		document.getElementById("steinLinks").innerHTML = steinLinks;
-		if (steinLinks <= -100) {
-			if (figurTop >= 325 && steinLinks <= -80) {
+		if (steinLinks <= -105) {
+			if (figurTopp >= 325) {
 				if(counter > 0){
-          			counter++;	
+          			counter--;	
         		}
-        	//verloren();
+        	verloren();
 			} else {
         		counter++;
      		}
@@ -301,13 +308,12 @@ function checkVogel() {
 		let vogelLinks = parseInt(window.getComputedStyle(vogel).getPropertyValue("left"));
 
 		document.getElementById("vogelLinks").innerHTML = vogelLinks;
-		if (vogelLinks <= -80) {
-
-			if (figurTop <= 350 && vogelLinks <= -40) {
+		if (vogelLinks <= -65) {
+			if (figurTop <= 350) {
 				if(counter > 0){
-          			counter++;         		
+          			counter--;         		
         		}
-        	//verloren();
+        	verloren();
 			} else {
         		counter++;
      		}
@@ -322,6 +328,29 @@ function checkVogel() {
 	}, 10);
 
 }
+
+//----------------------------
+//---------- Datenbank -------
+//----------------------------
+
+function datenbank() {
+	//alert("Zeit= " + zeit + " Versuche: " + counter)
+
+	var sendData = "zeit=" + zeit + "&versuche=" + counter;
+
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("temp").innerHTML = xmlhttp.responseText;
+		}
+	};
+	xmlhttp.open("POST", "JumpnrunAjax", true);
+	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xmlhttp.send(sendData);
+
+	//alert("Spiel in Datenbank gespeichert");
+}
+
 //----------------------------
 //---------- Events ----------
 //----------------------------

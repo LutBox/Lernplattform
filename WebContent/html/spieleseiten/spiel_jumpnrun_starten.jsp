@@ -32,29 +32,65 @@ Erstellt von Lukas Theinert
 <div id="gewertet" hidden>${spielStartenBean.gewertet}</div>
 <div id="timerID" hidden>${spielStartenBean.timer}</div>
 
+	<c:set var='time' value='${spielStartenBean.timer}'/>
+	<c:set var='gewertet' value='${spielStartenBean.gewertet}'/>
+
 	<!-- Begin der FLEXBOX = Flex-Container -->
 	<div id="flexarea">
 	
 		<!-- Flex-Item 2 -->
 		<article>
 		
+	<br>
+	
+		<div id="infos">
+				<c:choose> 
+  					<c:when test="${gewertet == 'gewertetAn'}">
+                		<span id="scoreLayout">Punkte: <b id="scoreSpan"></b></span>
+                    </c:when>
+                    <c:when test="${gewertet == 'gewertetAus'}">
+                		<span id="scoreLayout" hidden>Punkte: <b id="scoreSpan"></b></span>
+                    </c:when>
+				</c:choose>
+				
+				<span id="lebenLayout">Verbleibende Leben: <b id="leben"></b></span> 
+				
+                <c:choose> 
+  					<c:when test="${time == 'timerAn'}">
+                    	<span id="zeitLayout">Zeit: <b id="zeit"></b></span>
+                    </c:when>
+                    <c:when test="${time == 'timerAus'}">
+                    	<span id="zeitLayout" hidden>Zeit: <b id="zeit"></b></span>
+                    </c:when>
+				</c:choose>		
+		</div>	
+	
+	<br><br>
+		
     <div class="game">
+    	<div id="spielVorbei" hidden>
+    		<br><br><br>Verloren!<br>
+    		<div id="buttonRestart"><button onClick="window.location.reload();" id="restartButton">Restart</button></div>
+    	</div>
+    	
         <img id="figur"></img>
         <img id="vogel"></img>
-        <img id="stein"></img>
-        
+        <img id="stein"></img>      
     </div>
     
-	Punkte: <span id="scoreSpan"></span> <br>
-	Verbleibende Leben: <span id="leben"></span> <br>
-	Zeit: <span id="zeit"></span> <br>
-	<div >
-	Zeit-Stein: <span id="timerStein"></span> <br>
-	Zeit-Vogel: <span id="timerVogel"></span> <br>
-	Stone left: <span id="steinLinks"></span> <br>
-    Vogel left: <span id="vogelLinks"></span> <br>
+	<div hidden>
+		Zeit-Stein: <span id="timerStein"></span> <br>
+		Zeit-Vogel: <span id="timerVogel"></span> <br>
+		Stone left: <span id="steinLinks"></span> <br>
+	    Vogel left: <span id="vogelLinks"></span> <br>
 	</div>
-	<button type="button" id="start">Start</button>
+	
+	<br>
+	
+
+		<div id="buttonStart"><button id="start">Start</button></div>
+        
+
   
  
   			<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>

@@ -24,6 +24,12 @@ Erstellt von Lukas Theinert
 		<h1>Spieleübersicht</h1>	
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
+
+<div id="temp" hidden></div>
+<div id="nutzer" hidden>${nutzer.name}</div>
+<div id="schwierigkeit" hidden>${spielStartenBean.schwierigkeit}</div>
+<div id="gewertet" hidden>${spielStartenBean.gewertet}</div>
+<div id="timerID" hidden>${spielStartenBean.timer}</div>
 	
 	<!-- Flex-Item 1 -->
 	<div id="flexarea">
@@ -43,8 +49,8 @@ Erstellt von Lukas Theinert
 
 
 <div class="spielart">
-		
 <table style="width:100%">
+
 <%-- 
 ---------- Mathe ---------- 
 --%>
@@ -278,10 +284,10 @@ Erstellt von Lukas Theinert
 					
 					<div>
 					Timer:<br>
-					<input type="radio" name="Timer" id="timerAnJumpnrun" value="timerAn" required checked="checked">
+					<input type="radio" name="Timer" id="timerAnJumpnrun" value="timerAn" required>
 					<label for="timerAnJumpnrun">An</label>
 					
-					<input type="radio" name="Timer" id="timerAusJumpnrun value="TimerAus" required>
+					<input type="radio" name="Timer" id="timerAusJumpnrun" value="TimerAus">
 					<label for="timerAusJumpnrun">Aus</label>
 				</div>
 				
@@ -303,7 +309,6 @@ Erstellt von Lukas Theinert
 				
 		</div>	
 </div>
-			
 
 <%-- 
 ---------- Zufall ---------- 
