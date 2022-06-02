@@ -6,7 +6,7 @@ Erstellt von Lukas Theinert
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html onclick="jump()">
+<html>
 <head>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
@@ -26,7 +26,14 @@ Erstellt von Lukas Theinert
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	
+<div id="temp" hidden></div>
+<div id="nutzer" hidden>${nutzer.name}</div>
+<div id="schwierigkeit" hidden>${spielStartenBean.schwierigkeit}</div>
+<div id="gewertet" hidden>${spielStartenBean.gewertet}</div>
+<div id="timerID" hidden>${spielStartenBean.timer}</div>
 
+	<c:set var='time' value='${spielStartenBean.timer}'/>
+	<c:set var='gewertet' value='${spielStartenBean.gewertet}'/>
 
 	<!-- Begin der FLEXBOX = Flex-Container -->
 	<div id="flexarea">
@@ -34,15 +41,58 @@ Erstellt von Lukas Theinert
 		<!-- Flex-Item 2 -->
 		<article>
 		
-<body>
+	<br>
+	
+		<div id="infos">
+				<c:choose> 
+  					<c:when test="${gewertet == 'gewertetAn'}">
+                		<span id="scoreLayout">Punkte: <b id="scoreSpan"></b></span>
+                    </c:when>
+                    <c:when test="${gewertet == 'gewertetAus'}">
+                		<span id="scoreLayout" hidden>Punkte: <b id="scoreSpan"></b></span>
+                    </c:when>
+				</c:choose>
+				
+				<span id="lebenLayout">Verbleibende Leben: <b id="leben"></b></span> 
+				
+                <c:choose> 
+  					<c:when test="${time == 'timerAn'}">
+                    	<span id="zeitLayout">Zeit: <b id="zeit"></b></span>
+                    </c:when>
+                    <c:when test="${time == 'timerAus'}">
+                    	<span id="zeitLayout" hidden>Zeit: <b id="zeit"></b></span>
+                    </c:when>
+				</c:choose>		
+		</div>	
+	
+	<br><br>
+		
     <div class="game">
-        <img id="character"></img>
-        <div id="block"></div>
+    	<div id="spielVorbei" hidden>
+    		<br><br><br>Verloren!<br>
+    		<div id="buttonRestart"><button onClick="window.location.reload();" id="restartButton">Restart</button></div>
+    	</div>
+    	
+        <img id="figur"></img>
+        <img id="vogel"></img>
+        <img id="stein"></img>      
     </div>
-    <p>Score: <span id="scoreSpan"></span></p>
-</body>    
+    
+	<div hidden>
+		Zeit-Stein: <span id="timerStein"></span> <br>
+		Zeit-Vogel: <span id="timerVogel"></span> <br>
+		Stone left: <span id="steinLinks"></span> <br>
+	    Vogel left: <span id="vogelLinks"></span> <br>
+	</div>
+	
+	<br>
+	
+
+		<div id="buttonStart"><button id="start">Start</button></div>
+        
+
   
-  </section>
+ 
   			<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
   
   </article>
