@@ -1,20 +1,6 @@
 /* Erstellt von Lukas Theinert */
 
-html,
-body {
-	height: 100%;
-}
-
-/*
-html {
-	margin: 0;
-	background: linear-gradient(45deg, #49a09d, #5f2c82);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	font-family: sans-serif;
-	font-weight: 100;
-}
-*/
+@charset "UTF-8";
 
 .container {
 	position: absolute;

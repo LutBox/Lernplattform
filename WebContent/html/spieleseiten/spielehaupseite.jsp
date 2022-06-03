@@ -366,6 +366,7 @@ Erstellt von Lukas Theinert
 	<footer>
 			<%@include file="../jspf/footer.jspf"%>
 	</footer>
-
+	
 </body>
+
 </html>

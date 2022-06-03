@@ -58,6 +58,7 @@ Erstellt von Lukas Theinert
 		
 	</div>
 	<!-- Ende der FLEXBOX -->
+	<!-- Ende der FLEXBOX -->
 	<br> <br> <br> <br>
 	<footer>
 			<%@include file="../jspf/footer.jspf"%>

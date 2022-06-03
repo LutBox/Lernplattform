@@ -14,7 +14,7 @@ Erstellt von Lukas Theinert
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hauptseiten/bestenliste.css" />
 
 <base href="${pageContext.request.requestURI}" />
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Bestenliste</title>
 </head>
 <body>

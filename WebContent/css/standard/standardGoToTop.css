@@ -1,5 +1,7 @@
 /* Erstellt von Lukas Theinert */
 
+@charset "UTF-8";
+
 .goToTopButton {
     display: none;
     position: fixed;

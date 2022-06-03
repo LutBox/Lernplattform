@@ -3,7 +3,8 @@
 
  
 if (document.getElementById("nutzer").innerHTML !== "") {
-	document.getElementById("gastNutzer").style.visibility = "hidden";
+	//document.getElementById("gastNutzer").style.visibility = "hidden";
+	alert("Niemand angemeldet!")
 } 
  */
 document.addEventListener('mouseover', event => {
