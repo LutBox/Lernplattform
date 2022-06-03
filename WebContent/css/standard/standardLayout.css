@@ -13,10 +13,10 @@
 	box-sizing: border-box;
 }
 
-
 #flexarea {
 	display: flex;
 	flex-flow: row wrap;
+	padding: 16px;
 }
 
 header {
@@ -35,8 +35,8 @@ aside {
 
 article, aside {
 	/* border: 1px solid; */
-	padding: 20px;
-	margin: 20px;
+	padding: 10px;
+	margin: 10px;
 }
 
 html {

@@ -25,7 +25,7 @@ Erstellt von Lukas Theinert
 		<%@include file="html/jspf/navigation.jspf"%>
 	</header>
 	
-	
+	<div id="content">
 	<!-- Begin der FLEXBOX = Flex-Container -->
 	<div id="flexarea">
 	
@@ -74,6 +74,6 @@ Erstellt von Lukas Theinert
 	<footer>
 			<%@include file="html/jspf/footer.jspf"%>
 	</footer>
-	
+	</div>
 </body>
 </html>

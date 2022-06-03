@@ -2,7 +2,7 @@
 //Sticky-Navigation-Bar Grundfunktion von: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_navbar_sticky
 //Go-To-Top-Button Grundfunktion von: https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 
- 
+
 document.addEventListener("DOMContentLoaded", initial);
 
 window.onscroll = function() {scrollFunction()};
@@ -33,4 +33,3 @@ function myFunctionGoToTop() {
 function goToTop() {
     document.documentElement.scrollTop = 0;
 }
-

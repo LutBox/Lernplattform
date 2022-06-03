@@ -5,6 +5,6 @@
 .goToTopButton {
     display: none;
     position: fixed;
-    bottom: 80px;
-    right: 10%;
+    bottom: 10%;
+    right: 5%;
 }
