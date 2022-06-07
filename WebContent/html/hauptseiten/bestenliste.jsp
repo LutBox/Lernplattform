@@ -2,43 +2,42 @@
 Erstellt von Lukas Theinert
 --%>
 
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/hauptseiten/bestenliste.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hauptseiten/bestenliste.css"/>
 
-<base href="${pageContext.request.requestURI}" />
-<meta charset="UTF-8">
-<title>Bestenliste</title>
+    <base href="${pageContext.request.requestURI}"/>
+    <title>Bestenliste</title>
 </head>
 <body>
 
-	<header>
-		<h1>Bestenliste</h1>	
-		<%@include file="../jspf/navigation.jspf"%>
-	</header>
-	
-	<!-- Flex-Item 1 -->
-	<div id="flexarea">
-	
-	<!-- Flex-Item 1 -->
-		<aside>
-			<h2>Top-News</h2>
-			<p>Forum-Threads</p>
-		</aside>
-		
-		<!-- Flex-Item 2 -->
-		<article>
+<header>
+    <h1>Bestenliste</h1>
+    <%@include file="../jspf/navigation.jspf" %>
+</header>
+
+<!-- Flex-Item 1 -->
+<div id="flexarea">
+
+    <!-- Flex-Item 1 -->
+    <aside>
+        <h2>Top-News</h2>
+        <p>Forum-Threads</p>
+    </aside>
+
+    <!-- Flex-Item 2 -->
+    <article>
 
 
+        <h3>Bildermemorie</h3>
 
-        <center><h3>Bildermemorie</h3></center>
 
         <div>
             <table>
@@ -56,7 +55,8 @@ Erstellt von Lukas Theinert
 
                 <tbody>
 
-                <c:forEach var="b" items="${bestenlisteBilderMemorieAjax}" varStatus="status">
+                <c:forEach var="b" items="${bestenlisteBilderMemorieAjax}"
+                           varStatus="status">
                     <tr>
                         <td>${status.count}</td>
                         <td>${b.nutzer}</td>
@@ -71,10 +71,11 @@ Erstellt von Lukas Theinert
                 </tbody>
             </table>
         </div>
-        
-        <br><br>
-        
-        <center><h3>Bilder ordnen</h3></center>
+
+        <br>
+        <br>
+
+        <h3>Bilder ordnen</h3>
 
         <div>
             <table>
@@ -92,7 +93,8 @@ Erstellt von Lukas Theinert
 
                 <tbody>
 
-                <c:forEach var="c" items="${bestenlisteBilderOrdnenAjax}" varStatus="status">
+                <c:forEach var="c" items="${bestenlisteBilderOrdnenAjax}"
+                           varStatus="status">
                     <tr>
                         <td>${status.count}</td>
                         <td>${c.nutzer}</td>
@@ -107,10 +109,11 @@ Erstellt von Lukas Theinert
                 </tbody>
             </table>
         </div>
-        
-        <br><br>
-        
-        <center><h3>4 Bilder 1 Wort</h3></center>
+
+        <br>
+        <br>
+
+        <h3>4 Bilder 1 Wort</h3>
 
         <div>
             <table>
@@ -128,7 +131,8 @@ Erstellt von Lukas Theinert
 
                 <tbody>
 
-                <c:forEach var="c" items="${bestenlisteBilderWortAjax}" varStatus="status">
+                <c:forEach var="c" items="${bestenlisteBilderWortAjax}"
+                           varStatus="status">
                     <tr>
                         <td>${status.count}</td>
                         <td>${c.nutzer}</td>
@@ -139,13 +143,14 @@ Erstellt von Lukas Theinert
                         <td>${c.durchschnittZeitSchwer}</td>
                     </tr>
                 </c:forEach>
-                
+
                 </tbody>
             </table>
         </div>
-                <br><br>
-        
-        <center><h3>Mathe</h3></center>
+        <br>
+        <br>
+
+            <h3>Mathe</h3>
 
         <div>
             <table>
@@ -163,7 +168,8 @@ Erstellt von Lukas Theinert
 
                 <tbody>
 
-                <c:forEach var="c" items="${bestenlisteMatheAjax}" varStatus="status">
+                <c:forEach var="c" items="${bestenlisteMatheAjax}"
+                           varStatus="status">
                     <tr>
                         <td>${status.count}</td>
                         <td>${c.nutzer}</td>
@@ -173,15 +179,18 @@ Erstellt von Lukas Theinert
                         <td>${c.durchschnittZeitMittel}</td>
                         <td>${c.durchschnittZeitSchwer}</td>
                     </tr>
-                </c:forEach> 
+                </c:forEach>
 
                 </tbody>
             </table>
         </div>
-        
-                <br><br>
-        
-        <center><h3>Jumpnrun</h3></center>
+
+        <br>
+        <br>
+
+
+        <h3>Jumpnrun</h3>
+
 
         <div>
             <table>
@@ -199,7 +208,8 @@ Erstellt von Lukas Theinert
 
                 <tbody>
 
-                <c:forEach var="c" items="${bestenlisteJumpnrunAjax}" varStatus="status">
+                <c:forEach var="c" items="${bestenlisteJumpnrunAjax}"
+                           varStatus="status">
                     <tr>
                         <td>${status.count}</td>
                         <td>${c.nutzer}</td>
@@ -215,20 +225,23 @@ Erstellt von Lukas Theinert
             </table>
         </div>
 
-				<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
-	
-	</article>
-		<!-- Flex-Item 3 -->
-		<aside>
-			<h2>Beschreibungen</h2>
-		</aside>
-		
-	</div>
-	<!-- Ende der FLEXBOX -->
-	<br> <br> <br> <br>
-	<footer>
-			<%@include file="../jspf/footer.jspf"%>
-	</footer>
-	
+        <button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+
+    </article>
+    <!-- Flex-Item 3 -->
+    <aside>
+        <h2>Beschreibungen</h2>
+    </aside>
+
+</div>
+<!-- Ende der FLEXBOX -->
+<br>
+<br>
+<br>
+<br>
+<footer>
+    <%@include file="../jspf/footer.jspf" %>
+</footer>
+
 </body>
 </html>
