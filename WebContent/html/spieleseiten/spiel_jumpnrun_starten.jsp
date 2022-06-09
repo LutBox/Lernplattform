@@ -72,7 +72,7 @@ Erstellt von Lukas Theinert
                 <br><br><br>Verloren!<br>
                 
                 <div id="buttonRestart">
-                    <button onClick="window.location.reload();" id="restartButton">Restart</button>
+                    <button id="restartButton">Restart</button>
                 </div>
             </div>
 

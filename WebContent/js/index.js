@@ -1,10 +1,17 @@
-//Erstellt von Lukas Theinert
+/*
+ * Erstellt von Lukas Theinert
+ */
+
+"use strict";
+
+//----------------------------
+//---------- Events ----------
+//----------------------------
 
 document.addEventListener("DOMContentLoaded", besteSpieler);
 document.addEventListener("DOMContentLoaded", beliebtesteSpiele);
 
-"use strict";
-
+//Bestenliste "Beste Spieler" aus Datenbank auslesen
 function besteSpieler() {
 
 	var xmlhttp = new XMLHttpRequest();
@@ -20,6 +27,7 @@ function besteSpieler() {
 	//alert("Spiel in Datenbank gespeichert");
 }
 
+//Bestenliste "Beliebteste Spiele" aus Datenbank auslesen
 function beliebtesteSpiele() {
 
 	var xmlhttp = new XMLHttpRequest();

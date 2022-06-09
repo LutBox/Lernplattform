@@ -1,9 +1,14 @@
-/**
+/*
  * Erstellt von Lukas Theinert
  */
 
 "use strict";
 
+//----------------------------
+//---------- Events ----------
+//----------------------------
+
+//Bestenlisten auslesen
 document.addEventListener("DOMContentLoaded", init);
 function init() {
 	document.getElementById("button").addEventListener("click", changeContent);

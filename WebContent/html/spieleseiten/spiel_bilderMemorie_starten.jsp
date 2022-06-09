@@ -42,28 +42,28 @@ Erstellt von Lukas Theinert
     <article>
         <br>
         <div class="game">
-            <div class="controls" id="controls">
+            <div class="informationen" id="informationen">
                 <button id="start">Start</button>
                 <br>
                 <div class="stats">
 
                     <c:choose>
                         <c:when test="${gewertet == 'gewertetAn'}">
-                            <div class="moves">Versuche: 0</div>
+                            <div class="versuche">Versuche: 0</div>
                         </c:when>
                     </c:choose>
 
                     <c:choose>
                         <c:when test="${time == 'timerAn'}">
-                            <div class="timer">Zeit: 0 Sekunden</div>
+                            <div class="zeit">Zeit: 0 Sekunden</div>
                         </c:when>
                     </c:choose>
 
                 </div>
             </div>
 
-            <div class="board-container" id="board-container">
-                <button onClick="window.location.reload();" id="restartButton">Restart</button>
+            <div class="spielbrett-container" id="spielbrett-container">
+                <button id="restartButton">Restart</button>
                 <br>
                 <div class="win"></div>
             </div>
@@ -84,104 +84,104 @@ Erstellt von Lukas Theinert
                     </c:choose>
 
 
-                    <div class="memorieKarte" data-framework="bild1">
+                    <div class="memorieKarte" data-bild="bild1">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild1ID}"
                              alt="bild1"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
-                    <div class="memorieKarte" data-framework="bild1">
+                    <div class="memorieKarte" data-bild="bild1">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild1ID}"
                              alt="bild1"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
 
-                    <div class="memorieKarte" data-framework="bild2">
+                    <div class="memorieKarte" data-bild="bild2">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild2ID}"
                              alt="bild2"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogoe"/>
                     </div>
-                    <div class="memorieKarte" data-framework="bild2">
+                    <div class="memorieKarte" data-bild="bild2">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild2ID}"
                              alt="bild2"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
 
-                    <div class="memorieKarte" data-framework="bild3">
+                    <div class="memorieKarte" data-bild="bild3">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild3ID}"
                              alt="bild3"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
-                    <div class="memorieKarte" data-framework="bild3">
+                    <div class="memorieKarte" data-bild="bild3">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild3ID}"
                              alt="bild3"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
 
-                    <div class="memorieKarte" data-framework="bild4">
+                    <div class="memorieKarte" data-bild="bild4">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild4ID}"
                              alt="bild4"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
-                    <div class="memorieKarte" data-framework="bild4">
+                    <div class="memorieKarte" data-bild="bild4">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild4ID}"
                              alt="bild4"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
 
-                    <div class="memorieKarte" data-framework="bild5">
+                    <div class="memorieKarte" data-bild="bild5">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild5ID}"
                              alt="bild5"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
-                    <div class="memorieKarte" data-framework="bild5">
+                    <div class="memorieKarte" data-bild="bild5">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild5ID}"
                              alt="bild5"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
 
-                    <div class="memorieKarte" data-framework="bild6">
+                    <div class="memorieKarte" data-bild="bild6">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild6ID}"
                              alt="bild6"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
-                    <div class="memorieKarte" data-framework="bild6">
+                    <div class="memorieKarte" data-bild="bild6">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild6ID}"
                              alt="bild6"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
 
-                    <div class="memorieKarte" data-framework="bild7">
+                    <div class="memorieKarte" data-bild="bild7">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild7ID}"
                              alt="bild7"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
-                    <div class="memorieKarte" data-framework="bild7">
+                    <div class="memorieKarte" data-bild="bild7">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild7ID}"
                              alt="bild7"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
 
-                    <div class="memorieKarte" data-framework="bild8">
+                    <div class="memorieKarte" data-bild="bild8">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild8ID}"
                              alt="bild8"/>
                         <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png" alt="bildLogo"/>
                     </div>
-                    <div class="memorieKarte" data-framework="bild8">
+                    <div class="memorieKarte" data-bild="bild8">
                         <img class="vorne"
                              src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild8ID}"
                              alt="bild8"/>
@@ -192,14 +192,14 @@ Erstellt von Lukas Theinert
                     <c:choose>
                         <c:when test="${val == 'mittel' || val == 'schwer'}">
 
-                            <div class="memorieKarte test" data-framework="bild9">
+                            <div class="memorieKarte test" data-bild="bild9">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild9ID}"
                                      alt="bild9"/>
                                 <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png"
                                      alt="bildLogo"/>
                             </div>
-                            <div class="memorieKarte test" data-framework="bild9">
+                            <div class="memorieKarte test" data-bild="bild9">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild9ID}"
                                      alt="bild9"/>
@@ -207,28 +207,28 @@ Erstellt von Lukas Theinert
                                      alt="bildLogo"/>
                             </div>
 
-                            <div class="memorieKarte test" data-framework="bild10">
+                            <div class="memorieKarte test" data-bild="bild10">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild10ID}"
                                      alt="bild10"/>
                                 <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png"
                                      alt="bildLogoe"/>
                             </div>
-                            <div class="memorieKarte test" data-framework="bild10">
+                            <div class="memorieKarte test" data-bild="bild10">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild10ID}"
                                      alt="bild10"/>
                                 <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png"
                                      alt="bildLogo"/>
                             </div>
-                            <div class="memorieKarte" data-framework="bild11">
+                            <div class="memorieKarte" data-bild="bild11">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild11ID}"
                                      alt="bild11"/>
                                 <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png"
                                      alt="bildLogo"/>
                             </div>
-                            <div class="memorieKarte" data-framework="bild11">
+                            <div class="memorieKarte" data-bild="bild11">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild11ID}"
                                      alt="bild11"/>
@@ -236,14 +236,14 @@ Erstellt von Lukas Theinert
                                      alt="bildLogo"/>
                             </div>
 
-                            <div class="memorieKarte" data-framework="bild12">
+                            <div class="memorieKarte" data-bild="bild12">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild12ID}"
                                      alt="bild12"/>
                                 <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png"
                                      alt="bildLogo"/>
                             </div>
-                            <div class="memorieKarte" data-framework="bild12">
+                            <div class="memorieKarte" data-bild="bild12">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild12ID}"
                                      alt="bild12"/>
@@ -258,14 +258,14 @@ Erstellt von Lukas Theinert
                     <c:choose>
                         <c:when test="${val == 'schwer'}">
 
-                            <div class="memorieKarte" data-framework="bild13">
+                            <div class="memorieKarte" data-bild="bild13">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild13ID}"
                                      alt="bild13"/>
                                 <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png"
                                      alt="bildLogo"/>
                             </div>
-                            <div class="memorieKarte" data-framework="bild13">
+                            <div class="memorieKarte" data-bild="bild13">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild13ID}"
                                      alt="bild13"/>
@@ -273,14 +273,14 @@ Erstellt von Lukas Theinert
                                      alt="bildLogo"/>
                             </div>
 
-                            <div class="memorieKarte" data-framework="bild14">
+                            <div class="memorieKarte" data-bild="bild14">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild14ID}"
                                      alt="bild14"/>
                                 <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png"
                                      alt="bildLogo"/>
                             </div>
-                            <div class="memorieKarte" data-framework="bild14">
+                            <div class="memorieKarte" data-bild="bild14">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild14ID}"
                                      alt="bild14"/>
@@ -288,14 +288,14 @@ Erstellt von Lukas Theinert
                                      alt="bildLogo"/>
                             </div>
 
-                            <div class="memorieKarte" data-framework="bild15">
+                            <div class="memorieKarte" data-bild="bild15">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild15ID}"
                                      alt="bild15"/>
                                 <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png"
                                      alt="bildLogo"/>
                             </div>
-                            <div class="memorieKarte" data-framework="bild15">
+                            <div class="memorieKarte" data-bild="bild15">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild15ID}"
                                      alt="bild15"/>
@@ -303,14 +303,14 @@ Erstellt von Lukas Theinert
                                      alt="bildLogo"/>
                             </div>
 
-                            <div class="memorieKarte" data-framework="bild16">
+                            <div class="memorieKarte" data-bild="bild16">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild16ID}"
                                      alt="bild16"/>
                                 <img class="hinten" src="${pageContext.request.contextPath}/bilder/logo.png"
                                      alt="bildLogo"/>
                             </div>
-                            <div class="memorieKarte" data-framework="bild16">
+                            <div class="memorieKarte" data-bild="bild16">
                                 <img class="vorne"
                                      src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderMemorieBean.bild16ID}"
                                      alt="bild16"/>
