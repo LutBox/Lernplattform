@@ -12,6 +12,8 @@ Erstellt von Zohal Mohammadi
 	href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+	
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/hauptseiten/impressum.css" />
 
 
 <base href="${pageContext.request.requestURI}" />
@@ -34,21 +36,24 @@ Erstellt von Zohal Mohammadi
 		<article>
 
 
-
-			<p>
+    <div>
+			<p class="adresse">
 				<strong>Adresse</strong>
 			</p>
-			<p>Lernplattform Gmbh</p>
-			<p>Beispielsstraße 39</p>
-			<p>85055 Ingolstadt
-			<p>
-			<p>Deutschland</p>
-			<p>
+			<p class="name">Lernplattform Gmbh</p>
+			<p class="strasse">Beispielsstraße 39</p>
+			<p class="plz">85055 Ingolstadt
+			</p>
+			<p class="land">Deutschland</p>
+			<p class="kontakt">
 				<strong>Kontakt</strong>
 			</p>
-			<P>Uns erreichen Sie montags bis freitags von 8:00 bis 12:00 Uhr</P>
-			<p>Tel. IT Support: +49 176-555-53</p>
-
+			<P class="zeit">Uns erreichen Sie montags bis freitags von 8:00 bis 12:00 Uhr</P>
+			<p class="num">Tel.IT Support: +49 176-555-53</p>
+			
+			
+			
+      </div>
 			<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
 
 		</article>

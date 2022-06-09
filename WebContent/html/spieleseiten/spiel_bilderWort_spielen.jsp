@@ -1,16 +1,23 @@
+<%--
+Erstellt von Zohal Mohammadi
+--%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-
-<meta charset="ISO-8859-1">
-<title>VierBilderEinWort</title>
+<meta charset="UTF-8">
+<title>4 Bilder ein Wort</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spiel_bildWort.css" />
 <script src="js/spiel_vierBilderEinWort.js">
 	
 </script>
 </head>
 <body>
+
+	<h1>4 Bilder ein Wort</h1>	
+		
 
 
 <div id ="erreichte_Punkte">
@@ -33,18 +40,13 @@ ${vierBilderEinWort.richtigeErgebnis}
 
 			<form action="VierBilderEinWortServlet" method="post">
 				<input type="text" name="userEingabe"
-					placeholder="Bitte das Wort erraten" required="required" max="30">
-				<input type="submit" value="weiter"> <input type="hidden"
+					placeholder="Bitte das Wort erraten" required="required" max="30" autofocus>
+				<input type="submit" value="weiter" > <input type="hidden"
 					name="loesung"
 					value="${requestScope.spielVierBilderEinWortBean.wort}">
 
 				<p class="timer" id=t1 data-endzeit="${vierBilderEinWort.zeit}"></p>
-			</form>
-
-
-			
-
-		
+			</form>		
 </body>
 </html>
 
