@@ -1,9 +1,15 @@
 <%--
+
 Erstellt von Zohal Mohammadi
 --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+
+<%@page contentType="text/html;charset=UTF-8" language="java"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,18 +22,21 @@ Erstellt von Zohal Mohammadi
 </head>
 <body>
 
+
 	<h1>4 Bilder ein Wort</h1>	
 		
 
 
-<div id ="erreichte_Punkte">
-${vierBilderEinWort.richtigeErgebnis}
-</div>
-	/
-	<div id="insgesamt_Punkte">
+<div id="temp" hidden></div>
+<div id="nutzer" hidden>${nutzer.name}</div>
+<div id="gewertet" hidden>${spielStartenBean.gewertet}</div>
+<div id="timerID" hidden>${spielStartenBean.timer}</div>
 
-	${vierBilderEinWort.versuche} 
-	</div>
+
+
+<div id ="erreichte_Punkte">${vierBilderEinWort.richtigeErgebnis}</div>
+/
+<div id="insgesamt_Punkte">${vierBilderEinWort.versuche}</div>
 			<img
 				src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielVierBilderEinWortBean.bild1}"
 				alt="bild1"> <img

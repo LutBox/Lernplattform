@@ -1,4 +1,5 @@
 <%--
+
 Erstellt von Zohal Mohammadi
 --%>
 
@@ -12,7 +13,7 @@ Erstellt von Zohal Mohammadi
 </head>
 <body>
 
-	<h1>Viel spaﬂ!</h1>
+	<h1>Viel spa√ü!</h1>
 	
 		<nav>
 			<%@include file="../jspf/navigation.jspf"%>

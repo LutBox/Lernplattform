@@ -54,15 +54,15 @@ Erstellt von Lukas Theinert
                 
                 <c:choose> 
   					<c:when test="${gewertet == 'gewertetAn'}">
-                <div class="moves" id="moves">Versuche: 0</div>
-                      </c:when>
-					</c:choose>
+                		<div class="moves" id="moves">Versuche: 0</div>
+                    </c:when>
+				</c:choose>
 
-                      <c:choose> 
+                <c:choose> 
   					<c:when test="${time == 'timerAn'}">
-                    <div class="timer" id="timer">Zeit: 0 Sekunden</div>
-                      </c:when>
-					</c:choose>
+                    	<div class="timer" id="timer">Zeit: 0 Sekunden</div>
+                    </c:when>
+				</c:choose>
 					
                 </div>
             </div>

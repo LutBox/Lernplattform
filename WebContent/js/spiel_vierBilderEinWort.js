@@ -17,12 +17,12 @@ function timer() {
 
   // Output the result in an element with id="demo"
   document.getElementById("t1").innerHTML = minutes + ":" + seconds;
+  
+
 
   // If the count down is over, write some text 
   if (distance < 0) {
-  	// Funktionsaufruf
-  	datenbankEintrag()
-  
+	datenbankEintrag()
     window.location.href = "html/spieleseiten/spiel_bilderWort_ergebnis.jsp"
   }
 
@@ -42,10 +42,10 @@ window.onload = function () {
 "use strict";
 
 function datenbankEintrag() {
-
-	var punkt =document.getElementById("insgesamt_Punkte");
-	var versuche = document.getElementByID("erreichte_Punkte");
-
+	
+	var punkt =document.getElementById("insgesamt_Punkte").innerHTML;
+	var versuche = document.getElementById("erreichte_Punkte").innerHTML;
+	//alert("Punkte insgesamt: " + punkt + " Erreichte Punkte: " + versuche)
 	var sendData = "punkt=" + punkt + "&versuche=" + versuche;
 
 	var xmlhttp = new XMLHttpRequest();
@@ -58,5 +58,5 @@ function datenbankEintrag() {
 	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xmlhttp.send(sendData);
 
-	alert("Spiel in Datenbank gespeichert");
+	//alert("Spiel in Datenbank gespeichert");
 }

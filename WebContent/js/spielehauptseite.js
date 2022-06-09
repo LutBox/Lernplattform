@@ -1,7 +1,11 @@
 /**
  * Erstellt von Lukas Theinert
- */
 
+ 
+if (document.getElementById("nutzer").innerHTML !== "") {
+	document.getElementById("gastNutzer").style.visibility = "hidden";
+} 
+ */
 document.addEventListener('mouseover', event => {
 	const eventTarget = event.target
 
@@ -24,6 +28,10 @@ document.addEventListener('mouseover', event => {
 	if (eventTarget.nodeName === 'IMG' && event.target.id === 'KarteBilderWort') {
 		b1 = document.getElementById("leichtBilderWort");
 		b1.checked = true
+		b2 = document.getElementById("timerAnBilderWort");
+		b2.checked = true
+		b3 = document.getElementById("gewertetAnBilderWort");
+		b3.checked = true
 		document.getElementById("spieleBeschreibung").innerHTML = "Errate zu den Bilder das passende Wort!";
 	}
 	
@@ -50,6 +58,10 @@ document.addEventListener('mouseover', event => {
 	if (eventTarget.nodeName === 'IMG' && event.target.id === 'KarteJumpnrun') {
 		b1 = document.getElementById("leichtJumpnrun");
 		b1.checked = true
+		b2 = document.getElementById("timerAnJumpnrun");
+		b2.checked = true
+		b3 = document.getElementById("gewertetAnJumpnrun");
+		b3.checked = true
 		document.getElementById("spieleBeschreibung").innerHTML = "Weiche den Hindernissen aus und überlebe so lange wie es geht!";
 	}
 	
