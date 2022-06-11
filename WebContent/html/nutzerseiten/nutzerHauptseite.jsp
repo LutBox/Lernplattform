@@ -5,17 +5,10 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+	href="../../css/nutzerseiten/nutzerHauptseiteStil.css" />
+<script type="text/javascript" src="../../js/standard.js" defer></script>
 <meta charset="UTF-8">
-<title>Mitgliederbereich</title>
-<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
+<title>Nutzerbereich</title>
 </head>
 <body>
 	<header>
@@ -27,23 +20,49 @@
 			<h2>Top-News</h2>
 			<p>Forum-Threads</p>
 		</aside>
-		<main>
-			<h1>Mitgliederbereich</h1>
-			<div>
-				<img src="../../ProfilbildLadenServlet?nn=${nutzer.name}" /> <br />Nutzername:
-				${nutzer.name} <br />Email: ${nutzer.email}
+		<main class="flexitem">
+			<div id="nutzerkarte">
+				<div class="karteninhalt">
+					<h2 class="nutzername zentriert">- ${nutzer.name} -</h2>
+				</div>
+				<div class="karteninhalt">
+					<img class="profilbild"
+						src="../../ProfilbildLadenServlet?nn=${nutzer.name}" />
+				</div>
+				<div class="karteninhalt">
+					<p class="email zentriert">${nutzer.email}</p>
+				</div>
 			</div>
-			<div>
-				<a href="../spieleseiten/spielehaupseite.jsp">Spieleübersicht</a>
+			<div id="punktestaende" class="zentriert">
+				<table>
+					<thead>
+						<tr>
+							<th class="topleft">Mathe</th>
+							<th>4 Bilder 1 Wort</th>
+							<th>Bilder ordnen</th>
+							<th>Bildermemorie</th>
+							<th class="topright">Jump N Run</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="bottomleft">${nutzer.punkteMathe}</td>
+							<td>${nutzer.punkteBilderBilderWort}</td>
+							<td>${nutzer.punkteBilderOrdnen}</td>
+							<td>${nutzer.punkteBilderMemorie}</td>
+							<td class="bottomright">${nutzer.punkteJumpnrun}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</main>
-		<aside>
-			<h2>Beschreibung:</h2>
+		<aside class="flexitem">
+			<h2>Bestenliste:</h2>
 			<br>
 			<div id="spieleBeschreibung"></div>
 		</aside>
 	</div>
-	<footer>
+	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>

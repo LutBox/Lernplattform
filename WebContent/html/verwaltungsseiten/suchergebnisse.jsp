@@ -5,17 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../css/verwaltungsseiten/suchergebnisseStil.css" />
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 <title>Suchergebnisse</title>
-<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
 	<header>
@@ -23,51 +17,64 @@
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	<main>
-		<h1>Suchergebnisse</h1>
-		<table border="solid">
-			<tr>
-				<th></th>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Passwort</th>
-				<th>Nutzerart</th>
-				<th>Punkte</th>
-				<th>Punkte</th>
-				<th>Punkte</th>
-				<th>Punkte</th>
-				<th>Punkte</th>
-				<th>Bearbeiten</th>
-				<th>Löschen</th>
-			</tr>
-			<c:forEach items="${suchergebnisse}" var="ergebnis">
-				<tr>
-					<td><img
-						src="../../ProfilbildLadenServlet?nn=${ergebnis.name}" /></td>
-					<td>${ergebnis.name}</td>
-					<td>${ergebnis.email}</td>
-					<td>${ergebnis.passwort}</td>
-					<td><c:if test="${ergebnis.admin==0}">Nutzer</c:if> <c:if
-							test="${ergebnis.admin==1}">Admin</c:if></td>
-					<td>${ergebnis.punkteBilderMemorie}</td>
-					<td>${ergebnis.punkteBilderOrdnen}</td>
-					<td>${ergebnis.punkteBilderBilderWort}</td>
-					<td>${ergebnis.punkteMathe}</td>
-					<td>${ergebnis.punkteJumpnrun}</td>
-					<td><form method="post"
-							action="../../NutzerBearbeitenServlet?nn=${ergebnis.name}">
-							<button>Bearbeiten</button>
-						</form></td>
-					<td>
-						<form method="post"
-							action="../../NutzerLoeschenServlet?zuloeschenderNutzer=${ergebnis.name}">
-							<button>Löschen</button>
+		<div class="row">
+			<div class="grid12">
+				<h2>
+					Suche: "<em>${fragment}</em>"
+				</h2>
+			</div>
+		</div>
+		<c:forEach items="${suchergebnisse}" var="ergebnis">
+			<div class="row">
+				<div class="grid1"></div>
+				<div class="grid10 suchergebnis">
+					<div class="grid1 vertikal-zentriert">
+						<img class="profilbild"
+							src="../../ProfilbildLadenServlet?nn=${ergebnis.name}" />
+					</div>
+					<div class="grid8">
+						<p>
+							<span class="beschreibung">Name: </span>${ergebnis.name}<br /> <span
+								class="beschreibung">E-Mail: </span>${ergebnis.email}<br /> <span
+								class="beschreibung">Passwort: </span>${ergebnis.passwort}<br />
+							<span class="beschreibung">Status: </span>
+							<c:if test="${ergebnis.admin==0}">Nutzer</c:if>
+							<c:if test="${ergebnis.admin==1}">Admin</c:if>
+						</p>
+					</div>
+					<div class="grid2">
+						Memory: ${ergebnis.punkteBilderMemorie}<br /> Ordnen:
+						${ergebnis.punkteBilderOrdnen}<br />Bilder:
+						${ergebnis.punkteBilderBilderWort}<br /> Mathe:
+						${ergebnis.punkteMathe}<br />JNR: ${ergebnis.punkteJumpnrun}
+					</div>
+					<div class="grid1">
+						<form method="post">
+							<input type="hidden" name="nn" value="${ergebnis.name}" />
+							<button class="noStandardButton"
+								formaction="../../NutzerBearbeitenServlet">
+								<img class="buttonImg"
+									src="../../bilder/verwaltung/bearbeiten.png" />
+							</button>
+							<input type="hidden" name="zuloeschenderNutzer"
+								value="${ergebnis.name}" />
+							<button class="noStandardButton"
+								formaction="../../NutzerLoeschenServlet">
+								<img class="buttonImg"
+									src="../../bilder/verwaltung/entfernen.png" />
+							</button>
 						</form>
-					</td>
-				<tr />
-			</c:forEach>
-		</table>
+					</div>
+				</div>
+				<div class="grid1"></div>
+			</div>
+		</c:forEach>
+		<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+		<div class="row">
+			<div class="grid12"></div>
+		</div>
 	</main>
-		<footer>
+	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>

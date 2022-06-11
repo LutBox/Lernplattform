@@ -5,52 +5,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+<link rel="stylesheet" type="text/css" href="../../css/nutzerseiten/registrierenStil.css" />
+<script type="text/javascript"
+	src="../../js/standard.js" defer></script>
+	<script type="text/javascript"
+	src="../../js/passwortkontrolle.js" defer></script>
 <title>Registrierung</title>
-<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
 	<header>
-	<h1>Registrierung</h1>
+		<h1>Lernplattform</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	<main>
-		<form method="post" action="../../RegistrierungServlet"
-			enctype="multipart/form-data">
+		<form id="registrierungform" method="post" action="../../RegistrierungServlet" enctype="multipart/form-data">
 			<fieldset>
-				<div class="eingabefeld">
-					<label for="name">Nutzername: </label> <br /> <input name="name"
-						id="name" type="text" placeholder="Nutzername" maxlength="64"
-						required="required" /> <br /> <label for="email">E-Mail:</label>
-					<br /> <input name="email" id="email" type="email"
-						value="${anfrage.email}" placeholder="e-mail" maxlength="64"
-						required="required"> </input> <br /> <label for="passwort">Passwort:</label>
-					<br /> <input name="passwort" id="passwort" type="password"
-						maxlength="128" required="required" value="${anfrage.passwort}"
-						placeholder="****" /> <br /> <label for="passwort2">Passwort
-						wiederholen:</label> <br> <input name="passwort2" id="passwort2"
-						type="password" maxlength="128" required="required"
-						placeholder="****" value="${anfrage.passwort}" /> <br /> <label
-						for="profilbild">Profilbild hochladen:</label> <br /> <input
-						type="file" name="profilbild" id="profilbild" accept="image/*" />
+				<legend>Registrierung</legend>
+				<div>
+					<label for="name">Nutzername: </label> <input name="name" id="name"
+						type="text" placeholder="Nutzername" maxlength="96"
+						required="required" title="Bitte geben Sie ihren Nutzernamen an (Maximal 96 Zeichen)."/>
+						<span></span>
 				</div>
-				<div class="infotext">
-					<c:out value="${registrierunginfotext}"
-						default="Bitte geben sie ihre Daten an." />
+				<div>
+					<label for="email">E-Mail:</label> <input name="email" id="email"
+						type="email" value="${anfrage.email}" placeholder="e-mail"
+						maxlength="64" required="required" title="Bitte geben Sie ihre E-Mail an"/>
+					<span></span>
 				</div>
-				<div class="formularknopf">
-					<button type="submit">Absenden</button>
-					<br />
+				<div>
+					<label for="passwort">Passwort:</label> <input name="passwort"
+						id="passwort" type="password" maxlength="96" required="required"
+						value="${anfrage.passwort}" placeholder="*******" title="Bitte geben Sie ihr Passwort an (Maximal 96 Zeichen)."/>
+					<span></span>
+				</div>
+				<div>
+					<label for="passwort2">Passwort wiederholen:</label>
+				</div>
+				<div>
+					<input name="passwort2" id="passwort2" type="password"
+						maxlength="64" required="required" placeholder="*******"
+						value="${anfrage.passwort}" required="required" title="Bitte wiederholen Sie ihr Passwort" />
+					<span></span>
+				</div>
+				<div>
+					<label for="profilbild">Profilbild hochladen:</label> <input
+						type="file" name="profilbild" id="profilbild" accept="image/*" title="Bitte laden Sie hier ihr Profilbild hoch"/>
+				</div>
+				<div>
+
+					<button id="absenden" type="submit">Absenden</button>
 					<button type="reset">Zurücksetzen</button>
 				</div>
 			</fieldset>
 		</form>
+		<div id="infotext">
+			<c:out value="${forminfotext}"
+				default="Bitte geben sie ihre Daten an." />
+		</div>
 	</main>
-		<footer>
+	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>

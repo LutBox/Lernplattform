@@ -5,11 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+<link rel="stylesheet"
+	href="../../css/verwaltungsseiten/nutzerverwaltungStil.css" />
+<script type="text/javascript" src="../../js/standard.js" defer></script>
 <title>Nutzerverwaltung</title>
 <link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
@@ -21,20 +19,35 @@
 	<main>
 		<form method="post" action="../../NutzerSucheServlet">
 			<fieldset>
-				<label for="fragment">Suche:</label> <input id="fragment"
-					name="fragment" type="text" required="required" /> <br /> <label>Anzahl
-					der Ergebnisse: </label> <br />
-				<label for="1ergebnis">1</label> <input type="radio"
-					name="anzahlErgebnisse" id="1ergebnis" value="1" /><br />
-				<label for="10ergebnisse">10</label> <input type="radio"
-					name="anzahlErgebnisse" value="10" id="10ergebnisse" /><br />
-				<label for="100ergebnisse">100</label> <input type="radio"
-					name="anzahlErgebnisse" value="100" id="100ergebnisse" /> <br />
-				<button type="submit">Suchen</button>
+				<legend>Nutzersuche</legend>
+				<div>
+					<label for="fragment">Name:</label> <input id="fragment"
+						name="fragment" type="text" required="required" pattern="[^ ]+"
+						title="Fragment eines Nutzernamens" />
+				</div>
+				<label>Anzahl der Ergebnisse: </label>
+				<div class="option">
+					<label for="10ergebnisse">10</label> <input type="radio"
+						name="anzahlErgebnisse" value="10" id="10ergebnisse"
+						required="required" title="Maximal 10 Suchergebnisse" />
+				</div>
+				<div class="option">
+					<label for="100ergebnisse">100</label> <input type="radio"
+						name="anzahlErgebnisse" value="100" id="100ergebnisse"
+						title="Maximal 100 Suchergebnisse" />
+				</div>
+				<div class="option">
+					<label for="250ergebnis">250</label> <input type="radio"
+						name="anzahlErgebnisse" id="250ergebnis" value="250"
+						title="Maximal 250 Suchergebnisse" />
+				</div>
+				<div>
+					<button type="submit">Suchen</button>
+				</div>
 			</fieldset>
 		</form>
 	</main>
-		<footer>
+	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>

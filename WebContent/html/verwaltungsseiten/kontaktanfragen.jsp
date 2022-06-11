@@ -5,17 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+<link rel="stylesheet" type="text/css"
+	href="../../css/verwaltungsseiten/kontaktanfragenStil.css" />
+<script type="text/javascript" src="../../js/standard.js" defer></script>
 <title>Kontaktanfragen</title>
-<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
 	<header>
@@ -23,80 +16,89 @@
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	<main>
-		<h1>Kontaktanfragen</h1>
-		<p>
-			<span>${anzahlungelesene}</span> ungelesene Nachrichten<br /> <span>${anzahlarchivierte}</span>
-			Nachrichten archiviert
-		</p>
-		<c:choose>
-			<c:when test="${anzahlungelesene > 0}">
-				<table>
-					<thead>
-						<tr>
-							<th>Ungelesene Kontaktanfragen</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${ungelesene}" var="nachricht">
-							<tr>
-								<td>Von: ${nachricht.email}</td>
-								<td><a href="mailto:${nachricht.email}">Antworten</a></td>
-								<td>
-									<form method="post"
-										action="../../GelesenMarkierenServlet?kanr=${nachricht.kanr}">
-										<button type="submit">Als gelesen markieren</button>
-									</form>
-								</td>
-								<td>
-									<form method="post"
-										action="../../KontaktanfrageLoeschenServlet?kanr=${nachricht.kanr}">
-										<button type="submit">Löschen</button>
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td>${nachricht.nachricht}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</c:when>
-			<c:otherwise>
-				<h1>Keine ungelesenen Nachrichten</h1>
-			</c:otherwise>
-		</c:choose>
-		<table>
-			<thead>
-				<tr>
-					<th>Archivierte Kontaktanfragen</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${archiviert}" var="nachricht">
-					<tr>
-						<td>Von: ${nachricht.email}</td>
-						<td><a href="mailto:${nachricht.email}">Antworten</a></td>
-						<td>
-							<form method="post"
-								action="../../GelesenMarkierenServlet?kanr=${nachricht.kanr}">
-								<button type="submit">Als gelesen markieren</button>
-							</form>
-						</td>
-						<td>
-							<form method="post"
-								action="../../KontaktanfrageLoeschenServlet?kanr=${nachricht.kanr}">
-								<button type="submit">Löschen</button>
-							</form>
-						</td>
-					</tr>
-					<tr>
-						<td>${nachricht.nachricht}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+		<div class="row">
+			<p class="grid12">
+				Sie haben:<br /> <em>${anzahlungelesene} </em>ungelesene
+				Nachrichten <em>${anzahlarchivierte} </em>archivierte Nachrichten
+			</p>
+		</div>
+		<div class="row">
+			<div class="grid12">
+				<h2>- Ungelesene Kontaktanfragen -</h2>
+			</div>
+		</div>
+		<c:forEach items="${ungelesene}" var="nachricht">
+			<div class="row">
+				<div class="grid1"></div>
+				<div class="grid10 kontaktanfrage">
+					<div class="grid3 email">${nachricht.email}</div>
+					<div class="grid7 nachricht">${nachricht.nachricht}</div>
+					<div class="grid2 knoepfe">
+						<form method="post">
+							<a class="buttonLink" href="mailto:${nachricht.email}"
+								title="Antworten"><img class="buttonImg"
+								src="../../bilder/verwaltung/antworten.png" /></a> <input
+								type="hidden" name="kanr" value="${nachricht.kanr}" />
+							<button class="noStandardButton" type="submit"
+								formaction="../../GelesenMarkierenServlet"
+								title="Als ungelesen markieren">
+								<img class="buttonImg"
+									src="../../bilder/verwaltung/archivieren.png" />
+							</button>
+							<input type="hidden" name="kanr" value="${nachricht.kanr}" />
+							<button class="noStandardButton" type="submit"
+								formaction="../../KontaktanfrageLoeschenServlet" title="Löschen">
+								<img class="buttonImg"
+									src="../../bilder/verwaltung/entfernen.png" />
+							</button>
+						</form>
+					</div>
+				</div>
+				<div class="grid1"></div>
+			</div>
+		</c:forEach>
+		<br />
+		<div class="row">
+			<div class="grid12">
+				<h2>- Archivierte Kontaktanfragen -</h2>
+			</div>
+		</div>
+		<c:forEach items="${archiviert}" var="nachricht">
+			<div class="row">
+				<div class="grid1"></div>
+				<div class="grid10 kontaktanfrage">
+					<div class="grid3 email">${nachricht.email}</div>
+					<div class="grid7 nachricht">${nachricht.nachricht}</div>
+					<div class="grid2 rechtsausgerichtet">
+						<form class="clear" method="post">
+							<a class="buttonLink" href="mailto:${nachricht.email}"
+								title="Antworten"><img class="buttonImg"
+								src="../../bilder/verwaltung/antworten.png" /></a> <input
+								type="hidden" name="kanr" value="${nachricht.kanr}" />
+							<button class="noStandardButton" type="submit"
+								formaction="../../UngelesenMarkierenServlet"
+								title="Als ungelesen markieren">
+								<img class="buttonImg"
+									src="../../bilder/verwaltung/ungelesen.png" />
+							</button>
+							<input type="hidden" name="kanr" value="${nachricht.kanr}" />
+							<button class="noStandardButton" type="submit"
+								formaction="../../KontaktanfrageLoeschenServlet" title="Löschen">
+								<img class="buttonImg"
+									src="../../bilder/verwaltung/entfernen.png" />
+							</button>
+						</form>
+					</div>
+				</div>
+				<div class="grid1"></div>
+			</div>
+		</c:forEach>
+		<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+		<div class="row">
+			<div class="grid12"></div>
+		</div>
 	</main>
-	<footer>
+	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>

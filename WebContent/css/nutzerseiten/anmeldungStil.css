@@ -1,0 +1,38 @@
+/* @author Merlin */
+@import url("../standard/standardHintergrund.css");
+
+@import url("../standard/standardFonts.css");
+
+@import url("../standard/standardButton.css");
+
+@import url("../standard/standardFormular.css");
+
+@import url("../standard/standardNavigation.css");
+
+@import url("../standard/standardFooter.css");
+
+@import url("../standard/standardGoToTop.css");
+
+#infotext {
+	text-align: center;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+}
+
+div {
+	padding: 2.5px;
+	margin: 2.5px;
+}
+
+.anmeldedaten {
+	max-width: 25%;
+	min-width: 10px;
+	height: auto;
+}
+
+.formulardatum {
+	width: 90%;
+}

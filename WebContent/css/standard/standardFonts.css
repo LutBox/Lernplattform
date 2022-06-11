@@ -1,0 +1,11 @@
+/* @author Lukas */
+@font-face {
+	font-family: Heebo-Regular;
+	src: url(./ressourcen/Heebo-Regular.ttf);
+}
+
+body {
+	font-family: Heebo-Regular;
+	font-size: 16px;
+}
+

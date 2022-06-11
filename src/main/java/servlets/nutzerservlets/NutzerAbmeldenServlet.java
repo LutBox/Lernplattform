@@ -26,7 +26,7 @@ public class NutzerAbmeldenServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute(NutzerViewBean.attributname);
-		response.sendRedirect("./html/nutzerseiten/abgemeldet.jsp");
+		response.sendRedirect("./html/nutzerseiten/anmeldung.jsp");
 	}
 
 	/**

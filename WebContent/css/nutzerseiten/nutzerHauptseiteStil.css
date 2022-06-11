@@ -1,0 +1,147 @@
+/* @author Merlin */
+@import url("../standard/standardHintergrund.css");
+
+@import url("../standard/standardFonts.css");
+
+@import url("../standard/standardNavigation.css");
+
+@import url("../standard/standardFooter.css");
+
+div#flexarea {
+	justify-content: center;
+}
+
+main.flexitem {
+	flex: 3;
+}
+
+aside {
+	flex: 1;
+	background-color: rgba(225, 225, 225, 0.5);
+	border-radius: 15px;
+	box-shadow: 0 0 15px 5px #000000;
+	padding: 10px 10px;
+	margin: 20px 20px;
+}
+
+aside:hover {
+	box-shadow: 0 0 20px 10px #000000;
+}
+
+div#nutzerkarte {
+	box-shadow: 0 0 15px 5px #000000;
+	border-radius: 15px;
+	width: 380px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:40px;
+	margin-bottom: 40px;
+}
+
+div#nutzerkarte:hover {
+	box-shadow: 0 0 20px 10px #000000;
+}
+
+div#nutzerkarte div {
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+footer#footer {
+	position: absolute;
+	bottom: 0;
+}
+
+div.karteninhalt {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px 5px;
+}
+
+img.profilbild {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 0 15px 5px #000000;
+	border-radius: 50%;
+	border: 0;
+	padding: 0;
+}
+
+img.profilbild:hover {
+	transform: scale(1.2);
+}
+
+.nutzername {
+	font-size: 2em;
+}
+
+.email {
+	font-size: 2em;
+	color: #808080;
+	text-decoration: none;
+}
+
+.zentriert {
+	text-align: center;
+}
+
+div#punktestaende {
+	align-content: center;
+	justify-content: center;
+}
+
+table {
+	box-shadow: 0 0 15px 5px #000000;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	margin-right: auto;
+	margin-left: auto;
+	border-radius: 15px;
+	border: 0;
+	padding: 0;
+}
+
+table:hover {
+	box-shadow: 0 0 20px 10px #000000;
+}
+
+th:nth-child(odd) {
+	background: #c0c0c0;
+}
+
+th:nth-child(even) {
+	background: #e5e5e5;
+}
+
+td {
+	font-family: courier;
+	font-weight: bold;
+	font: 1.5em;
+}
+
+td:nth-child(odd) {
+	background: #c0c0c0;
+}
+
+td:nth-child(even) {
+	background: #e5e5e5;
+}
+
+.topleft {
+	border-radius: 15px 0 0 0;
+}
+
+.topright {
+	border-radius: 0 15px 0 0;
+}
+
+.bottomright {
+	border-radius: 0 0 15px 0;
+}
+
+.bottomleft {
+	border-radius: 0 0 0 15px;
+}

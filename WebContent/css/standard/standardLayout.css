@@ -14,7 +14,7 @@ Erstellt von Lukas Theinert
 }
 
 
-#flexarea {
+div#flexarea {
 	display: flex;
 	flex-flow: row wrap;
 }
@@ -54,7 +54,7 @@ html {
 
 /* Responsive Design - Seitenumbruch bei PC */
 @media screen and (min-width: 960px) {
-	
+	 
 	#flexarea, nav {
         flex-direction: row;       
     }
@@ -280,3 +280,4 @@ html {
     }
 
 }
+

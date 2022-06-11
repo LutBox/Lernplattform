@@ -5,13 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+<link rel="stylesheet" type="text/css" href="../../css/nutzerseiten/profilbearbeitenStil.css" />
+<script type="text/javascript" src="../../js/standard.js" defer></script>
 <title>Profil bearbeiten</title>
-<link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
 </head>
 <body>
 	<header>
@@ -22,36 +18,47 @@
 		<form method="post" action="../../ProfilAktualisierenServlet"
 			enctype="multipart/form-data">
 			<fieldset>
-				<div class="eingabefeld">
-					<label for="neuerName">Neuer Nutzername: </label> <br /> <input
+				<legend>Profil bearbeiten</legend>
+				<div>
+					<label for="neuerName">Neuer Nutzername: </label> <input
 						name="neuerName" id="neuerName" type="text"
 						placeholder="Neuer Nutzername" maxlength="64"
-						value="${nutzer.name}" /> <br /> <label for="email">Neue
-						E-Mail:</label> <br /> <input name="neueEmail" id="neuEmail" type="email"
-						value="${nutzer.email}" placeholder="e-mail" maxlength="64" /> <br />
-					<label for="neuesPasswort">Neues Passwort:</label> <br /> <input
+						value="${nutzer.name}" title="Bitte geben Sie ihren neuen Nutzernamen an"/>
+				</div>
+				<div>
+					<label for="email">Neue E-Mail:</label> <input name="neueEmail"
+						id="neuEmail" type="email" value="${nutzer.email}"
+						placeholder="e-mail" maxlength="64" title="Bitte geben Sie ihre neue E-mail an"/>
+				</div>
+				<div>
+					<label for="neuesPasswort">Neues Passwort:</label> <input
 						name="neuesPasswort" id="neuesPasswort" type="password"
-						maxlength="128" /> <br /> <label for="passwort2">Neues
-						Passwort wiederholen:</label> <br> <input name="passwort2"
-						id="passwort2" type="password" maxlength="128" /> <br /> <label
-						for="profilbild">Profilbild hochladen:</label> <br /> <input
+						maxlength="128" title="Bitte geben Sie ihr neues Passwort an"/>
+				</div>
+				<div>
+					<label for="passwort2">Neues Passwort wiederholen:</label> <input
+						name="passwort2" id="passwort2" type="password" maxlength="128" title="Bitte wiederholen Sie ihr neues Passwort an" />
+				</div>
+				<div>
+					<label for="profilbild">Profilbild hochladen:</label> <input
 						type="file" name="neuesProfilbild" id="neuesProfilbild"
-						accept="image/*" />
+						accept="image/*" title="Bitte laden Sie hier ihr neues Profilbild hoch"/>
 				</div>
-				<div class="infotext">
-					<c:out value="${registrierunginfotext}"
-						default="Bitte geben sie ihre Daten an." />
-				</div>
-				<div class="formularknopf">
+				<div></div>
+				<div>
 					<button type="submit">Absenden</button>
-					<br />
+
 					<button type="reset">Zurücksetzen</button>
-					<br /> <a href="./nutzerHauptseite.jsp">Abbrechen</a>
+					<a class="buttonLink" href="./nutzerHauptseite.jsp">Abbrechen</a>
 				</div>
 			</fieldset>
 		</form>
+		<div id="infotext">
+			<c:out value="${forminfotext}"
+				default="Bitte geben sie ihre Daten an." />
+		</div>
 	</main>
-		<footer>
+	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>

@@ -22,7 +22,7 @@ public class StartUpSQLServiceServlet extends HttpServlet {
 	
 	/**
 	 * @author Merlin
-	 * In dieser init() wird gleich nach dem Serverstart die Datenquelle "ds" festgelegt und kann danch genutzt werden.
+	 * In dieser init() wird gleich nach dem Serverstart die Datenquelle "ds" festgelegt und kann danach genutzt werden.
 	 */
 	@Override
 	public void init() throws ServletException {

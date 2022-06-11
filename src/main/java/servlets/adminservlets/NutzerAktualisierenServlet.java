@@ -49,17 +49,16 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 		if (neuesProfilbild != null && neuesProfilbild.getSize() > 0) {
 			NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
 		}
-		if (neuesPasswort != null && neuesPasswort != null
-				&& !neuesPasswort.equals(zuverwaltendernutzer.getPasswort())) {
+		if (neuesPasswort != null && !neuesPasswort.equals(zuverwaltendernutzer.getPasswort())) {
 			NutzerSQLDienst.aktualisiereDasPasswortDesNutzers(neuesPasswort, alterName);
 		}
-		if (neueEmail != null && neueEmail != null && !neueEmail.equals(zuverwaltendernutzer.getEmail())) {
+		if (neueEmail != null && !neueEmail.equals(zuverwaltendernutzer.getEmail())) {
 			NutzerSQLDienst.aktualisiereEmailDesNutzers(neueEmail, alterName);
 		}
 		if (neuerSatus != null && neuerSatus != zuverwaltendernutzer.getAdmin()) {
 			NutzerSQLDienst.aktualisiereStatusDesNutzers(neuerSatus, alterName);
 		}
-		if (neuerName != null && neuerName != null && !neuerName.equals(alterName)) {
+		if (neuerName != null && !neuerName.equals(alterName)) {
 			NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
 		}
 		NutzerViewBean veranderternutzer = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(neuerName);

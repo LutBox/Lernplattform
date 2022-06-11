@@ -42,21 +42,21 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 		if (neuesProfilbild != null && neuesProfilbild.getSize() > 0) {
 			NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
 		}
-		if (neuesPasswort != null && neuesPasswort != null && !neuesPasswort.equals(nutzer.getPasswort())
-				&& !neuesPasswort.equals("")) {
+		if (neuesPasswort != null && !neuesPasswort.equals(nutzer.getPasswort())) {
 			NutzerSQLDienst.aktualisiereDasPasswortDesNutzers(neuesPasswort, alterName);
 		}
-		if (neueEmail != null && neueEmail != null && !neueEmail.equals(nutzer.getEmail()) && !neueEmail.equals("")) {
+		if (neueEmail != null && !neueEmail.equals(nutzer.getEmail())) {
 			NutzerSQLDienst.aktualisiereEmailDesNutzers(neueEmail, alterName);
 			nutzerView.setEmail(neueEmail);
 		}
-		if (neuerName != null && neuerName != null && !neuerName.equals(alterName) && !neuerName.equals("")) {
+		if (neuerName != null && !neuerName.equals(alterName) && !NutzerSQLDienst.istNutzernameVergeben(neuerName)) {
 			NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
 			nutzerView.setName(neuerName);
 		}
 
 		session.setAttribute(NutzerViewBean.attributname, nutzerView);
 		response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
+
 	}
 
 }

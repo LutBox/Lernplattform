@@ -30,6 +30,7 @@ public class NutzerSucheServlet extends HttpServlet {
 		ArrayList<NutzerBean> suchergebnisse = NutzerSQLDienst.gibMirXNutzerMitNamenWie(anzahlErgebnisse, fragment);
 		final HttpSession session = request.getSession();
 		session.setAttribute("suchergebnisse", suchergebnisse);
+		session.setAttribute("fragment", fragment);
 		response.sendRedirect("./html/verwaltungsseiten/suchergebnisse.jsp");
 	}
 
