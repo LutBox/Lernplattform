@@ -15,8 +15,8 @@
 		<h1>Lernplattform</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	<main>
-		<form method="post" action="../../AnmeldungServlet">
+	<main class="fade-in">
+		<form id="anmeldeformular" method="post" action="../../AnmeldungServlet">
 			<fieldset>
 				<legend>Anmeldung</legend>
 				<div>

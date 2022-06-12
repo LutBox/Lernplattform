@@ -8,7 +8,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="../../css/verwaltungsseiten/nutzeraktualisierenStil.css" />
 <script type="text/javascript"
-	src="../../js/standard.js" defer></script>
+	src="../../js/nutzeraenderung.js" defer></script>
 <title>Nutzer aktualisieren</title>
 </head>
 
@@ -17,8 +17,8 @@
 		<h1>Nutzerverwaltung</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	<main>
-		<form id="neueNutzerdatenFrom" method="post"
+	<main class="fade-in">
+		<form id="aenderungsformular" method="post"
 			action="../../NutzerAktualisierenServlet"
 			enctype="multipart/form-data">
 			<fieldset>
@@ -36,8 +36,8 @@
 						maxlength="64" title="Bitte geben Sie die neue E-Mail des Nutzers an"/>
 				</div>
 				<div>
-					<label for="neuesPasswort">Neues Passwort:</label> <input
-						name="neuesPasswort" id="neuesPasswort" type="text"
+					<label for="passwort">Neues Passwort:</label> <input
+						name="passwort" id="neuesPasswort" type="text"
 						maxlength="128" value="${zuverwaltendernutzer.passwort}" title="Bitte geben Sie das neue Passwort des Nutzers an"/>
 				</div>
 				<div>

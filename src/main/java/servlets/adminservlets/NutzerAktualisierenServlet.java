@@ -32,7 +32,7 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String neuerName = request.getParameter("neuerName");
 		String neueEmail = request.getParameter("neueEmail");
-		String neuesPasswort = request.getParameter("neuesPasswort");
+		String neuesPasswort = request.getParameter("passwort");
 		Integer neuerSatus = null;
 		Part neuesProfilbild = null;
 		try {

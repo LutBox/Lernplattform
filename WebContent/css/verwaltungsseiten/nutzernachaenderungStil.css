@@ -1,0 +1,58 @@
+/* @author Merlin */
+@import url("../standard/standardFadeIn.css");
+
+@import url("../standard/standardHintergrund.css");
+
+@import url("../standard/standardFonts.css");
+
+@import url("../standard/standardNavigation.css");
+
+@import url("../standard/standardFooter.css");
+
+html, body {
+	padding: 0;
+	border: 0;
+	margin: 0;
+	width: 100%;
+	heigth: 100%;
+}
+
+div#nutzerkarte {
+	background: #ffffff;
+	box-shadow: 0 0 15px 5px #000000;
+	border: 0px solid black;
+	border-radius: 5px;
+	text-align: center;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#nutzerkarte:hover {
+	box-shadow: 0 0 20px 10px #000000;
+}
+
+img#profilbild {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0 0 15px 5px #000000;
+	border-radius: 50%;
+	border: 0;
+	padding: 0;
+	width: 200px;
+}
+
+div#nutzername{
+	font-size: 12vm;
+}
+
+div#email {
+	font-size: 10vm;
+	color: #808080;
+}
+
+footer#footer {
+	position: absolute;
+	bottom: 0;
+}

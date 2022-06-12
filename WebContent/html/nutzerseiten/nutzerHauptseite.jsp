@@ -16,16 +16,16 @@
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	<div id="flexarea">
-		<aside>
+		<aside class="flexitem fade-in">
 			<h2>Top-News</h2>
 			<p>Forum-Threads</p>
 		</aside>
-		<main class="flexitem">
+		<main class="flexitem fade-in">
 			<div id="nutzerkarte">
-				<div class="karteninhalt">
+				<div>
 					<h2 class="nutzername zentriert">- ${nutzer.name} -</h2>
 				</div>
-				<div class="karteninhalt">
+				<div>
 					<img class="profilbild"
 						src="../../ProfilbildLadenServlet?nn=${nutzer.name}" />
 				</div>
@@ -56,7 +56,7 @@
 				</table>
 			</div>
 		</main>
-		<aside class="flexitem">
+		<aside class="flexitem fade-in">
 			<h2>Bestenliste:</h2>
 			<br>
 			<div id="spieleBeschreibung"></div>

@@ -6,30 +6,27 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+	href="../../css/verwaltungsseiten/nutzernachaenderungStil.css" />
 <title>Nutzer aktualisiert</title>
-<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
 	<header>
 		<h1>Nutzer aktualisiert</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	<main>
-		<p>Nutzer nach den durchgeführten Veränderungen</p>
-		<img src="../../ProfilbildLadenServlet?nn=${veranderternutzer.name}" />
-		<p>
-			Name: ${veranderternutzer.name} <br /> ${veranderternutzer.email}
-		</p>
+	<main class="fade-in">
+		<div id="nutzerkarte">
+			<div>
+				<h2>Nutzer nach den durchgeführten Veränderungen</h2>
+			</div>
+			<div>
+				<img id="profilbild" src="../../ProfilbildLadenServlet?nn=${veranderternutzer.name}" />
+			</div>
+			<div id="nutzername">${veranderternutzer.name}</div>
+			<div id="email">${veranderternutzer.email}</div>
+		</div>
 	</main>
-	<footer>
+	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>

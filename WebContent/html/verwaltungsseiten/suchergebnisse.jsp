@@ -7,8 +7,6 @@
 <head>
 <link rel="stylesheet" type="text/css"
 	href="../../css/verwaltungsseiten/suchergebnisseStil.css" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 <title>Suchergebnisse</title>
 </head>
 <body>
@@ -16,60 +14,95 @@
 		<h1>Suchergebnisse</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	<main>
-		<div class="row">
+	<main class="fade-in">
+		<div class="row fade-in">
 			<div class="grid12">
 				<h2>
 					Suche: "<em>${fragment}</em>"
 				</h2>
 			</div>
 		</div>
+		<c:if test="${suchergebnisse == null}"><div class="platzhalter"><h3>Keine Nutzer gefunden!</h3></div></c:if>
 		<c:forEach items="${suchergebnisse}" var="ergebnis">
 			<div class="row">
-				<div class="grid1"></div>
-				<div class="grid10 suchergebnis">
-					<div class="grid1 vertikal-zentriert">
+				<div class="grid12 suchergebnis">
+					<div class="grid1">
 						<img class="profilbild"
 							src="../../ProfilbildLadenServlet?nn=${ergebnis.name}" />
 					</div>
 					<div class="grid8">
-						<p>
-							<span class="beschreibung">Name: </span>${ergebnis.name}<br /> <span
-								class="beschreibung">E-Mail: </span>${ergebnis.email}<br /> <span
-								class="beschreibung">Passwort: </span>${ergebnis.passwort}<br />
-							<span class="beschreibung">Status: </span>
-							<c:if test="${ergebnis.admin==0}">Nutzer</c:if>
-							<c:if test="${ergebnis.admin==1}">Admin</c:if>
-						</p>
+						<table>
+							<tr>
+								<th class="beschreibung">Name:</th>
+								<td>${ergebnis.name}
+								<td />
+							</tr>
+							<tr>
+								<th class="beschreibung">E-Mail:</th>
+								<td>${ergebnis.email}
+								<td />
+							</tr>
+							<tr>
+								<th class="beschreibung">Passwort:</th>
+								<td>${ergebnis.passwort}
+								<td />
+							</tr>
+							<tr>
+								<th class="beschreibung">Status:</th>
+								<c:if test="${ergebnis.admin==0}">
+									<td>Nutzer</td>
+								</c:if>
+								<c:if test="${ergebnis.admin==1}">
+									<td>Admin</td>
+								</c:if>
+							</tr>
+						</table>
 					</div>
 					<div class="grid2">
-						Memory: ${ergebnis.punkteBilderMemorie}<br /> Ordnen:
-						${ergebnis.punkteBilderOrdnen}<br />Bilder:
-						${ergebnis.punkteBilderBilderWort}<br /> Mathe:
-						${ergebnis.punkteMathe}<br />JNR: ${ergebnis.punkteJumpnrun}
+						<table>
+							<tr>
+								<th>Memory</th>
+								<td>${ergebnis.punkteBilderMemorie}</td>
+							<tr />
+							<tr>
+								<th>Ordnen</th>
+								<td>${ergebnis.punkteBilderOrdnen}</td>
+							<tr />
+							<tr>
+								<th>Bilder</th>
+								<td>${ergebnis.punkteBilderBilderWort}</td>
+							<tr />
+							<tr>
+								<th>Mathe</th>
+								<td>${ergebnis.punkteMathe}</td>
+							<tr />
+							<tr>
+								<th>JNR</th>
+								<td>${ergebnis.punkteJumpnrun}</td>
+							</tr>
+						</table>
 					</div>
 					<div class="grid1">
-						<form method="post">
+						<form method="post" action="../../NutzerBearbeitenServlet">
 							<input type="hidden" name="nn" value="${ergebnis.name}" />
-							<button class="noStandardButton"
-								formaction="../../NutzerBearbeitenServlet">
+							<button type="submit" class="noStandardButton">
 								<img class="buttonImg"
 									src="../../bilder/verwaltung/bearbeiten.png" />
 							</button>
+						</form>
+						<form class ="loeschenformular" method="post"
+							action="../../NutzerLoeschenServlet">
 							<input type="hidden" name="zuloeschenderNutzer"
 								value="${ergebnis.name}" />
-							<button class="noStandardButton"
-								formaction="../../NutzerLoeschenServlet">
+							<button type="submit" class="noStandardButton">
 								<img class="buttonImg"
 									src="../../bilder/verwaltung/entfernen.png" />
 							</button>
 						</form>
 					</div>
 				</div>
-				<div class="grid1"></div>
 			</div>
 		</c:forEach>
-		<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
 		<div class="row">
 			<div class="grid12"></div>
 		</div>

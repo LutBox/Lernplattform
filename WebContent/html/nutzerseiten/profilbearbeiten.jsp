@@ -6,7 +6,8 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../../css/nutzerseiten/profilbearbeitenStil.css" />
-<script type="text/javascript" src="../../js/standard.js" defer></script>
+<script type="text/javascript"
+	src="../../js/nutzeraenderung.js" defer></script>
 <title>Profil bearbeiten</title>
 </head>
 <body>
@@ -14,8 +15,8 @@
 		<h1>Profil bearbeiten</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	<main>
-		<form method="post" action="../../ProfilAktualisierenServlet"
+	<main class="fade-in">
+		<form id="aenderungsformular" method="post" action="../../ProfilAktualisierenServlet"
 			enctype="multipart/form-data">
 			<fieldset>
 				<legend>Profil bearbeiten</legend>
@@ -31,8 +32,8 @@
 						placeholder="e-mail" maxlength="64" title="Bitte geben Sie ihre neue E-mail an"/>
 				</div>
 				<div>
-					<label for="neuesPasswort">Neues Passwort:</label> <input
-						name="neuesPasswort" id="neuesPasswort" type="password"
+					<label for="passwort">Neues Passwort:</label> <input
+						name="passwort" id="neuesPasswort" type="password"
 						maxlength="128" title="Bitte geben Sie ihr neues Passwort an"/>
 				</div>
 				<div>

@@ -5,11 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8"/>
 <link rel="stylesheet" type="text/css" href="../../css/nutzerseiten/registrierenStil.css" />
-<script type="text/javascript"
-	src="../../js/standard.js" defer></script>
 	<script type="text/javascript"
-	src="../../js/passwortkontrolle.js" defer></script>
+	src="../../js/passwortkontrolle.js" charset="UTF-8" defer></script>
 <title>Registrierung</title>
 </head>
 <body>
@@ -17,8 +16,8 @@
 		<h1>Lernplattform</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	<main>
-		<form id="registrierungform" method="post" action="../../RegistrierungServlet" enctype="multipart/form-data">
+	<main class="fade-in">
+		<form id="aenderungsformular" method="post" action="../../RegistrierungServlet" enctype="multipart/form-data">
 			<fieldset>
 				<legend>Registrierung</legend>
 				<div>

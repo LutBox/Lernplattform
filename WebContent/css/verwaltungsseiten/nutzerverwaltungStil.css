@@ -1,4 +1,5 @@
 /* @author Merlin */
+@import url("../standard/standardFadeIn.css");
 @import url("../standard/standardHintergrund.css");
 
 @import url("../standard/standardFonts.css");
@@ -10,8 +11,6 @@
 @import url("../standard/standardNavigation.css");
 
 @import url("../standard/standardFooter.css");
-
-@import url("../standard/standardGoToTop.css");
 
 #footer {
 	position: absolute;

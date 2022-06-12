@@ -36,7 +36,7 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 		String alterName = nutzer.getName();
 		String neuerName = request.getParameter("neuerName");
 		String neueEmail = request.getParameter("neueEmail");
-		String neuesPasswort = request.getParameter("neuesPasswort");
+		String neuesPasswort = request.getParameter("passwort");
 		Part neuesProfilbild = request.getPart("neuesProfilbild");
 
 		if (neuesProfilbild != null && neuesProfilbild.getSize() > 0) {

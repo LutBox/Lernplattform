@@ -1,4 +1,6 @@
 /* @author Merlin */
+@import url("../standard/standardFadeIn.css");
+
 @import url("../standard/standardHintergrund.css");
 
 @import url("../standard/standardFonts.css");
@@ -49,6 +51,7 @@ div#nutzerkarte div {
 	margin-bottom: 20px;
 }
 
+
 footer#footer {
 	position: absolute;
 	bottom: 0;
@@ -68,6 +71,7 @@ img.profilbild {
 	border-radius: 50%;
 	border: 0;
 	padding: 0;
+	width: 200px;
 }
 
 img.profilbild:hover {
@@ -75,11 +79,11 @@ img.profilbild:hover {
 }
 
 .nutzername {
-	font-size: 2em;
+	font-size: 2vm;
 }
 
 .email {
-	font-size: 2em;
+	font-size: 1.8vm;
 	color: #808080;
 	text-decoration: none;
 }
