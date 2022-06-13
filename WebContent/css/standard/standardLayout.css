@@ -47,6 +47,8 @@ html {
     background-repeat: no-repeat;
 	background-attachment: fixed;
 }
+
+
 @font-face {
     font-family: Heebo-Regular;
     src: url(./ressourcen/Heebo-Regular.ttf);

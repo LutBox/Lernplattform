@@ -1,5 +1,6 @@
 <%--
-Erstellt von Zohal
+
+Erstellt von Zohal Mohammadi
 --%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -12,7 +13,7 @@ Erstellt von Zohal
 </head>
 <body>
 
-	<h1>Viel spaﬂ!</h1>
+	<h1>Viel spa√ü!</h1>
 	
 		<nav>
 			<%@include file="../jspf/navigation.jspf"%>

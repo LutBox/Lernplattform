@@ -16,7 +16,14 @@ public class VierBilderEinWortScoreBean implements Serializable {
 	// Stiehl stellt dazu fragen!
    String zeit;
    String schwierigkeit;
+   String gewertet;
    
+	public String getGewertet() {
+	return gewertet;
+}
+public void setGewertet(String gewertet) {
+	this.gewertet = gewertet;
+}
 	public String getSchwierigkeit() {
 	return schwierigkeit;
 }

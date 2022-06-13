@@ -1,7 +1,6 @@
 
-// Todo Fix
 
-
+// Quelle angeben!
 function timer() {
   var countDownDate = new Date(document.getElementById("t1").getAttribute("data-endzeit")).getTime();
 
@@ -22,8 +21,9 @@ function timer() {
 
   // If the count down is over, write some text 
   if (distance < 0) {
+  
 	datenbankEintrag()
-    window.location.href = "html/spieleseiten/spiel_bilderWort_ergebnis.jsp"
+   
   }
 
 
@@ -43,8 +43,8 @@ window.onload = function () {
 
 function datenbankEintrag() {
 	
-	var punkt =document.getElementById("insgesamt_Punkte").innerHTML;
-	var versuche = document.getElementById("erreichte_Punkte").innerHTML;
+	var punkt =document.getElementById("erreichte_Punkte").innerHTML;
+	var versuche = document.getElementById("insgesamt_Punkte").innerHTML;
 	//alert("Punkte insgesamt: " + punkt + " Erreichte Punkte: " + versuche)
 	var sendData = "punkt=" + punkt + "&versuche=" + versuche;
 
@@ -52,7 +52,11 @@ function datenbankEintrag() {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			document.getElementById("temp").innerHTML = xmlhttp.responseText;
+		
+		
+			 window.location.href = "html/spieleseiten/spiel_bilderWort_ergebnis.jsp"
 		}
+		
 	};
 	xmlhttp.open("POST", "BilderWortAjax", true);
 	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
