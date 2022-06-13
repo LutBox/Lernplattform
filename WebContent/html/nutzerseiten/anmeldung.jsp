@@ -30,7 +30,7 @@
 						placeholder="*******" required="required"
 						title="Bitte geben Sie ihr Passwort an" />
 				</div>
-				<div>
+				<div class="buttonbox">
 					<button type="submit">Absenden</button>
 					<button type="reset">Zurücksetzen</button>
 				</div>

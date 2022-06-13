@@ -8,7 +8,7 @@
 <meta charset="UTF-8"/>
 <link rel="stylesheet" type="text/css" href="../../css/nutzerseiten/registrierenStil.css" />
 	<script type="text/javascript"
-	src="../../js/passwortkontrolle.js" charset="UTF-8" defer></script>
+	src="../../js/nutzeraenderung.js" charset="UTF-8" defer></script>
 <title>Registrierung</title>
 </head>
 <body>
@@ -40,8 +40,6 @@
 				</div>
 				<div>
 					<label for="passwort2">Passwort wiederholen:</label>
-				</div>
-				<div>
 					<input name="passwort2" id="passwort2" type="password"
 						maxlength="64" required="required" placeholder="*******"
 						value="${anfrage.passwort}" required="required" title="Bitte wiederholen Sie ihr Passwort" />
@@ -51,8 +49,7 @@
 					<label for="profilbild">Profilbild hochladen:</label> <input
 						type="file" name="profilbild" id="profilbild" accept="image/*" title="Bitte laden Sie hier ihr Profilbild hoch"/>
 				</div>
-				<div>
-
+				<div class="buttonbox">
 					<button id="absenden" type="submit">Absenden</button>
 					<button type="reset">Zurücksetzen</button>
 				</div>

@@ -1,10 +1,10 @@
 /*
  *	@author Lukas
  *	@author Merlin
-*/
+ */
 
 label {
-	min-width: 2em;
+	width: 8em;
 	display: inline-block;
 	text-align: left;
 }
@@ -28,7 +28,7 @@ label.textarea {
 
 fieldset {
 	margin: auto;
-	width: 30em;
+	width: 35em;
 	padding-top: 1.5em;
 	padding-left: 1.5em;
 	background: #ffffff;
@@ -63,4 +63,9 @@ input[type="email"]:valid+span::after {
 
 textarea:valid+span::after {
 	color: green;
+}
+div.buttonbox {
+	margin: 5px 5px;
+	border: 0;
+	padding: 5px 5px 5px 8em;
 }

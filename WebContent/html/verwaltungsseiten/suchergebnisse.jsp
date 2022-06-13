@@ -103,9 +103,6 @@
 				</div>
 			</div>
 		</c:forEach>
-		<div class="row">
-			<div class="grid12"></div>
-		</div>
 	</main>
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>

@@ -17,12 +17,6 @@
 	bottom: 0;
 }
 
-div.option {
-	padding: 0 5px;
-	margin: 0 5px;
-}
-
-div.option label, div.option input {
-	padding: 0;
-	margin: 0;
+label.option {
+	width: auto;
 }
