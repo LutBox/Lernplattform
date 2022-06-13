@@ -77,30 +77,30 @@ Erstellt von Lukas Theinert
 
 <section class="draggable-elements">
 
-    <img class="bild1 draggable" draggable="true"
+    <img class="draggable" draggable="true"
          src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild1ID}"
-         alt="${spielBilderOrdnen.bild1Kategorie}"/>
-    <img class="bild2 draggable" draggable="true"
+         alt="bild1" id="${spielBilderOrdnen.bild1Kategorie}"/>
+    <img class="draggable" draggable="true"
          src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild2ID}"
-         alt="${spielBilderOrdnen.bild2Kategorie}"/>
-    <img class="bild3 draggable" draggable="true"
+         alt="bild2" id="${spielBilderOrdnen.bild2Kategorie}"/>
+    <img class="draggable" draggable="true"
          src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild3ID}"
-         alt="${spielBilderOrdnen.bild3Kategorie}"/>
-    <img class="bild4 draggable" draggable="true"
+         alt="bild3" id="${spielBilderOrdnen.bild3Kategorie}"/>
+    <img class="draggable" draggable="true"
          src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild4ID}"
-         alt="${spielBilderOrdnen.bild4Kategorie}"/>
-    <img class="bild5 draggable" draggable="true"
+         alt="bild4" id="${spielBilderOrdnen.bild4Kategorie}"/>
+    <img class="draggable" draggable="true"
          src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild5ID}"
-         alt="${spielBilderOrdnen.bild5Kategorie}"/>
-    <img class="bild6 draggable" draggable="true"
+         alt="bild5" id="${spielBilderOrdnen.bild5Kategorie}"/>
+    <img class="draggable" draggable="true"
          src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild6ID}"
-         alt="${spielBilderOrdnen.bild6Kategorie}"/>
-    <img class="bild7 draggable" draggable="true"
+         alt="bild6" id="${spielBilderOrdnen.bild6Kategorie}"/>
+    <img class="draggable" draggable="true"
          src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild7ID}"
-         alt="${spielBilderOrdnen.bild7Kategorie}"/>
-    <img class="bild8 draggable" draggable="true"
+         alt="bild7" id="${spielBilderOrdnen.bild7Kategorie}"/>
+    <img class="draggable" draggable="true"
          src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild8ID}"
-         alt="${spielBilderOrdnen.bild8Kategorie}"/>
+         alt="bild8" id="${spielBilderOrdnen.bild8Kategorie}"/>
 
 </section>
 
@@ -108,18 +108,18 @@ Erstellt von Lukas Theinert
     <c:choose>
         <c:when test="${val == 'mittel' || val == 'schwer'}">
 
-            <img class="bild9 draggable" draggable="true"
+            <img class="draggable" draggable="true"
                  src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild9ID}"
-                 alt="${spielBilderOrdnen.bild9Kategorie}"/>
-            <img class="bild10 draggable" draggable="true"
+                 alt="bild9" id="${spielBilderOrdnen.bild9Kategorie}"/>
+            <img class="draggable" draggable="true"
                  src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild10ID}"
-                 alt="${spielBilderOrdnen.bild10Kategorie}"/>
-            <img class="bild11 draggable" draggable="true"
+                 alt="bild10" id="${spielBilderOrdnen.bild10Kategorie}"/>
+            <img class="draggable" draggable="true"
                  src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild11ID}"
-                 alt="${spielBilderOrdnen.bild11Kategorie}"/>
-            <img class="bild12 draggable" draggable="true"
+                 alt="bild11" id="${spielBilderOrdnen.bild11Kategorie}"/>
+            <img class="draggable" draggable="true"
                  src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild12ID}"
-                 alt="${spielBilderOrdnen.bild12Kategorie}"/>
+                 alt="bild12" id="${spielBilderOrdnen.bild12Kategorie}"/>
 
         </c:when>
     </c:choose>
@@ -127,18 +127,18 @@ Erstellt von Lukas Theinert
     <c:choose>
         <c:when test="${val == 'schwer'}">
 
-            <img class="bild13 draggable" draggable="true"
+            <img class="draggable" draggable="true"
                  src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild13ID}"
-                 alt="${spielBilderOrdnen.bild13Kategorie}"/>
-            <img class="bild14 draggable" draggable="true"
+                 alt="bild13" id="${spielBilderOrdnen.bild13Kategorie}"/>
+            <img class="draggable" draggable="true"
                  src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild14ID}"
-                 alt="${spielBilderOrdnen.bild14Kategorie}"/>
-            <img class="bild15 draggable" draggable="true"
+                 alt="bild14" id="${spielBilderOrdnen.bild14Kategorie}"/>
+            <img class="draggable" draggable="true"
                  src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild15ID}"
-                 alt="${spielBilderOrdnen.bild15Kategorie}"/>
-            <img class="bild16 draggable" draggable="true"
+                 alt="bild15" id="${spielBilderOrdnen.bild15Kategorie}"/>
+            <img class="draggable" draggable="true"
                  src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild16ID}"
-                 alt="${spielBilderOrdnen.bild16Kategorie}"/>
+                 alt="bild16" id="${spielBilderOrdnen.bild16Kategorie}"/>
 
         </c:when>
     </c:choose>

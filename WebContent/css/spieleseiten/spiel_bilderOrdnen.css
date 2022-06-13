@@ -66,11 +66,8 @@ html {
   pointer-events: none; /* The element is never the target of pointer events */
 }
 
-/* Drag and Drop Related Styling */
-
+/* Bild auf Kategorie hovern */
 .droppable.droppable-hover {
-  /* background-color: #bee3f0; */
-  border-width: 5px;
   transform: scale(1.1);
 }
 .droppable.dropped {
@@ -91,9 +88,4 @@ html {
 }
 .draggable.dragged:hover {
   opacity: 0.1;
-}
-
-@media (max-width: 600px) {
-  html { font-size: 14px; }
-  .draggable-elements { margin: 1.5rem; }
 }

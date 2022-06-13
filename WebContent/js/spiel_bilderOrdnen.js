@@ -2,6 +2,7 @@
  * Erstellt von Lukas Theinert
  */
 
+//Drag-and-Drop-Verhalten: https://www.w3schools.com/html/html5_draganddrop.asp
 //Bilder-Ordnen-Idee von Tutorial: https://codepen.io/Coding_Journey/pen/YzKpLvE
 
 "use strict";
@@ -74,51 +75,61 @@ var startGame = () => {
 //Bilder-Ordnen-Idee:
 //----------- Anfang ----------------------
 
-// Drag and Drop Functions
-//Events fired on the drag target
+// Drag-and-Drop-Funktion
+
+//Bildkategorie aus 'id' lesen
 function dragStart(event) {
 	event.dataTransfer.setData("text", event.target.id);
 }
 
-//Events fired on the drop target
+//CSS hinzufügen: Bild über Kategorie hovern
 function dragEnter(event) {
 	if (!event.target.classList.contains("dropped")) {
 		event.target.classList.add("droppable-hover");
 	}
 }
 
+//event.preventDefault() 
+//-> verhindert standartmäßige Verarbeitung der Daten vom Browser
+//-> standardmäßig als Link beim Ablegen öffnen
+//-> ermöglicht ausführen von drop-events 
 function dragOver(event) {
 	if (!event.target.classList.contains("dropped")) {
-		event.preventDefault(); // Prevent default to allow drop
+		event.preventDefault();
 	}
 }
 
+//CSS entfernen: Bild nicht mehr über Kategorie hovern 
 function dragLeave(event) {
 	if (!event.target.classList.contains("dropped")) {
 		event.target.classList.remove("droppable-hover");
 	}
 }
 
-
 //Bild loslassen 
 function drop(event) {
-	event.preventDefault(); // This is in order to prevent the browser default handling of the data
+	event.preventDefault(); 
 	event.target.classList.remove("droppable-hover");
-	const draggableElementData = event.dataTransfer.getData("text");
-	const droppableElementData = event.target.getAttribute("data-draggable-id");
-	alert("Draggable: " + draggableElementData + " -> Droppable: " + droppableElementData);
-	const isCorrectMatching = draggableElementData === droppableElementData;
+	
+	var draggableElementData = event.dataTransfer.getData("text");
+	var droppableElementData = event.target.getAttribute("data-draggable-id");
+	
+	//alert("Draggable: " + draggableElementData + " -> Droppable: " + droppableElementData);
+	
+	var isCorrectMatching = draggableElementData === droppableElementData;
 	spielStatus.totalFlips++
 
 	if (isCorrectMatching) {
-		const draggableElement = document.getElementById(draggableElementData);
-		//const draggableElement = document.getElementByAlt(draggableElementData);
-		//alert(draggableElement)
+		var draggableElement = document.getElementById(draggableElementData);
+		
+		//class="dropped" zum Bild hinzufügen
 		event.target.classList.add("dropped");
-		event.target.style.backgroundColor = window.getComputedStyle(draggableElement).color;
+		event.target.style.backgroundColor = 'black';
+		
+		//class="dragged" zum Bild hinzufügen
 		draggableElement.classList.add("dragged");
+		//Bild nicht mehr draggable machen
 		draggableElement.setAttribute("draggable", "false");
-		event.target.insertAdjacentHTML("afterbegin", `<i class="fas fa-${draggableElementData}"></i>`);
 		correct++;
 	}
 	
@@ -172,7 +183,7 @@ draggableElements.forEach(elem => {
 	elem.addEventListener("dragstart", dragStart);
 });
 
-//Funktionen für jedes losgelassene Bild
+//Funktionen für jede Kategorie
 droppableElements.forEach(elem => {
 	elem.addEventListener("dragenter", dragEnter);
 	elem.addEventListener("dragover", dragOver);

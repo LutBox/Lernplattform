@@ -1,44 +1,19 @@
 //Erstellt von Lukas Theinert
 
+"use strict";
+
+//-------------------------------
+//---------- Verhalten ----------
+//-------------------------------
+
 var spielGestartet = false;
 var punkteStand;
 var action;
 var verbleibendeZeit;
 var richtigAntwort;
 
-//Start-Reset
-document.getElementById("start-restart").onclick = function() {
-	
-	if (spielGestartet == true) {
-		location.reload();
-	}
-	else {
-		spielGestartet = true;
-		punkteStand = 0;
-
-		document.getElementById("punkte").innerHTML = punkteStand;
-		//show count
-		show("verbleibendeZeit");
-		verbleibendeZeit = 60;
-
-		document.getElementById("verbleibendeZeitWert").innerHTML = verbleibendeZeit;
-
-		//hide game over
-		hide("spielVorbei");
-
-		//change start to reset		
-		document.getElementById("start-restart").innerHTML = "Restart";
-
-		//start count
-		startCountdown();
-
-		//generate quetion
-		zahlenGenerieren();
-
-	}
-}
-
 //Antworten
+let i;
 for (i = 1; i < 5; i++) {
 	document.getElementById("box" + i).onclick = function() {
 		if (spielGestartet == true) {
@@ -66,6 +41,7 @@ for (i = 1; i < 5; i++) {
 	}
 }
 
+//Timer starten
 function startCountdown() {
 	action = setInterval(function() {
 		verbleibendeZeit -= 1;
@@ -165,8 +141,44 @@ function zahlenGenerieren() {
 	}
 }
 
+//----------------------------
+//---------- Events ----------
+//----------------------------
+
+//Start-Reset
+document.getElementById("start-restart").onclick = function() {
+	
+	if (spielGestartet == true) {
+		location.reload();
+	}
+	else {
+		spielGestartet = true;
+		punkteStand = 0;
+
+		document.getElementById("punkte").innerHTML = punkteStand;
+		//show count
+		show("verbleibendeZeit");
+		verbleibendeZeit = 60;
+
+		document.getElementById("verbleibendeZeitWert").innerHTML = verbleibendeZeit;
+
+		//hide game over
+		hide("spielVorbei");
+
+		//change start to reset		
+		document.getElementById("start-restart").innerHTML = "Restart";
+
+		//start count
+		startCountdown();
+
+		//generate quetion
+		zahlenGenerieren();
+
+	}
+}
+
 //Datenbankeintrag
-"use strict";
+//"use strict";
 
 function datenbankEintrag() {
 	alert("Punktestand: " + punkteStand)
