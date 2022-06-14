@@ -11,6 +11,7 @@ label {
 
 input {
 	width: 20em;
+	border-radius: 5px;
 }
 
 textarea {
@@ -61,11 +62,13 @@ input[type="email"]:valid+span::after {
 	color: green;
 }
 
+input[required]:invalid {
+	border-color: #f23b2c;
+}
+
+input[required]:valid {
+	border-color: #2ECC71;
+}
 textarea:valid+span::after {
 	color: green;
-}
-div.buttonbox {
-	margin: 5px 5px;
-	border: 0;
-	padding: 5px 5px 5px 8em;
 }

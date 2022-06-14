@@ -1,0 +1,15 @@
+<%-- @author Merlin --%>
+<noscript>
+	<div id="noSkriptBox" class="fade-in">
+		<p id="NoSkriptText">Bitte aktivieren Sie ihr JavaSkript um den
+			vollen Funktionsumfang dieser Webanwendung nutzen zu können!</p>
+		<p>
+			<a id="jsImgLink" class="buttonLink"
+				href="https://www.enable-javascript.com/" target="_blank"
+				title="Nachdem Sie JavaSkript aktiviert haben, brauchen Sie diese Seite lediglich neu zu laden und könne dann fortfahren.">Zum
+				Tutorial</a>
+		</p>
+		<p id="cri">&#169; Lernplattform 2022</p>
+	</div>
+	<div id="vorhang"></div>
+</noscript>

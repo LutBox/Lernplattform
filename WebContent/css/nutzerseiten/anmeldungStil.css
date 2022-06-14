@@ -16,9 +16,9 @@
 
 @import url("../standard/standardGoToTop.css");
 
-#infotext {
-	text-align: center;
-}
+@import url("../standard/standardFormInfotext.css");
+
+@import url("../standard/noSkriptStil.css");
 
 #footer {
 	position: absolute;

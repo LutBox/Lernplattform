@@ -22,7 +22,7 @@ import jakarta.servlet.http.Part;
 		* 4, location = "./tmpbilder", fileSizeThreshold = 1024 * 1024)
 public class RegistrierungServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String infotextname = "registrierunginfotext";
+	private static final String infotextname = "forminfotext";
 
 	/**
 	 * @author Merlin

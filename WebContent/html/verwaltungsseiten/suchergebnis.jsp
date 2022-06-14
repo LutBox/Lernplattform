@@ -1,29 +1,16 @@
-<%-- @author Merlin --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css"
-	href="../../css/verwaltungsseiten/suchergebnisseStil.css" />
-<title>Suchergebnisse</title>
-</head>
-<body>
-	<header>
-		<h1>Suchergebnisse</h1>
-		<%@include file="../jspf/navigation.jspf"%>
-	</header>
-	<main class="fade-in">
-		<div class="row fade-in">
+<c:choose>
+	<c:when test="${suchergebnisse == null || empty suchergebnisse}">
+		<div class="row">
 			<div class="grid12">
-				<h2>
-					Suche: "<em>${fragment}</em>"
-				</h2>
+				<p id="keineTreffer">Keine Treffer!</p>
 			</div>
 		</div>
-		<c:if test="${suchergebnisse == null}"><div class="platzhalter"><h3>Keine Nutzer gefunden!</h3></div></c:if>
-		<c:forEach items="${suchergebnisse}" var="ergebnis">
+	</c:when>
+	<c:otherwise>
+		<c:forEach var="ergebnis" items="${suchergebnisse}" varStatus="status">
 			<div class="row">
 				<div class="grid12 suchergebnis">
 					<div class="grid1">
@@ -34,17 +21,17 @@
 						<table>
 							<tr>
 								<th class="beschreibung">Name:</th>
-								<td>${ergebnis.name}
+								<td><c:out value="${ergebnis.name}"></c:out>
 								<td />
 							</tr>
 							<tr>
 								<th class="beschreibung">E-Mail:</th>
-								<td>${ergebnis.email}
+								<td><c:out value="${ergebnis.email}"></c:out>
 								<td />
 							</tr>
 							<tr>
 								<th class="beschreibung">Passwort:</th>
-								<td>${ergebnis.passwort}
+								<td><c:out value="${ergebnis.passwort}"></c:out>
 								<td />
 							</tr>
 							<tr>
@@ -62,23 +49,23 @@
 						<table>
 							<tr>
 								<th>Memory</th>
-								<td>${ergebnis.punkteBilderMemorie}</td>
+								<td><c:out value="${ergebnis.punkteBilderMemorie}"></c:out></td>
 							<tr />
 							<tr>
 								<th>Ordnen</th>
-								<td>${ergebnis.punkteBilderOrdnen}</td>
+								<td><c:out value="${ergebnis.punkteBilderOrdnen}"></c:out></td>
 							<tr />
 							<tr>
 								<th>Bilder</th>
-								<td>${ergebnis.punkteBilderBilderWort}</td>
+								<td><c:out value="${ergebnis.punkteBilderBilderWort}"></c:out></td>
 							<tr />
 							<tr>
 								<th>Mathe</th>
-								<td>${ergebnis.punkteMathe}</td>
+								<td><c:out value="${ergebnis.punkteMathe}"></c:out></td>
 							<tr />
 							<tr>
 								<th>JNR</th>
-								<td>${ergebnis.punkteJumpnrun}</td>
+								<td><c:out value="${ergebnis.punkteJumpnrun}"></c:out></td>
 							</tr>
 						</table>
 					</div>
@@ -90,11 +77,11 @@
 									src="../../bilder/verwaltung/bearbeiten.png" />
 							</button>
 						</form>
-						<form class ="loeschenformular" method="post"
+						<form class="loeschenformular" method="post"
 							action="../../NutzerLoeschenServlet">
-							<input type="hidden" name="zuloeschenderNutzer"
-								value="${ergebnis.name}" />
-							<button type="submit" class="noStandardButton">
+							<input class="delNutzername" type="hidden"
+								name="zuloeschenderNutzer" value="${ergebnis.name}" />
+							<button type="button" class="noStandardButton">
 								<img class="buttonImg"
 									src="../../bilder/verwaltung/entfernen.png" />
 							</button>
@@ -103,9 +90,6 @@
 				</div>
 			</div>
 		</c:forEach>
-	</main>
-	<footer id="footer">
-		<%@include file="../jspf/footer.jspf"%>
-	</footer>
-</body>
-</html>
+	</c:otherwise>
+</c:choose>
+

@@ -6,7 +6,10 @@
 <html>
 <head>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/verwaltungsseiten/nutzerverwaltungStil.css" />
+	href="../../css/verwaltungsseiten/nutzerverwaltungStil.css" />
+<script type="text/javascript" src="../../js/nutzerverwaltung.js"></script>
+<script type="text/javascript" src="../../js/standard.js" defer></script>
+<%@include file="../jspf/noSkript.jspf"%>
 <title>Nutzerverwaltung</title>
 </head>
 <body>
@@ -15,40 +18,30 @@
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	<main class="fade-in">
-		<div id="suche">
-			<form id="nutzersucheform" method="post"
-				action="../../NutzerSucheServlet">
-				<fieldset>
-					<legend>Nutzersuche</legend>
-					<div>
-						<label for="fragment">Name</label> <input id="fragment"
-							name="fragment" type="text" required="required" pattern="[^ ]+"
-							title="Fragment eines Nutzernamens" />
-					</div>
-					<div>
-						<label>Anzahl der Ergebnisse </label> <input type="radio"
-							name="anzahlErgebnisse" value="10" id="10ergebnisse"
-							required="required" title="Maximal 10 Suchergebnisse" /><label class="option"
-							for="10ergebnisse">10</label> <input type="radio"
-							name="anzahlErgebnisse" value="100" id="100ergebnisse"
-							title="Maximal 100 Suchergebnisse" /><label class="option" for="100ergebnisse">100</label>
-						<input type="radio" name="anzahlErgebnisse" id="250ergebnis"
-							value="250" title="Maximal 250 Suchergebnisse" /><label class="option"
-							for="250ergebnis">250</label>
-					</div>
-					<div>
-						<button type="submit">Suchen</button>
-					</div>
-				</fieldset>
-			</form>
+		<div class="row">
+			<div class="grid12">
+				<form id="nutzersucheform" method="post"
+					action="../../NutzerSucheServlet">
+					<fieldset>
+						<legend>Nutzersuche</legend>
+						<div>
+							<label id="fragmentlabel" for="fragment">Name</label> <input
+								id="fragment" name="fragment" type="text" required="required"
+								pattern="[^ ]+" title="Fragment eines Nutzernamens (Nutzernamen können keine Leerzeilen haben)." value="${fragment}" />
+							<button id="suchenbutton" class="noStandardButton" type="button">
+								<!-- https://www.google.com/search?tbm=isch&ved=2ahUKEwjcxd-Vpqv4AhXpi_0HHY6JBG8Q2-cCegQIABAA&oq=search+icon+white+filetype:png&gs_lcp=CgNpbWcQAzoECAAQQzoFCAAQgAQ6BggAEB4QBzoECAAQHjoGCAAQHhAFUI0OWLxFYIRGaABwAHgBgAG-AogB2xOSAQgxLjE2LjEuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=M6KnYpzgBOmX9u8PjpOS-AY&bih=937&biw=1920&rlz=1C1CHBF_deDE916DE916&q=search+icon+white&tbs=ift:png#imgrc=SnwzyiNf1tuNMM -->
+								<img class="buttonImg" src="../../bilder/verwaltung/suchen.png" />
+							</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
 		</div>
-		<div id="suchergebnisse">
-			<c:forEach var="nutzer" items="${suchergebnisse}">
-
-			</c:forEach>
+		<div class="row">
+			<div class="grid12" id="suchergebnisse"></div>
 		</div>
 	</main>
-	<footer id="footer">
+	<footer>
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>

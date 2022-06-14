@@ -27,12 +27,13 @@ public class NutzerSucheServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String fragment = request.getParameter("fragment");
-		int anzahlErgebnisse = Integer.parseInt(request.getParameter("anzahlErgebnisse"));
-		ArrayList<NutzerBean> suchergebnisse = NutzerSQLDienst.gibMirXNutzerMitNamenWie(anzahlErgebnisse, fragment);
+		ArrayList<NutzerBean> suchergebnisse = NutzerSQLDienst.gibMirXNutzerMitNamenWie(fragment);
 		final HttpSession session = request.getSession();
 		session.setAttribute("suchergebnisse", suchergebnisse);
 		session.setAttribute("fragment", fragment);
-		response.sendRedirect("./html/verwaltungsseiten/suchergebnisse.jsp");
+//		response.sendRedirect("./html/verwaltungsseiten/suchergebnis.jsp");
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/verwaltungsseiten/suchergebnis.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

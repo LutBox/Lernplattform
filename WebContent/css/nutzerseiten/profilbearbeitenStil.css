@@ -8,11 +8,7 @@
 @import url("../standard/standardNavigation.css");
 @import url("../standard/standardFooter.css");
 @import url("../standard/standardGoToTop.css");
-
-
-#infotext {
-	text-align: center;
-}
+@import url("../standard/standardFormInfotext.css");
 
 #footer{
 	position: absolute;	

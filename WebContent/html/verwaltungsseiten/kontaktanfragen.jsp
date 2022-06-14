@@ -7,7 +7,9 @@
 <head>
 <link rel="stylesheet" type="text/css"
 	href="../../css/verwaltungsseiten/kontaktanfragenStil.css" />
-<script type="text/javascript" src="../../js/kontaktanfragenSkript.js" charset="UTF-8" defer></script>
+<script type="text/javascript" src="../../js/kontaktanfragen.js" defer></script>
+<script type="text/javascript" src="../../js/standard.js" defer></script>
+<%@include file="../jspf/noSkript.jspf"%>
 <title>Kontaktanfragen</title>
 </head>
 <body>

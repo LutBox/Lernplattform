@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="../../css/nutzerseiten/profilbearbeitenStil.css" />
 <script type="text/javascript" src="../../js/nutzeraenderung.js" defer></script>
+<%@include file="../jspf/noSkript.jspf"%>
 <title>Profil bearbeiten</title>
 </head>
 <body>
@@ -26,18 +27,18 @@
 						name="neuerName" id="neuerName" type="text"
 						placeholder="Neuer Nutzername" maxlength="64"
 						value="${nutzer.name}"
-						title="Bitte geben Sie ihren neuen Nutzernamen an" />
+						title="Bitte geben Sie Ihren neuen Nutzernamen an (Maximal 96 Zeichen, ohne Leerzeichen)." />
 				</div>
 				<div>
 					<label for="email">Neue E-Mail:</label> <input name="neueEmail"
 						id="neuEmail" type="email" value="${nutzer.email}"
-						placeholder="e-mail" maxlength="64"
-						title="Bitte geben Sie ihre neue E-mail an" />
+						placeholder="e-mail" maxlength="64" pattern="[^ ]+"
+						title="Bitte geben Sie Ihre neue E-mail an" />
 				</div>
 				<div>
 					<label for="passwort">Neues Passwort:</label> <input
 						name="passwort" id="neuesPasswort" type="password" maxlength="128"
-						title="Bitte geben Sie ihr neues Passwort an" />
+						title="Bitte geben Sie Ihr neues Passwort an." />
 				</div>
 				<div>
 					<label for="passwort2">Neues Passwort wiederholen:</label> <input
@@ -58,8 +59,8 @@
 			</fieldset>
 		</form>
 		<div id="infotext">
-			<c:out value="${forminfotext}"
-				default="Bitte geben sie ihre Daten an." />
+			<span id="infoicon">&#9432; </span><span class="fade-in"><c:out
+					value="${forminfotext}" default="Bitte geben Sie Ihre Daten an." /></span>
 		</div>
 	</main>
 	<footer id="footer">

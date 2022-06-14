@@ -21,7 +21,6 @@ function resetBestaetigen(evt) {
 function pwKontrolle(evt) {
 	var gueltig = document.getElementById("passwort").value === document
 			.getElementById("passwort2").value;
-	console.log("Passwort �bereinstimmung: " + gueltig);
 	if (!gueltig) {
 		evt.preventDefault();
 		alert("Die Passwörter müssen übereinstimmen!");

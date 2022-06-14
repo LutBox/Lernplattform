@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="../../css/nutzerseiten/anmeldungStil.css" />
 <script type="text/javascript" src="../../js/standard.js" defer></script>
+<%@include file="../jspf/noSkript.jspf"%>
 <title>Anmeldung</title>
 </head>
 <body>
@@ -16,19 +17,21 @@
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	<main class="fade-in">
-		<form id="anmeldeformular" method="post" action="../../AnmeldungServlet">
+		<form id="anmeldeformular" method="post"
+			action="../../AnmeldungServlet">
 			<fieldset>
 				<legend>Anmeldung</legend>
 				<div>
 					<label for="name">Nutzername: </label> <input name="name" id="name"
 						type="text" placeholder="Nutzername" maxlength="64"
-						required="required" title="Bitte geben Sie ihren Nutzernamen an" />
+						required="required" pattern="[^ ]+"
+						title="Bitte geben Sie ihren Nutzernamen an" />
 				</div>
 				<div>
 					<label for="passwort">Passwort: </label><input name="passwort"
 						id="passwort" type="password" maxlength="128"
-						placeholder="*******" required="required"
-						title="Bitte geben Sie ihr Passwort an" />
+						placeholder="*******" required="required" pattern="[^ ]+"
+						title="Bitte geben Sie Ihr Passwort an." />
 				</div>
 				<div class="buttonbox">
 					<button type="submit">Absenden</button>
@@ -37,8 +40,9 @@
 			</fieldset>
 		</form>
 		<div id="infotext">
-			<c:out value="${forminfotext}"
-				default="Bitte geben sie ihre Anmeldedaten an." />
+			<span id="infoicon">&#9432; </span><span class="fade-in"> <c:out value="${forminfotext}"
+					default="Bitte geben sie ihre Anmeldedaten an." />
+			</span>
 		</div>
 	</main>
 	<footer id="footer">

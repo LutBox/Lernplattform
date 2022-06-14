@@ -7,6 +7,7 @@
 <link rel="stylesheet"
 	href="../../css/nutzerseiten/nutzerHauptseiteStil.css" />
 <script type="text/javascript" src="../../js/standard.js" defer></script>
+<%@include file="../jspf/noSkript.jspf"%>
 <meta charset="UTF-8">
 <title>Nutzerbereich</title>
 </head>
@@ -23,7 +24,7 @@
 		<main class="flexitem fade-in">
 			<div id="nutzerkarte">
 				<div>
-					<h2 class="nutzername zentriert">- ${nutzer.name} -</h2>
+					<h2 class="nutzername zentriert">- <c:out value="${nutzer.name}"></c:out> -</h2>
 				</div>
 				<div>
 					<img class="profilbild"
@@ -62,7 +63,7 @@
 			<div id="spieleBeschreibung"></div>
 		</aside>
 	</div>
-	<footer id="footer">
+	<footer>
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>
