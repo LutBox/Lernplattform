@@ -45,6 +45,7 @@ Erstellt von Lukas Theinert
 
     <!-- Flex-Item 2: Spalte Mitte -->
     <article>
+    	<h2 hidden>Viel Erfolg!</h2>
 
         <br><br>
         <div class="controls" id="controls">
@@ -76,6 +77,7 @@ Erstellt von Lukas Theinert
 <br><br>
 
 <section class="draggable-elements">
+<h2 hidden>Viel Erfolg!</h2>
 
     <img class="draggable" draggable="true"
          src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${spielBilderOrdnen.bild1ID}"
@@ -105,6 +107,7 @@ Erstellt von Lukas Theinert
 </section>
 
 <section class="draggable-elements">
+<h2 hidden>Viel Erfolg!</h2>
     <c:choose>
         <c:when test="${val == 'mittel' || val == 'schwer'}">
 
@@ -145,6 +148,7 @@ Erstellt von Lukas Theinert
 </section>
 
 <section class="droppable-elements">
+<h2 hidden>Kategorien</h2>
 
     <div class="droppable" data-draggable-id="${spielBilderOrdnen.bild1Kategorie}">
         <span>${spielBilderOrdnen.bild1Kategorie}</span></div>
@@ -166,6 +170,7 @@ Erstellt von Lukas Theinert
 </section>
 
 <section class="droppable-elements">
+<h2 hidden>Kategorien</h2>
     <c:choose>
         <c:when test="${val == 'mittel' || val == 'schwer'}">
 

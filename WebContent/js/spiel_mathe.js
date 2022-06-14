@@ -1,6 +1,18 @@
-//Erstellt von Lukas Theinert
+/*
+ * Erstellt von Lukas Theinert
+ */
+ 
+//Mathe-Spiel Idee von: https://codepen.io/bobbidigi34/pen/rWzZgQ
 
 "use strict";
+
+if (document.getElementById("gewertet").innerHTML === "gewertetAus") {
+	document.getElementById("punktezahl").style.visibility = 'hidden';
+}
+
+if (document.getElementById("timerID").innerHTML === "TimerAus") {		
+	document.getElementById("verbleibendeZeit").style.visibility = 'hidden';
+} 
 
 //-------------------------------
 //---------- Verhalten ----------
@@ -13,6 +25,9 @@ var verbleibendeZeit;
 var richtigAntwort;
 
 //Antworten
+
+//Mathe-Spiel-Idee:
+//----------- Anfang ----------------------
 let i;
 for (i = 1; i < 5; i++) {
 	document.getElementById("box" + i).onclick = function() {
@@ -82,6 +97,8 @@ function show(Id) {
 	document.getElementById(Id).style.display = "block";
 }
 
+//----------- Ende ----------------------
+
 //Zahlen je nah Schwierigkeitsgrad generieren
 function zahlenGenerieren() {
 	
@@ -141,6 +158,7 @@ function zahlenGenerieren() {
 	}
 }
 
+
 //----------------------------
 //---------- Events ----------
 //----------------------------
@@ -149,16 +167,20 @@ function zahlenGenerieren() {
 document.getElementById("start-restart").onclick = function() {
 	
 	if (spielGestartet == true) {
-		location.reload();
+		window.location.reload();
 	}
 	else {
 		spielGestartet = true;
 		punkteStand = 0;
 
 		document.getElementById("punkte").innerHTML = punkteStand;
+		
 		//show count
-		show("verbleibendeZeit");
-		verbleibendeZeit = 60;
+		if (document.getElementById("timerID").innerHTML === "timerAn") {	
+			show("verbleibendeZeit");
+			verbleibendeZeit = 60;
+		} 
+		
 
 		document.getElementById("verbleibendeZeitWert").innerHTML = verbleibendeZeit;
 
@@ -181,7 +203,7 @@ document.getElementById("start-restart").onclick = function() {
 //"use strict";
 
 function datenbankEintrag() {
-	alert("Punktestand: " + punkteStand)
+	//alert("Punktestand: " + punkteStand)
 	
 	var zeit = punkteStand;
 	var versuche = punkteStand;
@@ -200,5 +222,5 @@ function datenbankEintrag() {
 	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xmlhttp.send(sendData);
 
-	alert("Spiel in Datenbank gespeichert");
+	//alert("Spiel in Datenbank gespeichert");
 }

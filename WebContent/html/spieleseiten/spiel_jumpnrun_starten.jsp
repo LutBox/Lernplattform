@@ -39,6 +39,7 @@ Erstellt von Lukas Theinert
 
     <!-- Flex-Item 2 -->
     <article>
+    	<h2 hidden>Viel Erfolg!</h2>
 
         <br>
 

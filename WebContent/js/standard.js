@@ -21,7 +21,7 @@ var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
 //----------- Ende -----------
 
-//Go-To-Top-Button Grundfunktio:
+//Go-To-Top-Button Grundfunktion:
 //----------- Anfang -----------
 function myFunctionGoToTop() {
 	if (window.pageYOffset >= sticky) {

@@ -1,6 +1,8 @@
-/* Erstellt von Lukas Theinert */
-
 @charset "UTF-8";
+
+/* 
+ * Erstellt von Lukas Theinert
+ */
 
 .container {
 	position: absolute;
@@ -11,7 +13,7 @@
 
 table {
 	margin: auto;
-	width: 800px;
+	width: auto;
 	border-collapse: collapse;
 	overflow: hidden;
 	box-shadow: 0 0 20px rgba(0,0,0,0.1);
@@ -23,10 +25,7 @@ td {
 	padding: 15px;
 	background-color: rgba(255,255,255,0.2);
 	color: #fff;
-}
-
-th {
-	text-align: left;
+	text-align: center;
 }
 
 

@@ -66,7 +66,7 @@ public class SpielStartenServlet extends HttpServlet {
 
 		//---------- SERVLET ------------------------------
 		//Attribute (Schwierigkeit & Spieleart) von gaming_main_page.jsp abholen
-		//Infos werden nur fÃ¼r den einen Request gespeichert
+		//Infos werden nur für den einen Request gespeichert
 		request.setAttribute("schwierigkeitServlet", schwierigkeitServlet);
 		request.setAttribute("spielartServlet", spielartServlet);
 		
@@ -78,10 +78,10 @@ public class SpielStartenServlet extends HttpServlet {
 		spielStartenBean.setTimer(request.getParameter("Timer"));
 		spielStartenBean.setGewertet(request.getParameter("Gewertet"));
 		
-		//Infos werden nur fÃ¼r den einen Request gespeichert innerhalb einer Bean
+		//Infos werden nur für den einen Request gespeichert innerhalb einer Bean
 		//request.setAttribute("spielStartenBean", spielStartenBean);
 
-		//Infos werden nur fÃ¼r mehrere Requests gespeichert innerhalb einer Bean
+		//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
 		final HttpSession session = request.getSession();
 		session.setAttribute("spielStartenBean", spielStartenBean);
 
@@ -100,7 +100,7 @@ public class SpielStartenServlet extends HttpServlet {
 			//SpielVierBilderEinWortBean spielBilderEinwort = new SpielVierBilderEinWortBean();
 			//spielBilderEinwort=spielBilderWort();
 			
-			//Infos werden nur fÃ¼r mehrere Requests gespeichert innerhalb einer Bean
+			//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
 			//session.setAttribute("spielVierBilderEinWortBean", spielBilderEinwort);
 			
 			//final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_spielen.jsp");
@@ -136,7 +136,7 @@ public class SpielStartenServlet extends HttpServlet {
 			SpielBilderOrdnenBean spielBilderOrdnen = new SpielBilderOrdnenBean();
 			spielBilderOrdnen = spielBilderOrdnen();
 			
-			//Infos werden nur fÃ¼r mehrere Requests gespeichert innerhalb einer Bean
+			//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
 			session.setAttribute("spielBilderOrdnen", spielBilderOrdnen);
 			
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
@@ -150,7 +150,7 @@ public class SpielStartenServlet extends HttpServlet {
 			SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
 			spielBilderMemorieBean = spielBilderMemorie();
 			
-			//Infos werden nur fÃ¼r mehrere Requests gespeichert innerhalb einer Bean
+			//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
 			session.setAttribute("spielBilderMemorieBean", spielBilderMemorieBean);
 			
 			//Weiterleiten an JSP
@@ -169,26 +169,60 @@ public class SpielStartenServlet extends HttpServlet {
 		//-------------------------------------------------
 		} else {
 			int min = 1;
-			int max = 3;
+			int max = 5;
 			Random random = new Random();
 			int value = random.nextInt(max + min) + min;
 			if(value == 1) {
-				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_starten.jsp");
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_mathe_starten.jsp");
 				dispatcher.forward(request, response);
+				
 			} else if (value == 2) {
+				VierBilderEinWortScoreBean bean= new VierBilderEinWortScoreBean();
+				DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				
+				int sekunden=60;
+				if(schwierigkeitServlet.equals("mittel")) {
+					sekunden=45;
+				}
+				if(schwierigkeitServlet.equals("schwer")) {
+					sekunden=30;
+				}
+				
+				bean.setZeit ( format.format(addSecondsToJavaUtilDate(new Date(), sekunden)));
+
+				session.setAttribute("vierBilderEinWort", bean);
+				
+				response.sendRedirect("VierBilderEinWortServlet");
+				
+			} else if (value == 3){
+				//8 ZufÃ¤llige Bilder in Bean speichern
+				SpielBilderOrdnenBean spielBilderOrdnen = new SpielBilderOrdnenBean();
+				spielBilderOrdnen = spielBilderOrdnen();
+				
+				//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
+				session.setAttribute("spielBilderOrdnen", spielBilderOrdnen);
+				
 				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
 				dispatcher.forward(request, response);
-			} else {
+				
+			} else if (value == 4){
+				//8 ZufÃ¤llige Bilder in Bean speichern
+				SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
+				spielBilderMemorieBean = spielBilderMemorie();
+				
+				//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
+				session.setAttribute("spielBilderMemorieBean", spielBilderMemorieBean);
+				
+				//Weiterleiten an JSP
 				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderMemorie_starten.jsp");
-				dispatcher.forward(request, response);
+				dispatcher.forward(request, response);	
+				
+			} else {
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_jumpnrun_starten.jsp");
+				dispatcher.forward(request, response);	
 			}
 		}
-		
-        //Alternativ:
-        //request.getRequestDispatcher("html/gaming_pages/quick_game.jsp").forward(request, response);
-		
-		//Direktes Senden an Seite:
-		//response.sendRedirect("html/gaming_pages/quick_game.jsp"); 
+		 
 	}
 	// Quelle: https://www.baeldung.com/java-add-hours-date
 	// Abgewandelt

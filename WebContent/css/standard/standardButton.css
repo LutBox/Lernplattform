@@ -1,7 +1,9 @@
-/* Erstellt von Lukas Theinert */
-
 @charset "UTF-8";
 
+/* 
+ * Erstellt von Lukas Theinert
+ */
+ 
 button {
   display: inline-block;
   padding: 10px 20px;
@@ -18,7 +20,7 @@ button {
 
 }
 
-/* Idee für leuchtene Buttons: https://codepen.io/kanishkkunal/pen/obGojO */
+/* Idee fÃ¼r leuchtene Buttons: https://codepen.io/kanishkkunal/pen/obGojO */
 /* ----------- Anfang ---------------------- */
 button:before {
     content: '';

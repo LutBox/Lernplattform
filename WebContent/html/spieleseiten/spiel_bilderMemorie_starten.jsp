@@ -40,6 +40,7 @@ Erstellt von Lukas Theinert
 
     <!-- Flex-Item 2 -->
     <article>
+    	<h2 hidden>Viel Erfolg!</h2>
         <br>
         <div class="game">
             <div class="informationen" id="informationen">
@@ -74,12 +75,15 @@ Erstellt von Lukas Theinert
         <c:choose>
         <c:when test="${val == 'leicht'}">
         <section class="spiel_bilderMemorieLeicht">
+        <h2 hidden>Schwierigekeit: Leicht!</h2>
             </c:when>
             <c:when test="${val == 'mittel'}">
             <section class="spiel_bilderMemorieMittel">
+            <h2 hidden>Schwierigekeit: Mittel!</h2>
                 </c:when>
                 <c:when test="${val == 'schwer'}">
                 <section class="spiel_bilderMemorieSchwer">
+                <h2 hidden>Schwierigekeit: Schwer!</h2>
                     </c:when>
                     </c:choose>
 

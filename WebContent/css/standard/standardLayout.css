@@ -1,15 +1,16 @@
-/* Erstellt von Lukas Theinert */
-
 @charset "UTF-8";
 @import "standardButton.css";
 @import "standardNavigation.css";
 @import "standardFooter.css";
 @import "standardGoToTop.css";
 
-/* Box fuer Anordnung */
+/* 
+ * Erstellt von Lukas Theinert
+ */
+
+
+/* Box für Anordnung */
 * {
-	padding: 5 px;
-	margin: 5 px;
 	box-sizing: border-box;
 }
 

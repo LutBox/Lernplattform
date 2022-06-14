@@ -12,6 +12,7 @@ Erstellt von Lukas Theinert
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hauptseiten/bestenliste.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bestenliste.js" defer></script>
 
     <base href="${pageContext.request.requestURI}"/>
     <title>Bestenliste</title>
@@ -35,11 +36,9 @@ Erstellt von Lukas Theinert
     <!-- Flex-Item 2 -->
     <article>
 
-
-        <h3>Bildermemorie</h3>
-
-
-        <div>
+        <div id="bilderMemorieTabelle">
+        	<h3>Bildermemorie</h3>
+        
             <table>
                 <thead>
                 <tr>
@@ -70,14 +69,14 @@ Erstellt von Lukas Theinert
 
                 </tbody>
             </table>
+        
+        <br>
+        <br>
         </div>
 
-        <br>
-        <br>
-
-        <h3>Bilder ordnen</h3>
-
-        <div>
+        <div id="bilderOrdnenTabelle">
+        	<h3>Bilder ordnen</h3>
+        
             <table>
                 <thead>
                 <tr>
@@ -108,14 +107,14 @@ Erstellt von Lukas Theinert
 
                 </tbody>
             </table>
+        
+        <br>
+        <br>
         </div>
 
-        <br>
-        <br>
-
-        <h3>4 Bilder 1 Wort</h3>
-
-        <div>
+        <div id="bilderWortTabelle">
+        	<h3>4 Bilder 1 Wort</h3>
+ 
             <table>
                 <thead>
                 <tr>
@@ -146,13 +145,14 @@ Erstellt von Lukas Theinert
 
                 </tbody>
             </table>
+        
+        <br>
+        <br>
         </div>
-        <br>
-        <br>
 
-            <h3>Mathe</h3>
-
-        <div>
+            <div id="matheTabelle">
+            	<h3>Mathe</h3>
+        
             <table>
                 <thead>
                 <tr>
@@ -183,16 +183,14 @@ Erstellt von Lukas Theinert
 
                 </tbody>
             </table>
+        
+        <br>
+        <br>
         </div>
 
-        <br>
-        <br>
-
-
-        <h3>Jumpnrun</h3>
-
-
-        <div>
+		<div id="jumpnrunTabelle">
+        	<h3>Jumpnrun</h3>
+        
             <table>
                 <thead>
                 <tr>
@@ -230,7 +228,26 @@ Erstellt von Lukas Theinert
     </article>
     <!-- Flex-Item 3 -->
     <aside>
-        <h2>Beschreibungen</h2>
+        <h2>Bestenlisten:</h2>
+        
+        <br><br>
+        
+        Wähle Spiele aus:
+        <br>
+        <input type="checkbox" name="bestenlisten" id="bilderMemorie" value="bilderMemorie" checked="checked">
+        <label for="bilderMemorie">Bildermemorie</label>
+        <br>
+        <input type="checkbox" name="bestenlisten" id="bilderOrdnen" value="bilderOrdnen" checked="checked">
+        <label for="bilderOrdnen">Bilder ordnen</label>
+        <br>
+        <input type="checkbox" name="bestenlisten" id="bilderWort" value="bilderWort" checked="checked">
+        <label for="bilderWort">4 Bilder 1 Wort</label>
+        <br>
+        <input type="checkbox" name="bestenlisten" id="jumpnrun" value="jumpnrun" checked="checked">
+        <label for="jumpnrun">Jump n run</label>
+        <br>
+        <input type="checkbox" name="bestenlisten" id="mathe" value="mathe" checked="checked">
+        <label for="mathe">Mathe</label>
     </aside>
 
 </div>

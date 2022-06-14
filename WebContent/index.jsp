@@ -8,9 +8,16 @@ Erstellt von Lukas Theinert
 <html lang="de">
 <head>
 
+	<%--
+	defer -> Skript wird ausgeführt, nachdem mit Parsen fertig ist
+	async -> Skript wird ausgeführt, sobald verfügbar (während dem Parsen)
+	nichts -> Skript wird sofort ausgheführt, wodurch Analyse blockiert wird 
+	--%>
+	
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
     
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hauptseiten/bestenliste.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js" defer></script>
 
     <base href="${pageContext.request.requestURI}"/>
@@ -19,6 +26,8 @@ Erstellt von Lukas Theinert
 </head>
 
 <body>
+
+<noscript>Sie haben JavaScript deaktiviert!</noscript>
 
 <header>
     <h1>Lernplattform</h1>

@@ -40,16 +40,13 @@ Erstellt von Lukas Theinert
 
     <!-- Flex-Item 2 -->
     <article>
+    	<h2 hidden>Viel Erfolg!</h2>
 
         <div id="spiel">
 
-            <c:choose>
-                <c:when test="${gewertet == 'gewertetAn'}">
                     <div id="punktezahl">
                         Punkte: <span id="punkte">0</span>
                     </div>
-                </c:when>
-            </c:choose>
 
             <div id="richtig">
                 Richtig!
@@ -80,13 +77,9 @@ Erstellt von Lukas Theinert
                 Start
             </button>
 
-            <c:choose>
-                <c:when test="${gewertet == 'gewertetAn'}">
                     <div id="verbleibendeZeit">
                         Zeit: <span id="verbleibendeZeitWert">  60</span>
                     </div>
-                </c:when>
-            </c:choose>
 
             <div id="spielVorbei">
                 <!-- Pop-Up mit Punkten -->

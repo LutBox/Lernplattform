@@ -43,6 +43,7 @@ Erstellt von Lukas Theinert
 
     <!-- Flex-Item 2 -->
     <article>
+    	<h2 hidden>Spiel auswählen</h2>
 
         <form id="Spielstarten"
               action="${pageContext.request.contextPath}/SpielStartenServlet"
@@ -50,12 +51,11 @@ Erstellt von Lukas Theinert
 
             <div class="spielart">
 
-
                     <%-- 
                     ---------- Mathe ---------- 
                     --%>
 
-                    <div class="flip-card">
+                    <div class="flip-card" id="MatheAuswahl">
                         <div class="flip-card-inner">
                         
                             <div class="flip-card-front">
@@ -109,7 +109,7 @@ Erstellt von Lukas Theinert
                     ---------- 4 Bilder 1 Wort ---------- 
                     --%>
 
-                    <div class="flip-card">
+                    <div class="flip-card" id="BilderWortAuswahl">
                         <div class="flip-card-inner">
                         
                             <div class="flip-card-front">
@@ -162,7 +162,7 @@ Erstellt von Lukas Theinert
                     ---------- Bilder-Ordnen ---------- 
                     --%>
 
-                    <div class="flip-card">
+                    <div class="flip-card" id="BilderOrdnenAuswahl">
                         <div class="flip-card-inner">
                         
                             <div class="flip-card-front">
@@ -214,7 +214,7 @@ Erstellt von Lukas Theinert
                     ---------- Bilder-Memorie ---------- 
                     --%>
 
-                    <div class="flip-card">
+                    <div class="flip-card" id="BilderMemorieAuswahl">
                         <div class="flip-card-inner">
                         
                             <div class="flip-card-front">
@@ -269,7 +269,7 @@ Erstellt von Lukas Theinert
                     ---------- Jump n Run ---------- 
                     --%>
 
-                    <div class="flip-card">
+                    <div class="flip-card" id="JumpnrunAuswahl">
                         <div class="flip-card-inner">
                         
                             <div class="flip-card-front">
@@ -323,7 +323,7 @@ Erstellt von Lukas Theinert
                     ---------- Zufall ---------- 
                     --%>
 
-                    <div class="flip-card">
+                    <div class="flip-card" id="ZufallAuswahl">
                         <div class="flip-card-inner">
                         
                             <div class="flip-card-front">
@@ -331,20 +331,38 @@ Erstellt von Lukas Theinert
                             </div>
                             
                             <div class="flip-card-back">
-                                <input type="radio" name="Schwierigkeit" id="leichtZufall" value="leicht" required>
-                                <label for="leichtZufall">Zu jung zum sterben</label>
-
-                                <br>
+                                Schwierigkeit:<br>
+                                <input type="radio" name="Schwierigkeit" id="leichtZufall" value="leicht" checked="checked" required>
+                                <label for="leichtZufall">Leicht</label>
 
                                 <input type="radio" name="Schwierigkeit" id="mittelZufall" value="mittel">
-                                <label for="mittelZufall">Albtraum</label>
-
-                                <br>
+                                <label for="mittelZufall">Mittel</label>
 
                                 <input type="radio" name="Schwierigkeit" id="schwerZufall" value="schwer">
-                                <label for="schwerZufall">Todesmarsch</label>
+                                <label for="schwerZufall">Schwer</label>
 
                                 <br><br>
+								
+                                <div id="ZufallTimer">
+                                    Timer:<br>
+                                    <input type="radio" name="Timer" id="timerAnZufall" value="timerAn" required>
+                                    <label for="timerAnZufall">An</label>
+
+                                    <input type="radio" name="Timer" id="timerAusZufall" value="TimerAus">
+                                    <label for="timerAusZufall">Aus</label>
+                                </div>
+
+                                <br>
+                                <div id="ZufallGewertet">
+                                    Gewertet:<br>
+                                    <input type="radio" name="Gewertet" id="gewertetAnZufall" value="gewertetAn" checked="checked">
+                                    <label for="gewertetAnZufall">An</label>
+
+                                    <input type="radio" name="Gewertet" id="gewertetAusZufall" value="gewertetAus">
+                                    <label for="gewertetAusZufall">Aus</label>
+                                </div>
+
+                                <br>
 
                                 <button class="button" name="Spielart" id="zufall" value="zufall" type="submit">
                                     Starten!
@@ -364,7 +382,7 @@ Erstellt von Lukas Theinert
     </article>
     <!-- Flex-Item 3 -->
     <aside>
-        <h2>Beschreibung:</h2>
+        <h3>Beschreibung</h3>
         <br>
         <div id="spieleBeschreibung"></div>
     </aside>
