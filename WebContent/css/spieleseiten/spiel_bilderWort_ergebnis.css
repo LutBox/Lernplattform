@@ -1,0 +1,15 @@
+<%--
+Erstellt von Zohal Mohammadi
+--%>
+
+
+@charset "UTF-8";
+
+body {
+  text-align: center;
+}
+
+.ergebnis {
+  text-align: center;
+  margin: 0 auto;
+}

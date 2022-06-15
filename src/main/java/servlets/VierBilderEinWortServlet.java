@@ -50,6 +50,7 @@ public class VierBilderEinWortServlet extends HttpServlet {
 		    		  PreparedStatement pstmt= con.prepareStatement("Select kategorie from wort order by Rand() limit 1")){
 		    	  
 		    	      ResultSet rs = pstmt.executeQuery();
+		    	      // Result hat ein Element, deshalb keine Schleife
 		    	      rs.next();
 		    	      kategorie = rs.getString(1);
 		      } catch (SQLException ex) {
@@ -99,15 +100,10 @@ public class VierBilderEinWortServlet extends HttpServlet {
 	if (request.getParameter("userEingabe").equalsIgnoreCase(request.getParameter("loesung"))) {
 		score.setRichtigeErgebnis(score.getRichtigeErgebnis()+1);
 		
-		// Die Zeit  in die Bean liegen
-         
-		// Zeit auslesen
-		//Zeit jetzt und vergangenen Zeit vergleichen 
 		
 		
 	}
-	
-	// Wenn Zeit abgelaufen ist stattdessen auf Ergebnisseite
+	    // mit neunen Daten neu aufgerufen :VierBilderEinWortServlet über js wird zum Ergebnis weitergeleitet
 		response.sendRedirect("VierBilderEinWortServlet");
 	}
 

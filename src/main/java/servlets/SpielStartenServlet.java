@@ -108,8 +108,11 @@ public class SpielStartenServlet extends HttpServlet {
 			
 			// Clean up, damit die Punkte aus dem Spiel 
 			VierBilderEinWortScoreBean bean= new VierBilderEinWortScoreBean();
+			// 
 			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			
+			bean.setSchwierigkeit(schwierigkeitServlet);
+			bean.setGewertet(request.getParameter("Gewertet"));
+		
 			int sekunden=60;
 			if(schwierigkeitServlet.equals("mittel")) {
 				sekunden=45;
@@ -117,13 +120,14 @@ public class SpielStartenServlet extends HttpServlet {
 			if(schwierigkeitServlet.equals("schwer")) {
 				sekunden=30;
 			}
-			
+			// Formatierungsstring wird hier angepasst
 			bean.setZeit ( format.format(addSecondsToJavaUtilDate(new Date(), sekunden)));
 			
 			
 			
 			session.setAttribute("vierBilderEinWort", bean);
 			
+			// Aufruf von VierBilderEinWortServlet --> alles zurueckgesetzt
 			response.sendRedirect("VierBilderEinWortServlet");
 			
 			
@@ -413,6 +417,7 @@ public class SpielStartenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
 	}
 
 }

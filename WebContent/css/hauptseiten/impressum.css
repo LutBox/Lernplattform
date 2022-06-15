@@ -1,0 +1,45 @@
+<%--
+Erstellt von Zohal Mohammadi
+--%>
+
+@charset "UTF-8";
+.impressum{
+	display: flex; 
+	flex-direction:column; 
+	align-items: center; 
+	justify-content:center
+}
+
+.adresse{
+	font-family: arial;
+	text-align:center;
+}
+.name{
+	font-family: arial;
+	text-align:center;
+}
+.strasse{
+	font-family: arial;
+	text-align:center;
+}
+.plz{
+	font-family: arial;
+	text-align: center;
+}
+.land{
+	font-family: arial;
+	text-align:center;
+}
+.kontakt{
+	font-family: arial;
+	text-align:center;
+}
+.zeit{
+	font-family: arial;
+	text-align:center;
+}
+
+.num{
+	font-family: arial;
+	text-align:center;
+}

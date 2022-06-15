@@ -1,0 +1,29 @@
+<%--
+Erstellt von Zohal Mohammadi
+--%>
+
+@charset "UTF-8";
+body{
+	text-align: center;
+}
+
+.bild{
+display:inline-block;
+border: 4px double #000000;
+border-radius: 15px;
+width: 200px;
+height: 200px;
+margin: auto;
+padding: 25px;
+margin-right: 25px;
+margin-bottom:25px;
+
+}
+  
+#bilderText {
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+
