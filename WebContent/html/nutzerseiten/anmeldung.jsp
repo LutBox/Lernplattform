@@ -7,7 +7,6 @@
 <head>
 <link rel="stylesheet" type="text/css"
 	href="../../css/nutzerseiten/anmeldungStil.css" />
-<script type="text/javascript" src="../../js/standard.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
 <title>Anmeldung</title>
 </head>
@@ -24,8 +23,8 @@
 				<div>
 					<label for="name">Nutzername: </label> <input name="name" id="name"
 						type="text" placeholder="Nutzername" maxlength="64"
-						required="required" pattern="[^ ]+"
-						title="Bitte geben Sie ihren Nutzernamen an" />
+						required="required" pattern="[^ &lt;&gt;&#34;']+"
+						title="Bitte geben Sie ihren Nutzernamen an." />
 				</div>
 				<div>
 					<label for="passwort">Passwort: </label><input name="passwort"

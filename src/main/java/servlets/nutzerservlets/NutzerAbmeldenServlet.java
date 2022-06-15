@@ -24,6 +24,7 @@ public class NutzerAbmeldenServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		session.removeAttribute(NutzerViewBean.attributname);
 		response.sendRedirect("./html/nutzerseiten/anmeldung.jsp");

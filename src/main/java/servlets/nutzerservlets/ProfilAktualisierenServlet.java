@@ -32,6 +32,7 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		final HttpSession session = request.getSession();
 		NutzerViewBean nutzerView = (NutzerViewBean) session.getAttribute("nutzer");
 		NutzerBean nutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(nutzerView.getName());

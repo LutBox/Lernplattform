@@ -7,7 +7,8 @@
 <head>
 <link rel="stylesheet" type="text/css"
 	href="../../css/nutzerseiten/profilbearbeitenStil.css" />
-<script type="text/javascript" src="../../js/nutzeraenderung.js" defer></script>
+<script type="text/javascript"
+	src="../../js/nutzerskripte/profilkonfiguraration.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
 <title>Profil bearbeiten</title>
 </head>
@@ -17,23 +18,23 @@
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	<main class="fade-in">
-		<form id="aenderungsformular" method="post"
+		<form id="profilkonfigurationsform" method="post"
 			action="../../ProfilAktualisierenServlet"
-			enctype="multipart/form-data">
+			enctype="multipart/form-data" accept-charset="UTF-8">
 			<fieldset>
 				<legend>Profil bearbeiten</legend>
 				<div>
 					<label for="neuerName">Neuer Nutzername: </label> <input
 						name="neuerName" id="neuerName" type="text"
 						placeholder="Neuer Nutzername" maxlength="64"
-						value="${nutzer.name}"
-						title="Bitte geben Sie Ihren neuen Nutzernamen an (Maximal 96 Zeichen, ohne Leerzeichen)." />
+						value="${nutzer.name}" pattern="[^ &lt;&gt;&#34;']+"
+						title="Bitte geben Sie Ihren neuen Nutzernamen an (Maximal 96 Zeichen.  Keines der folgenden Zeichen: &#60;&#62;&#34;&#39;)." />
 				</div>
 				<div>
 					<label for="email">Neue E-Mail:</label> <input name="neueEmail"
 						id="neuEmail" type="email" value="${nutzer.email}"
-						placeholder="e-mail" maxlength="64" pattern="[^ ]+"
-						title="Bitte geben Sie Ihre neue E-mail an" />
+						placeholder="e-mail" maxlength="64"
+						title="Bitte geben Sie Ihre neue E-mail an." />
 				</div>
 				<div>
 					<label for="passwort">Neues Passwort:</label> <input

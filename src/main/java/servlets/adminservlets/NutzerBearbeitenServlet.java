@@ -24,6 +24,7 @@ public class NutzerBearbeitenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		NutzerBean zuverwaltendernutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(request.getParameter("nn"));
 		HttpSession session = request.getSession();
 		session.setAttribute("zuverwaltendernutzer", zuverwaltendernutzer);

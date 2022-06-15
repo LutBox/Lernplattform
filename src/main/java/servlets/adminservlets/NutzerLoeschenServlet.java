@@ -23,7 +23,8 @@ public class NutzerLoeschenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		NutzerSQLDienst.loescheNutzerMitDemNamen(request.getParameter("zuloeschenderNutzer"));
+		request.setCharacterEncoding("UTF-8");
+		NutzerSQLDienst.loescheNutzerMitDemNamen(request.getParameter("nutzerMitNameXLoeschen"));
 		response.sendRedirect("./html/verwaltungsseiten/nutzerverwaltung.jsp");
 	}
 

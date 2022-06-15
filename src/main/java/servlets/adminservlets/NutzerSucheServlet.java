@@ -26,6 +26,7 @@ public class NutzerSucheServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String fragment = request.getParameter("fragment");
 		ArrayList<NutzerBean> suchergebnisse = NutzerSQLDienst.gibMirXNutzerMitNamenWie(fragment);
 		final HttpSession session = request.getSession();

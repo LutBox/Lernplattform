@@ -49,7 +49,7 @@
 						<form class="loeschenformular" method="post"
 							action="../../KontaktanfrageLoeschenServlet">
 							<input type="hidden" name="kanr" value="${nachricht.kanr}" />
-							<button class="noStandardButton" type="submit" title="Löschen">
+							<button class="noStandardButton" type="submit" title="Ungelesene Nachricht von ${nachricht.email} löschen">
 								<img class="buttonImg"
 									src="../../bilder/verwaltung/entfernen.png" />
 							</button>
@@ -84,7 +84,7 @@
 						<form class="loeschenformular" method="post"
 							action="../../KontaktanfrageLoeschenServlet">
 							<input type="hidden" name="kanr" value="${nachricht.kanr}" />
-							<button class="noStandardButton" type="submit" title="Löschen">
+							<button class="noStandardButton" type="submit" title="Archivierte Nachricht von ${nachricht.email} löschen">
 								<img class="buttonImg"
 									src="../../bilder/verwaltung/entfernen.png" />
 							</button>

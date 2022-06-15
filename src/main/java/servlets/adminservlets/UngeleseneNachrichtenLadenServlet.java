@@ -25,6 +25,7 @@ public class UngeleseneNachrichtenLadenServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		final HttpSession session = request.getSession();
 		ArrayList<KontaktanfrageBean> ungelesene = KontaktanfragenSQLDienst.gibAlleAnfragen_gelesen(false);
 		ArrayList<KontaktanfrageBean> archivierte = KontaktanfragenSQLDienst.gibAlleAnfragen_gelesen(true);

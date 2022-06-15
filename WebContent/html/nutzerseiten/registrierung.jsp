@@ -8,8 +8,7 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css"
 	href="../../css/nutzerseiten/registrierenStil.css" />
-<script type="text/javascript" src="../../js/nutzeraenderung.js"
-	charset="UTF-8" defer></script>
+<script type="text/javascript" src="../../js/nutzerskripte/profilkonfiguraration.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
 <title>Registrierung</title>
 </head>
@@ -19,16 +18,16 @@
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	<main class="fade-in">
-		<form id="aenderungsformular" method="post"
-			action="../../RegistrierungServlet" enctype="multipart/form-data">
+		<form id="profilkonfigurationsform" method="post"
+			action="../../RegistrierungServlet" enctype="multipart/form-data" accept-charset="UTF-8">
 			<fieldset>
 				<legend>Registrierung</legend>
 				<div>
 					<label for="name">Nutzername: </label>
 					<!-- vgl. w3schools https://www.w3schools.com/tags/att_input_pattern.asp START -->
 					<input name="name" id="name" type="text" placeholder="Nutzername"
-						maxlength="96" required="required" pattern="[^ ]+"
-						title="Bitte geben Sie einen Nutzernamen an (Maximal 96 Zeichen, ohne Leerzeichen)." />
+						maxlength="96" required="required" pattern="[^ &lt;&gt;&#34;']+"
+						title="Bitte geben Sie einen Nutzernamen an (Maximal 96 Zeichen. Keines der folgenden Zeichen: &lt;&gt;&#34;')." />
 					<!-- vgl. w3schools https://www.w3schools.com/tags/att_input_pattern.asp END -->
 				</div>
 				<div>

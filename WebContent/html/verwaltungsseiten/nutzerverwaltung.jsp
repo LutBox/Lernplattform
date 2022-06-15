@@ -7,8 +7,8 @@
 <head>
 <link rel="stylesheet"
 	href="../../css/verwaltungsseiten/nutzerverwaltungStil.css" />
-<script type="text/javascript" src="../../js/nutzerverwaltung.js"></script>
-<script type="text/javascript" src="../../js/standard.js" defer></script>
+<script type="text/javascript"
+	src="../../js/verwaltungsskripte/nutzerverwaltung.js"></script>
 <%@include file="../jspf/noSkript.jspf"%>
 <title>Nutzerverwaltung</title>
 </head>
@@ -27,9 +27,11 @@
 						<div>
 							<label id="fragmentlabel" for="fragment">Name</label> <input
 								id="fragment" name="fragment" type="text" required="required"
-								pattern="[^ ]+" title="Fragment eines Nutzernamens (Nutzernamen können keine Leerzeilen haben)." value="${fragment}" />
+								pattern="[^ &lt;&gt;&#34;']+"
+								title="Fragment eines Nutzernamens (Nutzernamen können keine Leerzeilen haben)."
+								value="${fragment}" />
 							<button id="suchenbutton" class="noStandardButton" type="button">
-								<!-- https://www.google.com/search?tbm=isch&ved=2ahUKEwjcxd-Vpqv4AhXpi_0HHY6JBG8Q2-cCegQIABAA&oq=search+icon+white+filetype:png&gs_lcp=CgNpbWcQAzoECAAQQzoFCAAQgAQ6BggAEB4QBzoECAAQHjoGCAAQHhAFUI0OWLxFYIRGaABwAHgBgAG-AogB2xOSAQgxLjE2LjEuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=M6KnYpzgBOmX9u8PjpOS-AY&bih=937&biw=1920&rlz=1C1CHBF_deDE916DE916&q=search+icon+white&tbs=ift:png#imgrc=SnwzyiNf1tuNMM -->
+								<!-- IMG-SRC: https://www.google.com/search?tbm=isch&ved=2ahUKEwjcxd-Vpqv4AhXpi_0HHY6JBG8Q2-cCegQIABAA&oq=search+icon+white+filetype:png&gs_lcp=CgNpbWcQAzoECAAQQzoFCAAQgAQ6BggAEB4QBzoECAAQHjoGCAAQHhAFUI0OWLxFYIRGaABwAHgBgAG-AogB2xOSAQgxLjE2LjEuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=M6KnYpzgBOmX9u8PjpOS-AY&bih=937&biw=1920&rlz=1C1CHBF_deDE916DE916&q=search+icon+white&tbs=ift:png#imgrc=SnwzyiNf1tuNMM -->
 								<img class="buttonImg" src="../../bilder/verwaltung/suchen.png" />
 							</button>
 						</div>

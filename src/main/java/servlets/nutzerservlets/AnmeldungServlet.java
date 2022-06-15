@@ -26,27 +26,18 @@ public class AnmeldungServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+
 		NutzerBean nutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(request.getParameter("name"));
 		HttpSession session = request.getSession();
 
 		if (nutzer.getName() != null) {
-
-			// Ueberpruefung ob das Passwort des Nutzers mit dem Passwort aus dem
-			// Anmeldeformular uebereinstimmt
 			if (nutzer.getPasswort().equals(request.getParameter("passwort"))) {
-
-				// Nutzer in den Sessionscope legen und so verfuegbar machen
 				NutzerViewBean nutzerAnzeige = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(nutzer.getName());
 				session.setAttribute(NutzerViewBean.attributname, nutzerAnzeige);
-
-				// Entscheidung welchen Funktionsumfang der Nutzer bekommt
 				if (nutzer.getAdmin() == 1) {
-
-					// Nutzer ist Admin
 					response.sendRedirect("./index.jsp");
 				} else {
-
-					// Nutzer ist kein Admin
 					response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
 				}
 			} else {

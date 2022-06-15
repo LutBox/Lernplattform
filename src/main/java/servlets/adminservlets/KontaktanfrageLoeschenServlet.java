@@ -23,6 +23,7 @@ public class KontaktanfrageLoeschenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		KontaktanfragenSQLDienst.loescheKontaktanfrageMitDerNummer(Integer.parseInt(request.getParameter("kanr")));
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("./UngeleseneNachrichtenLadenServlet");
 		dispatcher.forward(request, response);

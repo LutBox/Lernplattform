@@ -7,8 +7,11 @@
 @import url("../standard/standardNavigation.css");
 @import url("../standard/standardFooter.css");
 
-main {
+html,body,main {
 	margin: 0;
+}
+
+main {
 	padding: 2% 10% 10% 10%;
 }
 
@@ -18,10 +21,15 @@ main {
 	margin: 0;
 }
 
+div#suchergebnisse {
+	min-height: 408px;
+}
+
 button.noStandardButton {
 	margin: 0;
 	border: 0;
 	padding: 0;
+	height: 28px;
 	background: none;
 }
 

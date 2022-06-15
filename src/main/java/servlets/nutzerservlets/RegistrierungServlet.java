@@ -31,6 +31,7 @@ public class RegistrierungServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		NutzerBean anfrage = new NutzerBean();
 		anfrage.setName(request.getParameter("name"));
 		anfrage.setEmail(request.getParameter("email"));

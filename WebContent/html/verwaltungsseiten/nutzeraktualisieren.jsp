@@ -8,7 +8,7 @@
 <head>
 <link rel="stylesheet" type="text/css"
 	href="../../css/verwaltungsseiten/nutzeraktualisierenStil.css" />
-<script type="text/javascript" src="../../js/nutzeraenderung.js" defer></script>
+<script type="text/javascript" src="../../js/verwaltungsskripte/nutzerkonfiguration.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
 <title>Nutzer aktualisieren</title>
 </head>
@@ -19,7 +19,7 @@
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	<main class="fade-in">
-		<form id="aenderungsformular" method="post"
+		<form id="nutzerkonfigurationsform" method="post"
 			action="../../NutzerAktualisierenServlet"
 			enctype="multipart/form-data" accept-charset="UTF-8">
 			<fieldset>
@@ -28,8 +28,8 @@
 					<label for="neuerName">Neuer Nutzername</label> <input
 						name="neuerName" id="neuerName" type="text"
 						placeholder="Neuer Nutzername" maxlength="64"
-						value="${zuverwaltendernutzer.name}"
-						title="Bitte geben Sie den neuen Name für den Nutzer an" />
+						value="${zuverwaltendernutzer.name}" pattern="[^ &lt;&gt;&#34;']+"
+						title="Bitte geben Sie den neuen Name für den Nutzer an  (Maximal 96 Zeichen und Keines der folgenden Zeichen: &#60;&#62;&#34;&#39;)." />
 				</div>
 				<div>
 					<label for="neueEmail">Neue E-Mail</label> <input name="neueEmail"
@@ -48,8 +48,8 @@
 						title="Bitte wiederholen Sie das neue Passwort des Nutzers" />
 				</div>
 				<div>
-					<label>Status</label> <input type="radio" name="nutzerart"
-						id="regnutzer" value="0"
+					<label>Status</label><input type="hidden" id="aktuellerstatus" value="${zuverwaltendernutzer.admin}"/> <input
+						type="radio" name="nutzerart" id="regnutzer" value="0"
 						title="Den Nutzer als regulären Nutzer konfigurieren. Als regulärer Nutzer kann der Nutzer den vollen Spieleumfang genießen und an Wettkämpfen teilnehmen." /><label
 						for="regnutzer">Nutzer</label> <input type="radio"
 						name="nutzerart" value="1" id="administrator"
@@ -71,7 +71,8 @@
 			</fieldset>
 		</form>
 		<div id="infotext">
-			<span id="infoicon">&#9432; </span><span class="fade-in"> <c:out value="${forminfotext}"
+			<span id="infoicon">&#9432; </span><span class="fade-in"> <c:out
+					value="${forminfotext}"
 					default="Bitte geben Sie die neuen Nutzerdaten an." />
 			</span>
 		</div>

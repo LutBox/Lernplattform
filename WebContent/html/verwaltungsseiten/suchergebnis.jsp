@@ -72,16 +72,16 @@
 					<div class="grid1">
 						<form method="post" action="../../NutzerBearbeitenServlet">
 							<input type="hidden" name="nn" value="${ergebnis.name}" />
-							<button type="submit" class="noStandardButton">
+							<button type="submit" class="noStandardButton" title="${ergebnis.name} bearbeiten">
 								<img class="buttonImg"
 									src="../../bilder/verwaltung/bearbeiten.png" />
 							</button>
 						</form>
 						<form class="loeschenformular" method="post"
 							action="../../NutzerLoeschenServlet">
-							<input class="delNutzername" type="hidden"
-								name="zuloeschenderNutzer" value="${ergebnis.name}" />
-							<button type="button" class="noStandardButton">
+							<input class="nutzerMitNameXLoeschen" type="hidden"
+								 value="${ergebnis.name}" />
+							<button type="button" class="noStandardButton" title="${ergebnis.name} löschen">
 								<img class="buttonImg"
 									src="../../bilder/verwaltung/entfernen.png" />
 							</button>

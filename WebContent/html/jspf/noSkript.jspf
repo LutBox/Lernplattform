@@ -1,4 +1,6 @@
 <%-- @author Merlin --%>
+<link rel="stylesheet" type="text/css"
+	href="../../css/standard/noSkriptStil.css" />
 <noscript>
 	<div id="noSkriptBox" class="fade-in">
 		<p id="NoSkriptText">Bitte aktivieren Sie ihr JavaSkript um den
