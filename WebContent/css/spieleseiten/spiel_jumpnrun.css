@@ -1,55 +1,130 @@
-/*
+@charset "UTF-8";
+
+/* 
  * Erstellt von Lukas Theinert
  */
  
+html {
+    background: linear-gradient(325deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%);
+    background-repeat: no-repeat;
+	background-attachment: fixed;    
+}
+ 
+/* Spielfeld */
 .game{
     width: 1000px;
     height: 500px;
     border: 1px solid black;
     margin: auto;
-    background-image: url(../../bilder/jumpnrun/background1.png);
-    
+    background-image: url(../../bilder/jumpnrun/background1.png); 
 }
-#character{
+
+/* Figur */
+#figur{
+	border: 0px;
     width: 75px;
     height: 105px;
     position: relative;
     top: 345px;
 }
+
+/* Springen-dauer 
 .animate{
     animation: jump 0.3s linear;
 }
+*/
+/* Springen-Animationseigenschaften */
 @keyframes jump{
-    0%{top: 300px;}
-    30%{top: 200px;}
-    70%{top: 200px;}
-    100%{top: 300px;}
+    0%{top: 345px;}
+    30%{top: 270px;}
+    70%{top: 270px;}
+    100%{top: 345px;}
 }
 
+/* Ducken-dauer 
 .ducken{
     animation: ducken 0.3s linear;
 }
+*/
+/* Ducken-Animationseigenschaften */
 @keyframes ducken{
-    0%{top: 320px;}
-    30%{top: 420px;}
-    70%{top: 420px;}
-    100%{top: 320px;}
+    0%{top: 345px;}
+    30%{top: 395px;}
+    70%{top: 395px;}
+    100%{top: 345px;}
 }
 
-#block{
-    background-color: blue;
+/* Vogel-Hindernis */
+#vogel{	
     width: 40px;
     height: 40px;
     position: relative;
-    top: 260px;
-    left: 1000px;
-   animation: block 1s infinite linear;
+    left: 885px;
+    top: 260px;  
 } 
-@keyframes block{
-    0%{left: 1000px}
-    100%{left: -40px}
+
+/* Vogel-Animationseigenschaften */
+@keyframes vogel{
+    0%{left: 885px}
+    100%{left: -125px}
 }
-p{
-    text-align: center;
-}
+
+/* Stein-Hindernis */
+#stein{
+	border: 0px; 
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 350px;
+    left: 845px;   
     
+} 
+
+/* Stein-Animationseigenschaften */
+@keyframes stein{
+    0%{left: 845px}
+    100%{left: -165px}
+}
+
+/* Layout */
+#infos{
+    position: absolute;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    background: #282A3A;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+
+#scoreLayout,
+#zeitLayout,
+#lebenLayout{
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+}
+
+
+#buttonStart,
+#buttonRestart{
+    text-align: center;
+    margin: auto;
+    left: 50%
+}
+
+/* Spiel vorbei */
+#spielVorbei{
+	position: relative;
+	font-size: 40px;
+	margin:auto;
+	text-align: center;
+    width: 1010px;
+    height: 510px;
+    background: #282A3A;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 10px 20px;
+}

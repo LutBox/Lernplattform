@@ -4,6 +4,7 @@ a) Nutzer ist als Admin angemeldet.
 b) Nutzer ist als normaler Nutzer angemeldet.
 c) Nutzer ist nicht als Nutzer angemeldet.
  --%>
+<div class="nav-wrapper">
 <nav>
 <ul id="navbar">
 	<c:choose>
@@ -32,4 +33,5 @@ c) Nutzer ist nicht als Nutzer angemeldet.
 	</c:choose>
 </ul>	
 </nav>
+</div>
 

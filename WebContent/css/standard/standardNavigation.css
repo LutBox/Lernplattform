@@ -1,13 +1,18 @@
-/*
-Erstellt von Lukas Theinert
+@charset "UTF-8";
+
+/* 
+ * Erstellt von Lukas Theinert
  */
+
+.nav-wrapper{
+	height:80px;
+}
 
 nav ul { 
   background-color: #000000e0;
-  width: 100vw;
+  width: 100%;
   position: relative;
-  margin-left: -50vw;
-  left: 50%;
+
   text-align: center;
   top: 0px;
   z-index:99
@@ -39,3 +44,11 @@ nav ul li a:hover {
   position: fixed;
   margin-top: 0;
 }
+
+ .sticky + .content {
+    padding-top: 60px;
+  } 
+  
+  .content {
+    padding: 16px;
+  }
