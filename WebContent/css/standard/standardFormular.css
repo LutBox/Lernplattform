@@ -1,0 +1,74 @@
+/*
+ *	@author Lukas
+ *	@author Merlin
+ */
+
+label {
+	width: 8em;
+	display: inline-block;
+	text-align: left;
+}
+
+input {
+	width: 20em;
+	border-radius: 5px;
+}
+
+textarea {
+	width: 20em;
+	border: 1px solid black;
+}
+
+input[type="checkbox"], input[type="radio"] {
+	width: auto;
+}
+
+label.textarea {
+	vertical-align: top;
+}
+
+fieldset {
+	margin: auto;
+	width: 35em;
+	padding-top: 1.5em;
+	padding-left: 1.5em;
+	background: #ffffff;
+	box-shadow: 0 0 15px 5px #000000;
+	border: 0px solid black;
+	border-radius: 5px;
+}
+
+legend {
+	background: white;
+	padding: 0.2em;
+	border: 1px solid #000330;
+	border-radius: 5px;
+}
+
+input:hover, textarea:hover {
+	background: #f0fffa;
+	box-shadow: 0 0 10px #000000;
+}
+
+input:required+span::after {
+	color: red;
+}
+
+textarea:required+span::after {
+	color: red;
+}
+
+input[type="email"]:valid+span::after {
+	color: green;
+}
+
+input[required]:invalid {
+	border-color: #f23b2c;
+}
+
+input[required]:valid {
+	border-color: #2ECC71;
+}
+textarea:valid+span::after {
+	color: green;
+}

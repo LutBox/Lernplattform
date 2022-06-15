@@ -18,7 +18,7 @@ public class NutzerSQLDienst extends SQLDienst {
 	/**
 	 * @author Merlin Name der "Nutzer"-Datenbank
 	 */
-	private static final String tabellenname = "`nutzer`";
+	public static final String tabellenname = "`nutzer`";
 
 	/**
 	 * @author Merlin
@@ -184,16 +184,14 @@ public class NutzerSQLDienst extends SQLDienst {
 	 * @return Liste mit Nutzer die frament im Namen enthalten
 	 * @throws ServletException
 	 */
-	public static ArrayList<NutzerBean> gibMirXNutzerMitNamenWie(int anzahlErgebnisse, String fragment)
+	public static ArrayList<NutzerBean> gibMirXNutzerMitNamenWie(String fragment)
 			throws ServletException {
 		ArrayList<NutzerBean> ergebnis = new ArrayList<NutzerBean>();
 		fragment = "%" + fragment + "%";
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con
-						.prepareStatement("SELECT * FROM " + tabellenname + " WHERE name LIKE ? LIMIT ?")) {
+						.prepareStatement("SELECT * FROM " + tabellenname + " WHERE name LIKE ?")) {
 			pstmt.setString(1, fragment);
-			pstmt.setInt(2, anzahlErgebnisse);
-
 			try (ResultSet rs = pstmt.executeQuery()) {
 				while (rs.next()) {
 					NutzerBean tmp = new NutzerBean();

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import beans.NutzerBean;
 import dienste.sqldienste.NutzerSQLDienst;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,14 +24,22 @@ public class NutzerSucheServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String fragment = request.getParameter("fragment");
-		int anzahlErgebnisse = Integer.parseInt(request.getParameter("anzahlErgebnisse"));
-		ArrayList<NutzerBean> suchergebnisse = NutzerSQLDienst.gibMirXNutzerMitNamenWie(anzahlErgebnisse, fragment);
+		ArrayList<NutzerBean> suchergebnisse = NutzerSQLDienst.gibMirXNutzerMitNamenWie(fragment);
 		final HttpSession session = request.getSession();
 		session.setAttribute("suchergebnisse", suchergebnisse);
-		response.sendRedirect("./html/verwaltungsseiten/suchergebnisse.jsp");
+		session.setAttribute("fragment", fragment);
+//		response.sendRedirect("./html/verwaltungsseiten/suchergebnis.jsp");
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/verwaltungsseiten/suchergebnis.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

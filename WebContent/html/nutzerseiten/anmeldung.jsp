@@ -5,43 +5,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+<link rel="stylesheet" type="text/css"
+	href="../../css/nutzerseiten/anmeldungStil.css" />
+<%@include file="../jspf/noSkript.jspf"%>
 <title>Anmeldung</title>
-<link rel="stylesheet" href="../../css/adminstilvorlage.css"/>
 </head>
 <body>
 	<header>
-		<h1>Anmeldung</h1>
+		<h1>Lernplattform</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	<main>
-		<form method="post" action="../../AnmeldungServlet">
+	<main class="fade-in">
+		<form id="anmeldeformular" method="post"
+			action="../../AnmeldungServlet">
 			<fieldset>
-				<div class="eingabefeld">
-					<label for="name">Nutzername: </label> <br /> <input name="name"
-						id="name" type="text" placeholder="Nutzername" maxlength="64"
-						required="required" /> <br /> <label for="passwort">Passwort:
-					</label> <br> <input name="passwort" id="passwort" type="password"
-						maxlength="128" placeholder="****" required="required" />
+				<legend>Anmeldung</legend>
+				<div>
+					<label for="name">Nutzername: </label> <input name="name" id="name"
+						type="text" placeholder="Nutzername" maxlength="64"
+						required="required" pattern="[^ &lt;&gt;&#34;']+"
+						title="Bitte geben Sie ihren Nutzernamen an." />
 				</div>
-				<div class="infotext">
-					<c:out value="${anmeldunginfotext}"
-						default="Bitte geben sie ihre Anmeldedaten an." />
+				<div>
+					<label for="passwort">Passwort: </label><input name="passwort"
+						id="passwort" type="password" maxlength="128"
+						placeholder="*******" required="required" pattern="[^ ]+"
+						title="Bitte geben Sie Ihr Passwort an." />
 				</div>
-				<div class="formularknopf">
+				<div class="buttonbox">
 					<button type="submit">Absenden</button>
-					<br />
 					<button type="reset">Zurücksetzen</button>
 				</div>
 			</fieldset>
 		</form>
+		<div id="infotext">
+			<span id="infoicon">&#9432; </span><span class="fade-in"> <c:out value="${forminfotext}"
+					default="Bitte geben sie ihre Anmeldedaten an." />
+			</span>
+		</div>
 	</main>
-<footer>
-			<%@include file="../jspf/footer.jspf"%>
+	<footer id="footer">
+		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>
 </html>

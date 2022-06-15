@@ -5,36 +5,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+<link rel="stylesheet"
+	href="../../css/verwaltungsseiten/nutzerverwaltungStil.css" />
+<script type="text/javascript"
+	src="../../js/verwaltungsskripte/nutzerverwaltung.js"></script>
+<%@include file="../jspf/noSkript.jspf"%>
 <title>Nutzerverwaltung</title>
-<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
 	<header>
 		<h1>Nutzerverwaltung</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	<main>
-		<form method="post" action="../../NutzerSucheServlet">
-			<fieldset>
-				<label for="fragment">Suche:</label> <input id="fragment"
-					name="fragment" type="text" required="required" /> <br /> <label>Anzahl
-					der Ergebnisse: </label> <br />
-				<label for="1ergebnis">1</label> <input type="radio"
-					name="anzahlErgebnisse" id="1ergebnis" value="1" /><br />
-				<label for="10ergebnisse">10</label> <input type="radio"
-					name="anzahlErgebnisse" value="10" id="10ergebnisse" /><br />
-				<label for="100ergebnisse">100</label> <input type="radio"
-					name="anzahlErgebnisse" value="100" id="100ergebnisse" /> <br />
-				<button type="submit">Suchen</button>
-			</fieldset>
-		</form>
+	<main class="fade-in">
+		<div class="row">
+			<div class="grid12">
+				<form id="nutzersucheform" method="post"
+					action="../../NutzerSucheServlet">
+					<fieldset>
+						<legend>Nutzersuche</legend>
+						<div>
+							<label id="fragmentlabel" for="fragment">Name</label> <input
+								id="fragment" name="fragment" type="text" required="required"
+								pattern="[^ &lt;&gt;&#34;']+"
+								title="Fragment eines Nutzernamens (Nutzernamen können keine Leerzeilen haben)."
+								value="${fragment}" />
+							<button id="suchenbutton" class="noStandardButton" type="button">
+								<!-- IMG-SRC: https://www.google.com/search?tbm=isch&ved=2ahUKEwjcxd-Vpqv4AhXpi_0HHY6JBG8Q2-cCegQIABAA&oq=search+icon+white+filetype:png&gs_lcp=CgNpbWcQAzoECAAQQzoFCAAQgAQ6BggAEB4QBzoECAAQHjoGCAAQHhAFUI0OWLxFYIRGaABwAHgBgAG-AogB2xOSAQgxLjE2LjEuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=M6KnYpzgBOmX9u8PjpOS-AY&bih=937&biw=1920&rlz=1C1CHBF_deDE916DE916&q=search+icon+white&tbs=ift:png#imgrc=SnwzyiNf1tuNMM -->
+								<img class="buttonImg" src="../../bilder/verwaltung/suchen.png" />
+							</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="grid12" id="suchergebnisse"></div>
+		</div>
 	</main>
-		<footer>
+	<footer>
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>

@@ -37,6 +37,7 @@ public class ProfilbildLadenServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("SELECT bild FROM `nutzer` WHERE name = ?")) {
 			String nutzername = request.getParameter("nn");
@@ -60,6 +61,7 @@ public class ProfilbildLadenServlet extends HttpServlet {
 							out.flush();
 						}
 					}
+
 				}
 			}
 		} catch (SQLException e) {

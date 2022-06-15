@@ -66,7 +66,7 @@ h3 {
 
 /* Responsive Design - Seitenumbruch bei PC */
 @media screen and (min-width: 960px) {
-	
+	 
 	#flexarea, nav {
         flex-direction: row;       
     }
@@ -292,3 +292,4 @@ h3 {
     }
 
 }
+

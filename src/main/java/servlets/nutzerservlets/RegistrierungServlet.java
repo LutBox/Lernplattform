@@ -22,7 +22,7 @@ import jakarta.servlet.http.Part;
 		* 4, location = "./tmpbilder", fileSizeThreshold = 1024 * 1024)
 public class RegistrierungServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String infotextname = "registrierunginfotext";
+	private static final String infotextname = "forminfotext";
 
 	/**
 	 * @author Merlin
@@ -31,6 +31,7 @@ public class RegistrierungServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		NutzerBean anfrage = new NutzerBean();
 		anfrage.setName(request.getParameter("name"));
 		anfrage.setEmail(request.getParameter("email"));

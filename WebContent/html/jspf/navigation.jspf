@@ -10,10 +10,9 @@ c) Nutzer ist nicht als Nutzer angemeldet.
 	<c:choose>
 		<c:when test="${nutzer.admin == 1}">
 			<li><a href="${pageContext.request.contextPath}/index.jsp">Startseite</a></li>
-      <li><a href="${pageContext.request.contextPath}/html/verwaltungsseiten/adminkonsole.jsp">Konsole</a></li>
 			<li><a href="${pageContext.request.contextPath}/html/verwaltungsseiten/nutzerverwaltung.jsp">Nutzerverwaltung</a></li>
 			<li><a href="${pageContext.request.contextPath}/html/verwaltungsseiten/spielekonfigurator.jsp">Spielekonfigurator</a></li>
-			<li><a href="${pageContext.request.contextPath}/html/verwaltungsseiten/kontaktanfragen.jsp">Kontaktanfragen</a></li>
+			<li><a href="${pageContext.request.contextPath}/UngeleseneNachrichtenLadenServlet">Kontaktanfragen</a></li>
 			<li><a href="${pageContext.request.contextPath}/NutzerAbmeldenServlet">Abmelden</a></li>
 		</c:when>
 		<c:when test="${nutzer.admin == 0}">

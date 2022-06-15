@@ -3,7 +3,9 @@ package servlets.adminservlets;
 import java.io.IOException;
 
 import beans.NutzerBean;
+import beans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,9 +30,10 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String neuerName = request.getParameter("neuerName");
 		String neueEmail = request.getParameter("neueEmail");
-		String neuesPasswort = request.getParameter("neuesPasswort");
+		String neuesPasswort = request.getParameter("passwort");
 		Integer neuerSatus = null;
 		Part neuesProfilbild = null;
 		try {
@@ -47,20 +50,21 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 		if (neuesProfilbild != null && neuesProfilbild.getSize() > 0) {
 			NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
 		}
-		if (neuesPasswort != null && neuesPasswort != null
-				&& !neuesPasswort.equals(zuverwaltendernutzer.getPasswort())) {
+		if (neuesPasswort != null && !neuesPasswort.equals(zuverwaltendernutzer.getPasswort())) {
 			NutzerSQLDienst.aktualisiereDasPasswortDesNutzers(neuesPasswort, alterName);
 		}
-		if (neueEmail != null && neueEmail != null && !neueEmail.equals(zuverwaltendernutzer.getEmail())) {
+		if (neueEmail != null && !neueEmail.equals(zuverwaltendernutzer.getEmail())) {
 			NutzerSQLDienst.aktualisiereEmailDesNutzers(neueEmail, alterName);
 		}
 		if (neuerSatus != null && neuerSatus != zuverwaltendernutzer.getAdmin()) {
 			NutzerSQLDienst.aktualisiereStatusDesNutzers(neuerSatus, alterName);
 		}
-		if (neuerName != null && neuerName != null && !neuerName.equals(alterName)) {
+		if (neuerName != null && !neuerName.equals(alterName)) {
 			NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
 		}
-		response.sendRedirect("./html/verwaltungsseiten/nutzerverwaltung.jsp");
+		NutzerViewBean veranderternutzer = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(neuerName);
+		session.setAttribute("veranderternutzer", veranderternutzer);
+		response.sendRedirect("./html/verwaltungsseiten/nutzernachaktualisierung.jsp");
 	}
 
 }
