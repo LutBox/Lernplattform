@@ -1,10 +1,11 @@
-/* Erstellt von Lukas Theinert */
-
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+/* 
+ * Erstellt von Lukas Theinert
+ */
+
 html {
-    width: 100%;
-    height: 100%;
     background: linear-gradient(325deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%);
     background-repeat: no-repeat;
 	background-attachment: fixed;    
@@ -67,11 +68,8 @@ html {
   pointer-events: none; /* The element is never the target of pointer events */
 }
 
-/* Drag and Drop Related Styling */
-
+/* Bild auf Kategorie hovern */
 .droppable.droppable-hover {
-  /* background-color: #bee3f0; */
-  border-width: 5px;
   transform: scale(1.1);
 }
 .droppable.dropped {
@@ -92,9 +90,4 @@ html {
 }
 .draggable.dragged:hover {
   opacity: 0.1;
-}
-
-@media (max-width: 600px) {
-  html { font-size: 14px; }
-  .draggable-elements { margin: 1.5rem; }
 }

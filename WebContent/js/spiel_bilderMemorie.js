@@ -1,12 +1,192 @@
-//Erstellt von Lukas Theinert
+/*
+ * Erstellt von Lukas Theinert
+ */
+ 
 //Memorie-Idee von Tutorial: https://www.freecodecamp.org/news/vanilla-javascript-tutorial-build-a-memory-game-in-30-minutes-e542c4447eae
 
 "use strict";
 
+//-------------------------------
+//---------- Verhalten ----------
+//-------------------------------
+
+//Const-Objekte können nicht neu deklariert oder zugewiesen werden und muessen initialisiert werden
+//Eigenschaften eines Const-Objektes kann man jederzeit ändern 
+//Quelle: https://www.w3schools.com/js/js_const.asp
+
+const karten = document.querySelectorAll(".memorieKarte");
+
+const spielEigenschaften = {
+	spielbrett: document.querySelector(".spielbrett-container"),
+	versuche: document.querySelector(".versuche"),
+	zeit: document.querySelector(".zeit"),
+	start: document.querySelector("button"),
+	win: document.querySelector(".win")
+}
+
+const spielStatus = {
+	spielGestartet: false,
+	aktuellUmgedrehteKarten: 0,
+	insgesamtUmgedrehteKarten: 0,
+	insgesamtZeit: 0,
+	loop: null
+}
+
+//Timer und Versuche jede Sekunde aktualisieren
+var startGame = () => {
+	spielStatus.spielGestartet = true
+
+	spielStatus.loop = setInterval(() => {
+		spielStatus.insgesamtZeit++
+
+		//alert(document.getElementById("gewertet").innerHTML);
+			
+		if (document.getElementById("gewertet").innerHTML === "gewertetAn") {
+			spielEigenschaften.versuche.innerText = `Versuche: ${spielStatus.insgesamtUmgedrehteKarten} `
+		}
+		
+		if (document.getElementById("timerID").innerHTML === "timerAn") {
+			spielEigenschaften.zeit.innerText = `Zeit: ${spielStatus.insgesamtZeit} Sekunden`
+		}
+		
+	}, 1000)
+}
+
+//Memorie-Idee:
+//----------- Anfang ----------------------
+var istUmgedreht = false;
+var istAufgedeckt = false;
+var ersteKarte, zweiteKarte;
+
+//Karte nach vorne drehen
+function karteVorneDrehen() {
+	if (istAufgedeckt){
+		return;
+	} 
+	if (this === ersteKarte) {
+		return;
+	}
+	
+	spielStatus.insgesamtUmgedrehteKarten++
+	spielStatus.aktuellUmgedrehteKarten++
+	
+	//Animation "drehen" hinzufügen
+	this.classList.add("drehen");
+
+	if (!istUmgedreht) {
+		istUmgedreht = true;
+		ersteKarte = this;
+		return;
+	}
+
+	zweiteKarte = this;
+	versuchChecken();
+}
+
+//Nach Karten-Paar prüfen
+function versuchChecken() {
+	//dataset = document.getElement -> liest alle daten aus, die mit "data-" beginnen
+	if(ersteKarte.dataset.bild === zweiteKarte.dataset.bild){
+		kartenDeaktivieren();
+	} else {
+		karteHintenDrehen();
+	}
+
+	//Jede Sekunde prüfen, ob alle Karten umgedreht worden sind
+	if (spielStatus.aktuellUmgedrehteKarten === document.querySelectorAll(".memorieKarte").length) {
+		setTimeout(() => {
+			spielEigenschaften.spielbrett.classList.add("flipped")
+			document.getElementById("informationen").style.visibility = "hide";
+			document.getElementById("spielbrett-container").style.visibility = "visible";
+			spielEigenschaften.win.innerHTML = 
+			`       
+                    Du hast gewonnen!<br>       
+                    Versuche: <span class="highlight">${spielStatus.insgesamtUmgedrehteKarten}</span><br>
+                    Zeit: <span class="highlight">${spielStatus.insgesamtZeit}</span> Sekunden
+            `
+            //Intervall: Zeit und Versuche aktualisieren -> stoppen
+			clearInterval(spielStatus.loop);		
+				
+			//DatenbankEintrag
+			if (document.getElementById("nutzer").innerHTML !== "") {
+				datenbankEintrag();	
+				//alert(document.getElementById("nutzer").innerHTML);
+			}
+		}, 1000)
+	}
+}
+
+//Gelöste Kartenpaare können nicht mehr angeklickt werden
+function kartenDeaktivieren() {
+	ersteKarte.removeEventListener("click", karteVorneDrehen);
+	zweiteKarte.removeEventListener("click", karteVorneDrehen);
+	
+	//Alle Variablen zurücksetzten
+	versuchFalsch();
+}
+
+//Karte nach hinten drehen
+function karteHintenDrehen() {
+	istAufgedeckt = true;
+
+	spielStatus.aktuellUmgedrehteKarten--;
+	spielStatus.aktuellUmgedrehteKarten--;
+
+	setTimeout(() => {
+		//Animationen "drehen" entfernen
+		ersteKarte.classList.remove("drehen");
+		zweiteKarte.classList.remove("drehen");
+
+		versuchFalsch();
+	}, 1500);
+}
+
+//Versuch falsch -> alle Variablen zurücksetzten
+function versuchFalsch() {
+	istUmgedreht = false;
+	istAufgedeckt = false;
+	ersteKarte = null;
+	zweiteKarte = null;
+}
+
+//Alle Karten durchmischen
+(function kartenMischen() {
+	karten.forEach(karte => {
+		let randomPos = Math.floor(Math.random() * 12);
+		karte.style.order = randomPos;
+	});
+})();
+//----------- Ende ----------------------
+
+//----------------------------
+//---------- Events ----------
+//----------------------------
+
+//Spiel wird gestartet, sobald die erste Karte oder der Start-Button angeklickt wird
+document.addEventListener("click", event => {
+	const eventTarget = event.target
+
+	if (eventTarget.nodeName === "BUTTON" && spielStatus.spielGestartet === false) {
+		startGame()
+	}
+	if (eventTarget.nodeName === "IMG" && spielStatus.spielGestartet === false) {
+		startGame()
+	}
+})
+
+//Karte drehen
+karten.forEach(karte => karte.addEventListener("click", karteVorneDrehen));
+
+//Restart-Button
+document.getElementById("restartButton").onclick = function() {
+	window.location.reload();
+}
+
+//Datenbankeintrag
 function datenbankEintrag() {
 
-	var zeit = state.totalTime;
-	var versuche = state.totalFlips;
+	var zeit = spielStatus.insgesamtZeit;
+	var versuche = spielStatus.insgesamtUmgedrehteKarten;
 
 	var sendData = "zeit=" + zeit + "&versuche=" + versuche;
 
@@ -22,159 +202,3 @@ function datenbankEintrag() {
 
 	//alert("Spiel in Datenbank gespeichert");
 }
-
-
-//Spiel
-const karten = document.querySelectorAll('.memorieKarte');
-
-const selectors = {
-	boardContainer: document.querySelector('.board-container'),
-	board: document.querySelector('.board'),
-	moves: document.querySelector('.moves'),
-	timer: document.querySelector('.timer'),
-	start: document.querySelector('button'),
-	win: document.querySelector('.win')
-}
-
-const state = {
-	gameStarted: false,
-	flippedCards: 0,
-	totalFlips: 0,
-	totalTime: 0,
-	loop: null
-}
-
-
-const startGame = () => {
-	state.gameStarted = true
-
-	state.loop = setInterval(() => {
-		state.totalTime++
-
-		//alert(document.getElementById("gewertet").innerHTML);
-			
-		if (document.getElementById("gewertet").innerHTML === "gewertetAn") {
-			selectors.moves.innerText = `Versuche: ${state.totalFlips} `
-		}
-		
-		if (document.getElementById("timerID").innerHTML === "timerAn") {
-			selectors.timer.innerText = `Zeit: ${state.totalTime} Sekunden`
-		}
-		
-	}, 1000)
-}
-
-
-const attachEventListeners = () => {
-	document.addEventListener('click', event => {
-		const eventTarget = event.target
-		const eventParent = eventTarget.parentElement
-
-		if (eventTarget.nodeName === 'BUTTON' && state.gameStarted === false) {
-			startGame()
-		}
-		if (eventTarget.nodeName === 'IMG' && state.gameStarted === false) {
-			startGame()
-		}
-	})
-}
-
-
-//Memorie-Idee:
-//----------- Anfang ----------------------
-let istUmgedreht = false;
-let istAufgedeckt = false;
-let ersteKarte, zweiteKarte;
-
-function karteVorneDrehen() {
-	if (istAufgedeckt) return;
-	if (this === ersteKarte) return;
-	state.totalFlips++
-	state.flippedCards++
-	this.classList.add('drehen');
-
-	if (!istUmgedreht) {
-		istUmgedreht = true;
-		ersteKarte = this;
-		return;
-	}
-
-	zweiteKarte = this;
-	versuchChecken();
-}
-
-function versuchChecken() {
-	let isMatch = ersteKarte.dataset.framework === zweiteKarte.dataset.framework;
-	isMatch ? kartenDeaktivieren() : karteHintenDrehen();
-
-	if (state.flippedCards === document.querySelectorAll('.memorieKarte').length) {
-		//  if(isMatch){
-		setTimeout(() => {
-			selectors.boardContainer.classList.add('flipped')
-			document.getElementById("controls").style.visibility = "hide";
-			document.getElementById("board-container").style.visibility = "visible";
-			selectors.win.innerHTML = `       
-                    Du hast gewonnen!<br />       
-                    Versuche: <span class="highlight">${state.totalFlips}</span><br />
-                    Zeit: <span class="highlight">${state.totalTime}</span> Sekunden
-            `
-			clearInterval(state.loop)			
-			//DatenbankEintrag
-			if (document.getElementById("nutzer").innerHTML !== "") {
-				datenbankEintrag();	
-				//alert(document.getElementById("nutzer").innerHTML);
-			}
-		}, 1000)
-	}
-}
-
-function isEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
-    }
-    return true;
-}
-
-function unhideRestart() {
-	document.getElementByID().style.visability = 'restart';
-}
-
-
-
-function kartenDeaktivieren() {
-	ersteKarte.removeEventListener('click', karteVorneDrehen);
-	zweiteKarte.removeEventListener('click', karteVorneDrehen);
-
-	versuchFalsch();
-}
-
-function karteHintenDrehen() {
-	istAufgedeckt = true;
-
-	state.flippedCards--;
-	state.flippedCards--;
-
-	setTimeout(() => {
-		ersteKarte.classList.remove('drehen');
-		zweiteKarte.classList.remove('drehen');
-
-		versuchFalsch();
-	}, 1500);
-}
-
-function versuchFalsch() {
-	[istUmgedreht, istAufgedeckt] = [false, false];
-	[ersteKarte, zweiteKarte] = [null, null];
-}
-
-(function kartenMischen() {
-	karten.forEach(karte => {
-		let randomPos = Math.floor(Math.random() * 12);
-		karte.style.order = randomPos;
-	});
-})();
-//----------- Ende ----------------------
-
-karten.forEach(karte => karte.addEventListener('click', karteVorneDrehen));
-attachEventListeners()

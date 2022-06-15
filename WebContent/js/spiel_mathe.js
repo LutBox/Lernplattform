@@ -1,4 +1,22 @@
-//Erstellt von Lukas Theinert
+/*
+ * Erstellt von Lukas Theinert
+ */
+ 
+//Mathe-Spiel Idee von: https://codepen.io/bobbidigi34/pen/rWzZgQ
+
+"use strict";
+
+if (document.getElementById("gewertet").innerHTML === "gewertetAus") {
+	document.getElementById("punktezahl").style.visibility = 'hidden';
+}
+
+if (document.getElementById("timerID").innerHTML === "TimerAus") {		
+	document.getElementById("verbleibendeZeit").style.visibility = 'hidden';
+} 
+
+//-------------------------------
+//---------- Verhalten ----------
+//-------------------------------
 
 var spielGestartet = false;
 var punkteStand;
@@ -6,39 +24,11 @@ var action;
 var verbleibendeZeit;
 var richtigAntwort;
 
-//Start-Reset
-document.getElementById("start-restart").onclick = function() {
-	
-	if (spielGestartet == true) {
-		location.reload();
-	}
-	else {
-		spielGestartet = true;
-		punkteStand = 0;
-
-		document.getElementById("punkte").innerHTML = punkteStand;
-		//show count
-		show("verbleibendeZeit");
-		verbleibendeZeit = 60;
-
-		document.getElementById("verbleibendeZeitWert").innerHTML = verbleibendeZeit;
-
-		//hide game over
-		hide("spielVorbei");
-
-		//change start to reset		
-		document.getElementById("start-restart").innerHTML = "Restart";
-
-		//start count
-		startCountdown();
-
-		//generate quetion
-		zahlenGenerieren();
-
-	}
-}
-
 //Antworten
+
+//Mathe-Spiel-Idee:
+//----------- Anfang ----------------------
+let i;
 for (i = 1; i < 5; i++) {
 	document.getElementById("box" + i).onclick = function() {
 		if (spielGestartet == true) {
@@ -66,6 +56,7 @@ for (i = 1; i < 5; i++) {
 	}
 }
 
+//Timer starten
 function startCountdown() {
 	action = setInterval(function() {
 		verbleibendeZeit -= 1;
@@ -105,6 +96,8 @@ function hide(Id) {
 function show(Id) {
 	document.getElementById(Id).style.display = "block";
 }
+
+//----------- Ende ----------------------
 
 //Zahlen je nah Schwierigkeitsgrad generieren
 function zahlenGenerieren() {
@@ -165,11 +158,52 @@ function zahlenGenerieren() {
 	}
 }
 
+
+//----------------------------
+//---------- Events ----------
+//----------------------------
+
+//Start-Reset
+document.getElementById("start-restart").onclick = function() {
+	
+	if (spielGestartet == true) {
+		window.location.reload();
+	}
+	else {
+		spielGestartet = true;
+		punkteStand = 0;
+
+		document.getElementById("punkte").innerHTML = punkteStand;
+		
+		//show count
+		if (document.getElementById("timerID").innerHTML === "timerAn") {	
+			show("verbleibendeZeit");
+			verbleibendeZeit = 60;
+		} 
+		
+
+		document.getElementById("verbleibendeZeitWert").innerHTML = verbleibendeZeit;
+
+		//hide game over
+		hide("spielVorbei");
+
+		//change start to reset		
+		document.getElementById("start-restart").innerHTML = "Restart";
+
+		//start count
+		startCountdown();
+
+		//generate quetion
+		zahlenGenerieren();
+
+	}
+}
+
 //Datenbankeintrag
-"use strict";
+//"use strict";
 
 function datenbankEintrag() {
-	alert("Punktestand: " + punkteStand)
+	//alert("Punktestand: " + punkteStand)
 	
 	var zeit = punkteStand;
 	var versuche = punkteStand;
@@ -188,5 +222,5 @@ function datenbankEintrag() {
 	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xmlhttp.send(sendData);
 
-	alert("Spiel in Datenbank gespeichert");
+	//alert("Spiel in Datenbank gespeichert");
 }

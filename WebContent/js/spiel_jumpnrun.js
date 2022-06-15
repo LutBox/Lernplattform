@@ -1,7 +1,8 @@
-//Erstellt von Lukas Theinert
+/*
+ * Erstellt von Lukas Theinert
+ */
 
-//KEIN USE STRICT!!!
-//"use strict";
+"use strict";
 
 //-------------------------------
 //---------- Animation ----------
@@ -124,6 +125,7 @@ var stein = document.getElementById("stein");
 var counter = 0;
 var zeitStein = 2.1
 var zeitVogel = 5.1;
+var actionStein, actionVogel, actionZeit, checkGetroffenStein, checkGetroffenVogel;
 
 //Figur: Springen
 function jump() {
@@ -355,6 +357,12 @@ function datenbank() {
 //---------- Events ----------
 //----------------------------
 
+//Restart-Button
+document.getElementById("restartButton").onclick = function() {
+	window.location.reload();
+}
+
+//Start-Button
 document.getElementById("start").addEventListener("click", start);
 function start(){
 	spielGestartet = true
@@ -366,6 +374,7 @@ function start(){
 	document.getElementById("start").disabled = 'true';
 }
 
+//Spiel-Steuerung
 document.addEventListener('keydown', (event) => {
     var name = event.key;
     var code = event.code;
