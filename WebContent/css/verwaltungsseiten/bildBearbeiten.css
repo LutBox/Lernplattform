@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+/* 
+ * Erstellt von Lukas Theinert
+ */
+ 
+/* Bild */
+.bild {
+	padding: 10px;
+	background-color: #000000e0;
+	border-radius: 15px;
+}
+
+/* Beschreibung */
+.bildBeschreibung {
+	font-size: 26px;
+	padding: 10px;
+	background-color: #000000e0;
+	color: white;
+	border-radius: 15px;
+}
+
+fieldset{
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#safe{
+	float: left;
+    bottom: 10%;
+    z-index: 99;
+}
+
+#delete{
+	float: right;
+    bottom: 10%;
+    z-index: 99;
+}
+
+#abbruch{
+	float: center;
+	bottom: 10%;
+    z-index: 99;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+  z-index: 1;
+  text-align: left;
+}
+
+.dropdown-content a {
+  color: white;
+  background-color: #282A3A;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  
+}
+
+.dropdown-content a:hover {
+	background-color: #282A3A;
+	color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: black;
+}

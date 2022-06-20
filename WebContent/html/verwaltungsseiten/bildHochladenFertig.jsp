@@ -2,15 +2,18 @@
 Erstellt von Lukas Theinert
 --%>
 
-
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-<base href="${pageContext.request.requestURI}" />
-<meta charset="ISO-8859-1">
-<title>Upload</title>
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+
+    <base href="${pageContext.request.requestURI}"/>
+
+    <title>Bilder hochgeladen</title>
 </head>
 <body>
 

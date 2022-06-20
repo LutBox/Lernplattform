@@ -2,49 +2,80 @@
 Erstellt von Lukas Theinert
 --%>
 
-
-<%@page contentType="text/html;charset=UTF-8" language="java"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-<base href="${pageContext.request.requestURI}" />
-<meta charset="ISO-8859-1">
-<title>Upload</title>
+
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/verwaltungsseiten/bildBearbeiten.css"/>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/verwaltungsskripte/bildBearbeiten.js" defer></script>
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+
+    <title>Bilder bearbeiten</title>
 </head>
 <body>
-	
-		<nav>
-		<%@include file="../jspf/navigation.jspf"%>
-		</nav>   
-          
-	<br>
-	<form id="form1" method="post" action="${pageContext.request.contextPath}/BildHochladenServlet" enctype="multipart/form-data">
-			<fieldset><legend>Bild hochladen</legend>
-				<div>
-				  <label for="number">Kategorie angeben:</label>
-				  <input type="text" name="kategorie" id="kategorie" placeholder="Kategorie eingeben" >
-				</div>
-				<div>
-				  <label for="image">Bild hochladen:</label>
-				  <input type="file" name="image" id="image" accept="image/*">
-				</div>
 
-				<div>
-				  <button name="submit" type="submit">Absenden</button>
-				  <button name="reset" type="reset">Zurücksetzen</button>
-				</div>
-			</fieldset>			
-		</form>
+<h1>Bild bearbeiten</h1>
+
+	<nav>
+		<%@include file="../jspf/navigation.jspf"%>
+	</nav>
+
+<!-- Begin der FLEXBOX = Flex-Container -->
+<div id="flexarea">
+    
+        <!-- Flex-Item 2 -->
+    <article>
+    	<div id="temp" hidden></div>
+    	<h2 hidden>Bild bearbeiten</h2>
+	
+			<fieldset><legend id="bildBeschreibung">${bild.bildKategorie}</legend>
+
+			<div class="dropdown">
+  				<button class="dropbtn">Kategorie auswählen</button>
+  				<br>
+  				<div class="dropdown-content">  				
+			  		<c:forEach var="kategorieListe" items="${kategorieListe}">  
+			  			<input type="radio" name="Kategorien" class="kategorie" id="${kategorieListe.bildKategorie}" value="${kategorieListe.bildKategorie}">
+                        <label for="${kategorieListe.bildKategorie}">${kategorieListe.bildKategorie}</label>
+                        <br>      
+        			</c:forEach>
+        			
+			  </div>
+			</div>
+			<br><br>	
+			<img class="bild" alt="bild1" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${bild.bildID}">
+			<div id="bildID" hidden>${bild.bildID}</div>
+			<br><br>	
+			
+			<form id="safe" method="post" action="${pageContext.request.contextPath}/AlleBilderAnzeigenServlet" enctype="multipart/form-data">
+				  <button id="safe" name="submit" type="button">Speichern</button>
+			</form>
+			
+			<form id="delete" method="post" action="${pageContext.request.contextPath}/AlleBilderAnzeigenServlet" enctype="multipart/form-data">
+				  <button name="submit" type="submit">Bild löschen</button>
+			</form>	
+			
+			<form id="abbruch" method="post" action="${pageContext.request.contextPath}/AlleBilderAnzeigenServlet" enctype="multipart/form-data">
+				  <button name="submit" type="submit">Abbrechen</button>
+			</form>	
+			</fieldset>						
 		
-	<br>
-	<form id="form2" method="post" action="${pageContext.request.contextPath}/AlleBilderAnzeigenServlet" enctype="multipart/form-data">
-			<fieldset><legend> Alle Bilder anzeigen lassen</legend>
-				<div>
-				  <button name="submit" type="submit">Absenden</button>
-				</div>
-			</fieldset>			
-		</form>		
+		
+ <button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+
+</article>
+</div>
+<!-- Ende der FLEXBOX -->
+
+<br> <br> <br> <br>
+
+<footer>
+    <%@include file="../jspf/footer.jspf" %>
+</footer>	
 
 </body>
 </html>
