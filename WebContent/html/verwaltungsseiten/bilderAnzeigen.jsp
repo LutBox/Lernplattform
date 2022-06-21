@@ -31,18 +31,36 @@ Erstellt von Lukas Theinert
 
     <!-- Flex-Item 1 -->
     <aside>
-        <h2>Hinweis!</h2>
-        <p>1. Es müssen mindestens 16 Kategorien vorhanden sein.</p>
-        <p>2. Jede Kategorie muss mindestens 4 Bilder enthalten, damit alle Spiel voll funktionstauglich sind.</p>
-        <p>3. Ein Bild muss 128 * 128 Pixel groß sein.</p>
+    <div class="asideLinks">
+        <h3>Bild hinzufügen</h3>
+        Hinweis: <br>
+        Ein Bild muss 128 * 128 Pixel groß sein.
+        <form  method="post" action="${pageContext.request.contextPath}/html/verwaltungsseiten/bildHochladenFertig.jsp" enctype="multipart/form-data">
+			<button id="neuesBild" name="submit" type="submit">Neues Bild hinzufügen</button>
+		</form>	
+		<br>
+		<h3>Kategorie hinzufügen</h3>
+		Hinweis: <br>
+		Jede Kategorie muss mindestens 4 Bilder enthalten, damit alle Spiel voll funktionstauglich sind.
+        <form  method="post" action="${pageContext.request.contextPath}/html/verwaltungsseiten/kategorieNeu.jsp" enctype="multipart/form-data">
+			<button id="neuesBild" name="submit" type="submit">Neue Kategorie hinzufügen</button>
+		</form>
+		<br>
+		<h3>Kategorie löschen</h3>
+		Hinweis: <br>
+		Es müssen mindestens 16 Kategorien vorhanden sein.
+        <form  method="post" action="${pageContext.request.contextPath}/html/verwaltungsseiten/kategorieEntfernen.jsp" enctype="multipart/form-data">
+			<button id="neuesBild" name="submit" type="submit">Bestehende Kategorie löschen</button>
+		</form>
+	</div>	
     </aside>
     
         <!-- Flex-Item 2 -->
     <article>
     	<h2 hidden>Bild bearbeiten</h2>
-
-
+	
 	<div class="bilderKategorie">
+
 	<c:forEach var="bilderListe" items="${bilderListe}">
 		
 		<div class="feld ${bilderListe.bildKategorie}">
@@ -72,7 +90,7 @@ Erstellt von Lukas Theinert
     <!-- Flex-Item 3 -->
     <aside>
         <h3>Kategorien</h3>
-        <br>
+        <div>
         <c:forEach var="kategorieListe" items="${kategorieListe}">        
         		<input class="kategorie" type="checkbox" name="${kategorieListe.bildKategorie}" id="${kategorieListe.bildKategorie}" value="${kategorieListe.bildKategorie}" checked="checked">
         		<label for="${kategorieListe.bildKategorie}">${kategorieListe.bildKategorie}</label>

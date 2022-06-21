@@ -4,25 +4,33 @@
 
 package servlets.adminservlets;
 
+import jakarta.servlet.http.HttpServlet;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
 import javax.sql.DataSource;
 
 import jakarta.annotation.Resource;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/*
- * 
- */
-@WebServlet("/BildBearbeitenAjax")
 
-public class BildBearbeitenAjax extends HttpServlet {
+/**
+ * Servlet implementation class BildHochladenServlet
+ */
+@WebServlet("/KategorieEntfernenServlet")
+@MultipartConfig(
+        maxFileSize=128*128*4,
+        maxRequestSize=128*128*4*4, 
+        location= "/tmp",
+        fileSizeThreshold=128*128)
+
+public class KategorieEntfernenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
@@ -31,7 +39,7 @@ public class BildBearbeitenAjax extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BildBearbeitenAjax() {
+	public KategorieEntfernenServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -45,28 +53,26 @@ public class BildBearbeitenAjax extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		// Dateien aus Bean in neues Objekt einfügen
-		String neuKategorie = String.valueOf(request.getParameter("neuKategorie"));
-		String bildID = String.valueOf(request.getParameter("bildID"));
-
-		//log("HAT GEKLAPPT: " + neuKategorie + "BILDID:" + bildID);
-		// In Datenbank eintragen
-		persist(neuKategorie, bildID);
+		//Kategorie entgegennehmen 		
+		String kategorie = request.getParameter("kategorieWahl");
+		//log("KATEGORIE: " + kategorie);
 		
-		//Weiterleiten an JSP
-		//final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/spielekonfigurator.jsp");
-		//dispatcher.forward(request, response);
+		persist1(kategorie);
+		persist2(kategorie);
+
+				
+		// Weiterleiten an JSP
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/spielekonfigurator.jsp");
+		dispatcher.forward(request, response);
 	}
 	
-
-	private void persist(String neuKategorie, String bildID) throws ServletException {
+	private void persist1(String neuKategorie) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"UPDATE bild SET kategorie = (?) WHERE bild.id = (?);")) {
+						"DELETE FROM bild WHERE kategorie = (?);")) {
 		
 				pstmt.setString(1, neuKategorie);
-				pstmt.setString(2, bildID);
 				
 			pstmt.executeUpdate();
 			//log("HAT GEKLAPPT");
@@ -77,11 +83,32 @@ public class BildBearbeitenAjax extends HttpServlet {
 
 	}
 
+	private void persist2(String neuKategorie) throws ServletException {
+		// DB-Zugriff
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(
+						"DELETE FROM wort WHERE kategorie = (?);")) {
+		
+				pstmt.setString(1, neuKategorie);
+				
+			pstmt.executeUpdate();
+			//log("HAT GEKLAPPT");
+			
+		} catch (Exception ex) {
+			throw new ServletException(ex.getMessage());
+		}
 
+	}
+
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//log("TEEEEEEEST");
 		doGet(request, response);
 	}
 

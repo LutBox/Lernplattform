@@ -13,11 +13,11 @@ Erstellt von Lukas Theinert
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
-    <title>Bilder hochladen</title>
+    <title>Kategorie löschen</title>
 </head>
 <body>
 
-<h1>Bild hochladen</h1>
+<h1>Kategorie löschen</h1>
 
 	<nav>
 		<%@include file="../jspf/navigation.jspf"%>
@@ -31,9 +31,9 @@ Erstellt von Lukas Theinert
     	<div id="temp" hidden></div>
     	<h2 hidden>Bild hochladen</h2>
 
-			<fieldset><legend>Bild hochladen</legend>
-				<form id="form1" method="post" action="${pageContext.request.contextPath}/BildHochladenServlet" enctype="multipart/form-data">
-				
+		<fieldset><legend>Kategorie löschen</legend>
+				<form id="form1" method="post" action="${pageContext.request.contextPath}/KategorieEntfernenServlet" enctype="multipart/form-data">
+						
 				<div>
 				  <label for="kategorieWahl">Kategorien:</label>
 				  <select name="kategorieWahl" id="kategorieWahl" size="1">
@@ -44,17 +44,12 @@ Erstellt von Lukas Theinert
 				  </select>
 				</div>
 				<br>
-				
-				<div>
-				  <label for="image">Bild hochladen:</label>
-				  <input type="file" name="image" id="image" accept="image/*" required>
-				</div>
-				<br>
-				
 				<div>
 				  <button id="absenden" name="submit" type="submit">Absenden</button>
 				</div>
-				<br>					
+				
+				<br>
+				<br>	
 			</form>
 				
 		<form id="abbruch" method="post" action="${pageContext.request.contextPath}/html/verwaltungsseiten/spielekonfigurator.jsp" enctype="multipart/form-data">

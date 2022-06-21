@@ -6,7 +6,7 @@
  
 /* Feld mit allen Bildern + Beschreibungen */
 .bilderKategorie {
-	width: 768px;
+	width: 752px;
 	margin: auto;
 	display: flex;
 	flex-wrap: wrap;
@@ -16,6 +16,11 @@
 /* Feld mit einem Bild + Beschreibung */
 .feld {
 	padding: 20px;
+	text-align: center;
+}
+
+/* Seitenfeld Links */
+.asideLinks{
 	text-align: center;
 }
 
@@ -46,6 +51,7 @@
 	width: 28px;
 	height: auto;
 }
+
 
 
 

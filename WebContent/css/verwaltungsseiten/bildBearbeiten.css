@@ -26,24 +26,6 @@ fieldset{
     text-align: center;
 }
 
-#safe{
-	float: left;
-    bottom: 10%;
-    z-index: 99;
-}
-
-#delete{
-	float: right;
-    bottom: 10%;
-    z-index: 99;
-}
-
-#abbruch{
-	float: center;
-	bottom: 10%;
-    z-index: 99;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -55,7 +37,7 @@ fieldset{
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
-  z-index: 1;
+  z-index: 99;
   text-align: left;
 }
 

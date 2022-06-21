@@ -85,7 +85,7 @@ public class AlleBilderAnzeigenServlet extends HttpServlet {
 		//DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT DISTINCT kategorie FROM bild;")) {
+						"SELECT * FROM wort;")) {
 
 			try(ResultSet rs = pstmt.executeQuery()) {
 				while (rs!= null && rs.next()) {

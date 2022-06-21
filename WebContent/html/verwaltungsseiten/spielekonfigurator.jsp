@@ -8,9 +8,6 @@ Erstellt von Merlin Weinthaler und Lukas Theinert
 <!DOCTYPE html>
 <html lang="de">
 <head>
-
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
 	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
@@ -21,6 +18,8 @@ Erstellt von Merlin Weinthaler und Lukas Theinert
 </head>
 <body>
 
+	<c:redirect url="/AlleBilderAnzeigenServlet"/>
+
 	<header>
 		<h1>Spielekonfigurator</h1>
 		<%@include file="../jspf/navigation.jspf"%>
@@ -28,9 +27,7 @@ Erstellt von Merlin Weinthaler und Lukas Theinert
 	
 	<main>
 		<ul>
-			<li><a href="${pageContext.request.contextPath}/html/verwaltungsseiten/bildBearbeiten.jsp">Bild bearbeiten</a></li>
 			<li><a href="${pageContext.request.contextPath}/AlleBilderAnzeigenServlet">Bilder Anzeigen</a></li>
-			<li><a href="${pageContext.request.contextPath}/html/verwaltungsseiten/bildHochladenFertig.jsp">Bild hochladen</a></li>
 		</ul>
 	</main>
 	

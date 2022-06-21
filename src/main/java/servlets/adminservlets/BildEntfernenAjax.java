@@ -20,9 +20,9 @@ import jakarta.servlet.http.HttpServletResponse;
 /*
  * 
  */
-@WebServlet("/BildBearbeitenAjax")
+@WebServlet("/BildEntfernenAjax")
 
-public class BildBearbeitenAjax extends HttpServlet {
+public class BildEntfernenAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
@@ -31,7 +31,7 @@ public class BildBearbeitenAjax extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public BildBearbeitenAjax() {
+	public BildEntfernenAjax() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -46,12 +46,11 @@ public class BildBearbeitenAjax extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		// Dateien aus Bean in neues Objekt einfügen
-		String neuKategorie = String.valueOf(request.getParameter("neuKategorie"));
 		String bildID = String.valueOf(request.getParameter("bildID"));
 
 		//log("HAT GEKLAPPT: " + neuKategorie + "BILDID:" + bildID);
 		// In Datenbank eintragen
-		persist(neuKategorie, bildID);
+		persist(bildID);
 		
 		//Weiterleiten an JSP
 		//final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/spielekonfigurator.jsp");
@@ -59,14 +58,13 @@ public class BildBearbeitenAjax extends HttpServlet {
 	}
 	
 
-	private void persist(String neuKategorie, String bildID) throws ServletException {
+	private void persist(String bildID) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"UPDATE bild SET kategorie = (?) WHERE bild.id = (?);")) {
+						"DELETE FROM bild WHERE id = (?);")) {
 		
-				pstmt.setString(1, neuKategorie);
-				pstmt.setString(2, bildID);
+				pstmt.setString(1, bildID);
 				
 			pstmt.executeUpdate();
 			//log("HAT GEKLAPPT");

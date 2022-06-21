@@ -50,18 +50,13 @@ Erstellt von Lukas Theinert
 			<img class="bild" alt="bild1" src="${pageContext.request.contextPath}/BildAnzeigenServlet?id=${bild.bildID}">
 			<div id="bildID" hidden>${bild.bildID}</div>
 			<br><br>	
-			
-			<form id="safe" method="post" action="${pageContext.request.contextPath}/AlleBilderAnzeigenServlet" enctype="multipart/form-data">
-				  <button id="safe" name="submit" type="button">Speichern</button>
-			</form>
-			
-			<form id="delete" method="post" action="${pageContext.request.contextPath}/AlleBilderAnzeigenServlet" enctype="multipart/form-data">
-				  <button name="submit" type="submit">Bild löschen</button>
-			</form>	
-			
-			<form id="abbruch" method="post" action="${pageContext.request.contextPath}/AlleBilderAnzeigenServlet" enctype="multipart/form-data">
-				  <button name="submit" type="submit">Abbrechen</button>
-			</form>	
+
+			<button id="safe" name="button" type="button">Speichern</button>
+
+			<button id="delete" type="button">Bild löschen</button>
+
+			<button id="abbruch" type="button">Abbrechen</button>
+
 			</fieldset>						
 		
 		
