@@ -6,6 +6,7 @@
 	<script type="text/javascript" src="../../js/verwaltungsskripte/nutzerverwaltung.js"></script>
 	<script type="text/javascript" src="../../js/standard.js" defer></script>
 	<%@include file="../jspf/noSkript.jspf"%>
+	<meta charset="UTF-8">
 	<title>Nutzerverwaltung</title>
 </head>
 <body>

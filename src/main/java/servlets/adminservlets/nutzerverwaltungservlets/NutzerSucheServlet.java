@@ -1,4 +1,4 @@
-package servlets.adminservlets;
+package servlets.adminservlets.nutzerverwaltungservlets;
 
 import java.io.IOException;
 import java.util.ArrayList;

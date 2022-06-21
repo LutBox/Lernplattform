@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="../../css/nutzerseiten/anmeldungStil.css" />
 <%@include file="../jspf/noSkript.jspf"%>
+<meta charset="UTF-8">
 <title>Anmeldung</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
 					<label for="name">Nutzername: </label> <input name="name" id="name"
 						type="text" placeholder="Nutzername" maxlength="64"
 						required="required" pattern="[^ &lt;&gt;&#34;']+"
-						title="Bitte geben Sie ihren Nutzernamen an." />
+						title="Bitte geben Sie Ihren Nutzernamen an." />
 				</div>
 				<div class="inputfeld">
 					<label for="passwort">Passwort: </label><input name="passwort"

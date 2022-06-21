@@ -5,11 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css"
 	href="../../css/nutzerseiten/registrierenStil.css" />
-<script type="text/javascript" src="../../js/nutzerskripte/profilkonfiguraration.js" defer></script>
+<script type="text/javascript"
+	src="../../js/nutzerskripte/profilkonfiguraration.js" defer></script>
+<script type="text/javascript"
+	src="../../js/cookiemonster.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
+<meta charset="UTF-8">
 <title>Registrierung</title>
 </head>
 <body>
@@ -19,7 +22,8 @@
 	</header>
 	<main class="fade-in">
 		<form id="profilkonfigurationsform" method="post"
-			action="../../RegistrierungServlet" enctype="multipart/form-data" accept-charset="UTF-8">
+			action="../../RegistrierungServlet" enctype="multipart/form-data"
+			accept-charset="UTF-8">
 			<fieldset>
 				<legend>Registrierung</legend>
 				<div class="inputfeld">
@@ -69,5 +73,6 @@
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
+	<%@include file="../jspf/cookiemonster.jspf"%>
 </body>
 </html>

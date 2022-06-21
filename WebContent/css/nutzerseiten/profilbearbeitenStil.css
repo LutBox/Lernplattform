@@ -11,6 +11,7 @@
 @import url("../standard/standardGoToTop.css");
 @import url("../standard/standardFormInfotext.css");
 @import url("../standard/footerAbsoluteBottom.css");
+@import url("../standard/cookiemonsterStil.css");
 
 form {
 	padding-top: 150px;

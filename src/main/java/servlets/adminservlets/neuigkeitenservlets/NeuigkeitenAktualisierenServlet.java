@@ -1,4 +1,4 @@
-package servlets.adminservlets;
+package servlets.adminservlets.neuigkeitenservlets;
 
 import java.io.IOException;
 import java.util.ArrayList;

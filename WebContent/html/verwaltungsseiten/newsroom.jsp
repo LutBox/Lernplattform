@@ -24,10 +24,10 @@
 		<div id="display" class="fade-in">
 			<c:forEach items="${neuigkeiten}" var="neuigkeit">
 				<div class="neuigkeit">
-					<p>
+					<p class="nachrichttext">
 						<c:out value="${neuigkeit.nachricht}"></c:out>
 					</p>
-					<p>
+					<p class="zeitstempel">
 						<c:out value="${neuigkeit.zeitstempel}"></c:out>
 					</p>
 					<form action="../../NeuigkeitEditierenServlet">
@@ -46,6 +46,9 @@
 								src="../../bilder/verwaltung/entfernen.png" />
 						</button>
 					</form>
+					<br />
+					<hr class="neuigkeitentrenner" />
+					<br />
 				</div>
 			</c:forEach>
 		</div>
@@ -53,7 +56,7 @@
 			<form method="POST" action="../../NeuigkeitEinstellenServlet"
 				accept-charset="UTF-8">
 				<legend>News neu anlegen</legend>
-				<label for="neuigkeitNeu">Neuigkeit</label>
+				<label for="neuigkeitNeu">Text</label>
 				<textarea id="neuerPost" name="neuigkeitNeu" rows="4" cols="30"
 					placeholder="Was ist neu?"
 					titel="Bitte geben sie hier Neuigkeiten ein." required></textarea>
@@ -67,13 +70,12 @@
 				<legend>News aktualisieren</legend>
 				<input name="zennr" type="hidden"
 					value="${zueditierendeNeuigkeit.nnr}" /> <label
-					for="neuigkeitAktualisiert">Neuigkeit</label>
+					for="neuigkeitAktualisiert">Text</label>
 				<textarea id="neuigkeitAktualisiert" name="neuigkeitAktualisiert"
 					rows="4" cols="30" titel="Bitte geben sie hier Neuigkeiten ein."
 					required>${zueditierendeNeuigkeit.nachricht}</textarea>
 				<button id="aktualisierenButton" type="button">Aktualisieren</button>
-				<button id="aktualisierenAbbrButton">Aktualisierung
-					Abbrechen</button>
+				<button id="aktualisierenAbbrButton">Abbrechen</button>
 			</form>
 		</div>
 		<button id="neuAnlegenButton" type="button"

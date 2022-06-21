@@ -1,5 +1,7 @@
 @charset "UTF-8";
-/* @author Merlin */
+/**
+ *	@author Merlin
+ */
 @import url("../standard/standardFadeIn.css");
 @import url("../standard/standardHintergrund.css");
 @import url("../standard/standardFonts.css");
@@ -11,6 +13,7 @@
 @import url("../standard/standardFormInfotext.css");
 @import url("../standard/noSkriptStil.css");
 @import url("../standard/footerAbsoluteBottom.css");
+@import url("../standard/cookiemonsterStil.css");
 
 form {
 	padding-top: 200px;

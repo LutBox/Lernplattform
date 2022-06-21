@@ -5,9 +5,11 @@
 @import url("../standard/standardHintergrund.css");
 @import url("../standard/standardNavigation.css");
 @import url("../standard/standardFooter.css");
+@import url("../standard/cookiemonsterStil.css");
 
 div#flexarea {
 	justify-content: center;
+	padding-bottom: 150px;
 }
 
 article.flexitem {
@@ -139,4 +141,17 @@ td:nth-child(even) {
 
 .bottomleft {
 	border-radius: 0 0 0 15px;
+}
+
+p.nachrichttext {
+	text-align: center;
+}
+
+p.zeitstempel {
+	color: #808080;
+	text-align: left;
+}
+
+hr.neuigkeitentrenner {
+	width: 15%;
 }

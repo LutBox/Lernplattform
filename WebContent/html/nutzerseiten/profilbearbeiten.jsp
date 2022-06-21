@@ -10,6 +10,8 @@
 <script type="text/javascript"
 	src="../../js/nutzerskripte/profilkonfiguraration.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
+<%@include file="../jspf/cookiemonster.jspf"%>
+<meta charset="UTF-8">
 <title>Profil bearbeiten</title>
 </head>
 <body>

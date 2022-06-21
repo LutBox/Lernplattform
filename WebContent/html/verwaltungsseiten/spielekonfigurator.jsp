@@ -14,8 +14,10 @@
 	href="${pageContext.request.contextPath}/css/standard/standardLayout.css" />
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+	<%@include file="../jspf/cookiemonster.jspf"%>
+<base href="${pageContext.request.requestURI}" />
+	<meta charset="UTF-8">
 <title>Spielekonfigurator</title>
-<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 </head>
 <body>
 	<header>

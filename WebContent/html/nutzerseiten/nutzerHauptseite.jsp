@@ -6,6 +6,8 @@
 <head>
 	<link rel="stylesheet" href="../../css/nutzerseiten/nutzerHauptseiteStil.css" />
 	<script type="text/javascript" src="../../js/keinProfilbild.js" defer></script>
+	<script type="text/javascript"
+	src="../../js/cookiemonster.js" defer></script>
 	<%@include file="../jspf/noSkript.jspf"%>
 	<meta charset="UTF-8">
 	<title>Nutzerbereich</title>
@@ -23,9 +25,12 @@
 					<p>
 						<c:out value="${neuigkeit.nachricht}"></c:out>
 					</p>
-					<p>
+					<p class="zeitstempel">
 						<c:out value="${neuigkeit.zeitstempel}"></c:out>
 					</p>
+					<br/>
+					<hr class="neuigkeitentrenner"/>
+					<br/>
 				</div>
 			</c:forEach>
 		</aside>
@@ -74,5 +79,6 @@
 	<footer>
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
+	<%@include file="../jspf/cookiemonster.jspf"%>
 </body>
 </html>

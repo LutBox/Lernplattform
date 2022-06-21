@@ -1,4 +1,4 @@
-package servlets.adminservlets;
+package servlets.adminservlets.kontaktanfragenservlets;
 
 import java.io.IOException;
 
@@ -11,11 +11,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UngelesenMarkierenServlet
+ * Servlet implementation class GelesenMarkierenServlet
  */
-@WebServlet("/UngelesenMarkierenServlet")
-public class UngelesenMarkierenServlet extends HttpServlet {
+@WebServlet("/GelesenMarkierenServlet")
+public class GelesenMarkierenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -23,7 +24,7 @@ public class UngelesenMarkierenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		Integer kanr = Integer.parseInt(request.getParameter("kanr"));
-		KontaktanfragenSQLDienst.alsUngelesenMarkieren(kanr);
+		KontaktanfragenSQLDienst.alsGelesenMarkieren(kanr);
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("UngeleseneNachrichtenLadenServlet");
 		dispatcher.forward(request, response);
 	}

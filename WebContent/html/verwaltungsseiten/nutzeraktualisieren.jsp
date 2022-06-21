@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="../../css/verwaltungsseiten/nutzeraktualisierenStil.css" />
 	<script type="text/javascript" src="../../js/verwaltungsskripte/nutzerkonfiguration.js" defer></script>
 	<%@include file="../jspf/noSkript.jspf"%>
+	<meta charset="UTF-8">
 	<title>Nutzer aktualisieren</title>
 </head>
 <body>
@@ -58,7 +59,7 @@
 							for="administrator">Admin</label>
 					</div>
 					<div class="inputfeld">
-						<label for="neuesProfilbild">Profilbild hochladen</label> <input
+						<label for="neuesProfilbild">Profilbild hochladen</label> <input id="profilbildupload"
 							type="file" name="neuesProfilbild" id="neuesProfilbild"
 							accept="image/*"
 							title="Bitte laden Sie hier das neue Profilbild des Nutzers hoch" />

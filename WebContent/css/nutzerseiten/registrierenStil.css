@@ -9,6 +9,7 @@
 @import url("../standard/standardFooter.css");
 @import url("../standard/standardFormInfotext.css");
 @import url("../standard/footerAbsoluteBottom.css");
+@import url("../standard/cookiemonsterStil.css");
 
 form {
 	padding-top: 100px;

@@ -21,19 +21,23 @@ import jakarta.servlet.http.HttpSession;
 @jakarta.servlet.annotation.WebFilter(
 		urlPatterns = "/html/verwaltungsseiten/*",
 		servletNames = {
-				"servlets.adminservlets.GelesenMarkierenServlet",
-				"servlets.adminservlets.KontaktanfrageLoeschenServlet",
-				"servlets.adminservlets.NutzerSucheServlet",
-				"servlets.adminservlets.NutzerAktualisierenServlet",
-				"servlets.adminservlets.NutzerBearbeitenServlet",
-				"servlets.adminservlets.NutzerLoeschenServlet",
-				"servlets.adminservlets.UngeleseneNachrichtenLadenServlet",
-				"servlets.adminservlets.UngelesenMarkierenServlet",
-				"servlets.nutzerservlets.ProfilAktualisierenServlet"},		
-		filterName = "WebFilter",
+				"servlets.adminservlets.kontaktanfragenservlets.GelesenMarkierenServlet",
+				"servlets.adminservlets.kontaktanfragenservlets.KontaktanfrageLoeschenServlet",
+				"servlets.adminservlets.nutzerverwaltungservlets.NutzerSucheServlet",
+				"servlets.adminservlets.nutzerverwaltungservlets.NutzerAktualisierenServlet",
+				"servlets.adminservlets.nutzerverwaltungservlets.NutzerBearbeitenServlet",
+				"servlets.adminservlets.nutzerverwaltungservlets.NutzerLoeschenServlet",
+				"servlets.adminservlets.kontaktanfragenservlets.UngeleseneNachrichtenLadenServlet",
+				"servlets.adminservlets.kontaktanfragenservlets.UngelesenMarkierenServlet",
+				"servlets.adminservlets.neuigkeitenservlets.NeuigkeitAktualisierenServlet",
+				"servlets.adminservlets.neuigkeitenservlets.NeuigkeitEditierenServlet",
+				"servlets.adminservlets.neuigkeitenservlets.NeuigkeitEinstellenServlet",
+				"servlets.adminservlets.neuigkeitenservlets.NeuigkeitenAktualisierenServlet",
+				"servlets.adminservlets.neuigkeitenservlets.NeuigkeitLoeschenServlet"},		
+		filterName = "AdminFilter",
 		description = "Dieser Filter prüft ob jemand als Admin angemeldet ist bevor er eine Adminfunktin aufrufen kann."
 		)
-public class WebFilter implements Filter {
+public class AdminFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
