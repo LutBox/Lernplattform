@@ -79,7 +79,7 @@
 						</form>
 						<form class="loeschenformular" method="post"
 							action="../../NutzerLoeschenServlet">
-							<input class="nutzerMitNameXLoeschen" type="hidden"
+							<input class="nutzerMitNameXLoeschen" name="nn" type="hidden"
 								 value="${ergebnis.name}" />
 							<button type="button" class="noStandardButton" title="${ergebnis.name} löschen">
 								<img class="buttonImg"

@@ -1,16 +1,11 @@
+@charset "UTF-8";
 /* @author Merlin */
 @import url("../standard/standardFadeIn.css");
 @import url("../standard/standardGridView.css");
-
 @import url("../standard/standardHintergrund.css");
-
 @import url("../standard/standardFonts.css");
-
 @import url("../standard/standardNavigation.css");
-
 @import url("../standard/standardFooter.css");
-
-@import url("../standard/standardGoToTop.css");
 
 body, html {
 	padding: 0;
@@ -52,6 +47,7 @@ button.noStandardButton {
 .kontaktanfrage {
 	border: solid #949494;
 	border-width: 2px 2px;
+	margin-bottom: 10px;
 }
 
 .kontaktanfrage:hover {
@@ -69,4 +65,21 @@ button.noStandardButton {
 
 form {
 	display: inline;
+}
+
+#postfachheaderrow, #archivheaderrow {
+	padding-top: 60px;
+}
+
+button.scrollButton {
+	position: fixed;
+	right: 4.5%;
+}
+
+button#archivButton {
+	bottom: 125px;
+}
+
+button#postfachButton {
+	bottom: 150px;
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* @author Merlin */
 @import url("../standard/standardFadeIn.css");
 @import url("../standard/standardGridView.css");
@@ -6,6 +7,7 @@
 @import url("../standard/standardFormular.css");
 @import url("../standard/standardNavigation.css");
 @import url("../standard/standardFooter.css");
+@import url("../standard/standardGoToTop.css");
 
 html,body,main {
 	margin: 0;
@@ -23,6 +25,7 @@ main {
 
 div#suchergebnisse {
 	min-height: 408px;
+	padding-bottom: 120px;
 }
 
 button.noStandardButton {

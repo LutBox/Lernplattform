@@ -1,19 +1,18 @@
+@charset "UTF-8";
 /* @author Merlin */
-@import url("../standard/standardFadeIn.css");
-
-@import url("../standard/standardHintergrund.css");
-
 @import url("../standard/standardFonts.css");
-
+@import url("../standard/standardFadeIn.css");
+@import url("../standard/standardHintergrund.css");
 @import url("../standard/standardNavigation.css");
-
 @import url("../standard/standardFooter.css");
+@import url("../standard/cookiemonsterStil.css");
 
 div#flexarea {
 	justify-content: center;
+	padding-bottom: 150px;
 }
 
-main.flexitem {
+article.flexitem {
 	flex: 3;
 }
 
@@ -36,7 +35,7 @@ div#nutzerkarte {
 	width: 380px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top:40px;
+	margin-top: 40px;
 	margin-bottom: 40px;
 }
 
@@ -142,4 +141,17 @@ td:nth-child(even) {
 
 .bottomleft {
 	border-radius: 0 0 0 15px;
+}
+
+p.nachrichttext {
+	text-align: center;
+}
+
+p.zeitstempel {
+	color: #808080;
+	text-align: left;
+}
+
+hr.neuigkeitentrenner {
+	width: 15%;
 }

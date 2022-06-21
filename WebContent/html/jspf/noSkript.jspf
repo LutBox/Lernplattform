@@ -3,6 +3,9 @@
 	href="../../css/standard/noSkriptStil.css" />
 <noscript>
 	<div id="noSkriptBox" class="fade-in">
+	<div>
+		<img id="noScriptPopUpImg" src="../../bilder/verwaltung/elmo.gif" alt="Ups Sie könne keine dynamischen Inhalte anzeigen"/>
+	</div>
 		<p id="NoSkriptText">Bitte aktivieren Sie ihr JavaSkript um den
 			vollen Funktionsumfang dieser Webanwendung nutzen zu können!</p>
 		<p>

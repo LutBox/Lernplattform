@@ -10,14 +10,25 @@ function init() {
 		var form = forms[i];
 		form.addEventListener("submit", loeschenbestaetigen);
 	}
-
+	document.getElementById("postfachButton").addEventListener("click",postfach);
+	document.getElementById("archivButton").addEventListener("click",archiv);
 }
 
 function loeschenbestaetigen(evt) {
 	var wirklichloeschen = confirm("Möchten Sie die Kontaktanfrage wirklich löschen?");
 	if (!wirklichloeschen) {
 		evt.preventDefault();
-	} else {
-		alert("Die Kontaktanfrage wurde gelöscht!");
 	}
+}
+
+/**
+ * @source https://www.codegrepper.com/code-examples/javascript/javascript+button+click+scroll+to+id
+ * @param evt
+ */
+function postfach(evt){
+	document.getElementById("postfachheaderrow").scrollIntoView();
+}
+
+function archiv(evt) {
+	document.getElementById("archivheaderrow").scrollIntoView();
 }

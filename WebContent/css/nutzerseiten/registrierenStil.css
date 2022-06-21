@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* @author Merlin */
 @import url("../standard/standardFadeIn.css");
 @import url("../standard/standardHintergrund.css");
@@ -7,13 +8,9 @@
 @import url("../standard/standardNavigation.css");
 @import url("../standard/standardFooter.css");
 @import url("../standard/standardFormInfotext.css");
+@import url("../standard/footerAbsoluteBottom.css");
+@import url("../standard/cookiemonsterStil.css");
 
-#footer{
-	position: absolute;	
-	bottom:0;
-}
-
-div {
-	padding: 2.5px;
-	margin: 2.5px;
+form {
+	padding-top: 100px;
 }
