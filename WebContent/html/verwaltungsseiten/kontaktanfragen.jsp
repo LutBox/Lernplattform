@@ -7,9 +7,11 @@
 <head>
 <link rel="stylesheet" type="text/css"
 	href="../../css/verwaltungsseiten/kontaktanfragenStil.css" />
-<script type="text/javascript" src="../../js/kontaktanfragen.js" defer></script>
+<script type="text/javascript"
+	src="../../js/verwaltungsskripte/kontaktanfragen.js"></script>
 <script type="text/javascript" src="../../js/standard.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
+<meta charset="UTF-8">
 <title>Kontaktanfragen</title>
 </head>
 <body>
@@ -24,7 +26,7 @@
 				Nachrichten <em>${anzahlarchivierte} </em>archivierte Nachrichten
 			</p>
 		</div>
-		<div class="row">
+		<div class="row" id="postfachheaderrow">
 			<div class="grid12">
 				<h2>- Ungelesene Kontaktanfragen -</h2>
 			</div>
@@ -35,11 +37,10 @@
 					<div class="grid3 email">${nachricht.email}</div>
 					<div class="grid7 nachricht">${nachricht.nachricht}</div>
 					<div class="grid2 knoepfe">
-						<form method="post" action="../../UngelesenMarkierenServlet">
-							<a class="buttonLink" href="mailto:${nachricht.email}"
-								title="Antworten"><img class="buttonImg"
-								src="../../bilder/verwaltung/antworten.png" /></a> <input
-								type="hidden" name="kanr" value="${nachricht.kanr}" />
+						<a href="mailto:${nachricht.email}" title="Antworten"><img
+							class="buttonImg" src="../../bilder/verwaltung/antworten.png" /></a>
+						<form method="post" action="../../GelesenMarkierenServlet">
+							<input type="hidden" name="kanr" value="${nachricht.kanr}" />
 							<button class="noStandardButton" type="submit"
 								title="Als ungelesen markieren">
 								<img class="buttonImg"
@@ -49,7 +50,8 @@
 						<form class="loeschenformular" method="post"
 							action="../../KontaktanfrageLoeschenServlet">
 							<input type="hidden" name="kanr" value="${nachricht.kanr}" />
-							<button class="noStandardButton" type="submit" title="Ungelesene Nachricht von ${nachricht.email} löschen">
+							<button class="noStandardButton" type="submit"
+								title="Ungelesene Nachricht von ${nachricht.email} löschen">
 								<img class="buttonImg"
 									src="../../bilder/verwaltung/entfernen.png" />
 							</button>
@@ -59,7 +61,7 @@
 			</div>
 		</c:forEach>
 		<br />
-		<div class="row">
+		<div class="row" id="archivheaderrow">
 			<div class="grid12">
 				<h2>- Archivierte Kontaktanfragen -</h2>
 			</div>
@@ -70,11 +72,11 @@
 					<div class="grid3 email">${nachricht.email}</div>
 					<div class="grid7 nachricht">${nachricht.nachricht}</div>
 					<div class="grid2 rechtsausgerichtet">
+						<a href="mailto:${nachricht.email}" title="Antworten"><img
+							class="buttonImg" src="../../bilder/verwaltung/antworten.png" /></a>
 						<form method="post" action="../../UngelesenMarkierenServlet">
-							<a class="buttonLink" href="mailto:${nachricht.email}"
-								title="Antworten"><img class="buttonImg"
-								src="../../bilder/verwaltung/antworten.png" /></a> <input
-								type="hidden" name="kanr" value="${nachricht.kanr}" />
+
+							<input type="hidden" name="kanr" value="${nachricht.kanr}" />
 							<button class="noStandardButton" type="submit"
 								title="Als ungelesen markieren">
 								<img class="buttonImg"
@@ -84,7 +86,8 @@
 						<form class="loeschenformular" method="post"
 							action="../../KontaktanfrageLoeschenServlet">
 							<input type="hidden" name="kanr" value="${nachricht.kanr}" />
-							<button class="noStandardButton" type="submit" title="Archivierte Nachricht von ${nachricht.email} löschen">
+							<button class="noStandardButton" type="submit"
+								title="Archivierte Nachricht von ${nachricht.email} löschen">
 								<img class="buttonImg"
 									src="../../bilder/verwaltung/entfernen.png" />
 							</button>
@@ -93,7 +96,9 @@
 				</div>
 			</div>
 		</c:forEach>
-		<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+		<button type="button" class="scrollButton" id="postfachButton">Postfach</button>
+		<button type="button" class="scrollButton" id="archivButton">Archiv</button>
+		<button type="button" class="scrollButton" id="goToTopButton">Seitenanfang</button>
 	</main>
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>

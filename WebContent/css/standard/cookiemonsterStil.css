@@ -1,10 +1,12 @@
 @charset "UTF-8";
-/* @author Merlin */
+/**
+ * @author Merlin
+ */
 @import url("../standard/standardFadeIn.css");
 @import url("../standard/standardFonts.css");
 @import url("../standard/standardButtonLink.css");
 
-div#noSkriptBox {
+div#cookiepopupbox {
 	position: fixed;
 	top: 300px;
 	left: 785px;
@@ -15,13 +17,14 @@ div#noSkriptBox {
 	height: auto;
 	padding: 40px 40px;
 	text-align: center;
+	display:none;
 }
 
 p#cri {
 	color: grey;
 }
 
-div#vorhang {
+div#cookievorhang {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -31,9 +34,15 @@ div#vorhang {
 	margin: 0;
 	background: #808080;
 	opacity: 0.5;
+	display:none;
 }
 
-img#noScriptPopUpImg {
-	width: 200px;
+img#cookiemonstergif {
+	width: 250px;
 	height: auto;
+	border-radius: 10px 10px 10px 10px;
+}
+
+div.cookiepopupbox-subcontainer {
+	padding-top: 5px;
 }

@@ -15,6 +15,7 @@ Erstellt von Merlin Weinthaler und Lukas Theinert
 	<link rel="stylesheet" href="../../css/adminstilvorlage.css" />
 	
 	<title>Spielekonfigurator</title>
+
 </head>
 <body>
 

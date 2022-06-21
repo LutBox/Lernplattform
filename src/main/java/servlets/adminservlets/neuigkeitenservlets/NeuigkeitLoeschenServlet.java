@@ -1,8 +1,8 @@
-package servlets.adminservlets;
+package servlets.adminservlets.neuigkeitenservlets;
 
 import java.io.IOException;
 
-import dienste.sqldienste.NutzerSQLDienst;
+import dienste.sqldienste.NeuigkeitSQLDienst;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,10 +11,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class NutzerLoeschenServlet
+ * Servlet implementation class NeuigkeitLoeschenServlet
  */
-@WebServlet("/NutzerLoeschenServlet")
-public class NutzerLoeschenServlet extends HttpServlet {
+@WebServlet("/NeuigkeitLoeschenServlet")
+public class NeuigkeitLoeschenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -23,9 +23,11 @@ public class NutzerLoeschenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		NutzerSQLDienst.loescheNutzerMitDemNamen(request.getParameter("nutzerMitNameXLoeschen"));
-		response.sendRedirect("./html/verwaltungsseiten/nutzerverwaltung.jsp");
+		System.out.println(request.getParameter("zlnnr"));
+		Integer zlnnr = Integer.parseInt(request.getParameter("zlnnr"));
+		NeuigkeitSQLDienst.neugigkeitMitNrXLoeschen(zlnnr);
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("./NeuigkeitenAktualisierenServlet");
+		dispatcher.forward(request, response);
 	}
 
 }

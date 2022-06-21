@@ -25,7 +25,6 @@ public class KontaktanfrageServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("E-mail");
 		String nachricht = request.getParameter("Use_angabe");
-		System.out.println(email + ": "+nachricht);
 		String dest = "./html/hauptseiten/kontaktformular.jsp";
 		if (email != null && nachricht != null) {
 			KontaktanfragenSQLDienst.anfrageSpeichern(email, nachricht);

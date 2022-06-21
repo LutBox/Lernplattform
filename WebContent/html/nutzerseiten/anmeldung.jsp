@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="../../css/nutzerseiten/anmeldungStil.css" />
 <%@include file="../jspf/noSkript.jspf"%>
+<meta charset="UTF-8">
 <title>Anmeldung</title>
 </head>
 <body>
@@ -20,19 +21,19 @@
 			action="../../AnmeldungServlet">
 			<fieldset>
 				<legend>Anmeldung</legend>
-				<div>
+				<div class="inputfeld">
 					<label for="name">Nutzername: </label> <input name="name" id="name"
 						type="text" placeholder="Nutzername" maxlength="64"
 						required="required" pattern="[^ &lt;&gt;&#34;']+"
-						title="Bitte geben Sie ihren Nutzernamen an." />
+						title="Bitte geben Sie Ihren Nutzernamen an." />
 				</div>
-				<div>
+				<div class="inputfeld">
 					<label for="passwort">Passwort: </label><input name="passwort"
 						id="passwort" type="password" maxlength="128"
 						placeholder="*******" required="required" pattern="[^ ]+"
 						title="Bitte geben Sie Ihr Passwort an." />
 				</div>
-				<div class="buttonbox">
+				<div class="buttonbox inputfeld">
 					<button type="submit">Absenden</button>
 					<button type="reset">Zurücksetzen</button>
 				</div>
@@ -40,7 +41,7 @@
 		</form>
 		<div id="infotext">
 			<span id="infoicon">&#9432; </span><span class="fade-in"> <c:out value="${forminfotext}"
-					default="Bitte geben sie ihre Anmeldedaten an." />
+					default="Bitte geben Sie Ihre Anmeldedaten an." />
 			</span>
 		</div>
 	</main>

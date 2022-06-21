@@ -7,9 +7,8 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
 	document.getElementById("suchenbutton").addEventListener("click",
 			changeContent);
-	/*
-	 * w3schools:
-	 * https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp START
+	/**
+	 * @source w3schools: https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp START
 	 */
 	document.getElementById("fragment").addEventListener("keypress",
 			function(evnent) {
@@ -18,9 +17,8 @@ function init() {
 					document.getElementById("suchenbutton").click();
 				}
 			});
-	/*
-	 * w3schools:
-	 * https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp END
+	/**
+	 * @source w3schools: https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp END
 	 */
 }
 
@@ -31,21 +29,22 @@ function changeContent() {
 		searchURL += "?fragment=" + encodeURIComponent(fragment);
 
 	var xmlhttpSearch = new XMLHttpRequest();
-	xmlhttpSearch.onreadystatechange = function() {
-		if (xmlhttpSearch.readyState == 4 && xmlhttpSearch.status == 200) {
-			document.getElementById("suchergebnisse").innerHTML = xmlhttpSearch.responseText;
-			
-			var forms = document.getElementsByClassName("loeschenformular");
-			for ( var i = 0; i < forms.length; i++) {
-				form = forms[i];
-				form.addEventListener("click", loeschenBestaetigen);
-			}
-		}
-	};
+	xmlhttpSearch.addEventListener("load",function() {
+		document.getElementById("suchergebnisse").innerHTML = xmlhttpSearch.responseText;
+		keinProfilbild();
+		loeschenBestaetigenLaden();
+	});
 	xmlhttpSearch.open("GET", searchURL, true);
 	xmlhttpSearch.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xmlhttpSearch.send();
+}
 
+function loeschenBestaetigenLaden(){
+	var forms = document.getElementsByClassName("loeschenformular");
+	for ( var i = 0; i < forms.length; i++) {
+		var form = forms[i];
+		form.addEventListener("click", loeschenBestaetigen);
+	}
 }
 
 function loeschenBestaetigen(evt){
@@ -54,14 +53,26 @@ function loeschenBestaetigen(evt){
 	if (wirklichLoeschen){
 		var delURL ="../../NutzerLoeschenServlet";
 		var xmlhttpDel = new XMLHttpRequest();
-		xmlhttpDel.onreadychange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				document.getElementById("suchenbutton").click();
-			}
-		};
+		xmlhttpDel.addEventListener("load",function() {
+			document.getElementById("suchenbutton").click();
+		});
 		xmlhttpDel.open("POST",delURL,true);
 		xmlhttpDel.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		xmlhttpDel.send("nutzerMitNameXLoeschen="+encodeURIComponent(nutzer));
-		document.getElementById("suchenbutton").click();
+	}
+}
+
+/**
+ * @source https://dillionmegida.com/p/default-image-src/
+ */
+function keinProfilbild(){
+	var profilbilder = document.getElementsByClassName("profilbild");
+	for ( var i = 0; i < profilbilder.length; i++) {
+		profilbilder[i].addEventListener("error",
+			function(evt) {
+				evt.target.src = "http://localhost:8080/Lernplattform/bilder/standardProfilbild.jpg";
+				evt.onerror = null;
+			}
+		);
 	}
 }
