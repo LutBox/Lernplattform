@@ -1,19 +1,16 @@
+@charset "UTF-8";
 /* @author Merlin */
-@import url("../standard/standardFadeIn.css");
-
-@import url("../standard/standardHintergrund.css");
-
 @import url("../standard/standardFonts.css");
-
+@import url("../standard/standardFadeIn.css");
+@import url("../standard/standardHintergrund.css");
 @import url("../standard/standardNavigation.css");
-
 @import url("../standard/standardFooter.css");
 
 div#flexarea {
 	justify-content: center;
 }
 
-main.flexitem {
+article.flexitem {
 	flex: 3;
 }
 
@@ -36,7 +33,7 @@ div#nutzerkarte {
 	width: 380px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top:40px;
+	margin-top: 40px;
 	margin-bottom: 40px;
 }
 

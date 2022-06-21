@@ -62,9 +62,10 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 		if (neuerName != null && !neuerName.equals(alterName)) {
 			NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
 		}
-		NutzerViewBean veranderternutzer = NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(neuerName);
+		response.setCharacterEncoding("UTF-8");
+		NutzerBean veranderternutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(neuerName);
 		session.setAttribute("veranderternutzer", veranderternutzer);
-		response.sendRedirect("./html/verwaltungsseiten/nutzernachaktualisierung.jsp");
+		response.sendRedirect("./html/verwaltungsseiten/nutzerverwaltung.jsp");
 	}
 
 }

@@ -32,7 +32,8 @@ public class NutzerSucheServlet extends HttpServlet {
 		final HttpSession session = request.getSession();
 		session.setAttribute("suchergebnisse", suchergebnisse);
 		session.setAttribute("fragment", fragment);
-//		response.sendRedirect("./html/verwaltungsseiten/suchergebnis.jsp");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/plain");
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/verwaltungsseiten/suchergebnis.jsp");
 		dispatcher.forward(request, response);
 	}

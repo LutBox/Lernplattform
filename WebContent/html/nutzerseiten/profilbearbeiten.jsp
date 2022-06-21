@@ -23,36 +23,36 @@
 			enctype="multipart/form-data" accept-charset="UTF-8">
 			<fieldset>
 				<legend>Profil bearbeiten</legend>
-				<div>
+				<div class="inputfeld">
 					<label for="neuerName">Neuer Nutzername: </label> <input
 						name="neuerName" id="neuerName" type="text"
 						placeholder="Neuer Nutzername" maxlength="64"
-						value="${nutzer.name}" pattern="[^ &lt;&gt;&#34;']+"
-						title="Bitte geben Sie Ihren neuen Nutzernamen an (Maximal 96 Zeichen.  Keines der folgenden Zeichen: &#60;&#62;&#34;&#39;)." />
+						value="${nutzer.name}" pattern="[A-Za-z0-9_]+"
+						title="Bitte geben Sie Ihren neuen Nutzernamen an (Maximal 96 Zeichen, A-Z, a-z, 0-9)." />
 				</div>
-				<div>
+				<div class="inputfeld">
 					<label for="email">Neue E-Mail:</label> <input name="neueEmail"
 						id="neuEmail" type="email" value="${nutzer.email}"
 						placeholder="e-mail" maxlength="64"
 						title="Bitte geben Sie Ihre neue E-mail an." />
 				</div>
-				<div>
+				<div class="inputfeld">
 					<label for="passwort">Neues Passwort:</label> <input
 						name="passwort" id="neuesPasswort" type="password" maxlength="128"
 						title="Bitte geben Sie Ihr neues Passwort an." />
 				</div>
-				<div>
+				<div class="inputfeld">
 					<label for="passwort2">Neues Passwort wiederholen:</label> <input
 						name="passwort2" id="passwort2" type="password" maxlength="128"
 						title="Bitte wiederholen Sie ihr neues Passwort an" />
 				</div>
-				<div>
+				<div class="inputfeld">
 					<label for="profilbild">Profilbild hochladen:</label> <input
 						type="file" name="neuesProfilbild" id="neuesProfilbild"
 						accept="image/*"
 						title="Bitte laden Sie hier ihr neues Profilbild hoch" />
 				</div>
-				<div class="buttonbox">
+				<div class="buttonbox inputfeld">
 					<button type="submit">Absenden</button>
 					<button type="reset">Zurücksetzen</button>
 					<a class="buttonLink" href="./nutzerHauptseite.jsp">Abbrechen</a>

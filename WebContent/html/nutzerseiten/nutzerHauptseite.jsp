@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="../../css/nutzerseiten/nutzerHauptseiteStil.css" />
-<%@include file="../jspf/noSkript.jspf"%>
-<meta charset="UTF-8">
-<title>Nutzerbereich</title>
+	<link rel="stylesheet" href="../../css/nutzerseiten/nutzerHauptseiteStil.css" />
+	<script type="text/javascript" src="../../js/keinProfilbild.js" defer></script>
+	<%@include file="../jspf/noSkript.jspf"%>
+	<meta charset="UTF-8">
+	<title>Nutzerbereich</title>
 </head>
 <body>
 	<header>
@@ -18,7 +18,16 @@
 	<div id="flexarea">
 		<aside class="flexitem fade-in">
 			<h2>Top-News</h2>
-			<p>Forum-Threads</p>
+			<c:forEach items="${neuigkeiten}" var="neuigkeit">
+				<div class="neuigkeit">
+					<p>
+						<c:out value="${neuigkeit.nachricht}"></c:out>
+					</p>
+					<p>
+						<c:out value="${neuigkeit.zeitstempel}"></c:out>
+					</p>
+				</div>
+			</c:forEach>
 		</aside>
 		<main class="flexitem fade-in">
 			<div id="nutzerkarte">

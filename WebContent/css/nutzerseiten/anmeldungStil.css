@@ -1,31 +1,17 @@
+@charset "UTF-8";
 /* @author Merlin */
-
 @import url("../standard/standardFadeIn.css");
-
 @import url("../standard/standardHintergrund.css");
-
 @import url("../standard/standardFonts.css");
-
 @import url("../standard/standardButton.css");
-
 @import url("../standard/standardFormular.css");
-
 @import url("../standard/standardNavigation.css");
-
 @import url("../standard/standardFooter.css");
-
 @import url("../standard/standardGoToTop.css");
-
 @import url("../standard/standardFormInfotext.css");
-
 @import url("../standard/noSkriptStil.css");
+@import url("../standard/footerAbsoluteBottom.css");
 
-#footer {
-	position: absolute;
-	bottom: 0;
-}
-
-div {
-	padding: 2.5px;
-	margin: 2.5px;
+form {
+	padding-top: 200px;
 }

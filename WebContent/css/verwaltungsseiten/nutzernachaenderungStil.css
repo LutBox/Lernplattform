@@ -1,12 +1,9 @@
+@charset "UTF-8";
 /* @author Merlin */
 @import url("../standard/standardFadeIn.css");
-
 @import url("../standard/standardHintergrund.css");
-
 @import url("../standard/standardFonts.css");
-
 @import url("../standard/standardNavigation.css");
-
 @import url("../standard/standardFooter.css");
 
 html, body {

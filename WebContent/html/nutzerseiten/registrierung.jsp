@@ -22,39 +22,39 @@
 			action="../../RegistrierungServlet" enctype="multipart/form-data" accept-charset="UTF-8">
 			<fieldset>
 				<legend>Registrierung</legend>
-				<div>
+				<div class="inputfeld">
 					<label for="name">Nutzername: </label>
 					<!-- vgl. w3schools https://www.w3schools.com/tags/att_input_pattern.asp START -->
 					<input name="name" id="name" type="text" placeholder="Nutzername"
-						maxlength="96" required="required" pattern="[^ &lt;&gt;&#34;']+"
-						title="Bitte geben Sie einen Nutzernamen an (Maximal 96 Zeichen. Keines der folgenden Zeichen: &lt;&gt;&#34;')." />
+						maxlength="96" required="required" pattern="[A-Za-z0-9_]+"
+						title="Bitte geben Sie einen Nutzernamen an (Maximal 96 Zeichen, A-Z, a-z, 0-9)." />
 					<!-- vgl. w3schools https://www.w3schools.com/tags/att_input_pattern.asp END -->
 				</div>
-				<div>
+				<div class="inputfeld">
 					<label for="email">E-Mail:</label> <input name="email" id="email"
 						type="email" value="${anfrage.email}" placeholder="e-mail"
 						maxlength="64" required="required"
 						title="Bitte geben Sie ihre E-Mail an" />
 				</div>
-				<div>
+				<div class="inputfeld">
 					<label for="passwort">Passwort:</label> <input name="passwort"
 						id="passwort" type="password" maxlength="96" required="required"
 						value="${anfrage.passwort}" placeholder="*******" pattern="[^ ]+"
 						title="Bitte geben Sie Ihr gewünschtes Passwort an (Maximal 96 Zeichen)." />
 				</div>
-				<div>
+				<div class="inputfeld">
 					<label for="passwort2">Passwort wiederholen:</label> <input
 						name="passwort2" id="passwort2" type="password" maxlength="64"
 						required="required" placeholder="*******"
 						value="${anfrage.passwort}" required="required" pattern="[^ ]+"
 						title="Bitte wiederholen Sie Ihr Passwort" />
 				</div>
-				<div>
+				<div class="inputfeld">
 					<label for="profilbild">Profilbild hochladen:</label> <input
 						type="file" name="profilbild" id="profilbild" accept="image/*"
 						title="Bitte laden Sie hier Ihr Profilbild hoch" />
 				</div>
-				<div class="buttonbox">
+				<div class="buttonbox inputfeld">
 					<button id="absenden" type="submit">Absenden</button>
 					<button type="reset">Zurücksetzen</button>
 				</div>
@@ -62,7 +62,7 @@
 		</form>
 		<div id="infotext">
 			<span id="infoicon">&#9432; </span><span class="fade-in"> <c:out
-					value="${forminfotext}" default="Bitte geben sie ihre Daten an." />
+					value="${forminfotext}" default="Bitte geben Sie Ihre Daten an." />
 			</span>
 		</div>
 	</main>

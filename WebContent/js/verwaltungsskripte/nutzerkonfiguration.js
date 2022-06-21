@@ -6,10 +6,9 @@ document.addEventListener("DOMContentLoaded", init);
 
 
 function init() {
+	aktuellenStatusSetzen();
 	document.getElementById("nutzerkonfigurationsform").addEventListener("submit", pwKontrolle);
 	document.getElementById("nutzerkonfigurationsform").addEventListener("reset", resetBestaetigen);
-	aktuellenStatusSetzen();
-	//AJAX implementieren
 }
 
 function resetBestaetigen(evt) {
@@ -20,40 +19,45 @@ function resetBestaetigen(evt) {
 }
 
 function pwKontrolle(evt) {
-	var gueltig = document.getElementById("passwort").value === document
+	var gueltig = document.getElementById("neuesPasswort").value === document
 			.getElementById("passwort2").value;
 	if (!gueltig) {
 		evt.preventDefault();
 		alert("Die Passwörter müssen übereinstimmen!");
+	} else {
+		alert("Nutzer wurde aktualisiert!");
 	}
 }
 
 function aktuellenStatusSetzen(){
 	var aktuellerSatus = document.getElementById("aktuellerstatus").value;
 	if (aktuellerSatus == 1) {
-		// StackOverflow: https://stackoverflow.com/questions/9476617/how-to-set-radio-button-status-with-javascript START
+		/**
+		 * @source StackOverflow: https://stackoverflow.com/questions/9476617/how-to-set-radio-button-status-with-javascript START
+		 */ 
 		document.getElementById("administrator").checked = true;
-		// StackOverflow: https://stackoverflow.com/questions/9476617/how-to-set-radio-button-status-with-javascript END
+		/**
+		 * @source StackOverflow: https://stackoverflow.com/questions/9476617/how-to-set-radio-button-status-with-javascript END
+		 */
 	} 
 	if (aktuellerSatus == 0) {
-		// StackOverflow: https://stackoverflow.com/questions/9476617/how-to-set-radio-button-status-with-javascript START
+		/**
+		 * @source StackOverflow: https://stackoverflow.com/questions/9476617/how-to-set-radio-button-status-with-javascript START
+		 */ 
 		document.getElementById("regnutzer").checked = true;
-		// StackOverflow: https://stackoverflow.com/questions/9476617/how-to-set-radio-button-status-with-javascript END
+		/**
+		 * @source StackOverflow: https://stackoverflow.com/questions/9476617/how-to-set-radio-button-status-with-javascript START
+		 */ 
 	}
 }
 
-function changeContent() {
-	var changeURL = "../../NutzerAktualisierenServlet";
-	var name = document.getElementById("neuerName");
-	var email = document.getElementById("neueEmail");
-	var pw = document.getElementById("passwort");
-	var status = 0;
-	if (document.getElementById("administrator").checked === true) {
-		status = 1;
-	}
-	console.log("Name: "+name);
-	console.log("Email: "+email);
-	console.log("Passwort: "+pw);
-	console.log("Status: "+status);
+/**
+ * @source https://dillionmegida.com/p/default-image-src/
+ */
+function keinProfilbild(){
+	document.getElementById("profilbild").addEventListener("error", function(evt) {
+		evt.target.src = "http://localhost:8080/Lernplattform/bilder/standardProfilbild.jpg";
+		evt.onerror = null;
+		}
+	);
 }
-
