@@ -46,7 +46,7 @@ public class MatheAjax extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		log("TEEEEEEEST");
+		//log("TEEEEEEEST");
 		
 		// Dateien aus Bean in neues Objekt einfügen
 		SpielStartenBean matheAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");

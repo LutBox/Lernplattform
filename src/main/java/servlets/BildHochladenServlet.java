@@ -6,9 +6,7 @@ package servlets;
 
 import jakarta.servlet.http.HttpServlet;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +14,6 @@ import java.sql.ResultSet;
 import javax.sql.DataSource;
 
 import beans.SpielBilderMemorieBean;
-import beans.SpielMatheBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -65,8 +62,9 @@ public class BildHochladenServlet extends HttpServlet {
 		SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
 		
 		//Kategorie entgegennehmen 
-		String kategorie = request.getParameter("kategorie");
-		spielBilderMemorieBean.setBild1Kategorie(request.getParameter("kategorie"));
+		String kategorie = request.getParameter("kategorieWahl");
+		//log("KATEGORIE: " + kategorie);
+		spielBilderMemorieBean.setBild1Kategorie(kategorie);
 		
 
 		// Logausgabe über empfangene Parts
@@ -123,7 +121,7 @@ public class BildHochladenServlet extends HttpServlet {
 		session.setAttribute("datenDB", spielBilderMemorieBean);
 		
 		// Weiterleiten an JSP
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/bildHochladenFertig.jsp");
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/spielekonfigurator.jsp");
 		dispatcher.forward(request, response);
 		
 

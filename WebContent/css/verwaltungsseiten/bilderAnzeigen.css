@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/* 
+ * Erstellt von Lukas Theinert
+ */
+ 
+/* Feld mit allen Bildern + Beschreibungen */
+.bilderKategorie {
+	width: 752px;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	perspective: 1000px;
+}
+
+/* Feld mit einem Bild + Beschreibung */
+.feld {
+	padding: 20px;
+	text-align: center;
+}
+
+/* Seitenfeld Links */
+.asideLinks{
+	text-align: center;
+}
+
+/* Bild */
+.bild {
+	padding: 10px;
+	background-color: #000000e0;
+}
+
+/* Beschreibung */
+.bildBeschreibung {
+	padding: 10px;
+	background-color: #000000e0;
+	color: white;
+}
+
+/* Bild bearbeiten - Buttoneigenschaften*/
+.bearbeitenButton {
+	width: 148px;
+	border-radius: 0px;
+}
+
+.bearbeitenButton:after {
+	border-radius: 0px;
+}
+
+.bearbeitenBild {
+	width: 28px;
+	height: auto;
+}
+
+
+
+

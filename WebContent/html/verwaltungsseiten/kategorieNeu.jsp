@@ -13,11 +13,11 @@ Erstellt von Lukas Theinert
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
-    <title>Bilder hochladen</title>
+    <title>Kategorie hinzufügen</title>
 </head>
 <body>
 
-<h1>Bild hochladen</h1>
+<h1>Kategorie hinzufügen</h1>
 
 	<nav>
 		<%@include file="../jspf/navigation.jspf"%>
@@ -31,30 +31,23 @@ Erstellt von Lukas Theinert
     	<div id="temp" hidden></div>
     	<h2 hidden>Bild hochladen</h2>
 
-			<fieldset><legend>Bild hochladen</legend>
-				<form id="form1" method="post" action="${pageContext.request.contextPath}/BildHochladenServlet" enctype="multipart/form-data">
+		<fieldset><legend>Kategorie hinzufügen</legend>
+				<form id="form1" method="post" action="${pageContext.request.contextPath}/KategorieNeuServlet" enctype="multipart/form-data">
 				
-				<div>
-				  <label for="kategorieWahl">Kategorien:</label>
-				  <select name="kategorieWahl" id="kategorieWahl" size="1">
-					<c:forEach var="kategorieListe" items="${kategorieListe}">  
-                        <option class="kategorie" id="kategorie" value="${kategorieListe.bildKategorie}">${kategorieListe.bildKategorie}</option>
-                        <br>      
-        			</c:forEach>
-				  </select>
-				</div>
 				<br>
-				
 				<div>
-				  <label for="image">Bild hochladen:</label>
-				  <input type="file" name="image" id="image" accept="image/*" required>
+					<label for="eingabeKategorie">Kategorie eingeben:</label>
+	  				<input name="eingabeKategorie" type="text" id="eingabeKategorie"/><br><br>
 				</div>
+				<br>				
 				<br>
 				
 				<div>
 				  <button id="absenden" name="submit" type="submit">Absenden</button>
 				</div>
-				<br>					
+				
+				<br>
+				<br>	
 			</form>
 				
 		<form id="abbruch" method="post" action="${pageContext.request.contextPath}/html/verwaltungsseiten/spielekonfigurator.jsp" enctype="multipart/form-data">
