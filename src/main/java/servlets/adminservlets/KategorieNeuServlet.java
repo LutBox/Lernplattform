@@ -24,11 +24,6 @@ import jakarta.servlet.http.HttpServletResponse;
  * Servlet implementation class BildHochladenServlet
  */
 @WebServlet("/KategorieNeuServlet")
-@MultipartConfig(
-        maxFileSize=128*128*4,
-        maxRequestSize=128*128*4*4, 
-        location= "/tmp",
-        fileSizeThreshold=128*128)
 
 public class KategorieNeuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

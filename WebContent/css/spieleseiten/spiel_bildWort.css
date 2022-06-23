@@ -1,10 +1,16 @@
-<%--
+/*<%--
 Erstellt von Zohal Mohammadi
---%>
+--%>*/
 
 @charset "UTF-8";
 body{
 	text-align: center;
+}
+
+html {
+    background: linear-gradient(325deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%);
+    background-repeat: no-repeat;
+	background-attachment: fixed;    
 }
 
 .bild{

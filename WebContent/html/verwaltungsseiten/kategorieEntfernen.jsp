@@ -38,8 +38,7 @@ Erstellt von Lukas Theinert
 				  <label for="kategorieWahl">Kategorien:</label>
 				  <select name="kategorieWahl" id="kategorieWahl" size="1">
 					<c:forEach var="kategorieListe" items="${kategorieListe}">  
-                        <option class="kategorie" id="kategorie" value="${kategorieListe.bildKategorie}">${kategorieListe.bildKategorie}</option>
-                        <br>      
+                        <option class="kategorie" id="${kategorieListe.bildKategorie}" value="${kategorieListe.bildKategorie}">${kategorieListe.bildKategorie}</option>     
         			</c:forEach>
 				  </select>
 				</div>

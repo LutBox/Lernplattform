@@ -4,11 +4,13 @@
 
 "use strict";
 
+//-------------------------------
+//---------- Verhalten ----------
+//-------------------------------
+
 const kategorien = document.querySelectorAll(".kategorie");
 
-//Karte drehen
-kategorien.forEach(kategorie => kategorie.addEventListener("click", verstecken));
-
+//Bilder verstecken
 function verstecken() {
 
 	if (!document.getElementById(this.id).checked) {
@@ -33,3 +35,9 @@ function verstecken() {
 		//alert("Zeigen:" + this.id)
 	}
 }
+
+//----------------------------
+//---------- Events ----------
+//----------------------------
+
+kategorien.forEach(kategorie => kategorie.addEventListener("click", verstecken));

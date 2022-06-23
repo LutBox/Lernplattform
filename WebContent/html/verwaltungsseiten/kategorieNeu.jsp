@@ -32,7 +32,7 @@ Erstellt von Lukas Theinert
     	<h2 hidden>Bild hochladen</h2>
 
 		<fieldset><legend>Kategorie hinzufügen</legend>
-				<form id="form1" method="post" action="${pageContext.request.contextPath}/KategorieNeuServlet" enctype="multipart/form-data">
+				<form id="form1" method="post" action="${pageContext.request.contextPath}/KategorieNeuServlet">
 				
 				<br>
 				<div>
