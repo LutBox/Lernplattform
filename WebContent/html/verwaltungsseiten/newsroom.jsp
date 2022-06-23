@@ -30,18 +30,19 @@
 					<p class="zeitstempel">
 						<c:out value="${neuigkeit.zeitstempel}"></c:out>
 					</p>
-					<form action="../../NeuigkeitEditierenServlet">
-						<input type="hidden" name="zennr" value="${neuigkeit.nnr}" />
-						<button class="editierenButton noStandardButton" type="button">
+					<form class="editierenform" action="../../NeuigkeitEditierenServlet">
+						<input type="hidden" class="zueditierendeNeuigkeitNummer" value="${neuigkeit.nnr}" />
+						<input type="hidden" class="zennachricht" value="${neuigkeit.nachricht}" />
+						<button class="editierenButton noStandardButton" type="button" title="Klicken um Neuigkeit zu editieren">
 							<img class="buttonImg"
 								src="../../bilder/verwaltung/bearbeiten.png" />
 						</button>
 					</form>
 					<form class="loeschenform" action="../../NeuigkeitLoeschenServlet">
-						<input class="zlnnr" type="hidden" name="zlnnr"
+						<input class="zlnnr" type="hidden"
 							value="${neuigkeit.nnr}" />
 						<button class="neuigkeitLoeschenButton noStandardButton"
-							type="button" titel="Klicken um Post zu löschen">
+							type="button" title="Klicken um Post zu löschen">
 							<img class="buttonImg"
 								src="../../bilder/verwaltung/entfernen.png" />
 						</button>
@@ -55,11 +56,10 @@
 		<div id="neuAnlegenMaske" class="fade-in">
 			<form method="POST" action="../../NeuigkeitEinstellenServlet"
 				accept-charset="UTF-8">
-				<legend>News neu anlegen</legend>
-				<label for="neuigkeitNeu">Text</label>
+				<label for="neuigkeitNeu">Neuigkeit einstellen</label>
 				<textarea id="neuerPost" name="neuigkeitNeu" rows="4" cols="30"
 					placeholder="Was ist neu?"
-					titel="Bitte geben sie hier Neuigkeiten ein." required></textarea>
+					title="Bitte geben sie hier eine Neuigkeiten ein." required></textarea>
 				<button id="postenButton" type="button">Posten</button>
 				<button id="postenAbbrButton" type="button">Abbrechen</button>
 			</form>
@@ -67,13 +67,12 @@
 		<div id="aktualisierenMaske" class="fade-in">
 			<form method="POST" action="../../NeuigkeitAktualisierenServlet"
 				accept-charset="UTF-8">
-				<legend>News aktualisieren</legend>
-				<input name="zennr" type="hidden"
+				<input id="zennr" name="zennr" type="hidden"
 					value="${zueditierendeNeuigkeit.nnr}" /> <label
-					for="neuigkeitAktualisiert">Text</label>
+					for="neuigkeitAktualisiert">Neuigkeit Aktualisieren</label>
 				<textarea id="neuigkeitAktualisiert" name="neuigkeitAktualisiert"
-					rows="4" cols="30" titel="Bitte geben sie hier Neuigkeiten ein."
-					required>${zueditierendeNeuigkeit.nachricht}</textarea>
+					rows="4" cols="30" title="Bitte geben sie hier die aktualisierte Neuigkeiten ein."
+					required></textarea>
 				<button id="aktualisierenButton" type="button">Aktualisieren</button>
 				<button id="aktualisierenAbbrButton">Abbrechen</button>
 			</form>
@@ -83,7 +82,7 @@
 			anlegen</button>
 		<div id="maskenvorhang"></div>
 		<button type="button" class="goToTopButton" id="goToTopButton"
-			titel="Klicken um zum Seitenanfang zurück zu springen.">Seitenanfang</button>
+			title="Klicken um zum Seitenanfang zurück zu springen.">Seitenanfang</button>
 		<div class="rand"></div>
 	</main>
 	<footer>

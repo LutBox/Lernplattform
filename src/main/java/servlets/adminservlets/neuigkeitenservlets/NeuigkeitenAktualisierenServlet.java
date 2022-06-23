@@ -15,9 +15,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * @author Merlin
- * Servlet implementation class NeuigkeitenAktualisierenServlet
+ * @see implementation class NeuigkeitenAktualisierenServlet
  */
-@WebServlet(urlPatterns ="/NeuigkeitenAktualisierenServlet", loadOnStartup = 2)
+@WebServlet(urlPatterns = "/NeuigkeitenAktualisierenServlet", loadOnStartup = 2)
 public class NeuigkeitenAktualisierenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,9 +34,11 @@ public class NeuigkeitenAktualisierenServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		ArrayList<Neuigkeit> neuigkeiten = NeuigkeitSQLDienst.neuigkeitenLaden();
 		ServletContext app = getServletContext();
 		app.setAttribute(NeuigkeitSQLDienst.ListBeanName, neuigkeiten);

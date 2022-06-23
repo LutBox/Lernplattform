@@ -42,9 +42,9 @@
 						<form method="post" action="../../GelesenMarkierenServlet">
 							<input type="hidden" name="kanr" value="${nachricht.kanr}" />
 							<button class="noStandardButton" type="submit"
-								title="Als ungelesen markieren">
+								title="Archivieren">
 								<img class="buttonImg"
-									src="../../bilder/verwaltung/ungelesen.png" />
+									src="../../bilder/verwaltung/archivieren.png" />
 							</button>
 						</form>
 						<form class="loeschenformular" method="post"

@@ -41,12 +41,12 @@
 				<div class="inputfeld">
 					<label for="passwort">Neues Passwort:</label> <input
 						name="passwort" id="neuesPasswort" type="password" maxlength="128"
-						title="Bitte geben Sie Ihr neues Passwort an." />
+						title="Bitte geben Sie Ihr neues Passwort an." required/>
 				</div>
 				<div class="inputfeld">
 					<label for="passwort2">Neues Passwort wiederholen:</label> <input
 						name="passwort2" id="passwort2" type="password" maxlength="128"
-						title="Bitte wiederholen Sie ihr neues Passwort an" />
+						title="Bitte wiederholen Sie ihr neues Passwort an" required/>
 				</div>
 				<div class="inputfeld">
 					<label for="profilbild">Profilbild hochladen:</label> <input

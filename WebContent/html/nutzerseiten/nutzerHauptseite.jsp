@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="../../css/nutzerseiten/nutzerHauptseiteStil.css" />
-	<script type="text/javascript" src="../../js/keinProfilbild.js" defer></script>
-	<script type="text/javascript"
-	src="../../js/cookiemonster.js" defer></script>
-	<%@include file="../jspf/noSkript.jspf"%>
-	<meta charset="UTF-8">
-	<title>Nutzerbereich</title>
+<link rel="stylesheet"
+	href="../../css/nutzerseiten/nutzerHauptseiteStil.css" />
+<script type="text/javascript" src="../../js/keinProfilbild.js" defer></script>
+<script type="text/javascript" src="../../js/cookiemonster.js" defer></script>
+<%@include file="../jspf/noSkript.jspf"%>
+<meta charset="UTF-8">
+<title>Nutzerbereich</title>
 </head>
 <body>
 	<header>
@@ -28,16 +28,20 @@
 					<p class="zeitstempel">
 						<c:out value="${neuigkeit.zeitstempel}"></c:out>
 					</p>
-					<br/>
-					<hr class="neuigkeitentrenner"/>
-					<br/>
+					<br />
+					<hr class="neuigkeitentrenner" />
+					<br />
 				</div>
 			</c:forEach>
 		</aside>
 		<main class="flexitem fade-in">
 			<div id="nutzerkarte">
 				<div>
-					<h2 class="nutzername zentriert">- <c:out value="${nutzer.name}"></c:out> -</h2>
+					<h2 class="nutzername zentriert">
+						-
+						<c:out value="${nutzer.name}"></c:out>
+						-
+					</h2>
 				</div>
 				<div>
 					<img class="profilbild"
@@ -48,6 +52,9 @@
 				</div>
 			</div>
 			<div id="punktestaende" class="zentriert">
+				<div>
+					<h3>Ihr Punktestand</h3>
+				</div>
 				<table>
 					<thead>
 						<tr>

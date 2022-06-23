@@ -5,7 +5,6 @@ import java.io.IOException;
 import beans.NutzerBean;
 import beans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,7 +21,7 @@ import jakarta.servlet.http.Part;
  */
 @WebServlet("/ProfilAktualisierenServlet")
 @MultipartConfig(location = "./tmpbilder", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024
-* 5, maxRequestSize = 1024 * 1024 * 5 * 5)
+		* 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class ProfilAktualisierenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String infotextname = "forminfotext";
@@ -44,31 +43,40 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 		String neuesPasswort = request.getParameter("passwort");
 		Part neuesProfilbild = request.getPart("neuesProfilbild");
 
-		
-		if (neuerName != null && !neuerName.equals(alterName) && !NutzerSQLDienst.istNutzernameVergeben(neuerName)) {
-			if (neuesProfilbild != null && neuesProfilbild.getSize() > 0) {
-				NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
-			}
-			if (neuesPasswort != null && !neuesPasswort.equals(nutzer.getPasswort())) {
-				NutzerSQLDienst.aktualisiereDasPasswortDesNutzers(neuesPasswort, alterName);
-			}
-			if (neueEmail != null && !neueEmail.equals(nutzer.getEmail())) {
-				NutzerSQLDienst.aktualisiereEmailDesNutzers(neueEmail, alterName);
-				nutzerView.setEmail(neueEmail);
-			}
-			
-			NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
-			nutzerView.setName(neuerName);
-			
-			session.setAttribute(NutzerViewBean.attributname, nutzerView);
-			response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
-		} else {
-			session.setAttribute(infotextname, "Der von Ihnen gewählte Nutzername ist leider bereits vergeben!");
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/nutzerseiten/profilbearbeiten.jsp");
-			dispatcher.forward(request, response);
-		}
+		response.setCharacterEncoding("UTF-8");
 
-		
+		System.out.println(
+				neuerName != null && !neuerName.equals(alterName) && !NutzerSQLDienst.istNutzernameVergeben(neuerName));
+		if (neuesProfilbild != null && neuesProfilbild.getSize() > 0) {
+			try {
+				NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
+			} catch (Exception ex) {
+				session.setAttribute(infotextname, "Ihr Profilbild ist zu Groß (Max. 1024x1024).");
+				response.sendRedirect("./html/nutzerseiten/profilbearbeiten.jsp");
+			}
+		}
+		if (neuesPasswort != null && !neuesPasswort.equals(nutzer.getPasswort())) {
+			NutzerSQLDienst.aktualisiereDasPasswortDesNutzers(neuesPasswort, alterName);
+		}
+		if (neueEmail != null && !neueEmail.equals(nutzer.getEmail())) {
+			NutzerSQLDienst.aktualisiereEmailDesNutzers(neueEmail, alterName);
+			nutzerView.setEmail(neueEmail);
+		}
+		session.setAttribute(NutzerViewBean.attributname, nutzerView);
+		if (neuerName != null && !neuerName.equals(alterName)) {
+			if (!NutzerSQLDienst.istNutzernameVergeben(neuerName)) {
+				NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
+				nutzerView.setName(neuerName);
+				session.setAttribute(NutzerViewBean.attributname, nutzerView);
+				response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
+			} else {
+				session.setAttribute(infotextname,
+						"Der von Ihnen gewählte Nutzername ist leider bereits vergeben! Weitere Änderungen wurden durchgeführt.");
+				response.sendRedirect("./html/nutzerseiten/profilbearbeiten.jsp");
+			}
+		} else {
+			response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
+		}
 
 	}
 

@@ -11,7 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class NutzerLoeschenServlet
+ * @author Merlin
+ * @see Servlet implementation class NutzerLoeschenServlet
  */
 @WebServlet("/NutzerLoeschenServlet")
 public class NutzerLoeschenServlet extends HttpServlet {
