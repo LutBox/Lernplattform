@@ -9,7 +9,8 @@ Erstellt von Lukas Theinert
 <head>
 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/verwaltungsseiten/bildBearbeiten.css"/>
-
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/verwaltungsskripte/bildHochladen.js" defer></script>
+	
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
@@ -38,8 +39,7 @@ Erstellt von Lukas Theinert
 				  <label for="kategorieWahl">Kategorien:</label>
 				  <select name="kategorieWahl" id="kategorieWahl" size="1">
 					<c:forEach var="kategorieListe" items="${kategorieListe}">  
-                        <option class="kategorie" id="kategorie" value="${kategorieListe.bildKategorie}">${kategorieListe.bildKategorie}</option>
-                        <br>      
+                        <option class="kategorie" id="${kategorieListe.bildKategorie}" value="${kategorieListe.bildKategorie}">${kategorieListe.bildKategorie}</option>     
         			</c:forEach>
 				  </select>
 				</div>
@@ -48,6 +48,8 @@ Erstellt von Lukas Theinert
 				<div>
 				  <label for="image">Bild hochladen:</label>
 				  <input type="file" name="image" id="image" accept="image/*" required>
+				  <br><br>
+				  <img id="output" alt="image" src="../../bilder/verwaltung/archivieren.png"/>
 				</div>
 				<br>
 				

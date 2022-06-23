@@ -43,14 +43,14 @@ Erstellt von Lukas Theinert
 		Hinweis: <br>
 		Jede Kategorie muss mindestens 4 Bilder enthalten, damit alle Spiel voll funktionstauglich sind.
         <form  method="post" action="${pageContext.request.contextPath}/html/verwaltungsseiten/kategorieNeu.jsp" enctype="multipart/form-data">
-			<button id="neuesBild" name="submit" type="submit">Neue Kategorie hinzufügen</button>
+			<button id="neueKategorie" name="submit" type="submit">Neue Kategorie hinzufügen</button>
 		</form>
 		<br>
 		<h3>Kategorie löschen</h3>
 		Hinweis: <br>
 		Es müssen mindestens 16 Kategorien vorhanden sein.
         <form  method="post" action="${pageContext.request.contextPath}/html/verwaltungsseiten/kategorieEntfernen.jsp" enctype="multipart/form-data">
-			<button id="neuesBild" name="submit" type="submit">Bestehende Kategorie löschen</button>
+			<button id="kategorieEntfernen" name="submit" type="submit">Bestehende Kategorie löschen</button>
 		</form>
 	</div>	
     </aside>
@@ -96,10 +96,10 @@ Erstellt von Lukas Theinert
         		<label for="${kategorieListe.bildKategorie}">${kategorieListe.bildKategorie}</label>
         		<br>		
 		</c:forEach>
-	
+		</div>
     </aside>
-
-</div>
+    
+ </div>   
 <!-- Ende der FLEXBOX -->
 
 <br> <br> <br> <br>
