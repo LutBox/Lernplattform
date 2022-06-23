@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 	urlPatterns = {
 		"/html/nutzerseiten/nutzerHauptseite.jsp",
 		"/html/nutzerseiten/profilbearbeiten.jsp"},
+	servletNames = "servlets.nutzerservlets.ProfilAktualisierenServlet",
 	filterName = "NutzerFilter",
 	description = "Dieser Filter prüft ob jemand als Admin angemeldet ist bevor er eine Adminfunktin aufrufen kann.")
 public class NutzerFilter implements Filter {

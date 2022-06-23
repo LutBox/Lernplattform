@@ -8,7 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 
 /**
- * Servlet implementation class StartUpSQLServiceServlet
+ * @see Servlet implementation class StartUpSQLServiceServlet
  * @author Merlin
  * 
  * Dieses Servlet wird beim Serverstart instanziiert (Siehe Annotation).

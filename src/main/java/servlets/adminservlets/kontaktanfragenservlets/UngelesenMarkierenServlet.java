@@ -11,7 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UngelesenMarkierenServlet
+ * @author Merlin
+ * @see Servlet implementation class UngelesenMarkierenServlet
  */
 @WebServlet("/UngelesenMarkierenServlet")
 public class UngelesenMarkierenServlet extends HttpServlet {

@@ -41,7 +41,19 @@ Erstellt von Lukas Theinert
         <!-- Flex-Item 1 -->
         <aside>
             <h2>Top-News</h2>
-            <p>Bildermemorie jetzt verfügbar!</p>
+            <c:forEach items="${neuigkeiten}" var="neuigkeit">
+				<div class="neuigkeit">
+					<p>
+						<c:out value="${neuigkeit.nachricht}"></c:out>
+					</p>
+					<p class="zeitstempel">
+						<c:out value="${neuigkeit.zeitstempel}"></c:out>
+					</p>
+					<br />
+					<hr class="neuigkeitentrenner" />
+					<br />
+				</div>
+			</c:forEach>
         </aside>
 
         <!-- Flex-Item 2 -->

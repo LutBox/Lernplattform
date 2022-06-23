@@ -11,7 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class NeuigkeitLoeschenServlet
+ * @author Merlin
+ * @see Servlet implementation class NeuigkeitLoeschenServlet
  */
 @WebServlet("/NeuigkeitLoeschenServlet")
 public class NeuigkeitLoeschenServlet extends HttpServlet {
@@ -23,7 +24,6 @@ public class NeuigkeitLoeschenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println(request.getParameter("zlnnr"));
 		Integer zlnnr = Integer.parseInt(request.getParameter("zlnnr"));
 		NeuigkeitSQLDienst.neugigkeitMitNrXLoeschen(zlnnr);
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("./NeuigkeitenAktualisierenServlet");

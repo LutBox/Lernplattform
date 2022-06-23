@@ -6,10 +6,10 @@
 document.addEventListener("DOMContentLoaded", init);
 
 function init(){
-		var editbuttons = document.getElementsByClassName("editierenButton");
+		var editfomrs = document.getElementsByClassName("editierenform");
 		var loeschenforms = document.getElementsByClassName("loeschenform");
-		for ( var i = 0; i < editbuttons.length; i++) {
-			editbuttons[i].addEventListener("click", editieren);
+		for ( var i = 0; i < editfomrs.length; i++) {
+			editfomrs[i].addEventListener("click", editieren);
 			loeschenforms[i].addEventListener("click", loeschen);
 		}
 		document.getElementById("neuAnlegenButton").addEventListener("click", anlegen);
@@ -27,22 +27,28 @@ function anlegen(evt){
 function editieren(evt){
 	document.getElementById("maskenvorhang").style.display = "block";
 	document.getElementById("aktualisierenMaske").style.display = "block";
+	document.getElementById("neuigkeitAktualisiert").value = this.querySelector(".zennachricht").value;
+	document.getElementById("zennr").value = this.querySelector(".zueditierendeNeuigkeitNummer").value;
 }
 
 function aktualisieren(evt){
 	var aktURL = "../../NeuigkeitAktualisierenServlet";
-	var neuigkeitAktualisiert = document.getElementById("neuigkeitAktualisiert");
+	var neuigkeitAktualisiert = encodeURIComponent(document.getElementById("neuigkeitAktualisiert").value);
 	if (neuigkeitAktualisiert != null && neuigkeitAktualisiert != "") {
-		var zlnnr = document.getElementbyId("zlnnr");
-		var body = "neuigkeitAktualisiert="+neuigkeitAktualisiert+"&zlnnr="+zlnnr;
+		var zennr = encodeURIComponent(document.getElementById("zennr").value);
+		var body = "neuigkeitAktualisiert="+neuigkeitAktualisiert+"&zennr="+zennr;
+		console.log("url: "+aktURL);
+		console.log("body: "+body);
+		console.log("zennr: "+zennr);
+		console.log("nachricht: "+neuigkeitAktualisiert);
 		var xmlhttpAkt = new XMLHttpRequest();
 		xmlhttpAkt.addEventListener("load", function(){
 			document.getElementById("maskenvorhang").style.display = "none";
 			document.getElementById("neuAnlegenMaske").style.display = "none";
 			window.location.reload();
 		});
-		xmlhttpAkt.open("POST",aktURL,flase);
-		xmlhttpPost.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xmlhttpAkt.open("POST",aktURL,false);
+		xmlhttpAkt.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		xmlhttpAkt.send(body);
 	}
 }
@@ -53,8 +59,8 @@ function aktualisierenAbbrechen(evt){
 }
 
 function posten(evt){
-	var postURL = "../../NeuigkeitEinstellenServlet.java";
-	var neuigkeit = document.getElementById("neuerPost").value;
+	var postURL = "../../NeuigkeitEinstellenServlet";
+	var neuigkeit = encodeURIComponent(document.getElementById("neuerPost").value);
 	if (neuigkeit != null && neuigkeit != "") {
 		var body = "neuigkeitNeu="+neuigkeit;
 		var xmlhttpPost = new XMLHttpRequest();

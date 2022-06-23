@@ -30,23 +30,23 @@
 							placeholder="Neuer Nutzername" maxlength="64"
 							value="${zuverwaltendernutzer.name}"
 							pattern="[A-Za-z0-9_^ &lt;&gt;&#34;']+"
-							title="Bitte geben Sie den neuen Name für den Nutzer an  (Maximal 96 Zeichen, A-Z, a-z, 0-9)." />
+							title="Bitte geben Sie den neuen Name für den Nutzer an  (Maximal 96 Zeichen, A-Z, a-z, 0-9)." required/>
 					</div>
 					<div class="inputfeld">
 						<label for="neueEmail">Neue E-Mail</label> <input name="neueEmail"
 							id="neueEmail" type="email" value="${zuverwaltendernutzer.email}"
 							placeholder="e-mail" maxlength="64"
-							title="Bitte geben Sie die neue E-Mail des Nutzers an" />
+							title="Bitte geben Sie die neue E-Mail des Nutzers an" required/>
 					</div>
 					<div class="inputfeld">
 						<label for="neuesPasswort">Neues Passwort</label> <input
 							name="passwort" id="neuesPasswort" type="text" maxlength="128"
-							value="${zuverwaltendernutzer.passwort}"
-							title="Bitte geben Sie das neue Passwort des Nutzers an (Mindestens 96 Zeichen ohne Leerzeichen)." />
+							value="${zuverwaltendernutzer.passwort}" 
+							title="Bitte geben Sie das neue Passwort des Nutzers an (Mindestens 96 Zeichen ohne Leerzeichen)." required/>
 						<label for="passwort2">Neues Passwort wiederholen</label> <input
 							name="passwort2" id="passwort2" type="text" maxlength="128"
 							value="${zuverwaltendernutzer.passwort}"
-							title="Bitte wiederholen Sie das neue Passwort des Nutzers" />
+							title="Bitte wiederholen Sie das neue Passwort des Nutzers" required/>
 					</div>
 					<div class="inputfeld">
 						<label>Status</label><input type="hidden" id="aktuellerstatus"

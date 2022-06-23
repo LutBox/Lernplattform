@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css"
 	href="../../css/nutzerseiten/anmeldungStil.css" />
 <%@include file="../jspf/noSkript.jspf"%>
+<script type="text/javascript"
+	src="../../js/cookiemonster.js" defer></script>
 <meta charset="UTF-8">
 <title>Anmeldung</title>
 </head>
@@ -48,5 +50,6 @@
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
+	<%@include file="../jspf/cookiemonster.jspf"%>
 </body>
 </html>

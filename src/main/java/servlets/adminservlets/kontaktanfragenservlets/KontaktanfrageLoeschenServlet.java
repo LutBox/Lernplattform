@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
+ * @author Merlin
  * Servlet implementation class KontaktanfrageLoeschenServlet
  */
 @WebServlet("/KontaktanfrageLoeschenServlet")

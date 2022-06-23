@@ -12,7 +12,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class NutzerBearbeitenServlet
+ * @author Merlin
+ * @see MerlinServlet implementation class NutzerBearbeitenServlet
  */
 @WebServlet("/NutzerBearbeitenServlet")
 public class NutzerBearbeitenServlet extends HttpServlet {

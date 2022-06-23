@@ -5,7 +5,6 @@ import java.io.IOException;
 import beans.NutzerBean;
 import beans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +17,8 @@ import jakarta.servlet.http.Part;
 //@MultipartConfig(maxFileSize = 1024 * 1024 * 5, maxRequestSize = 128 * 128 * 5
 //* 4, location = "./tmpbilder", fileSizeThreshold = 1024 * 1024)
 /**
- * @author Merlin Servlet implementation class RegistrierungServlet
+ * @author Merlin Servlet
+ * @see implementation class RegistrierungServlet
  */
 @WebServlet("/RegistrierungServlet")
 @MultipartConfig(location = "./tmpbilder", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024
@@ -49,10 +49,16 @@ public class RegistrierungServlet extends HttpServlet {
 			session.setAttribute("anfrage", anfrage);
 			response.sendRedirect("./html/nutzerseiten/registrierung.jsp");
 		} else {
-			NutzerSQLDienst.nutzerSpeichern(anfrage, profilbild);
-			session.setAttribute(NutzerViewBean.attributname, NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(anfrage.getName()));
-			response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
-
+			try {
+				NutzerSQLDienst.nutzerSpeichern(anfrage, profilbild);
+				session.setAttribute(NutzerViewBean.attributname,
+						NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(anfrage.getName()));
+				response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
+			} catch (Exception ex) {
+				session.setAttribute(infotextname, "Ihr Profilbild ist zu Groﬂ (Max. 1024x1024).");
+				session.setAttribute("anfrage", anfrage);
+				response.sendRedirect("./html/nutzerseiten/registrierung.jsp");
+			}
 		}
 	}
 

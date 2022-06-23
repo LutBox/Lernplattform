@@ -25,6 +25,7 @@ import jakarta.servlet.http.Part;
 		* 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class NutzerAktualisierenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final String infotextname = "forminfotext";
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -38,6 +39,7 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 		String neuesPasswort = request.getParameter("passwort");
 		Integer neuerSatus = null;
 		Part neuesProfilbild = null;
+		response.setCharacterEncoding("UTF-8");
 		try {
 			neuesProfilbild = request.getPart("neuesProfilbild");
 			neuerSatus = Integer.parseInt(request.getParameter("nutzerart"));
@@ -50,7 +52,12 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 		String alterName = zuverwaltendernutzer.getName();
 
 		if (neuesProfilbild != null && neuesProfilbild.getSize() > 0) {
-			NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
+			try {
+				NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
+			} catch (Exception ex) {
+				session.setAttribute(infotextname, "Ihr Profilbild ist zu Groß (Max. 1024x1024).");
+				response.sendRedirect("./html/nutzerseiten/profilbearbeiten.jsp");
+			}
 		}
 		if (neuesPasswort != null && !neuesPasswort.equals(zuverwaltendernutzer.getPasswort())) {
 			NutzerSQLDienst.aktualisiereDasPasswortDesNutzers(neuesPasswort, alterName);
@@ -62,12 +69,19 @@ public class NutzerAktualisierenServlet extends HttpServlet {
 			NutzerSQLDienst.aktualisiereStatusDesNutzers(neuerSatus, alterName);
 		}
 		if (neuerName != null && !neuerName.equals(alterName)) {
-			NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
+			if (!NutzerSQLDienst.istNutzernameVergeben(neuerName)) {
+				NutzerSQLDienst.aktualisiereDenNutzernamen(neuerName, alterName);
+				response.sendRedirect("./html/verwaltungsseiten/nutzerverwaltung.jsp");
+			} else {
+				NutzerBean veranderternutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(neuerName);
+				session.setAttribute("veranderternutzer", veranderternutzer);
+				session.setAttribute(infotextname,
+						"Der von Ihnen gewählte Nutzername ist leider bereits vergeben! Weitere aber Änderungen wurden durchgeführt.");
+				response.sendRedirect("./html/verwaltungsseiten/nutzeraktualisieren.jsp");
+			}
+		} else {
+			session.setAttribute(infotextname, "Änderungen wurden durchgeführt.");
+			response.sendRedirect("./html/verwaltungsseiten/nutzeraktualisieren.jsp");
 		}
-		response.setCharacterEncoding("UTF-8");
-		NutzerBean veranderternutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(neuerName);
-		session.setAttribute("veranderternutzer", veranderternutzer);
-		response.sendRedirect("./html/verwaltungsseiten/nutzerverwaltung.jsp");
 	}
-
 }

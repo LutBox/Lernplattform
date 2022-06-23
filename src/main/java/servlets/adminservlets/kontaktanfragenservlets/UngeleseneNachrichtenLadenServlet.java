@@ -13,7 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class UngeleseneNachrichtenLadenServlet
+ * @author Merlin
+ * @see Servlet implementation class UngeleseneNachrichtenLadenServlet
  */
 @WebServlet("/UngeleseneNachrichtenLadenServlet")
 public class UngeleseneNachrichtenLadenServlet extends HttpServlet {
