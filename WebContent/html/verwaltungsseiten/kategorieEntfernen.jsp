@@ -11,7 +11,7 @@ Erstellt von Lukas Theinert
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/verwaltungsseiten/bildBearbeiten.css"/>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
     <title>Kategorie löschen</title>
 </head>
@@ -32,7 +32,7 @@ Erstellt von Lukas Theinert
     	<h2 hidden>Bild hochladen</h2>
 
 		<fieldset><legend>Kategorie löschen</legend>
-				<form id="form1" method="post" action="${pageContext.request.contextPath}/KategorieEntfernenServlet" enctype="multipart/form-data">
+				<form id="form1" method="post" action="${pageContext.request.contextPath}/KategorieEntfernenServlet">
 						
 				<div>
 				  <label for="kategorieWahl">Kategorien:</label>

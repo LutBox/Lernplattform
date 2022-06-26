@@ -9,16 +9,16 @@ Erstellt von Lukas Theinert
 <head>
 
 	<%--
-	defer -> Skript wird ausgeführt, nachdem mit Parsen fertig ist
-	async -> Skript wird ausgeführt, sobald verfügbar (während dem Parsen)
-	nichts -> Skript wird sofort ausgheführt, wodurch Analyse blockiert wird 
+	defer -> Skript wird parallel gedownloaded und erst ausgeführt, wenn Seite seite ferti geparsed ist
+	async -> Skript wird parallel gedownloaded und ausgeführt, sobald verfügbar (während dem Parsen)
+	nichts -> Skript wird sofort ausgeführt, wodurch Analyse blockiert wird 
 	--%>
 	
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/standard.js" defer></script>
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hauptseiten/bestenliste.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/index.js" defer></script>
 
     <base href="${pageContext.request.requestURI}"/>
 
@@ -59,41 +59,10 @@ Erstellt von Lukas Theinert
         <!-- Flex-Item 2 -->
         <article>
             <h2>Willkommen auf der Lernplattform!</h2>
-            <p>Tabelle mit aktueller Bestenliste</p>
-            <p>Tabelle mit meist gespieltesten Spielen</p>
-
-            <h3>Sticky Navigation Bar Example</h3>
-            <p>The navbar will <strong>stick</strong> to the top when you reach its scroll position.</p>
-            <p><strong>Note:</strong> Internet Explorer do not support sticky positioning and Safari requires a -webkit-
-                prefix.</p>
-            <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset
-                concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur
-                eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae
-                voluptatibus.</p>
-            <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset
-                concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur
-                eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae
-                voluptatibus.</p>
-            <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset
-                concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur
-                eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae
-                voluptatibus.</p>
-            <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset
-                concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur
-                eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae
-                voluptatibus.</p>
-            <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset
-                concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur
-                eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae
-                voluptatibus.</p>
-            <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset
-                concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur
-                eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae
-                voluptatibus.</p>
-            <p>Some text to enable scrolling. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset
-                concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur
-                eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae
-                voluptatibus.</p>
+            <p>Hier kannst du die neusten und coolsten Spiele spielen!</p>
+            <p>Melde dich an, um eine Auswahl aller einzelnen Spiele zu erhalten!</p>
+            <p>Beweise dich, sammle so viele Punkte wie möglich und werde Erster!</p>
+            <p>Unter dem Begriff Lernplattform bzw. Learning Management System versteht man ein Softwaresystem, das unter einer zentralen Oberfläche mehrere aufgabenspezifische Teilprogramme integriert, mit denen verschiedene Lernszenarien unterstützt werden. Ausgehend vom ursprünglichen E-Learning-Ansatz hat sich der Konsens entwickelt, dass das sogenannte Blended Learning die Lernaktivitäten der meisten Anwender am besten unterstützt, weswegen aktuell die meisten LMS diesen Ansatz verfolgen. Gemeinsam ist all diesen Lernumgebungen, dass sie Werkzeuge zur Erstellung, Kommunikation und Verwaltung von Lerninhalten, sowie zur Koordination von web-basierten Lernangeboten und zur Beurteilung der Lernenden enthalten.</p>
 
             <button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
 

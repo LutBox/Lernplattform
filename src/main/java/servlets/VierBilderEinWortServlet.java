@@ -1,3 +1,7 @@
+//
+//Erstellt von Zohal
+//
+
 package servlets;
 
 import jakarta.servlet.http.HttpServlet;
@@ -6,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.sql.DataSource;
 
@@ -44,7 +47,7 @@ public class VierBilderEinWortServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		String  kategorie;
-		// 1) zufälliges Wort aus der Datenbank laden
+		// 1) zufï¿½lliges Wort aus der Datenbank laden
 		//Order by Rand() Limt 1//
 		      try( Connection con = ds.getConnection();
 		    		  PreparedStatement pstmt= con.prepareStatement("Select kategorie from wort order by Rand() limit 1")){
@@ -85,7 +88,7 @@ public class VierBilderEinWortServlet extends HttpServlet {
 		    
 		   //  4) in request legen
 		    request.setAttribute("spielVierBilderEinWortBean", bean);
-		    // 5) forward to jsp, damit die Bilder angezeig werden können
+		    // 5) forward to jsp, damit die Bilder angezeig werden kï¿½nnen
 		    request.getRequestDispatcher("html/spieleseiten/spiel_bilderWort_spielen.jsp").forward(request, response);	      
 	}
 
@@ -103,7 +106,7 @@ public class VierBilderEinWortServlet extends HttpServlet {
 		
 		
 	}
-	    // mit neunen Daten neu aufgerufen :VierBilderEinWortServlet über js wird zum Ergebnis weitergeleitet
+	    // mit neunen Daten neu aufgerufen :VierBilderEinWortServlet ï¿½ber js wird zum Ergebnis weitergeleitet
 		response.sendRedirect("VierBilderEinWortServlet");
 	}
 
