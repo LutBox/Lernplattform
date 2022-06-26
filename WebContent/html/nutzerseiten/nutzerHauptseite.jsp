@@ -6,8 +6,11 @@
 <head>
 <link rel="stylesheet"
 	href="../../css/nutzerseiten/nutzerHauptseiteStil.css" />
+<link rel="stylesheet"
+	href="../../css/hauptseiten/bestenliste.css" />
 <script type="text/javascript" src="../../js/keinProfilbild.js" defer></script>
 <script type="text/javascript" src="../../js/cookiemonster.js" defer></script>
+<script type="text/javascript" src="../../js/index.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
 <meta charset="UTF-8">
 <title>Nutzerbereich</title>
@@ -38,14 +41,12 @@
 			<div id="nutzerkarte">
 				<div>
 					<h2 class="nutzername zentriert">
-						-
 						<c:out value="${nutzer.name}"></c:out>
-						-
 					</h2>
 				</div>
 				<div>
-					<img class="profilbild"
-						src="../../ProfilbildLadenServlet?nn=${nutzer.name}" />
+					<a href="./profilbearbeiten.jsp"> <img class="profilbild"
+						src="../../ProfilbildLadenServlet?nn=${nutzer.name}" /></a>
 				</div>
 				<div class="karteninhalt">
 					<p class="email zentriert">${nutzer.email}</p>
@@ -78,9 +79,10 @@
 			</div>
 		</main>
 		<aside class="flexitem fade-in">
-			<h2>Bestenliste:</h2>
-			<br>
-			<div id="spieleBeschreibung"></div>
+			<h3>Top 3 Spieler</h3>
+			<p id="besteSpieler">Listeneinträge</p>
+			<h3>Beliebteste Spiele</h3>
+			<p id="beliebtesteSpiele">Listeneinträge</p>
 		</aside>
 	</div>
 	<footer>

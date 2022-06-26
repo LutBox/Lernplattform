@@ -1,7 +1,7 @@
 /**
  * @author Merlin
  */
-
+"use strict";
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -24,9 +24,9 @@ function init() {
 
 function changeContent() {
 	var searchURL = "../../NutzerSucheServlet";
-	var fragment = document.getElementById("fragment").value;
+	var fragment = encodeURIComponent(document.getElementById("fragment").value);
 	if (fragment != null && fragment.length > 0)
-		searchURL += "?fragment=" + encodeURIComponent(fragment);
+		searchURL += "?fragment=" + fragment;
 
 	var xmlhttpSearch = new XMLHttpRequest();
 	xmlhttpSearch.addEventListener("load",function() {
@@ -48,7 +48,7 @@ function loeschenBestaetigenLaden(){
 }
 
 function loeschenBestaetigen(evt){
-	var nutzer = this.querySelector(".nutzerMitNameXLoeschen").value;
+	var nutzer = encodeURIComponent(this.querySelector(".nutzerMitNameXLoeschen").value);
 	var wirklichLoeschen = confirm("Möchten Sie den Nutzer "+nutzer+" wirklich löschen?");
 	if (wirklichLoeschen){
 		var delURL ="../../NutzerLoeschenServlet";
@@ -58,12 +58,12 @@ function loeschenBestaetigen(evt){
 		});
 		xmlhttpDel.open("POST",delURL,true);
 		xmlhttpDel.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xmlhttpDel.send("nutzerMitNameXLoeschen="+encodeURIComponent(nutzer));
+		xmlhttpDel.send("nutzerMitNameXLoeschen="+nutzer);
 	}
 }
 
 /**
- * @source https://dillionmegida.com/p/default-image-src/
+ * @source https://dillionmegida.com/p/default-image-src/ 
  */
 function keinProfilbild(){
 	var profilbilder = document.getElementsByClassName("profilbild");

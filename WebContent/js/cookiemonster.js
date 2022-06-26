@@ -1,7 +1,7 @@
 /**
  * @author Merlin
  */
-
+"use strict";
 document.addEventListener("DOMContentLoaded", sindKekseInDerDose);
 
 

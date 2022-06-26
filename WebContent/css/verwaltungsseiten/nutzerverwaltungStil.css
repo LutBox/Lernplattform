@@ -1,5 +1,7 @@
 @charset "UTF-8";
-/* @author Merlin */
+/**
+ *	@author Merlin
+ */
 @import url("../standard/standardFadeIn.css");
 @import url("../standard/standardGridView.css");
 @import url("../standard/standardHintergrund.css");
@@ -41,7 +43,6 @@ button.noStandardButton {
 	border-radius: 50%;
 	width: 28px;
 	height: auto;
-	box-shadow: 0 0 7.5px 2.5px #000000;
 }
 
 .buttonImg:hover {

@@ -1,13 +1,17 @@
-<%-- @author Merlin --%><%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- @author Merlin --%><%@ page language="java"
+	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><%@ taglib
+	prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="../../css/verwaltungsseiten/nutzerverwaltungStil.css" />
-	<script type="text/javascript" src="../../js/verwaltungsskripte/nutzerverwaltung.js"></script>
-	<script type="text/javascript" src="../../js/standard.js" defer></script>
-	<%@include file="../jspf/noSkript.jspf"%>
-	<meta charset="UTF-8">
-	<title>Nutzerverwaltung</title>
+<link rel="stylesheet"
+	href="../../css/verwaltungsseiten/nutzerverwaltungStil.css" />
+<script type="text/javascript"
+	src="../../js/verwaltungsskripte/nutzerverwaltung.js"></script>
+<script type="text/javascript" src="../../js/standard.js" defer></script>
+<%@include file="../jspf/noSkript.jspf"%>
+<meta charset="UTF-8">
+<title>Nutzerverwaltung</title>
 </head>
 <body>
 	<header>
@@ -18,7 +22,8 @@
 		<div class="row">
 			<div class="grid12">
 				<form id="nutzersucheform" method="post"
-					action="../../NutzerSucheServlet" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
+					action="../../NutzerSucheServlet"
+					enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
 					<fieldset>
 						<legend>Nutzersuche</legend>
 						<div>
@@ -39,7 +44,9 @@
 		<div class="row">
 			<div class="grid12" id="suchergebnisse"></div>
 		</div>
-		<button type="button" class="goToTopButton" id="goToTopButton">Seitenanfang</button>
+		<button type="button" class="goToTopButton noStandardButton" id="goToTopButton" title="Klicken um zum Seitenanfang zu springen">
+			<img class="buttonImg" src="../../bilder/verwaltung/goToTopIcon.png" />
+		</button>
 	</main>
 	<footer>
 		<%@include file="../jspf/footer.jspf"%>

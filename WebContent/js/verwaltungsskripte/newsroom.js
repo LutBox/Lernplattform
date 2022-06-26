@@ -1,8 +1,7 @@
 /**
  *	@author Merlin
- *	@source w3schools: https://www.w3schools.com/howto/howto_js_popup_form.asp
  */
-
+"use strict";
 document.addEventListener("DOMContentLoaded", init);
 
 function init(){
@@ -19,10 +18,16 @@ function init(){
 		document.getElementById("aktualisierenAbbrButton").addEventListener("click", aktualisierenAbbrechen);
 }
 
+/**
+ * @source w3schools: https://www.w3schools.com/howto/howto_js_popup_form.asp
+ */
 function anlegen(evt){
 	document.getElementById("maskenvorhang").style.display = "block";
 	document.getElementById("neuAnlegenMaske").style.display = "block";
 }
+/**
+ * END
+ */
 
 function editieren(evt){
 	document.getElementById("maskenvorhang").style.display = "block";
@@ -34,13 +39,9 @@ function editieren(evt){
 function aktualisieren(evt){
 	var aktURL = "../../NeuigkeitAktualisierenServlet";
 	var neuigkeitAktualisiert = encodeURIComponent(document.getElementById("neuigkeitAktualisiert").value);
+	var zennr = encodeURIComponent(document.getElementById("zennr").value);
 	if (neuigkeitAktualisiert != null && neuigkeitAktualisiert != "") {
-		var zennr = encodeURIComponent(document.getElementById("zennr").value);
 		var body = "neuigkeitAktualisiert="+neuigkeitAktualisiert+"&zennr="+zennr;
-		console.log("url: "+aktURL);
-		console.log("body: "+body);
-		console.log("zennr: "+zennr);
-		console.log("nachricht: "+neuigkeitAktualisiert);
 		var xmlhttpAkt = new XMLHttpRequest();
 		xmlhttpAkt.addEventListener("load", function(){
 			document.getElementById("maskenvorhang").style.display = "none";
@@ -53,10 +54,17 @@ function aktualisieren(evt){
 	}
 }
 
+/**
+ * @source w3schools: https://www.w3schools.com/howto/howto_js_popup_form.asp START
+ */
 function aktualisierenAbbrechen(evt){
 	document.getElementById("maskenvorhang").style.display = "none";
 	document.getElementById("aktualisierenMaske").style.display = "none";
 }
+/**
+ * END
+ */
+
 
 function posten(evt){
 	var postURL = "../../NeuigkeitEinstellenServlet";
@@ -82,7 +90,7 @@ function postenAbbrechen(evt){
 
 function loeschen(evt){
 	var delURL = "../../NeuigkeitLoeschenServlet";
-	var zlnnr = this.querySelector(".zlnnr").value;
+	var zlnnr = encodeURIComponent(this.querySelector(".zlnnr").value);
 	var body = "zlnnr=" + zlnnr;
 	var bestaetigt = confirm("Möchten Sie die Neuigkeit wirklich löschen?");
 	if (bestaetigt){

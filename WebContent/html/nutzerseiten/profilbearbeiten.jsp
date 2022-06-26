@@ -41,12 +41,12 @@
 				<div class="inputfeld">
 					<label for="passwort">Neues Passwort:</label> <input
 						name="passwort" id="neuesPasswort" type="password" maxlength="128"
-						title="Bitte geben Sie Ihr neues Passwort an." required/>
+						title="Bitte geben Sie Ihr neues Passwort an." required />
 				</div>
 				<div class="inputfeld">
 					<label for="passwort2">Neues Passwort wiederholen:</label> <input
 						name="passwort2" id="passwort2" type="password" maxlength="128"
-						title="Bitte wiederholen Sie ihr neues Passwort an" required/>
+						title="Bitte wiederholen Sie ihr neues Passwort an" required />
 				</div>
 				<div class="inputfeld">
 					<label for="profilbild">Profilbild hochladen:</label> <input
@@ -55,7 +55,7 @@
 						title="Bitte laden Sie hier ihr neues Profilbild hoch" />
 				</div>
 				<div class="buttonbox inputfeld">
-					<button type="submit">Absenden</button>
+					<button id="absenden" type="submit">Absenden</button>
 					<button type="reset">Zurücksetzen</button>
 					<a class="buttonLink" href="./nutzerHauptseite.jsp">Abbrechen</a>
 				</div>
@@ -65,6 +65,7 @@
 			<span id="infoicon">&#9432; </span><span class="fade-in"><c:out
 					value="${forminfotext}" default="Bitte geben Sie Ihre Daten an." /></span>
 		</div>
+		<img id="output" />
 	</main>
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>

@@ -74,15 +74,16 @@
 					rows="4" cols="30" title="Bitte geben sie hier die aktualisierte Neuigkeiten ein."
 					required></textarea>
 				<button id="aktualisierenButton" type="button">Aktualisieren</button>
-				<button id="aktualisierenAbbrButton">Abbrechen</button>
+				<button id="aktualisierenAbbrButton" type="button">Abbrechen</button>
 			</form>
 		</div>
-		<button id="neuAnlegenButton" type="button"
-			title="Klicken um einen neuen, öffentlichen Post zu verfassen.">News
-			anlegen</button>
+		<button id="neuAnlegenButton" type="button" class="noStandardButton"
+			title="Klicken um einen neuen, öffentlichen Post zu verfassen."><img class="buttonImg"
+								src="../../bilder/verwaltung/hinzufuegen.png" /></button>
 		<div id="maskenvorhang"></div>
-		<button type="button" class="goToTopButton" id="goToTopButton"
-			title="Klicken um zum Seitenanfang zurück zu springen.">Seitenanfang</button>
+		<button type="button" class="goToTopButton noStandardButton" id="goToTopButton"
+			title="Klicken um zum Seitenanfang zurück zu springen."><img class="buttonImg"
+								src="../../bilder/verwaltung/goToTopIcon.png" /></button>
 		<div class="rand"></div>
 	</main>
 	<footer>

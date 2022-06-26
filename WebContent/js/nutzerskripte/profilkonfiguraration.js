@@ -1,7 +1,7 @@
 /**
  * @author Merlin
  */
-
+"use strict";
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -9,28 +9,29 @@ function init() {
 	document.getElementById("profilkonfigurationsform").addEventListener("reset", resetBestaetigen);
 	
 	/**
-	 * @source nicht von Merlin
+	 * @source Lukas Theinert Bilderverwaltung START
 	 */
-//	document.getElementById("absenden").disabled = true;
-//	document.getElementById("image").onchange = function(event) {
-//		var img = document.getElementById('output');
-//		img.src = URL.createObjectURL(event.target.files[0]);
-//
-//		img.onload = function() {
-//			var height = this.height;
-//			var width = this.width;
-//			if (height == 128 && width == 128) {
-//				document.getElementById("output").style.display = 'inline-block';
-//				document.getElementById("absenden").disabled = false;			
-//			} else {
-//				alert("Das ausgew�hlte Bild muss eine Gr��e von 128*128 Pixel haben!");
-//			}	
-//		};
-//	};
+	document.getElementById("neuesProfilbild").onchange = function(event) {
+		var img = document.getElementById('output');
+		img.src = URL.createObjectURL(event.target.files[0]);
+		img.onload = function() {
+			var height = this.height;
+			var width = this.width;
+			if (!(height == 1024 && width == 1024)) {
+				alert("Das von Ihnen gewählte Profilbild entspricht nicht der maximalen Größe von 1024 x 1024!");
+				document.getElementById("neuesProfilbild").value = '';
+			}	
+		};
+	};
+	/**
+	 * @source Lukas Theinert Bilderverwaltung END
+	 */
 }
 
+
+
 function resetBestaetigen(evt){
-	var wirklichZuruecksetzen = confirm("Formular wirklich zurücksetzen?");
+	var wirklichZuruecksetzen = confirm("Formular wirklich zurÃ¼cksetzen?");
 	if (!wirklichZuruecksetzen) {
 		evt.preventDefault();
 	}
@@ -40,6 +41,6 @@ function pwKontrolle(evt){
 	var gueltig = document.getElementById("passwort").value === document.getElementById("passwort2").value;
 	if (!gueltig) {
 		evt.preventDefault();
-		alert("Die Passwörter müssen übereinstimmen!");
+		alert("Die PasswÃ¶rter mÃ¼ssen Ã¼bereinstimmen!");
 	}
 }
