@@ -79,10 +79,10 @@
 				</span>
 			</div>
 		</div>
+		<img id="output"/>
 	</main>
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 </body>
-
 </html>

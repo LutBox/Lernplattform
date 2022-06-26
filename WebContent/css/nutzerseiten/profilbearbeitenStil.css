@@ -1,5 +1,7 @@
 @charset "UTF-8";
-/* @author Merlin */
+/**
+ *	@author Merlin
+ */
 @import url("../standard/standardFadeIn.css");
 @import url("../standard/standardHintergrund.css");
 @import url("../standard/standardFonts.css");
@@ -15,4 +17,8 @@
 
 form {
 	padding-top: 150px;
+}
+
+img#output {
+	display: none;
 }

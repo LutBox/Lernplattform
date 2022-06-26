@@ -100,48 +100,6 @@ table {
 	padding: 0;
 }
 
-table:hover {
-	box-shadow: 0 0 20px 10px #000000;
-}
-
-th:nth-child(odd) {
-	background: #c0c0c0;
-}
-
-th:nth-child(even) {
-	background: #e5e5e5;
-}
-
-td {
-	font-family: courier;
-	font-weight: bold;
-	font: 1.5em;
-}
-
-td:nth-child(odd) {
-	background: #c0c0c0;
-}
-
-td:nth-child(even) {
-	background: #e5e5e5;
-}
-
-.topleft {
-	border-radius: 15px 0 0 0;
-}
-
-.topright {
-	border-radius: 0 15px 0 0;
-}
-
-.bottomright {
-	border-radius: 0 0 15px 0;
-}
-
-.bottomleft {
-	border-radius: 0 0 0 15px;
-}
-
 p.nachrichttext {
 	text-align: center;
 }

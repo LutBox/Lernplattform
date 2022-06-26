@@ -14,3 +14,7 @@
 form {
 	padding-top: 150px;
 }
+
+img#output {
+	display: none;
+}

@@ -96,9 +96,17 @@
 				</div>
 			</div>
 		</c:forEach>
-		<button type="button" class="scrollButton" id="postfachButton">Postfach</button>
-		<button type="button" class="scrollButton" id="archivButton">Archiv</button>
-		<button type="button" class="scrollButton" id="goToTopButton">Seitenanfang</button>
+		<button type="button" class="scrollButton noStandardButton" id="postfachButton"
+			title="Klicken um zu den ungelesenen Nachrichten zu springen">
+			<img class="buttonImg" src="../../bilder/verwaltung/ungelesen.png" />
+		</button>
+		<button type="button" class="scrollButton noStandardButton" id="archivButton"
+			title="Klicken um zum Archiv zu springen">
+			<img class="buttonImg" src="../../bilder/verwaltung/archivieren.png" />
+		</button>
+		<button type="button" class="scrollButton noStandardButton" id="goToTopButton" title="Klicken um zum Seitenanfang zu springen">
+			<img class="buttonImg" src="../../bilder/verwaltung/goToTopIcon.png" />
+		</button>
 	</main>
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>

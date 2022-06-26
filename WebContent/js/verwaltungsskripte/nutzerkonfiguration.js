@@ -1,7 +1,7 @@
 /**
  * @author Merlin
  */
-
+"use strict";
 document.addEventListener("DOMContentLoaded", init);
 
 
@@ -9,6 +9,25 @@ function init() {
 	aktuellenStatusSetzen();
 	document.getElementById("nutzerkonfigurationsform").addEventListener("submit", pwKontrolle);
 	document.getElementById("nutzerkonfigurationsform").addEventListener("reset", resetBestaetigen);
+	
+	/**
+	 * @source Lukas Theinert Bilderverwaltung START
+	 */
+	document.getElementById("neuesProfilbild").onchange = function(event) {
+		var img = document.getElementById('output');
+		img.src = URL.createObjectURL(event.target.files[0]);
+		img.onload = function() {
+			var height = this.height;
+			var width = this.width;
+			if (!(height == 1024 && width == 1024)) {
+				alert("Das von Ihnen gewählte Profilbild entspricht nicht der maximalen Größe von 1024 x 1024!");
+				document.getElementById("neuesProfilbild").value = '';
+			}	
+		};
+	};
+	/**
+	 * @source Lukas Theinert Bilderverwaltung END
+	 */
 }
 
 function resetBestaetigen(evt) {
