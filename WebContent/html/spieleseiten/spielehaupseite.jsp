@@ -9,10 +9,10 @@ Erstellt von Lukas Theinert
 <head>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spielehauptseite.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/spielehauptseite.js" defer></script>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
     <base href="${pageContext.request.requestURI}"/>
 
@@ -37,9 +37,21 @@ Erstellt von Lukas Theinert
 
     <!-- Flex-Item 1 -->
     <aside>
-        <h2>Top-News</h2>
-        <p>Forum-Threads</p>
-    </aside>
+            <h2>Top-News</h2>
+            <c:forEach items="${neuigkeiten}" var="neuigkeit">
+				<div class="neuigkeit">
+					<p>
+						<c:out value="${neuigkeit.nachricht}"></c:out>
+					</p>
+					<p class="zeitstempel">
+						<c:out value="${neuigkeit.zeitstempel}"></c:out>
+					</p>
+					<br />
+					<hr class="neuigkeitentrenner" />
+					<br />
+				</div>
+			</c:forEach>
+        </aside>
 
     <!-- Flex-Item 2 -->
     <article>

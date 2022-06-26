@@ -24,99 +24,100 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class SpielMatheServlet
+ * Servlet implementation class BildBearbeitenServlet
  */
+
 @WebServlet("/BildBearbeitenServlet")
 public class BildBearbeitenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	@Resource(lookup="java:jboss/datasources/MySqlThidbDS")
+
+	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
 	private DataSource ds;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BildBearbeitenServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	
+	public BildBearbeitenServlet() {
+		super();
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+
+		// Daten aus Request holen
 		request.getParameter("bildID");
 		String bildID = request.getParameter("bildID");
-		//log("output text:" + bildID);
+		
+		// Alle Kategorien auslesen
 		BilderAnzeigen bild = read(bildID);
-		List<BilderAnzeigen> kategorieListe  = readKategorie();
-		
-		
-				
-		//Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
+		List<BilderAnzeigen> kategorieListe = readKategorie();
+
+		// Infos werden fÃ¼r mehrere Requests in Session gespeichert
 		final HttpSession session = request.getSession();
 		session.setAttribute("bild", bild);
 		session.setAttribute("kategorieListe", kategorieListe);
 
-		//Weiterleiten an JSP
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/verwaltungsseiten/bildBearbeiten.jsp");
-			dispatcher.forward(request, response); 
+		// Weiterleiten an JSP
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/verwaltungsseiten/bildBearbeiten.jsp");
+		dispatcher.forward(request, response);
 	}
-	
+
+	// Aktuelle Bild-ID und Bild-Kategorie auslesen
 	private BilderAnzeigen read(String bildID) throws ServletException {
 		BilderAnzeigen bild = new BilderAnzeigen();
-		
+
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(
-						"Select * from bild where id = (?)")) {
-		
+				PreparedStatement pstmt = con.prepareStatement("Select * from bild where id = (?)")) {
+
 			pstmt.setString(1, bildID);
-			try(ResultSet rs = pstmt.executeQuery()) {
-				if (rs!= null && rs.next()) {
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs != null && rs.next()) {
 					bild.setBildID(rs.getLong("id"));
 					bild.setBildKategorie(rs.getString("kategorie"));
 				}
-			}			
+			}
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());
 		}
 		return bild;
 	}
-	
+
+	// Alle Kategorien auslesen
 	private List<BilderAnzeigen> readKategorie() throws ServletException {
 		List<BilderAnzeigen> kategorieListe = new ArrayList<>();
-		
-		//DB-Zugriff
-		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(
-						"SELECT * FROM wort;")) {
 
-			try(ResultSet rs = pstmt.executeQuery()) {
-				while (rs!= null && rs.next()) {
+		// DB-Zugriff
+		try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement("SELECT * FROM wort;")) {
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+				while (rs != null && rs.next()) {
 					BilderAnzeigen spielBilder = new BilderAnzeigen();
 					spielBilder.setBildKategorie(rs.getString("kategorie"));
 					kategorieListe.add(spielBilder);
 				}
 			}
-			
+
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());
 		}
-		return kategorieListe;		
+		return kategorieListe;
 	}
-	
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response) 
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
 }
-

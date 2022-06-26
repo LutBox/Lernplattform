@@ -11,7 +11,7 @@ Erstellt von Lukas Theinert
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/verwaltungsseiten/bildBearbeiten.css"/>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
     <title>Kategorie hinzufügen</title>
 </head>

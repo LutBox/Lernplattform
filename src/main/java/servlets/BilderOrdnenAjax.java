@@ -20,8 +20,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BildHochladenServlet
+ * Servlet implementation class BilderOrdnenAjax
  */
+
 @WebServlet("/BilderOrdnenAjax")
 
 public class BilderOrdnenAjax extends HttpServlet {
@@ -33,42 +34,40 @@ public class BilderOrdnenAjax extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+	
 	public BilderOrdnenAjax() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		
-		// Dateien aus Bean in neues Objekt einf�gen
+		// Dateien aus Session in neues Objekt einfügen
 		SpielStartenBean bilderOrdnenAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
 
+		// Daten aus Request lesen
 		bilderOrdnenAjax.setZeit(Integer.valueOf(request.getParameter("zeit")));
 		bilderOrdnenAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
 		
 		NutzerViewBean aktuellerNutzer = (NutzerViewBean) request.getSession().getAttribute("nutzer");
-		//NutzerBean aktuellerNutzer = (NutzerBean) request.getSession().getAttribute("nutzer");
 		
-		// In Datenbank eintragen
-		persist(bilderOrdnenAjax, aktuellerNutzer);
+		// Daten zum Spiel in der Datenbank speichern
+		safeGame(bilderOrdnenAjax, aktuellerNutzer);
 	
+		// Wenn Spiel gewerten: anzahl der vom Nutzer benötigten Versuche und Zeit in der Datenbank speichern
 		if(bilderOrdnenAjax.getGewertet().equals("gewertetAn")) {
-				persist2(bilderOrdnenAjax, aktuellerNutzer);
-			//log("HAT GEKLAPPT");	
+				safeUserStats(bilderOrdnenAjax, aktuellerNutzer);	
 		}
 		
 	}
 	
-
-	private void persist(SpielStartenBean bilderOrdnenAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
+	// Daten zum Spiel in der Datenbank speichern
+	private void safeGame(SpielStartenBean bilderOrdnenAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
@@ -83,7 +82,6 @@ public class BilderOrdnenAjax extends HttpServlet {
 				pstmt.setInt(7, bilderOrdnenAjax.getVersuche());
 				
 			pstmt.executeUpdate();
-			//log("HAT GEKLAPPT: "+aktuellerNutzer.getName());
 			
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());
@@ -91,8 +89,8 @@ public class BilderOrdnenAjax extends HttpServlet {
 
 	}
 	
-
-	private void persist2(SpielStartenBean bilderOrdnenAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
+	// Anzahl der vom Nutzer benötigten Versuche und Zeit in der Datenbank speichern
+	private void safeUserStats(SpielStartenBean bilderOrdnenAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
@@ -103,6 +101,7 @@ public class BilderOrdnenAjax extends HttpServlet {
 			
 			String schwierigkeit = bilderOrdnenAjax.getSchwierigkeit();
 			
+			// Anzahl der erreichten Punktezahl berechnen und in der Datenbank speichern
 			if(schwierigkeit.equals("leicht")) {
 				if(zeit <= 15 && versuche <= 8) {
 					pstmt.setInt(1, 2);
@@ -140,11 +139,8 @@ public class BilderOrdnenAjax extends HttpServlet {
 
 	}
 	
-
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

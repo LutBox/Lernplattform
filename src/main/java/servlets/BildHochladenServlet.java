@@ -27,160 +27,126 @@ import jakarta.servlet.http.Part;
 /**
  * Servlet implementation class BildHochladenServlet
  */
+
 @WebServlet("/BildHochladenServlet")
-@MultipartConfig(
-        maxFileSize=128*128*4,
-        maxRequestSize=128*128*4*4, 
-        location= "/tmp",
-        fileSizeThreshold=128*128)
-
-
+@MultipartConfig(maxFileSize = 128 * 128 * 4, maxRequestSize = 128 * 128 * 4 * 4, location = "/tmp", fileSizeThreshold = 128 * 128)
 
 public class BildHochladenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
 	private DataSource ds;
-	
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+	
 	public BildHochladenServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)   
 	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
-		
-		//Kategorie entgegennehmen 
-		String kategorie = request.getParameter("kategorieWahl");
-		//log("KATEGORIE: " + kategorie);
-		spielBilderMemorieBean.setBild1Kategorie(kategorie);
-		
 
-		// Logausgabe über empfangene Parts
+		// Neues Objekt erstellen, um Bild zu speichern
+		SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
+
+		// Kategorie aus Request entgegennehmen
+		String kategorie = request.getParameter("kategorieWahl");
+		spielBilderMemorieBean.setBild1Kategorie(kategorie);
+
+		// Logausgabe Ã¼ber empfangene Parts
 		for (Part part : request.getParts()) {
 			log("Part received: " + part.getName());
 			if (part.getSubmittedFileName() != null)
 				log("Filename written via BinaryStream: " + part.getSubmittedFileName());
 		}
 
-		
 		// Filebehandlung
 		Part filepart = request.getPart("image");
 		spielBilderMemorieBean.setBild1Stream(filepart.getSubmittedFileName());
-		
-		String fileName = filepart.getSubmittedFileName();
-		//System.out.println("fileName: " + fileName);
 
-	/*
-		// Bild übertragen
-		try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			 InputStream in = filepart.getInputStream()	){
-			int i=0;
-			while ((i = in.read()) != -1) {
-				baos.write(i);
-			}
-			spielBilderMemorieBean.setBild1(baos.toByteArray());
-			baos.flush();
-		} catch (IOException ex) {
-			throw new ServletException(ex.getMessage());
-		}
-		*/
-
-		
-		// DB-Zugriff
-		//Abfrage, ob Kategorie bereits vorhanden ist
+		// Abfrage, ob Kategorie bereits vorhanden ist
 		boolean kategorieVorhanden;
 		kategorieVorhanden = read(spielBilderMemorieBean);
-		
-		if(kategorieVorhanden) {
-			persist2(spielBilderMemorieBean, filepart);
+
+		// Wenn Kategorie vorhanden: Bild in Datenbank speichern
+		if (kategorieVorhanden) {
+			bildSpeichern(spielBilderMemorieBean, filepart);
+		// Wenn Kategorie nicht vorhanden: Neue Kategorie anlegen und Bild in Datenbank speichern	
 		} else {
-			persist(spielBilderMemorieBean, filepart);
-			persist2(spielBilderMemorieBean, filepart);
+			kategorieSpeichern(spielBilderMemorieBean, filepart);
+			bildSpeichern(spielBilderMemorieBean, filepart);
 		}
-		
 
-
-		
-		//datenDB = read();
-		
-		// Infos werden nur für mehrere Requests gespeichert innerhalb einer Bean
+		// Infos werden fÃ¼r mehrere Requests innerhalb einer Bean gespeichert
 		final HttpSession session = request.getSession();
 		session.setAttribute("kategorie", kategorie);
 		session.setAttribute("datenDB", spielBilderMemorieBean);
-		
+
 		// Weiterleiten an JSP
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/spielekonfigurator.jsp");
 		dispatcher.forward(request, response);
-		
 
 	}
-	
+
+	// Auslesen, ob Kategorie bereits vorhanden ist
 	private boolean read(SpielBilderMemorieBean spielBilderMemorieBean) throws ServletException {
-		//SpielBilderMemorieBean spielBilderMemorieBean = new SpielBilderMemorieBean();
-		
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(
-						"Select kategorie from wort where kategorie = (?)")) {
-		
-			pstmt.setString(1,spielBilderMemorieBean.getBild1Kategorie());
-			try(ResultSet rs = pstmt.executeQuery()) {
-				if (rs!= null && rs.next()) {
-					//spielBilderMemorieBean.setBild1Kategorie(rs.getString("kategorie"));
+				PreparedStatement pstmt = con.prepareStatement("Select kategorie from wort where kategorie = (?)")) {
+
+			pstmt.setString(1, spielBilderMemorieBean.getBild1Kategorie());
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs != null && rs.next()) {
 					return true;
 				}
 				return false;
 			}
-			
+
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());
 		}
-		
-	}
-	
 
-	private void persist(SpielBilderMemorieBean spielBilderMemorieBean, Part filepart) throws ServletException {
+	}
+
+	// Neue Kategorie in der Datenbank anlegen
+	private void kategorieSpeichern(SpielBilderMemorieBean spielBilderMemorieBean, Part filepart) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(
-						"INSERT INTO wort (kategorie) VALUES (?)")) {
-		
-				pstmt.setString(1, spielBilderMemorieBean.getBild1Kategorie());
+				PreparedStatement pstmt = con.prepareStatement("INSERT INTO wort (kategorie) VALUES (?)")) {
+
+			pstmt.setString(1, spielBilderMemorieBean.getBild1Kategorie());
 			pstmt.executeUpdate();
-			
-			
+
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());
 		}
 
 	}
-	
-	private void persist2(SpielBilderMemorieBean spielBilderMemorieBean, Part filepart) throws ServletException {
+
+	// Bild in der Datenbank speichern
+	private void bildSpeichern(SpielBilderMemorieBean spielBilderMemorieBean, Part filepart) throws ServletException {
 		// DB-Zugriff
-		String[] generatedKeys = new String[] {"id"};	// Name der Spalte(n), die automatisch generiert wird(werden)
 		
+		// Name der Spalte, der automatisch generiert wird
+		String[] generatedKeys = new String[] { "id" }; 
+
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
 
 						"INSERT INTO bild (kategorie, image) VALUES (?,?)", generatedKeys)) {
-			
-				pstmt.setString(1,spielBilderMemorieBean.getBild1Kategorie());
-				pstmt.setBinaryStream(2, filepart.getInputStream());
+
+			pstmt.setString(1, spielBilderMemorieBean.getBild1Kategorie());
+			pstmt.setBinaryStream(2, filepart.getInputStream());
 
 			pstmt.executeUpdate();
-			
+
 			try (ResultSet rs = pstmt.getGeneratedKeys()) {
 				int i = 1;
 				while (rs.next()) {
@@ -195,15 +161,12 @@ public class BildHochladenServlet extends HttpServlet {
 		}
 
 	}
-	
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)   
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

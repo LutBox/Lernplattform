@@ -9,10 +9,10 @@ Erstellt von Lukas Theinert
 <head>
 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/verwaltungsseiten/bildBearbeiten.css"/>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/verwaltungsskripte/bildBearbeiten.js" defer></script>
+	<script src="${pageContext.request.contextPath}/js/verwaltungsskripte/bildBearbeiten.js" defer></script>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
     <title>Bilder bearbeiten</title>
 </head>

@@ -9,10 +9,10 @@ Erstellt von Lukas Theinert
 <head>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/standard.js" defer></script>
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/verwaltungsseiten/bilderAnzeigen.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/verwaltungsskripte/bilderAnzeigen.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/verwaltungsskripte/bilderAnzeigen.js" defer></script>
 
     <base href="${pageContext.request.requestURI}"/>
 

@@ -9,10 +9,10 @@ Erstellt von Lukas Theinert
 <head>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/standard/standardLayout.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/standard.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/standard.js" defer></script>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/spieleseiten/spiel_bilderOrdnen.css"/>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/spiel_bilderOrdnen.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/spiel_bilderOrdnen.js" defer></script>
 
     <title>Bilder Ordnen</title>
 </head>

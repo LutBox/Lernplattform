@@ -1,3 +1,7 @@
+//
+//Erstellt von Zohal
+//
+
 package servlets;
 
 import jakarta.servlet.http.HttpServlet;
@@ -7,11 +11,9 @@ import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import beans.SpielVierBilderEinWortBean;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletOutputStream;
@@ -46,7 +48,7 @@ public class VierBilderAusDatenBankLesen extends HttpServlet {
 		
 		String  id = String.valueOf(request.getParameter("kategorie"));
 		
-	// 2) 4 bilder (IDs) passend zum ausgewählten Wort
+	// 2) 4 bilder (IDs) passend zum ausgewï¿½hlten Wort
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
 			 PreparedStatement pstmt = con.prepareStatement("SELECT image FROM bild where kategorie=?")) {
