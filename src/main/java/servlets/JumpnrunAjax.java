@@ -32,14 +32,6 @@ public class JumpnrunAjax extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	
-	public JumpnrunAjax() {
-		super();
-	}
-
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)   
 	 */
 

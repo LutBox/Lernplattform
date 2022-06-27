@@ -43,15 +43,7 @@ public class SpielStartenServlet extends HttpServlet {
 
 	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
 	private DataSource ds;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	
-	public SpielStartenServlet() {
-		super();
-	}
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 
 	 */

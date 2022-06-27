@@ -32,14 +32,6 @@ public class BilderMemorieAjax extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-
-	public BilderMemorieAjax() {
-		super();
-	}
-
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 

@@ -70,9 +70,9 @@ function startCountdown() {
 			document.getElementById("spielVorbei").innerHTML = "<p>Zeit abgelaufen!</p>";
 			hide("richtig");
 			hide("falsch");
-			spielGestartet = false;
+			//spielGestartet = false;
 
-			document.getElementById("start-restart").innerHTML = "Start";
+			//document.getElementById("start-restart").innerHTML = "Start";
 			
 			if (document.getElementById("nutzer").innerHTML !== "") {
 				datenbankEintrag();

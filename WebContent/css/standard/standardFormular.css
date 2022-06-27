@@ -1,9 +1,11 @@
 @charset "UTF-8";
+
 /*
- *	@author Lukas
+ *	Erstellt von Lukas Theinert
  *	@author Merlin
  */
 
+/* Anfang: Lukas */
 label {
 	width: 8em;
 	display: inline-block;
@@ -62,7 +64,9 @@ textarea:required+span::after {
 input[type="email"]:valid+span::after {
 	color: green;
 }
+/* Ende: Lukas */
 
+/* Anfang: Merlin */
 input[required]:invalid {
 	border-color: #f23b2c;
 }
@@ -79,3 +83,4 @@ textarea:valid+span::after {
 div.inputfeld {
 	padding-bottom:10px;
 }
+/* Ende: Merlin */

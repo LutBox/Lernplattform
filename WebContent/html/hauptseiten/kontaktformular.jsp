@@ -37,23 +37,25 @@ Erstellt von Zohal Mohammadi
 
     <form method="post" action="../../KontaktanfrageServlet">
     <div class="formular">
-    <h1> Kontaktformular</h1>
+    <fieldset><legend>Kontaktformular</legend>
     
     
-    	<p>Vorname:<br> <input type="text" name="vorname" size ="35" maxlength="40" placeholder="Ihr Vorname" autofocus></p>
-        <p> Nachname: <br><input type ="text" name="nachname" size="35" maxlength="40" placeholder="Ihr Nachname" autofocus ></p>
-        <p>E-Mail:<br><input type="text" name="E-mail" size="30" maxlength="35" placeholder="Ihre E-Mail" autofocus></p>
+    
+    	<p>Vorname:<br> <input type="text" name="vorname" size ="35" maxlength="40" placeholder="Ihr Vorname" autofocus required></p>
+        <p> Nachname: <br><input type ="text" name="nachname" size="35" maxlength="40" placeholder="Ihr Nachname" autofocus required></p>
+        <p>E-Mail:<br><input type="text" name="E-mail" size="30" maxlength="35" placeholder="Ihre E-Mail" autofocus required></p>
         <p> Ihre Anligen an uns: </br>
-        <textarea  name ="Use_angabe" rows ="10" cols="50" autofocus maxlength="500"> </textarea>
+        <textarea  name ="Use_angabe" rows ="10" cols="50" autofocus maxlength="500" required> </textarea>
         </p>
         
         
         
         <button type ="submit" name="sendebutton" value="submit" autofocus >absenden</button>
         
-        
-        </div>
+    </fieldset>   
+    </div>  
 	</form>
+	
 	
 	<button type="button" class="goToTopButton" id="goToTopButton" >Seitenanfang</button>
 	

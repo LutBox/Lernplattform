@@ -30,14 +30,6 @@ public class BildEntfernenAjax extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	
-	public BildEntfernenAjax() {
-		super();
-	}
-
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 
 	 */
 

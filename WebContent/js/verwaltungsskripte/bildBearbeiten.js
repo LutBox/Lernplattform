@@ -65,19 +65,12 @@ function click() {
 kategorien.forEach(kategorie => kategorie.addEventListener("click", click));
 
 document.getElementById("delete").onclick = function() {
-	var deleteBild = confirm("Möchten Sie das Bild wirklich löschen?");
+	var deleteBild = confirm("Wollen Sie das Bild wirklich entfernen?");
 	if(deleteBild){
 		deleteBildFunction();
 	}	
 }
 
-document.getElementById("safe").onclick = function() {
-	//safe();
-	var safeBild = confirm("Möchten Sie das Bild wirklich speichern?");
-	if(safeBild){
-		safeBildFunction();
-	}	
-}
 
 document.getElementById("abbruch").onclick = function() {
 	window.location.href = "/Lernplattform/html/verwaltungsseiten/spielekonfigurator.jsp";

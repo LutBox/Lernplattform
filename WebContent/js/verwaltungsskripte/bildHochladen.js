@@ -33,7 +33,7 @@ document.getElementById("image").onchange = function(event) {
 			document.getElementById("output").style.display = 'inline-block';
 			document.getElementById("absenden").disabled = false;			
 		} else {
-			alert("Das ausgewählte Bild muss eine Größe von 128*128 Pixel haben!");
+			alert("Das ausgewählte Bild muss die Dimensionen von 128*128 Pixel haben!");
 		}	
 	}
 }

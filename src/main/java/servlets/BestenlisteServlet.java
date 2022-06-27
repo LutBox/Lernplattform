@@ -35,14 +35,6 @@ public class BestenlisteServlet extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	
-	public BestenlisteServlet() {
-		super();
-	}
-
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 

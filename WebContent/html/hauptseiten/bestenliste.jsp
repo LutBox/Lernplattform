@@ -2,8 +2,8 @@
 Erstellt von Lukas Theinert
 --%>
 
-<%@page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -255,11 +255,11 @@ Erstellt von Lukas Theinert
         <input type="checkbox" name="bestenlisten" id="bilderWort" value="bilderWort" checked="checked">
         <label for="bilderWort">4 Bilder 1 Wort</label>
         <br>
-        <input type="checkbox" name="bestenlisten" id="jumpnrun" value="jumpnrun" checked="checked">
-        <label for="jumpnrun">Jump n run</label>
-        <br>
         <input type="checkbox" name="bestenlisten" id="mathe" value="mathe" checked="checked">
         <label for="mathe">Mathe</label>
+        <br>
+        <input type="checkbox" name="bestenlisten" id="jumpnrun" value="jumpnrun" checked="checked">
+        <label for="jumpnrun">Jump n run</label>
     </aside>
 
 </div>

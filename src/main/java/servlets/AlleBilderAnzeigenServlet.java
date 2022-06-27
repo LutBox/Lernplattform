@@ -28,6 +28,7 @@ import jakarta.servlet.http.HttpSession;
  */
 
 @WebServlet("/AlleBilderAnzeigenServlet")
+
 public class AlleBilderAnzeigenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,7 +36,7 @@ public class AlleBilderAnzeigenServlet extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)   
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 
 	 */
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

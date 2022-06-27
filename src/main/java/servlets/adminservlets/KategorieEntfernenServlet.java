@@ -31,14 +31,6 @@ public class KategorieEntfernenServlet extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	
-	public KategorieEntfernenServlet() {
-		super();
-	}
-
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 

@@ -2,7 +2,9 @@
 
 package beans;
 
-public class SpielBilderMemorieBean {
+import java.io.Serializable;
+
+public class SpielBilderMemorieBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String bild1Stream, bild2Stream, bild3Stream, bild4Stream, bild5Stream, bild6Stream, bild7Stream, bild8Stream, bild9Stream, bild10Stream, bild11Stream, bild12Stream, bild13Stream, bild14Stream, bild15Stream, bild16Stream;
 	private String bild1Kategorie, bild2Kategorie, bild3Kategorie, bild4Kategorie, bild5Kategorie, bild6Kategorie, bild7Kategorie, bild8Kategorie, bild9Kategorie, bild10Kategorie, bild11Kategorie, bild12Kategorie, bild13Kategorie, bild14Kategorie, bild15Kategorie, bild16Kategorie;

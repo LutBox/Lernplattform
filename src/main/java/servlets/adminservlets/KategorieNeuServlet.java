@@ -31,14 +31,6 @@ public class KategorieNeuServlet extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	
-	public KategorieNeuServlet() {
-		super();
-	}
-
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)   
 	 */
 

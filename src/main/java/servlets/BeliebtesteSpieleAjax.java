@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BildHochladenServlet
+ * Servlet implementation class BeliebtesteSpieleAjax
  */
 
 @WebServlet("/BeliebtesteSpieleAjax")
@@ -32,14 +32,6 @@ public class BeliebtesteSpieleAjax extends HttpServlet {
 
 	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
 	private DataSource ds;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	
-	public BeliebtesteSpieleAjax() {
-		super();
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 

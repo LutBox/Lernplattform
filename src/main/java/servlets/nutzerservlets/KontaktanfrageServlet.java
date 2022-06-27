@@ -28,7 +28,7 @@ public class KontaktanfrageServlet extends HttpServlet {
 		String dest = "./html/hauptseiten/kontaktformular.jsp";
 		if (email != null && nachricht != null) {
 			KontaktanfragenSQLDienst.anfrageSpeichern(email, nachricht);
-			dest = "./html/hauptseiten/dankeFuerDieAnfrage.jsp";
+			dest = "./index.jsp";
 		}
 		response.sendRedirect(dest);
 	}
