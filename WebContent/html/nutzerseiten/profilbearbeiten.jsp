@@ -5,14 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8" />
+<title>Profil bearbeiten</title>
 <link rel="stylesheet" type="text/css"
 	href="../../css/nutzerseiten/profilbearbeitenStil.css" />
 <script type="text/javascript"
 	src="../../js/nutzerskripte/profilkonfiguraration.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
 <%@include file="../jspf/cookiemonster.jspf"%>
-<meta charset="UTF-8">
-<title>Profil bearbeiten</title>
 </head>
 <body>
 	<header>
@@ -30,26 +30,27 @@
 						name="neuerName" id="neuerName" type="text"
 						placeholder="Neuer Nutzername" maxlength="64"
 						value="${nutzer.name}" pattern="[A-Za-z0-9_]+"
-						title="Bitte geben Sie Ihren neuen Nutzernamen an (Maximal 96 Zeichen, A-Z, a-z, 0-9)." />
+						title="Bitte geben Sie Ihren neuen Nutzernamen an (Maximal 64 Zeichen, A-Z, a-z, 0-9)."
+						required />
 				</div>
 				<div class="inputfeld">
-					<label for="email">Neue E-Mail:</label> <input name="neueEmail"
-						id="neuEmail" type="email" value="${nutzer.email}"
+					<label for="neueEmail">Neue E-Mail:</label> <input name="neueEmail"
+						id="neueEmail" type="email" value="${nutzer.email}"
 						placeholder="e-mail" maxlength="64"
-						title="Bitte geben Sie Ihre neue E-mail an." />
+						title="Bitte geben Sie Ihre neue E-mail an." required />
 				</div>
 				<div class="inputfeld">
-					<label for="passwort">Neues Passwort:</label> <input
-						name="passwort" id="neuesPasswort" type="password" maxlength="128"
-						title="Bitte geben Sie Ihr neues Passwort an." required />
+					<label for="neuesPasswort">Neues Passwort:</label> <input
+						name="neuesPasswort" id="neuesPasswort" type="password" maxlength="128" pattern="[A-Za-z0-9_]+"
+						title="Bitte geben Sie Ihr neues Passwort an (Maximal 128 Zeichen, A-Z, a-z, 0-9)." required />
 				</div>
 				<div class="inputfeld">
 					<label for="passwort2">Neues Passwort wiederholen:</label> <input
-						name="passwort2" id="passwort2" type="password" maxlength="128"
-						title="Bitte wiederholen Sie ihr neues Passwort an" required />
+						name="passwort2" id="passwort2" type="password" maxlength="128" pattern="[A-Za-z0-9_]+"
+						title="Bitte wiederholen Sie ihr neues Passwort." required />
 				</div>
 				<div class="inputfeld">
-					<label for="profilbild">Profilbild hochladen:</label> <input
+					<label for="neuesProfilbild">Profilbild hochladen:</label> <input
 						type="file" name="neuesProfilbild" id="neuesProfilbild"
 						accept="image/*"
 						title="Bitte laden Sie hier ihr neues Profilbild hoch" />
@@ -65,7 +66,6 @@
 			<span id="infoicon">&#9432; </span><span class="fade-in"><c:out
 					value="${forminfotext}" default="Bitte geben Sie Ihre Daten an." /></span>
 		</div>
-		<img id="output" />
 	</main>
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>

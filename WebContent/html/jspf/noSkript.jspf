@@ -14,7 +14,7 @@
 				title="Nachdem Sie JavaSkript aktiviert haben, brauchen Sie diese Seite lediglich neu zu laden und könne dann fortfahren.">Zum
 				Tutorial</a>
 		</p>
-		<p id="cri">&#169; Lernplattform 2022</p>
+		<p class="cri">&#169; Lernplattform 2022</p>
 	</div>
 	<div id="vorhang"></div>
 </noscript>

@@ -74,7 +74,7 @@
 							<input type="hidden" name="nn" value="${ergebnis.name}" />
 							<button type="submit" class="noStandardButton" title="${ergebnis.name} bearbeiten">
 								<img class="buttonImg"
-									src="../../bilder/verwaltung/bearbeiten.png" />
+									src="../../bilder/verwaltung/bearbeiten.png" alt="Bearbeiten"/>
 							</button>
 						</form>
 						<form class="loeschenformular" method="post"
@@ -83,7 +83,7 @@
 								 value="${ergebnis.name}" />
 							<button type="button" class="noStandardButton" title="${ergebnis.name} löschen">
 								<img class="buttonImg"
-									src="../../bilder/verwaltung/entfernen.png" />
+									src="../../bilder/verwaltung/entfernen.png" alt="Löschen"/>
 							</button>
 						</form>
 					</div>

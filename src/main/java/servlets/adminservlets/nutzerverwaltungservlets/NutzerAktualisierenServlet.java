@@ -3,9 +3,7 @@ package servlets.adminservlets.nutzerverwaltungservlets;
 import java.io.IOException;
 
 import beans.NutzerBean;
-import beans.NutzerViewBean;
 import dienste.sqldienste.NutzerSQLDienst;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,14 +13,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
-//@MultipartConfig(maxFileSize = 1024 * 1024 * 5, maxRequestSize = 128 * 128 * 5
-//* 4, location = "./tmpbilder", fileSizeThreshold = 1024 * 1024)
 /**
  * @author Merlin Servlet implementation class NutzerAktualisierenServlet
  */
 @WebServlet("/NutzerAktualisierenServlet")
-@MultipartConfig(location = "./tmpbilder", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024
-		* 5, maxRequestSize = 1024 * 1024 * 5 * 5)
+@MultipartConfig(location = "./tmp", fileSizeThreshold = 1024 * 32, maxFileSize = 1024 * 64, maxRequestSize = 1024 * 1024
+* 5 * 5)
 public class NutzerAktualisierenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String infotextname = "forminfotext";

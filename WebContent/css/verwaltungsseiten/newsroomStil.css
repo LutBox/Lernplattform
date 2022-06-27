@@ -66,6 +66,12 @@ button#neuAnlegenButton {
 	bottom: 15%;
 }
 
+textarea {
+	border: 2px solid #ccc;
+ 	border-radius: 4px;
+ 	resize: none;
+}
+
 button.noStandardButton {
 	margin: 0;
 	border: 0;
