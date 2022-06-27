@@ -46,11 +46,15 @@ for (i = 1; i < 5; i++) {
 
 			} else {
 				//falsch Antwort
+				if(punkteStand > 0){
+					punkteStand--;
+					document.getElementById("punkte").innerHTML = punkteStand;
+				}
 				hide("richtig");
 				show("falsch");
 				setTimeout(function() {
 					hide("falsch");
-				}, 1000);
+				}, 1000);	
 			}
 		}
 	}
@@ -181,7 +185,6 @@ document.getElementById("start-restart").onclick = function() {
 			verbleibendeZeit = 60;
 		} 
 		
-
 		document.getElementById("verbleibendeZeitWert").innerHTML = verbleibendeZeit;
 
 		//hide game over

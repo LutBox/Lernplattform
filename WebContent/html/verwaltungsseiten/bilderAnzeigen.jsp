@@ -58,6 +58,10 @@ Erstellt von Lukas Theinert
         <!-- Flex-Item 2 -->
     <article>
     	<h2 hidden>Bild bearbeiten</h2>
+    	
+
+    	<button id="aktualisieren">Aktualisieren</button>
+    	<br>
 	
 	<div class="bilderKategorie">
 
@@ -90,6 +94,12 @@ Erstellt von Lukas Theinert
     <!-- Flex-Item 3 -->
     <aside>
         <h3>Kategorien</h3>
+        
+        <div>
+        	<button id="alle">Alle auswählen</button>
+        	<button id="keine">Alle abwählen</button>
+        </div>
+        <br>
         <div>
         <c:forEach var="kategorieListe" items="${kategorieListe}">        
         		<input class="kategorie" type="checkbox" name="${kategorieListe.bildKategorie}" id="${kategorieListe.bildKategorie}" value="${kategorieListe.bildKategorie}" checked="checked">
