@@ -2,7 +2,9 @@
 
 package beans;
 
-public class SpielMatheBean {
+import java.io.Serializable;
+
+public class SpielMatheBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private int zahl1, zahl2, zahl3, zahl4, zahl5, zahl6;

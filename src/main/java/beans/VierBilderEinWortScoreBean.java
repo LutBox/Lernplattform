@@ -1,3 +1,5 @@
+//Erstellt von Zohal
+
 package beans;
 
 import java.io.Serializable;
@@ -12,7 +14,7 @@ public class VierBilderEinWortScoreBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int versuche; 
 	int richtigeErgebnis; 
-	//schwiriegkeit einfügen!
+	//schwiriegkeit einfï¿½gen!
 	// Stiehl stellt dazu fragen!
    String zeit;
    String schwierigkeit;

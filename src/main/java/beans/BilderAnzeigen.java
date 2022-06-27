@@ -2,13 +2,14 @@
 
 package beans;
 
-public class BilderAnzeigen {
+import java.io.Serializable;
+
+public class BilderAnzeigen implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private String bildKategorie;
 	private long bildID;
 
-	
-	
 	public BilderAnzeigen() {
 		super();
 	}

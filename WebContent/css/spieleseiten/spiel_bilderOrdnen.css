@@ -65,7 +65,7 @@ html {
 }
 .droppable span {
   font-size: 1.25rem;
-  pointer-events: none; /* The element is never the target of pointer events */
+  pointer-events: none;
 }
 
 /* Bild auf Kategorie hovern */

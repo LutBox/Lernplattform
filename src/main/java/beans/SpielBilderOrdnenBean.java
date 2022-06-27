@@ -1,9 +1,12 @@
+//Erstellt von Lukas Theinert
+
 package beans;
 
-public class SpielBilderOrdnenBean {
+import java.io.Serializable;
 
-	
+public class SpielBilderOrdnenBean implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	private String bild1Stream, bild2Stream, bild3Stream, bild4Stream, bild5Stream, bild6Stream, bild7Stream, bild8Stream, bild9Stream, bild10Stream, bild11Stream, bild12Stream, bild13Stream, bild14Stream, bild15Stream, bild16Stream;
 	private String bild1Kategorie, bild2Kategorie, bild3Kategorie, bild4Kategorie, bild5Kategorie, bild6Kategorie, bild7Kategorie, bild8Kategorie, bild9Kategorie, bild10Kategorie, bild11Kategorie, bild12Kategorie, bild13Kategorie, bild14Kategorie, bild15Kategorie, bild16Kategorie;
 	private long bild1ID, bild2ID, bild3ID, bild4ID, bild5ID, bild6ID, bild7ID, bild8ID, bild9ID, bild10ID, bild11ID, bild12ID, bild13ID, bild14ID, bild15ID, bild16ID;

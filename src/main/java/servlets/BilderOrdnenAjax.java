@@ -30,14 +30,6 @@ public class BilderOrdnenAjax extends HttpServlet {
 
 	@Resource(lookup = "java:jboss/datasources/MySqlThidbDS")
 	private DataSource ds;
-	
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	
-	public BilderOrdnenAjax() {
-		super();
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

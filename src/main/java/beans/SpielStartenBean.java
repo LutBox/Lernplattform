@@ -14,43 +14,32 @@ public class SpielStartenBean implements Serializable {
 	private int zeit;
 	private int versuche;
 
-
 	public SpielStartenBean() { 
 		
 	}
-	
-	
+		
 	public int getZeit() {
 		return zeit;
 	}
-
-
 
 	public void setZeit(int zeit) {
 		this.zeit = zeit;
 	}
 
-
-
 	public int getVersuche() {
 		return versuche;
 	}
 
-
-
 	public void setVersuche(int versuche) {
 		this.versuche = versuche;
 	}
-
-
 
 	public SpielStartenBean(String schwierigkeit, String spielart) {
 		super();
 		this.schwierigkeit = schwierigkeit;
 		this.spielart = spielart;
 	}
-	
-	
+		
 	public String getTimer() {
 		return timer;
 	}

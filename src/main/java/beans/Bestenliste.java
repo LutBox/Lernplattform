@@ -14,7 +14,7 @@ public class Bestenliste implements Serializable {
 	private int durchschnittZeitLeicht, durchschnittZeitMittel, durchschnittZeitSchwer;
 
 	public Bestenliste() {
-
+		super();
 	}
 	
 	public String getKategorie() {
