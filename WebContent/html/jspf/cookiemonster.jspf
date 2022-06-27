@@ -6,12 +6,12 @@
 		Funktionsumfang dieser Webanwendung nutzen zu können!</p>
 	<p>
 	<div class="cookiepopupbox-subcontainer">
-		<a id="jsImgLink" class="buttonLink"
+		<a id="cookieImgLink" class="buttonLink"
 			href="https://www.heise.de/tipps-tricks/Cookies-aktivieren-in-Chrome-so-geht-s-4435009.html"
 			target="_blank"
 			title="Diese Tutorial erklärt Ihnen, wie Sie die Cookies in ihrem Browser aktivieren">Zum
 			Tutorial</a>
 	</div>
-	<p id="cri">&#169; Lernplattform 2022</p>
+	<p class="cri">&#169; Lernplattform 2022</p>
 </div>
 <div id="cookievorhang"></div>

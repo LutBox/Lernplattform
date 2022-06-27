@@ -9,22 +9,17 @@ function init() {
 	document.getElementById("profilkonfigurationsform").addEventListener("reset", resetBestaetigen);
 	
 	/**
-	 * @source Lukas Theinert Bilderverwaltung START
+	 * @source https://stackoverflow.com/questions/3717793/javascript-file-upload-size-validation START
 	 */
 	document.getElementById("neuesProfilbild").onchange = function(event) {
-		var img = document.getElementById('output');
-		img.src = URL.createObjectURL(event.target.files[0]);
-		img.onload = function() {
-			var height = this.height;
-			var width = this.width;
-			if (!(height == 1024 && width == 1024)) {
-				alert("Das von Ihnen gewählte Profilbild entspricht nicht der maximalen Größe von 1024 x 1024!");
-				document.getElementById("neuesProfilbild").value = '';
-			}	
-		};
+		var imgSize = this.files[0].size;
+		if (imgSize > 64 * 1024){
+			alert("Ihr Profilbild darf maximal 64 KB groß sein!");
+			document.getElementById("neuesProfilbild").value = '';
+		}
 	};
 	/**
-	 * @source Lukas Theinert Bilderverwaltung END
+	 * @source https://stackoverflow.com/questions/3717793/javascript-file-upload-size-validation END
 	 */
 }
 

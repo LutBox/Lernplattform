@@ -14,15 +14,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
-//@MultipartConfig(maxFileSize = 1024 * 1024 * 5, maxRequestSize = 128 * 128 * 5
-//* 4, location = "./tmpbilder", fileSizeThreshold = 1024 * 1024)
 /**
  * @author Merlin Servlet
  * @see implementation class RegistrierungServlet
  */
 @WebServlet("/RegistrierungServlet")
-@MultipartConfig(location = "./tmpbilder", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024
-		* 5, maxRequestSize = 1024 * 1024 * 5 * 5)
+@MultipartConfig(location = "/tmp", fileSizeThreshold = 1024 * 32, maxFileSize = 1024 * 64, maxRequestSize = 1024 * 1024
+		* 5 * 5)
 public class RegistrierungServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String infotextname = "forminfotext";
@@ -40,7 +38,7 @@ public class RegistrierungServlet extends HttpServlet {
 		anfrage.setEmail(request.getParameter("email"));
 		anfrage.setPasswort(request.getParameter("passwort"));
 
-		Part profilbild = request.getPart("profilbild");
+		Part profilbild = request.getPart("neuesProfilbild");
 
 		final HttpSession session = request.getSession();
 

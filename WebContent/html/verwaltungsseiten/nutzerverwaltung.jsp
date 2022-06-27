@@ -4,14 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8" />
+<title>Nutzerverwaltung</title>
 <link rel="stylesheet"
 	href="../../css/verwaltungsseiten/nutzerverwaltungStil.css" />
 <script type="text/javascript"
 	src="../../js/verwaltungsskripte/nutzerverwaltung.js"></script>
 <script type="text/javascript" src="../../js/standard.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
-<meta charset="UTF-8">
-<title>Nutzerverwaltung</title>
 </head>
 <body>
 	<header>
@@ -32,9 +32,9 @@
 								pattern="[^ &lt;&gt;&#34;']+"
 								title="Fragment eines Nutzernamens (Nutzernamen können keine Leerzeilen haben)."
 								value="${fragment}" />
-							<button id="suchenbutton" class="noStandardButton" type="button">
+							<button id="suchenbutton" class="noStandardButton" type="button" title="Suche durchführen">
 								<!-- IMG-SRC: https://www.google.com/search?tbm=isch&ved=2ahUKEwjcxd-Vpqv4AhXpi_0HHY6JBG8Q2-cCegQIABAA&oq=search+icon+white+filetype:png&gs_lcp=CgNpbWcQAzoECAAQQzoFCAAQgAQ6BggAEB4QBzoECAAQHjoGCAAQHhAFUI0OWLxFYIRGaABwAHgBgAG-AogB2xOSAQgxLjE2LjEuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=M6KnYpzgBOmX9u8PjpOS-AY&bih=937&biw=1920&rlz=1C1CHBF_deDE916DE916&q=search+icon+white&tbs=ift:png#imgrc=SnwzyiNf1tuNMM -->
-								<img class="buttonImg" src="../../bilder/verwaltung/suchen.png" />
+								<img class="buttonImg" src="../../bilder/verwaltung/suchen.png" alt="Suchen"/>
 							</button>
 						</div>
 					</fieldset>
@@ -45,7 +45,7 @@
 			<div class="grid12" id="suchergebnisse"></div>
 		</div>
 		<button type="button" class="goToTopButton noStandardButton" id="goToTopButton" title="Klicken um zum Seitenanfang zu springen">
-			<img class="buttonImg" src="../../bilder/verwaltung/goToTopIcon.png" />
+			<img class="buttonImg" src="../../bilder/verwaltung/goToTopIcon.png" alt="Zum Seitenanfang springen"/>
 		</button>
 	</main>
 	<footer>

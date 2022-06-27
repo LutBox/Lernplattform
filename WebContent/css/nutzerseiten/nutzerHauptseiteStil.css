@@ -71,11 +71,11 @@ img.profilbild:hover {
 }
 
 .nutzername {
-	font-size: 2vm;
+	font-size: 2em;
 }
 
 .email {
-	font-size: 1.8vm;
+	font-size: 1.5em;
 	color: #808080;
 	text-decoration: none;
 }

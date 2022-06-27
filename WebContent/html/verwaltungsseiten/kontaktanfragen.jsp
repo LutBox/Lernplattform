@@ -5,14 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8"/>
+<title>Kontaktanfragen</title>
 <link rel="stylesheet" type="text/css"
 	href="../../css/verwaltungsseiten/kontaktanfragenStil.css" />
 <script type="text/javascript"
 	src="../../js/verwaltungsskripte/kontaktanfragen.js"></script>
 <script type="text/javascript" src="../../js/standard.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
-<meta charset="UTF-8">
-<title>Kontaktanfragen</title>
 </head>
 <body>
 	<header>
@@ -44,7 +44,7 @@
 							<button class="noStandardButton" type="submit"
 								title="Archivieren">
 								<img class="buttonImg"
-									src="../../bilder/verwaltung/archivieren.png" />
+									src="../../bilder/verwaltung/archivieren.png" alt="Archivieren"/>
 							</button>
 						</form>
 						<form class="loeschenformular" method="post"
@@ -53,7 +53,7 @@
 							<button class="noStandardButton" type="submit"
 								title="Ungelesene Nachricht von ${nachricht.email} löschen">
 								<img class="buttonImg"
-									src="../../bilder/verwaltung/entfernen.png" />
+									src="../../bilder/verwaltung/entfernen.png" alt="Löschen" />
 							</button>
 						</form>
 					</div>
@@ -80,7 +80,7 @@
 							<button class="noStandardButton" type="submit"
 								title="Als ungelesen markieren">
 								<img class="buttonImg"
-									src="../../bilder/verwaltung/ungelesen.png" />
+									src="../../bilder/verwaltung/ungelesen.png" alt="Als ungelesen markieren"/>
 							</button>
 						</form>
 						<form class="loeschenformular" method="post"
@@ -89,7 +89,7 @@
 							<button class="noStandardButton" type="submit"
 								title="Archivierte Nachricht von ${nachricht.email} löschen">
 								<img class="buttonImg"
-									src="../../bilder/verwaltung/entfernen.png" />
+									src="../../bilder/verwaltung/entfernen.png" alt="Löschen"/>
 							</button>
 						</form>
 					</div>

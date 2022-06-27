@@ -20,7 +20,7 @@ div#cookiepopupbox {
 	display:none;
 }
 
-p#cri {
+p.cri {
 	color: grey;
 }
 

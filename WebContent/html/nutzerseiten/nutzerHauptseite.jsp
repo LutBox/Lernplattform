@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8"/>
+<title>Nutzerbereich</title>
 <link rel="stylesheet"
 	href="../../css/nutzerseiten/nutzerHauptseiteStil.css" />
 <link rel="stylesheet"
@@ -12,8 +14,6 @@
 <script type="text/javascript" src="../../js/cookiemonster.js" defer></script>
 <script type="text/javascript" src="../../js/index.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
-<meta charset="UTF-8">
-<title>Nutzerbereich</title>
 </head>
 <body>
 	<header>
@@ -46,7 +46,7 @@
 				</div>
 				<div>
 					<a href="./profilbearbeiten.jsp"> <img class="profilbild"
-						src="../../ProfilbildLadenServlet?nn=${nutzer.name}" /></a>
+						src="../../ProfilbildLadenServlet?nn=${nutzer.name}" alt="${nutzer.name}s Profilbild" /></a>
 				</div>
 				<div class="karteninhalt">
 					<p class="email zentriert">${nutzer.email}</p>

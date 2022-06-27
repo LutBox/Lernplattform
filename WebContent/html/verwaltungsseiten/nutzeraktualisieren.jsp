@@ -4,13 +4,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-	<link rel="stylesheet" type="text/css" href="../../css/verwaltungsseiten/nutzeraktualisierenStil.css" />
-	<script type="text/javascript" src="../../js/verwaltungsskripte/nutzerkonfiguration.js" defer></script>
-	<%@include file="../jspf/noSkript.jspf"%>
-	<meta charset="UTF-8">
-	<title>Nutzer aktualisieren</title>
+<meta charset="UTF-8" />
+<title>Nutzer aktualisieren</title>
+<link rel="stylesheet" type="text/css"
+	href="../../css/verwaltungsseiten/nutzeraktualisierenStil.css" />
+<script type="text/javascript"
+	src="../../js/verwaltungsskripte/nutzerkonfiguration.js" defer></script>
+<%@include file="../jspf/noSkript.jspf"%>
 </head>
 <body>
 	<header>
@@ -28,25 +29,29 @@
 						<label for="neuerName">Neuer Nutzername</label> <input
 							name="neuerName" id="neuerName" type="text"
 							placeholder="Neuer Nutzername" maxlength="64"
-							value="${zuverwaltendernutzer.name}"
-							pattern="[A-Za-z0-9_^ &lt;&gt;&#34;']+"
-							title="Bitte geben Sie den neuen Name für den Nutzer an  (Maximal 96 Zeichen, A-Z, a-z, 0-9)." required/>
+							pattern="[A-Za-z0-9_]+" value="${zuverwaltendernutzer.name}"
+							title="Bitte geben Sie den neuen Name für den Nutzer an  (Maximal 64 Zeichen, A-Z, a-z, 0-9)."
+							required />
 					</div>
 					<div class="inputfeld">
 						<label for="neueEmail">Neue E-Mail</label> <input name="neueEmail"
 							id="neueEmail" type="email" value="${zuverwaltendernutzer.email}"
 							placeholder="e-mail" maxlength="64"
-							title="Bitte geben Sie die neue E-Mail des Nutzers an" required/>
+							title="Bitte geben Sie die neue E-Mail des Nutzers an" required />
 					</div>
 					<div class="inputfeld">
 						<label for="neuesPasswort">Neues Passwort</label> <input
 							name="passwort" id="neuesPasswort" type="text" maxlength="128"
-							value="${zuverwaltendernutzer.passwort}" 
-							title="Bitte geben Sie das neue Passwort des Nutzers an (Mindestens 96 Zeichen ohne Leerzeichen)." required/>
+							value="${zuverwaltendernutzer.passwort}" pattern="[A-Za-z0-9_]+"
+							title="Bitte geben Sie das neue Passwort des Nutzers an (Maximal 128 Zeichen, A-Z, a-z, 0-9)."
+							required />
+					</div>
+					<div class="inputfeld">
 						<label for="passwort2">Neues Passwort wiederholen</label> <input
 							name="passwort2" id="passwort2" type="text" maxlength="128"
 							value="${zuverwaltendernutzer.passwort}"
-							title="Bitte wiederholen Sie das neue Passwort des Nutzers" required/>
+							title="Bitte wiederholen Sie das neue Passwort des Nutzers"
+							required />
 					</div>
 					<div class="inputfeld">
 						<label>Status</label><input type="hidden" id="aktuellerstatus"
@@ -59,16 +64,15 @@
 							for="administrator">Admin</label>
 					</div>
 					<div class="inputfeld">
-						<label for="neuesProfilbild">Profilbild hochladen</label> <input id="profilbildupload"
+						<label for="neuesProfilbild">Profilbild hochladen</label> <input
 							type="file" name="neuesProfilbild" id="neuesProfilbild"
 							accept="image/*"
 							title="Bitte laden Sie hier das neue Profilbild des Nutzers hoch" />
 					</div>
 					<div class="buttonbox inputfeld">
-						<button type="submit">Absenden</button>
+						<button id="absenden" type="submit">Absenden</button>
 						<button type="reset">Zurücksetzen</button>
-						<a class="buttonLink" class="linkZuButton"
-							href="./nutzerverwaltung.jsp">Abbrechen</a>
+						<a class="buttonLink" href="./nutzerverwaltung.jsp">Abbrechen</a>
 					</div>
 				</fieldset>
 			</form>
@@ -79,7 +83,6 @@
 				</span>
 			</div>
 		</div>
-		<img id="output"/>
 	</main>
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
