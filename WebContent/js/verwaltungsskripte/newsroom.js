@@ -68,7 +68,7 @@ function aktualisierenAbbrechen(evt){
 
 function posten(evt){
 	var postURL = "../../NeuigkeitEinstellenServlet";
-	var neuigkeit = encodeURIComponent(document.getElementById("neuerPost").value);
+	var neuigkeit = encodeURIComponent(document.getElementById("neuigkeitNeu").value);
 	if (neuigkeit != null && neuigkeit != "") {
 		var body = "neuigkeitNeu="+neuigkeit;
 		var xmlhttpPost = new XMLHttpRequest();

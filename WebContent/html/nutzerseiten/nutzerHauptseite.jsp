@@ -12,8 +12,9 @@
 	href="../../css/hauptseiten/bestenliste.css" />
 <script type="text/javascript" src="../../js/keinProfilbild.js" defer></script>
 <script type="text/javascript" src="../../js/cookiemonster.js" defer></script>
-<script type="text/javascript" src="../../js/index.js" defer></script>
+<script type="text/javascript" src="../../js/nutzerskripte/nutzerHaupsteite.js" defer></script>
 <%@include file="../jspf/noSkript.jspf"%>
+<base href="${pageContext.request.requestURI}"/>
 </head>
 <body>
 	<header>

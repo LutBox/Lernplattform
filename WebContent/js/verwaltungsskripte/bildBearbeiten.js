@@ -70,6 +70,9 @@ document.getElementById("delete").onclick = function() {
 		deleteBildFunction();
 	}	
 }
+document.getElementById("safe").onclick = function() {
+	safeBildFunction();
+}
 
 
 document.getElementById("abbruch").onclick = function() {
