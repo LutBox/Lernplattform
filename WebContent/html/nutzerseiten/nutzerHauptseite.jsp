@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../../css/hauptseiten/bestenliste.css" />
 <script type="text/javascript" src="../../js/keinProfilbild.js" defer></script>
 <script type="text/javascript" src="../../js/cookiemonster.js" defer></script>
+<script type="text/javascript" src="../../js/standard.js" defer></script>
 <script type="text/javascript"
 	src="../../js/nutzerskripte/nutzerHaupsteite.js" defer></script>
 <base href="${pageContext.request.requestURI}" />
@@ -87,6 +88,7 @@
 			<p id="beliebtesteSpiele">Listeneinträge</p>
 		</aside>
 	</div>
+	<button type="button" class="goToTopButton fade-in" id="goToTopButton">Seitenanfang</button>
 	<footer>
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
