@@ -18,19 +18,6 @@ import jakarta.servlet.http.HttpServletResponse;
 public class NeuigkeitAktualisierenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String neueNachricht = request.getParameter("neuigkeitAktualisiert");
-		Integer zennr = Integer.parseInt(request.getParameter("zennr"));
-		NeuigkeitSQLDienst.neuigkeitMitNrXAendern(zennr, neueNachricht);
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("./NeuigkeitenAktualisierenServlet");
-		dispatcher.forward(request, response);
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -38,8 +25,13 @@ public class NeuigkeitAktualisierenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		String neueNachricht = request.getParameter("neuigkeitAktualisiert");
+		Integer zennr = Integer.parseInt(request.getParameter("zennr"));
+		NeuigkeitSQLDienst.neuigkeitMitNrXAendern(zennr, neueNachricht);
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("./NeuigkeitenAktualisierenServlet");
+		dispatcher.forward(request, response);
 	}
 
 }

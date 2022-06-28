@@ -2,7 +2,7 @@
  *	@author Merlin
  *	@source https://dillionmegida.com/p/default-image-src/
  */
-
+"use strict";
 document.addEventListener("DOMContentLoaded", init);
 
 function init(){

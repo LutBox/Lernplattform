@@ -11,9 +11,9 @@
 	href="../../css/verwaltungsseiten/nutzeraktualisierenStil.css" />
 <script type="text/javascript"
 	src="../../js/verwaltungsskripte/nutzerkonfiguration.js" defer></script>
-<%@include file="../jspf/noSkript.jspf"%>
 </head>
 <body>
+	<%@include file="../jspf/aktuellerNutzer.jspf"%>
 	<header>
 		<h1>Nutzerverwaltung</h1>
 		<%@include file="../jspf/navigation.jspf"%>
@@ -87,5 +87,6 @@
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
+	<%@include file="../jspf/noSkript.jspf"%>
 </body>
 </html>

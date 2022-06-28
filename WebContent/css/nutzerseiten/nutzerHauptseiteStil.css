@@ -6,6 +6,7 @@
 @import url("../standard/standardNavigation.css");
 @import url("../standard/standardFooter.css");
 @import url("../standard/cookiemonsterStil.css");
+@import url("../standard/aktuellerNutzerStil.css");
 
 div#flexarea {
 	justify-content: center;
@@ -22,6 +23,11 @@ aside {
 	box-shadow: 0 0 15px 5px #000000;
 	padding: 10px 10px;
 	margin: 20px 20px;
+	
+}
+
+aside h2 {
+	text-align: center;
 }
 
 aside:hover {
@@ -30,7 +36,6 @@ aside:hover {
 
 div#nutzerkarte {
 	box-shadow: 0 0 15px 5px #000000;
-	border-radius: 15px;
 	width: 380px;
 	margin-left: auto;
 	margin-right: auto;
@@ -95,7 +100,6 @@ table {
 	margin-bottom: 40px;
 	margin-right: auto;
 	margin-left: auto;
-	border-radius: 15px;
 	border: 0;
 	padding: 0;
 }
@@ -107,8 +111,4 @@ p.nachrichttext {
 p.zeitstempel {
 	color: #808080;
 	text-align: left;
-}
-
-hr.neuigkeitentrenner {
-	width: 15%;
 }

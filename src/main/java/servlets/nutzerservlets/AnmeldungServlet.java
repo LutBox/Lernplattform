@@ -29,7 +29,7 @@ public class AnmeldungServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		NutzerBean nutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(request.getParameter("name"));
-		HttpSession session = request.getSession();
+		final HttpSession session = request.getSession();
 
 		if (nutzer.getName() != null) {
 			if (nutzer.getPasswort().equals(request.getParameter("passwort"))) {
@@ -38,10 +38,11 @@ public class AnmeldungServlet extends HttpServlet {
 				if (nutzer.getAdmin() == 1) {
 					response.sendRedirect("./index.jsp");
 				} else {
-					response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
+					session.setAttribute("forminfotext", "Bitte geben Sie Ihre neuen Daten an.");
+					response.sendRedirect("./index.jsp");
 				}
 			} else {
-				session.setAttribute("forminfotext", "Bitte prüfen sie ihr Passwort.");
+				session.setAttribute("forminfotext", "Bitte prÃ¼fen sie ihr Passwort.");
 				response.sendRedirect("./html/nutzerseiten/anmeldung.jsp");
 			}
 		} else {

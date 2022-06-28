@@ -26,7 +26,7 @@ function init() {
 
 
 function resetBestaetigen(evt){
-	var wirklichZuruecksetzen = confirm("Formular wirklich zurÃ¼cksetzen?");
+	var wirklichZuruecksetzen = confirm("Formular wirklich zurücksetzen?");
 	if (!wirklichZuruecksetzen) {
 		evt.preventDefault();
 	}
@@ -36,6 +36,6 @@ function pwKontrolle(evt){
 	var gueltig = document.getElementById("passwort").value === document.getElementById("passwort2").value;
 	if (!gueltig) {
 		evt.preventDefault();
-		alert("Die PasswÃ¶rter mÃ¼ssen Ã¼bereinstimmen!");
+		alert("Die Passwörter müssen übereinstimmen!");
 	}
 }

@@ -1,0 +1,7 @@
+<%-- @author Merlin --%>
+<c:if test="${nutzer.name != null}">
+	<div id="aktuellerNutzerTagContainer">
+		Nutzer:
+		<c:out value="${nutzer.name}"></c:out>
+	</div>
+</c:if>

@@ -4,19 +4,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <title>Nutzerbereich</title>
 <link rel="stylesheet"
 	href="../../css/nutzerseiten/nutzerHauptseiteStil.css" />
-<link rel="stylesheet"
-	href="../../css/hauptseiten/bestenliste.css" />
+<link rel="stylesheet" href="../../css/hauptseiten/bestenliste.css" />
 <script type="text/javascript" src="../../js/keinProfilbild.js" defer></script>
 <script type="text/javascript" src="../../js/cookiemonster.js" defer></script>
-<script type="text/javascript" src="../../js/nutzerskripte/nutzerHaupsteite.js" defer></script>
-<%@include file="../jspf/noSkript.jspf"%>
-<base href="${pageContext.request.requestURI}"/>
+<script type="text/javascript"
+	src="../../js/nutzerskripte/nutzerHaupsteite.js" defer></script>
+<base href="${pageContext.request.requestURI}" />
 </head>
 <body>
+	<%@include file="../jspf/aktuellerNutzer.jspf"%>
 	<header>
 		<h1>Nutzerbereich</h1>
 		<%@include file="../jspf/navigation.jspf"%>
@@ -47,7 +47,8 @@
 				</div>
 				<div>
 					<a href="./profilbearbeiten.jsp"> <img class="profilbild"
-						src="../../ProfilbildLadenServlet?nn=${nutzer.name}" alt="${nutzer.name}s Profilbild" /></a>
+						src="../../ProfilbildLadenServlet?nn=${nutzer.name}"
+						alt="${nutzer.name}s Profilbild" /></a>
 				</div>
 				<div class="karteninhalt">
 					<p class="email zentriert">${nutzer.email}</p>
@@ -90,5 +91,6 @@
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 	<%@include file="../jspf/cookiemonster.jspf"%>
+	<%@include file="../jspf/noSkript.jspf"%>
 </body>
 </html>

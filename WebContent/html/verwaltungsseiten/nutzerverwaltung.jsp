@@ -11,9 +11,9 @@
 <script type="text/javascript"
 	src="../../js/verwaltungsskripte/nutzerverwaltung.js"></script>
 <script type="text/javascript" src="../../js/standard.js" defer></script>
-<%@include file="../jspf/noSkript.jspf"%>
 </head>
 <body>
+	<%@include file="../jspf/aktuellerNutzer.jspf"%>
 	<header>
 		<h1>Nutzerverwaltung</h1>
 		<%@include file="../jspf/navigation.jspf"%>
@@ -51,5 +51,6 @@
 	<footer>
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
+	<%@include file="../jspf/noSkript.jspf"%>
 </body>
 </html>

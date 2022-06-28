@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/NutzerBearbeitenServlet")
 public class NutzerBearbeitenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -27,8 +28,9 @@ public class NutzerBearbeitenServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		NutzerBean zuverwaltendernutzer = NutzerSQLDienst.gebeMirNutzerMitDemNamen(request.getParameter("nn"));
-		HttpSession session = request.getSession();
+		final HttpSession session = request.getSession();
 		session.setAttribute("zuverwaltendernutzer", zuverwaltendernutzer);
+		session.setAttribute("forminfotext", "Bitte geben Sie die neuen Nutzerdaten an.");
 		response.sendRedirect("./html/verwaltungsseiten/nutzeraktualisieren.jsp");
 	}
 

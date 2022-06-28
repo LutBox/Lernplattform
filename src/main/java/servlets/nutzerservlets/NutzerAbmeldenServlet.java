@@ -27,6 +27,7 @@ public class NutzerAbmeldenServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		session.removeAttribute(NutzerViewBean.attributname);
+		session.setAttribute("forminfotext", "Bitte Sie Ihre Daten an.");
 		response.sendRedirect("./html/nutzerseiten/anmeldung.jsp");
 	}
 

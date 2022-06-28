@@ -18,10 +18,14 @@ import jakarta.servlet.http.HttpServletResponse;
 public class UngelesenMarkierenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		Integer kanr = Integer.parseInt(request.getParameter("kanr"));
 		KontaktanfragenSQLDienst.alsUngelesenMarkieren(kanr);

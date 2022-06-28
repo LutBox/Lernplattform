@@ -38,7 +38,7 @@ public class NeuigkeitSQLDienst extends SQLDienst {
 	public static void neuigkeitMitNrXAendern(Integer nnr, String neueNachricht) throws ServletException {
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con
-						.prepareStatement("UPDATE " + tabellenname + " SET nachricht = ? where nnr = ?")) {
+						.prepareStatement("UPDATE " + tabellenname + " SET nachricht = ?, zeitstempel = zeitstempel where nnr = ?")) {
 			pstmt.setString(1, neueNachricht);
 			pstmt.setInt(2, nnr);
 			pstmt.executeUpdate();
@@ -46,18 +46,17 @@ public class NeuigkeitSQLDienst extends SQLDienst {
 			throw new ServletException(e.getMessage());
 		}
 	}
-	
+
 	public static Neuigkeit neuigkeitMitNrXLaden(Integer nnr) throws ServletException {
 		Neuigkeit neuigkeit = new Neuigkeit();
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con
-						.prepareStatement("SELECT * FROM " + tabellenname + " WHERE nnr = ?")) {
+				PreparedStatement pstmt = con.prepareStatement("SELECT * FROM " + tabellenname + " WHERE nnr = ?")) {
 			pstmt.setInt(1, nnr);
-			try(ResultSet rs = pstmt.executeQuery()){
-				while(rs.next()) {
+			try (ResultSet rs = pstmt.executeQuery()) {
+				while (rs.next()) {
 					neuigkeit.setNnr(nnr);
 					neuigkeit.setNachricht(rs.getString("nachricht"));
-					neuigkeit.setZeitstempel(new Date (rs.getTimestamp("zeitstempel").getTime()));
+					neuigkeit.setZeitstempel(new Date(rs.getTimestamp("zeitstempel").getTime()));
 				}
 			}
 		} catch (Exception e) {
@@ -77,16 +76,19 @@ public class NeuigkeitSQLDienst extends SQLDienst {
 	}
 
 	public static ArrayList<Neuigkeit> neuigkeitenLaden() throws ServletException {
-		ArrayList<Neuigkeit> ergebnis = new ArrayList<Neuigkeit>();
+		ArrayList<Neuigkeit> ergebnis = null;
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement("SELECT * FROM " + tabellenname);) {
 			try (ResultSet rs = pstmt.executeQuery();) {
-				while (rs.next()) {
-					Neuigkeit neuigkeit = new Neuigkeit();
-					neuigkeit.setNnr(rs.getInt("nnr"));
-					neuigkeit.setNachricht(rs.getString("nachricht"));
-					neuigkeit.setZeitstempel(new Date (rs.getTimestamp("zeitstempel").getTime()));
-					ergebnis.add(neuigkeit);
+				if (rs != null) {
+					ergebnis = new ArrayList<Neuigkeit>();
+					while (rs.next()) {
+						Neuigkeit neuigkeit = new Neuigkeit();
+						neuigkeit.setNnr(rs.getInt("nnr"));
+						neuigkeit.setNachricht(rs.getString("nachricht"));
+						neuigkeit.setZeitstempel(new Date(rs.getTime("zeitstempel").getTime()));
+						ergebnis.add(neuigkeit);
+					}
 				}
 			}
 		} catch (Exception ex) {

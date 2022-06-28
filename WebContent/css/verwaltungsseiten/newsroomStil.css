@@ -8,6 +8,7 @@
 @import url("../standard/standardNavigation.css");
 @import url("../standard/standardFooter.css");
 @import url("../standard/standardGoToTop.css");
+@import url("../standard/aktuellerNutzerStil.css");
 
 html, body {
 	padding: 0;

@@ -6,6 +6,7 @@
 @import url("../standard/standardFonts.css");
 @import url("../standard/standardNavigation.css");
 @import url("../standard/standardFooter.css");
+@import url("../standard/aktuellerNutzerStil.css");
 
 body, html {
 	padding: 0;
