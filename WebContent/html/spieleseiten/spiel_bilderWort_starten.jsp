@@ -13,6 +13,8 @@ Erstellt von Zohal Mohammadi
 </head>
 <body>
 
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
+
 	<h1>Viel spaß!</h1>
 	
 		<nav>

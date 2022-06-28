@@ -28,6 +28,7 @@ Erstellt von Lukas Theinert
     <%@include file="../jspf/navigation.jspf" %>
 </header>
 
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
 <br>
 
 <div id="temp" hidden></div>

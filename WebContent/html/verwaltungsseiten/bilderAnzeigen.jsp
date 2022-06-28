@@ -26,6 +26,8 @@ Erstellt von Lukas Theinert
 		<%@include file="../jspf/navigation.jspf"%>
 	</nav>
 
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
+
 <!-- Begin der FLEXBOX = Flex-Container -->
 <div id="flexarea">
 

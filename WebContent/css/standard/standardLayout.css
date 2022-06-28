@@ -3,6 +3,7 @@
 @import "standardNavigation.css";
 @import "standardFooter.css";
 @import "standardGoToTop.css";
+@import "aktuellerNutzerStil.css";
 
 /* 
  * Erstellt von Lukas Theinert
@@ -18,6 +19,10 @@
 	display: flex;
 	flex-flow: row wrap;
 	padding: 16px;
+}
+
+div#aktuellerNutzerTagContainer {
+	position:  absolute;
 }
 
 header {

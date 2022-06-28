@@ -28,6 +28,8 @@ Erstellt von Zohal Mohammadi
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
 	
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
+
 	<div class="ergebnis">
 	<h2><b>Ende der Runde</b></h2>
 	<p class="punkte" > <b>Erreichte Punkte:</b> <span id="erreichte_Punkte">${vierBilderEinWort.richtigeErgebnis}</span></p>
