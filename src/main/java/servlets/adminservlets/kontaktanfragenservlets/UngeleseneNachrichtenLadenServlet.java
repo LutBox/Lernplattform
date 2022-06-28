@@ -36,15 +36,4 @@ public class UngeleseneNachrichtenLadenServlet extends HttpServlet {
 		session.setAttribute("anzahlarchivierte", archivierte.size());
 		response.sendRedirect("./html/verwaltungsseiten/kontaktanfragen.jsp");
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

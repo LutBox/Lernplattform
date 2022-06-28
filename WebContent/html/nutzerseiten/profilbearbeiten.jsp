@@ -11,10 +11,9 @@
 	href="../../css/nutzerseiten/profilbearbeitenStil.css" />
 <script type="text/javascript"
 	src="../../js/nutzerskripte/profilkonfiguraration.js" defer></script>
-<%@include file="../jspf/noSkript.jspf"%>
-<%@include file="../jspf/cookiemonster.jspf"%>
 </head>
 <body>
+	<%@include file="../jspf/aktuellerNutzer.jspf"%>
 	<header>
 		<h1>Profil bearbeiten</h1>
 		<%@include file="../jspf/navigation.jspf"%>
@@ -41,12 +40,15 @@
 				</div>
 				<div class="inputfeld">
 					<label for="neuesPasswort">Neues Passwort:</label> <input
-						name="neuesPasswort" id="neuesPasswort" type="password" maxlength="128" pattern="[A-Za-z0-9_]+"
-						title="Bitte geben Sie Ihr neues Passwort an (Maximal 128 Zeichen, A-Z, a-z, 0-9)." required />
+						name="neuesPasswort" id="neuesPasswort" type="password"
+						maxlength="128" pattern="[A-Za-z0-9_]+"
+						title="Bitte geben Sie Ihr neues Passwort an (Maximal 128 Zeichen, A-Z, a-z, 0-9)."
+						required />
 				</div>
 				<div class="inputfeld">
 					<label for="passwort2">Neues Passwort wiederholen:</label> <input
-						name="passwort2" id="passwort2" type="password" maxlength="128" pattern="[A-Za-z0-9_]+"
+						name="passwort2" id="passwort2" type="password" maxlength="128"
+						pattern="[A-Za-z0-9_]+"
 						title="Bitte wiederholen Sie ihr neues Passwort." required />
 				</div>
 				<div class="inputfeld">
@@ -70,5 +72,7 @@
 	<footer id="footer">
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
+	<%@include file="../jspf/noSkript.jspf"%>
+	<%@include file="../jspf/cookiemonster.jspf"%>
 </body>
 </html>

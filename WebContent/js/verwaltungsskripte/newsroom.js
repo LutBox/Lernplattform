@@ -19,14 +19,14 @@ function init(){
 }
 
 /**
- * @source w3schools: https://www.w3schools.com/howto/howto_js_popup_form.asp
+ * @source w3schools: https://www.w3schools.com/howto/howto_js_popup_form.asp START
  */
 function anlegen(evt){
 	document.getElementById("maskenvorhang").style.display = "block";
 	document.getElementById("neuAnlegenMaske").style.display = "block";
 }
 /**
- * END
+ * w3schools: https://www.w3schools.com/howto/howto_js_popup_form.asp END
  */
 
 function editieren(evt){

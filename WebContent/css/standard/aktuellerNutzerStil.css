@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/**
+ *	@author Merlin
+ */
+
+#aktuellerNutzerTagContainer {
+	display: inline-block;
+	position: sticky;
+	top: 0;
+	left: 10px;
+	background: white;
+	z-index: 9999999999;
+	border-radius: 0 0 10px 10px;
+	padding: 2px;
+}

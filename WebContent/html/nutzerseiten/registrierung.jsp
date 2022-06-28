@@ -12,7 +12,6 @@
 <script type="text/javascript"
 	src="../../js/nutzerskripte/profilkonfiguraration.js" defer></script>
 <script type="text/javascript" src="../../js/cookiemonster.js" defer></script>
-<%@include file="../jspf/noSkript.jspf"%>
 </head>
 <body>
 	<header>
@@ -73,5 +72,6 @@
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
 	<%@include file="../jspf/cookiemonster.jspf"%>
+	<%@include file="../jspf/noSkript.jspf"%>
 </body>
 </html>

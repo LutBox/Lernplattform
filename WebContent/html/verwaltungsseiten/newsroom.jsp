@@ -12,9 +12,9 @@
 <script type="text/javascript"
 	src="../../js/verwaltungsskripte/newsroom.js"></script>
 <script type="text/javascript" src="../../js/standard.js" defer></script>
-<%@include file="../jspf/noSkript.jspf"%>
 </head>
 <body>
+	<%@include file="../jspf/aktuellerNutzer.jspf"%>
 	<header>
 		<h1>Newsroom</h1>
 		<%@include file="../jspf/navigation.jspf"%>
@@ -38,7 +38,7 @@
 						<button class="editierenButton noStandardButton" type="button"
 							title="Klicken um Neuigkeit zu editieren">
 							<img class="buttonImg"
-								src="../../bilder/verwaltung/bearbeiten.png" alt="Bearbeiten"/>
+								src="../../bilder/verwaltung/bearbeiten.png" alt="Bearbeiten" />
 						</button>
 					</form>
 					<form class="loeschenform" action="../../NeuigkeitLoeschenServlet">
@@ -46,7 +46,7 @@
 						<button class="neuigkeitLoeschenButton noStandardButton"
 							type="button" title="Klicken um Post zu löschen">
 							<img class="buttonImg"
-								src="../../bilder/verwaltung/entfernen.png" alt="Löschen"/>
+								src="../../bilder/verwaltung/entfernen.png" alt="Löschen" />
 						</button>
 					</form>
 					<br />
@@ -80,20 +80,24 @@
 				<button id="aktualisierenAbbrButton" type="button">Abbrechen</button>
 			</form>
 		</div>
-		<button id="neuAnlegenButton" type="button" class="noStandardButton"
+		<button id="neuAnlegenButton" type="button"
+			class="noStandardButton fade-in"
 			title="Klicken um einen neuen, öffentlichen Post zu verfassen.">
-			<img class="buttonImg" src="../../bilder/verwaltung/hinzufuegen.png" alt="Neuen Post verfassen"/>
+			<img class="buttonImg" src="../../bilder/verwaltung/hinzufuegen.png"
+				alt="Neuen Post verfassen" />
 		</button>
 		<div id="maskenvorhang"></div>
-		<button type="button" class="goToTopButton noStandardButton"
+		<button type="button" class="goToTopButton noStandardButton fade-in"
 			id="goToTopButton"
 			title="Klicken um zum Seitenanfang zurück zu springen.">
-			<img class="buttonImg" src="../../bilder/verwaltung/goToTopIcon.png"  alt="Zum Seitenanfang springen"/>
+			<img class="buttonImg" src="../../bilder/verwaltung/goToTopIcon.png"
+				alt="Zum Seitenanfang springen" />
 		</button>
 		<div class="rand"></div>
 	</main>
 	<footer>
 		<%@include file="../jspf/footer.jspf"%>
 	</footer>
+	<%@include file="../jspf/noSkript.jspf"%>
 </body>
 </html>

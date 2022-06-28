@@ -2,8 +2,10 @@ package servlets.adminservlets.neuigkeitenservlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import beans.Neuigkeit;
+import dienste.regulaeredienste.NachZeitstempelSortieren;
 import dienste.sqldienste.NeuigkeitSQLDienst;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
@@ -23,9 +25,10 @@ public class NeuigkeitenAktualisierenServlet extends HttpServlet {
 
 	@Override
 	public void init() {
-		ArrayList<Neuigkeit> neuigkeiten = null;
+		ArrayList<Neuigkeit> neuigkeiten = new ArrayList<Neuigkeit>();
 		try {
 			neuigkeiten = NeuigkeitSQLDienst.neuigkeitenLaden();
+			Collections.sort(neuigkeiten, new NachZeitstempelSortieren());
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
@@ -39,9 +42,15 @@ public class NeuigkeitenAktualisierenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ArrayList<Neuigkeit> neuigkeiten = NeuigkeitSQLDienst.neuigkeitenLaden();
-		ServletContext app = getServletContext();
-		app.setAttribute(NeuigkeitSQLDienst.ListBeanName, neuigkeiten);
+		ArrayList<Neuigkeit> neuigkeiten = null;
+		try {
+			neuigkeiten = NeuigkeitSQLDienst.neuigkeitenLaden();
+			Collections.sort(neuigkeiten, new NachZeitstempelSortieren());
+			ServletContext app = getServletContext();
+			app.setAttribute(NeuigkeitSQLDienst.ListBeanName, neuigkeiten);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/verwaltungsseiten/newsroom.jsp");
 		dispatcher.forward(request, response);
 	}
