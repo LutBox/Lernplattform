@@ -32,6 +32,7 @@ Erstellt von Zohal Mohammadi
 	</header>
 
 
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
 
 	<div id="temp" hidden></div>
 	<div id="nutzer" hidden>${nutzer.name}</div>

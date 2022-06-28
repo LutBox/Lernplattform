@@ -34,6 +34,8 @@ Erstellt von Lukas Theinert
     <%@include file="html/jspf/navigation.jspf" %>
 </header>
 
+<%@include file="html/jspf/aktuellerNutzer.jspf"%>
+
 <div id="content">
     <!-- Begin der FLEXBOX = Flex-Container -->
     <div id="flexarea">

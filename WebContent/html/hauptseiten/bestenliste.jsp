@@ -24,6 +24,8 @@ Erstellt von Lukas Theinert
     <%@include file="../jspf/navigation.jspf" %>
 </header>
 
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
+
 <!-- Flex-Item 1 -->
 <div id="flexarea">
 

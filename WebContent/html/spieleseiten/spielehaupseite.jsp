@@ -25,6 +25,8 @@ Erstellt von Lukas Theinert
     <%@include file="../jspf/navigation.jspf" %>
 </header>
 
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
+
 <!-- Daten aus Bean auslesen -->
 <div id="temp" hidden></div>
 <div id="nutzer" hidden>${nutzer.name}</div>
