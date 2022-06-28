@@ -3,13 +3,13 @@
  *	@author Merlin
  */
 
-#aktuellerNutzerTagContainer {
+div#aktuellerNutzerTagContainer {
 	display: inline-block;
-	position: sticky;
+	absolute: sticky;
 	top: 0;
-	right: 10px;
-	background: white;
+	left: 10px;
+	background: #d2faef;
 	z-index: 9999999999;
-	border-radius: 0 0 10px 10px;
+	border-radius: 0 0 10px 0;
 	padding: 2px;
 }
