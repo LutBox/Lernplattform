@@ -4,12 +4,17 @@
  * Erstellt von Lukas Theinert
  */
  
+/* Mathe-Spiel Idee von: https://codepen.io/bobbidigi34/pen/rWzZgQ */
+ 
+/* Hintergrund */
 html {
     background: linear-gradient(325deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%);
     background-repeat: no-repeat;
 	background-attachment: fixed;    
 }
 
+
+/* Spielfeld */
 #spiel{
 	Height: 500px;
 	width: 600px;
@@ -21,6 +26,7 @@ html {
 	color: #FFF;
 }
 
+/* Punktezahl */
 #punktezahl {
 	background-color: #FFF;
 	color: black;
@@ -30,6 +36,10 @@ html {
 	left: 500px;
 }
 
+/* Mathe-Spiel-Idee: */
+/* ----------- Anfang ---------------------- */
+
+/* Antwort richtig */
 #richtig {
 	width: 200px;
 	height: 40px;
@@ -42,6 +52,8 @@ html {
 	border-radius: 10px;
 	display: none;	
 }
+
+/* Antwort falsch */
 #falsch {
 	width: 200px;
 	height: 40px;
@@ -55,6 +67,8 @@ html {
 	display: none;	
 }
 
+
+/* Aufgabenstellung */
 #aufgabe{
 	width: 400px;
 	height: 65px;
@@ -66,12 +80,15 @@ html {
 	border-radius: 10px;		
 }
 
+/* Alle Ergebnisse */
 #ergebnisse {
 	width: 450px;
 	height: 100px;
 	margin: 5px auto;
 	color: black;
 }
+
+/* Boxen */
 .box {
 	margin-right: 36px;
 	width: 85px;
@@ -86,10 +103,14 @@ html {
 	border-radius: 10px;
 }	
 
+/* Box 4 */
 #box4{
 	margin-right: 0;
 }
 
+/* ----------- Ende ---------------------- */
+
+/* Verbleibende Zeit */
 #verbleibendeZeit {
 	background-color: #FFF;
 	color: black;
@@ -100,6 +121,7 @@ html {
 	left: 15px;
 }
 
+/* Start-, Restartbutton */
 #start-restart {
 	width: 200px;
 	height: 60px;
@@ -110,6 +132,7 @@ html {
 	top: 400px;
 }
 
+/* Spiel vorbei */
 #spielVorbei {
 	left: 0px;
 	top: 0px;

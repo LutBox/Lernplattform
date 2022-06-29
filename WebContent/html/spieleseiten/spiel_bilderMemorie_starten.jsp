@@ -23,12 +23,13 @@ Erstellt von Lukas Theinert
 <c:set var='gewertet' value='${spielStartenBean.gewertet}'/>
 <c:set var='val' value='${spielStartenBean.schwierigkeit}'/>
 
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
+
 <header>
     <h1>Bildermemorie</h1>
     <%@include file="../jspf/navigation.jspf" %>
 </header>
 
-<%@include file="../jspf/aktuellerNutzer.jspf"%>
 <br>
 
 <div id="temp" hidden></div>

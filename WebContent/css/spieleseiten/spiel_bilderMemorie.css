@@ -4,12 +4,14 @@
  * Erstellt von Lukas Theinert
  */
 
+/* Hintergrund */
 html {
     background: linear-gradient(325deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%);
     background-repeat: no-repeat;
 	background-attachment: fixed;    
 }
 
+/* Informationsfeld */
 .informationen {
 	position: absolute;
     left: 50%;
@@ -20,6 +22,7 @@ html {
     padding: 10px 20px;
 }
 
+/* Spielfeldgröße - Leicht */
 .spiel_bilderMemorieLeicht {
   width: 640px;
   height: 640px;
@@ -29,6 +32,7 @@ html {
   perspective: 1000px;
 }
 
+/* Spielfeldgröße - Mittel */
 .spiel_bilderMemorieMittel {
   width: 960px;
   height: 640px;
@@ -38,6 +42,7 @@ html {
   perspective: 1000px;
 }
 
+/* Spielfeldgröße - Schwer */
 .spiel_bilderMemorieSchwer {
   width: 1280px;
   height: 640px;
@@ -47,6 +52,7 @@ html {
   perspective: 1000px;
 }
 
+/* Startbutton */
 #start {
     background: #FFF;
     color: #282A3A;
@@ -54,7 +60,7 @@ html {
     font-size: 18pt;
 }
 
-
+/* Memoriekarte */
 .memorieKarte {
   width: calc(150px);
   height: calc(150px);
@@ -65,16 +71,18 @@ html {
   transition: transform .5s;
 }
 
-
+/* Memoriekarte anklicken */
 .memorieKarte:active {
   transform: scale(0.97);
   transition: transform .2s;
 }
 
+/* Memoriekarte angeklickt */
 .memorieKarte.drehen {
 	transform: rotateY(180deg);
 }
 
+/* Memoriekarte vorne und hinten */
 .vorne,
 .hinten {
   width: 100%;
@@ -86,10 +94,12 @@ html {
   backface-visibility: hidden;
 }
 
+/* Memoriekarte vorne drehen */
 .vorne {
     transform: rotateY(180deg);
 }
 
+/* Spielfeld */
 .spielbrett-container {
     position: absolute;
     left: 50%;
@@ -100,13 +110,3 @@ html {
     padding: 10px 20px;
     visibility: hidden
 }
-
-.spielbrett-container.flipped .win {
-    transform: rotateY(0) rotateZ(0);
-}
-
-.spielbrett-container.flipped .win {
-    transform: rotateY(0) rotateZ(0);
-}
-
-

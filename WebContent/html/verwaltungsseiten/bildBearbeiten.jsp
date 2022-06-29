@@ -17,14 +17,11 @@ Erstellt von Lukas Theinert
     <title>Bilder bearbeiten</title>
 </head>
 <body>
-
-<h1>Bild bearbeiten</h1>
-
-	<nav>
-		<%@include file="../jspf/navigation.jspf"%>
-	</nav>
-
 <%@include file="../jspf/aktuellerNutzer.jspf"%>
+<header>	
+	<h1>Bild bearbeiten</h1>
+	<%@include file="../jspf/navigation.jspf"%>
+</header>
 
 <!-- Begin der FLEXBOX = Flex-Container -->
 <div id="flexarea">

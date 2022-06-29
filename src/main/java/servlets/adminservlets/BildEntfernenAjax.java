@@ -30,20 +30,13 @@ public class BildEntfernenAjax extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *
+	 *
+	 *	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 *		
+	 *	}
 	 */
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		// Dateien aus Reqest holen
-		String bildID = String.valueOf(request.getParameter("bildID"));
-
-		// Bild aus Datenbank entfernen
-		deleteBild(bildID);
-
-	}
 
 	// Bild aus Datenbank entfernen
 	private void deleteBild(String bildID) throws ServletException {
@@ -61,9 +54,16 @@ public class BildEntfernenAjax extends HttpServlet {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		//doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// Dateien aus Reqest holen
+		String bildID = String.valueOf(request.getParameter("bildID"));
+
+		// Bild aus Datenbank entfernen
+		deleteBild(bildID);
 	}
 
 }

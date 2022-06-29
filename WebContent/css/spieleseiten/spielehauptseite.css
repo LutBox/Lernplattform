@@ -4,6 +4,7 @@
  * Erstellt von Lukas Theinert
  */
 
+/* Feld mit Karten */
 .spielart {
   width: 800px;
   height: 527px;
@@ -13,6 +14,7 @@
   perspective: 1000px;
 }
 
+/* Karte */
 .flip-card {
 
   width: calc(256px);
@@ -26,6 +28,7 @@
  
 }
 
+/* Karte innen */
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -36,11 +39,12 @@
   font-size: 14px;
 }
 
-
+/* Karte drehen */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
+/* Karte vorne, hinten */
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
@@ -48,7 +52,7 @@
   backface-visibility: hidden;
 }
 
-
+/* Karte hinten */
 .flip-card-back {
   margin: auto;
   padding-top: 10px;
@@ -59,6 +63,7 @@
   transform: rotateY(180deg);
 }
 
+/* Spiel starten button */
 .button {
   display: inline-block;
   padding: 10px 20px;

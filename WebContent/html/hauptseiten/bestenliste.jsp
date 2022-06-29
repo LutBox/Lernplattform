@@ -18,14 +18,11 @@ Erstellt von Lukas Theinert
     <title>Bestenliste</title>
 </head>
 <body>
-
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
 <header>
     <h1>Bestenliste</h1>
     <%@include file="../jspf/navigation.jspf" %>
 </header>
-
-<%@include file="../jspf/aktuellerNutzer.jspf"%>
-
 <!-- Flex-Item 1 -->
 <div id="flexarea">
 

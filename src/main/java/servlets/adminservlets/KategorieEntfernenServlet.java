@@ -32,25 +32,12 @@ public class KategorieEntfernenServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *
+	 *
+	 *	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 *		
+	 *	}
 	 */
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		// Daten aus Request holen
-		String kategorie = request.getParameter("kategorieWahl");
-
-		// Alle Bilder aus der Datenbank mit der jeweiligen Kategorie entfernen
-		deleteBild(kategorie);
-		// Kategorie aus der Datenbank entfernen
-		deleteKategorie(kategorie);
-
-		// Weiterleiten an JSP
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/spielekonfigurator.jsp");
-		dispatcher.forward(request, response);
-		
-	}
 
 	// Alle Bilder aus der Datenbank mit der jeweiligen Kategorie entfernen
 	private void deleteBild(String neuKategorie) throws ServletException {
@@ -88,9 +75,22 @@ public class KategorieEntfernenServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)  
 	 */
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// Daten aus Request holen
+		String kategorie = request.getParameter("kategorieWahl");
+
+		// Alle Bilder aus der Datenbank mit der jeweiligen Kategorie entfernen
+		deleteBild(kategorie);
+		// Kategorie aus der Datenbank entfernen
+		deleteKategorie(kategorie);
+
+		// Weiterleiten an JSP
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/verwaltungsseiten/spielekonfigurator.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

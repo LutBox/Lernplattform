@@ -33,30 +33,12 @@ public class BilderWortAjax extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *
+	 *
+	 *	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 *		
+	 *	}
 	 */
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		// Dateien aus Session in neues Objekt einfügen
-		SpielStartenBean bilderWortAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
-
-		// Daten aus Request lesen
-		bilderWortAjax.setZeit(Integer.valueOf(request.getParameter("punkt")));
-		bilderWortAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
-
-		NutzerViewBean aktuellerNutzer = (NutzerViewBean) request.getSession().getAttribute("nutzer");
-
-		// Daten zum Spiel in der Datenbank speichern
-		safeGame(bilderWortAjax, aktuellerNutzer);
-
-		// Wenn Spiel gewerten: anzahl der vom Nutzer benötigten Versuche und Zeit in der Datenbank speichern
-		if (bilderWortAjax.getGewertet().equals("gewertetAn")) {
-			safeUserStats(bilderWortAjax, aktuellerNutzer);
-		}
-
-	}
 
 	// Daten zum Spiel in der Datenbank speichern
 	private void safeGame(SpielStartenBean bilderWortAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
@@ -129,9 +111,27 @@ public class BilderWortAjax extends HttpServlet {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// Dateien aus Session in neues Objekt einfügen
+		SpielStartenBean bilderWortAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
+
+		// Daten aus Request lesen
+		bilderWortAjax.setZeit(Integer.valueOf(request.getParameter("punkt")));
+		bilderWortAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
+
+		NutzerViewBean aktuellerNutzer = (NutzerViewBean) request.getSession().getAttribute("nutzer");
+
+		// Daten zum Spiel in der Datenbank speichern
+		safeGame(bilderWortAjax, aktuellerNutzer);
+
+		// Wenn Spiel gewerten: anzahl der vom Nutzer benötigten Versuche und Zeit in der Datenbank speichern
+		if (bilderWortAjax.getGewertet().equals("gewertetAn")) {
+			safeUserStats(bilderWortAjax, aktuellerNutzer);
+		}
 	}
 
 }

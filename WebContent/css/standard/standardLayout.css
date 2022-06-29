@@ -126,17 +126,17 @@ h3 {
         box-shadow: 0 0 10px #000000;
     }
 
-    input:required+span::after {
-        color: red;
+    input[required]:invalid  {
+        border-color: red;
     }
-    textarea:required+span::after {
-        color: red;
+    textarea[required]:invalid  {
+        border-color: red;
     }
-    input[type="email"]:valid+span::after {
-        color: green;
+    input[required]:valid  {
+        border-color: green;
     }
-    textarea:valid+span::after {
-        color: green;
+    textarea[required]:valid  {
+        border-color: green;
     }
 
     #searchInput {

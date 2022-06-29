@@ -20,12 +20,12 @@ Erstellt von Lukas Theinert
 </head>
 <body>
 
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
+
 <header>
     <h1>Spieleübersicht</h1>
     <%@include file="../jspf/navigation.jspf" %>
 </header>
-
-<%@include file="../jspf/aktuellerNutzer.jspf"%>
 
 <!-- Daten aus Bean auslesen -->
 <div id="temp" hidden></div>

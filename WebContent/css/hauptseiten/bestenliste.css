@@ -4,13 +4,7 @@
  * Erstellt von Lukas Theinert
  */
 
-.container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
+/* Tabelle */
 table {
 	margin: auto;
 	width: auto;
@@ -18,8 +12,10 @@ table {
 	overflow: hidden;
 	box-shadow: 0 0 20px rgba(0,0,0,0.1);
 	background-color: #000000e0;
+	overflow: hidden;
 }
 
+/* Einzelne Felder (Spalte + Zeile) */
 th,
 td {
 	padding: 15px;
@@ -28,11 +24,7 @@ td {
 	text-align: center;
 }
 
-
-table {
-  overflow: hidden;
-}
-
+/* Gesamte Zeile */
 tr:hover {
   background-color: rgba(255,255,255,0.2);
 }
