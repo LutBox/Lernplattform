@@ -16,7 +16,7 @@ function init() {
 	document.getElementById("neuesProfilbild").onchange = function(event) {
 		var imgSize = this.files[0].size;
 		if (imgSize > 64 * 1024){
-			alert("Das Nutzerprofilbild darf maximal 64 KB groß sein!");
+			alert("Das Nutzerprofilbild darf maximal 64KB groß sein!");
 			document.getElementById("neuesProfilbild").value = '';
 		}
 	};

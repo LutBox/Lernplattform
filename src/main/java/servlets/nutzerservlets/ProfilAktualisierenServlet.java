@@ -46,7 +46,7 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 			try {
 				NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
 			} catch (Exception ex) {
-				session.setAttribute(infotextname, "Ihr Profilbild ist zu Gro� (Max. 1024x1024).");
+				session.setAttribute(infotextname, "Ihr Profilbild ist zu Groß (Max. 64KB).");
 				response.sendRedirect("./html/nutzerseiten/profilbearbeiten.jsp");
 			}
 		}
@@ -66,7 +66,7 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 				response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
 			} else {
 				session.setAttribute(infotextname,
-						"Der von Ihnen gew�hlte Nutzername ist leider bereits vergeben! Weitere �nderungen wurden durchgef�hrt.");
+						"Der von Ihnen gewählte Nutzername ist leider bereits vergeben! Weitere Änderungen wurden durchgeführt.");
 				response.sendRedirect("./html/nutzerseiten/profilbearbeiten.jsp");
 			}
 		} else {

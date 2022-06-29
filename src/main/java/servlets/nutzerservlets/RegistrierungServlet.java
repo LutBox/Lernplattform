@@ -54,7 +54,7 @@ public class RegistrierungServlet extends HttpServlet {
 						NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(anfrage.getName()));
 				response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
 			} catch (Exception ex) {
-				session.setAttribute(infotextname, "Ihr Profilbild ist zu Gro� (Max. 1024x1024).");
+				session.setAttribute(infotextname, "Ihr Profilbild ist zu Groß (Max. 64KB).");
 				session.setAttribute("anfrage", anfrage);
 				response.sendRedirect("./html/nutzerseiten/registrierung.jsp");
 			}
