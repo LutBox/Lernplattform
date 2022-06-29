@@ -5,9 +5,9 @@
 
 div#aktuellerNutzerTagContainer {
 	display: inline-block;
-	absolute: sticky;
+	position: absolute;
 	top: 0;
-	left: 10px;
+	left: 0;
 	background: #d2faef;
 	z-index: 9999999999;
 	border-radius: 0 0 10px 0;

@@ -24,6 +24,7 @@ public class NeuigkeitLoeschenServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		Integer zlnnr = Integer.parseInt(request.getParameter("zlnnr"));
 		NeuigkeitSQLDienst.neugigkeitMitNrXLoeschen(zlnnr);
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("./NeuigkeitenAktualisierenServlet");

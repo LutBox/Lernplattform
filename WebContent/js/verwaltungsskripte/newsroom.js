@@ -62,7 +62,7 @@ function aktualisierenAbbrechen(evt){
 	document.getElementById("aktualisierenMaske").style.display = "none";
 }
 /**
- * END
+ * @source w3schools: https://www.w3schools.com/howto/howto_js_popup_form.asp END
  */
 
 

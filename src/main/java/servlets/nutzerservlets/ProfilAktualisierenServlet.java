@@ -19,7 +19,7 @@ import jakarta.servlet.http.Part;
  */
 @WebServlet("/ProfilAktualisierenServlet")
 @MultipartConfig(location = "/tmp", fileSizeThreshold = 1024 * 32, maxFileSize = 1024 * 64, maxRequestSize = 1024 * 1024
-* 5 * 5)
+		* 5 * 5)
 public class ProfilAktualisierenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String infotextname = "forminfotext";
@@ -42,14 +42,11 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 		Part neuesProfilbild = request.getPart("neuesProfilbild");
 
 		response.setCharacterEncoding("UTF-8");
-
-		System.out.println(
-				neuerName != null && !neuerName.equals(alterName) && !NutzerSQLDienst.istNutzernameVergeben(neuerName));
 		if (neuesProfilbild != null && neuesProfilbild.getSize() > 0) {
 			try {
 				NutzerSQLDienst.aktualisiereProfilbildDesNutzers(neuesProfilbild, alterName);
 			} catch (Exception ex) {
-				session.setAttribute(infotextname, "Ihr Profilbild ist zu Groß (Max. 1024x1024).");
+				session.setAttribute(infotextname, "Ihr Profilbild ist zu GroÃŸ (Max. 64KB).");
 				response.sendRedirect("./html/nutzerseiten/profilbearbeiten.jsp");
 			}
 		}
@@ -69,7 +66,7 @@ public class ProfilAktualisierenServlet extends HttpServlet {
 				response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
 			} else {
 				session.setAttribute(infotextname,
-						"Der von Ihnen gewählte Nutzername ist leider bereits vergeben! Weitere Änderungen wurden durchgeführt.");
+						"Der von Ihnen gewÃ¤hlte Nutzername ist leider bereits vergeben! Weitere Ã„nderungen wurden durchgefÃ¼hrt.");
 				response.sendRedirect("./html/nutzerseiten/profilbearbeiten.jsp");
 			}
 		} else {
