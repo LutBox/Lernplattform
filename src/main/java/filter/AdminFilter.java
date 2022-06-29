@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpSession;
 
 /**
  * @author Merlin
- * @source https://www.youtube.com/watch?v=yOhmJ497EWs
+ * @source https://www.youtube.com/watch?v=yOhmJ497EWs START
  */
 @jakarta.servlet.annotation.WebFilter(
 		urlPatterns = "/html/verwaltungsseiten/*",
@@ -35,7 +35,7 @@ import jakarta.servlet.http.HttpSession;
 				"servlets.adminservlets.neuigkeitenservlets.NeuigkeitenAktualisierenServlet",
 				"servlets.adminservlets.neuigkeitenservlets.NeuigkeitLoeschenServlet"},		
 		filterName = "AdminFilter",
-		description = "Dieser Filter prüft ob jemand als Admin angemeldet ist bevor er eine Adminfunktin aufrufen kann."
+		description = "Dieser Filter prï¿½ft ob jemand als Admin angemeldet ist bevor er eine Adminfunktin aufrufen kann."
 		)
 public class AdminFilter implements Filter {
 
@@ -60,3 +60,7 @@ public class AdminFilter implements Filter {
 		}
 	}
 }
+
+/**
+ * @source https://www.youtube.com/watch?v=yOhmJ497EWs END
+ */

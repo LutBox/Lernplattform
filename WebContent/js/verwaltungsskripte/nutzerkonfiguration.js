@@ -66,7 +66,7 @@ function aktuellenStatusSetzen(){
 }
 
 /**
- * @source https://dillionmegida.com/p/default-image-src/
+ * @source https://dillionmegida.com/p/default-image-src/ START
  */
 function keinProfilbild(){
 	document.getElementById("profilbild").addEventListener("error", function(evt) {
@@ -75,3 +75,7 @@ function keinProfilbild(){
 		}
 	);
 }
+
+/**
+ * @source https://dillionmegida.com/p/default-image-src/ END
+ */

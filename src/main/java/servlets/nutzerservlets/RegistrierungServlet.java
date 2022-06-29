@@ -33,6 +33,7 @@ public class RegistrierungServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		NutzerBean anfrage = new NutzerBean();
 		anfrage.setName(request.getParameter("name"));
 		anfrage.setEmail(request.getParameter("email"));
@@ -53,7 +54,7 @@ public class RegistrierungServlet extends HttpServlet {
 						NutzerSQLDienst.gebeMirNutzeranzeigeMitDemNamen(anfrage.getName()));
 				response.sendRedirect("./html/nutzerseiten/nutzerHauptseite.jsp");
 			} catch (Exception ex) {
-				session.setAttribute(infotextname, "Ihr Profilbild ist zu Groß (Max. 1024x1024).");
+				session.setAttribute(infotextname, "Ihr Profilbild ist zu Groï¿½ (Max. 1024x1024).");
 				session.setAttribute("anfrage", anfrage);
 				response.sendRedirect("./html/nutzerseiten/registrierung.jsp");
 			}
