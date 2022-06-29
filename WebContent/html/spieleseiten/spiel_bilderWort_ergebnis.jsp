@@ -23,12 +23,12 @@ Erstellt von Zohal Mohammadi
 <div id="timerID" hidden>${spielStartenBean.timer}</div>
 <body>
 
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
+
 	<header>
 		<h1>4 Bilder Ein Wort Ergebnis</h1>	
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-	
-<%@include file="../jspf/aktuellerNutzer.jspf"%>
 
 	<div class="ergebnis">
 	<h2><b>Ende der Runde</b></h2>
@@ -36,12 +36,6 @@ Erstellt von Zohal Mohammadi
 	<p class= "versuche"> <b>Anzahl der Versuche:</b> <span id= "insgesamt_Punkte">${vierBilderEinWort.versuche}</span></p>
     <a href="../../SpielStartenServlet?Spielart=bilderWort&Schwierigkeit=${vierBilderEinWort.schwierigkeit }&Gewertet=${vierBilderEinWort.gewertet }" > Erneut spielen</a>
 	</div>
-
-		
-
-	
-
-
 
 	<br> <br> <br> <br>
 	<footer>

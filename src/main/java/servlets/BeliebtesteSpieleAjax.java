@@ -34,27 +34,13 @@ public class BeliebtesteSpieleAjax extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *
+	 *
+	 *	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 *		
+	 *	}
 	 */
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		// Neues Bestenlisten-Objekt erstellen
-		Bestenliste beliebtesteSpieleAjax = new Bestenliste();
-
-		// Bestenliste befüllen
-		readNutzer(beliebtesteSpieleAjax);
-
-		// Infos werden nur für diesen Request speichern
-		request.setAttribute("beliebtesteSpieleAjax", beliebtesteSpieleAjax);
-
-		// Weiterleiten an JSP
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/hauptseiten/beliebtesteSpieleListe.jsp");
-		dispatcher.forward(request, response);
-		
-	}
 
 	// Anzahl der insgesamt gespielten Spiele werden für jede Spielart in der Bestenliste gespeichert
 	private void readNutzer(Bestenliste beliebtesteSpieleAjax) throws ServletException {
@@ -87,9 +73,23 @@ public class BeliebtesteSpieleAjax extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)  
 	 */
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// Neues Bestenlisten-Objekt erstellen
+		Bestenliste beliebtesteSpieleAjax = new Bestenliste();
+
+		// Bestenliste befüllen
+		readNutzer(beliebtesteSpieleAjax);
+
+		// Infos werden nur für diesen Request speichern
+		request.setAttribute("beliebtesteSpieleAjax", beliebtesteSpieleAjax);
+
+		// Weiterleiten an JSP
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/hauptseiten/beliebtesteSpieleListe.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

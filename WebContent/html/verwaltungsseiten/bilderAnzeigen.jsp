@@ -19,14 +19,11 @@ Erstellt von Lukas Theinert
     <title>Bilder anzeigen</title>
 </head>
 <body>
-
-<h1>Bilder anzeigen</h1>
-
-	<nav>
-		<%@include file="../jspf/navigation.jspf"%>
-	</nav>
-
 <%@include file="../jspf/aktuellerNutzer.jspf"%>
+<header>	
+	<h1>Bilder anzeigen</h1>
+	<%@include file="../jspf/navigation.jspf"%>
+</header>
 
 <!-- Begin der FLEXBOX = Flex-Container -->
 <div id="flexarea">

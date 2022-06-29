@@ -30,21 +30,13 @@ public class BildBearbeitenAjax extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *
+	 *
+	 *	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 *		
+	 *	}
 	 */
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		// Dateien aus Request in neues Objekt einfügen
-		String neuKategorie = String.valueOf(request.getParameter("neuKategorie"));
-		String bildID = String.valueOf(request.getParameter("bildID"));
-
-		// Kategorie von Bild ändern
-		changeKategorie(neuKategorie, bildID);
-
-	}
 
 	// Kategorie von Bild ändern
 	private void changeKategorie(String neuKategorie, String bildID) throws ServletException {
@@ -64,9 +56,18 @@ public class BildBearbeitenAjax extends HttpServlet {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// Dateien aus Request in neues Objekt einfügen
+		String neuKategorie = String.valueOf(request.getParameter("neuKategorie"));
+		String bildID = String.valueOf(request.getParameter("bildID"));
+
+		// Kategorie von Bild ändern
+		changeKategorie(neuKategorie, bildID);
+
 	}
 
 }

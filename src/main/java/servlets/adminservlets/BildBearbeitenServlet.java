@@ -36,29 +36,12 @@ public class BildBearbeitenServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *
+	 *
+	 *	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 *		
+	 *	}
 	 */
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		// Daten aus Request holen
-		request.getParameter("bildID");
-		String bildID = request.getParameter("bildID");
-		
-		// Alle Kategorien auslesen
-		BilderAnzeigen bild = read(bildID);
-		List<BilderAnzeigen> kategorieListe = readKategorie();
-
-		// Infos werden für mehrere Requests in Session gespeichert
-		final HttpSession session = request.getSession();
-		session.setAttribute("bild", bild);
-		session.setAttribute("kategorieListe", kategorieListe);
-
-		// Weiterleiten an JSP
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/verwaltungsseiten/bildBearbeiten.jsp");
-		dispatcher.forward(request, response);
-	}
 
 	// Aktuelle Bild-ID und Bild-Kategorie auslesen
 	private BilderAnzeigen read(String bildID) throws ServletException {
@@ -107,9 +90,27 @@ public class BildBearbeitenServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response) 
 	 */
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// Daten aus Request holen
+		request.getParameter("bildID");
+		String bildID = request.getParameter("bildID");
+		
+		// Alle Kategorien auslesen
+		BilderAnzeigen bild = read(bildID);
+		List<BilderAnzeigen> kategorieListe = readKategorie();
+
+		// Infos werden für mehrere Requests in Session gespeichert
+		final HttpSession session = request.getSession();
+		session.setAttribute("bild", bild);
+		session.setAttribute("kategorieListe", kategorieListe);
+
+		// Weiterleiten an JSP
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("./html/verwaltungsseiten/bildBearbeiten.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

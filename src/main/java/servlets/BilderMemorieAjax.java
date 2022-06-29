@@ -33,31 +33,13 @@ public class BilderMemorieAjax extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *
+	 *
+	 *	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 *		
+	 *	}
 	 */
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		// Dateien aus Session in neues Objekt einfügen
-		SpielStartenBean bilderMemorieAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
-
-		// Daten aus Request lesen
-		bilderMemorieAjax.setZeit(Integer.valueOf(request.getParameter("zeit")));
-		bilderMemorieAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
-
-		NutzerViewBean aktuellerNutzer = (NutzerViewBean) request.getSession().getAttribute("nutzer");
-
-		// Daten zum Spiel in der Datenbank speichern
-		safeGame(bilderMemorieAjax, aktuellerNutzer);
-
-		// Wenn Spiel gewerten: anzahl der vom Nutzer benötigten Versuche und Zeit in der Datenbank speichern
-		if (bilderMemorieAjax.getGewertet().equals("gewertetAn")) {
-			safeUserStats(bilderMemorieAjax, aktuellerNutzer);
-		}
-
-	}
-
+	
 	private void safeGame(SpielStartenBean bilderMemorieAjax, NutzerViewBean aktuellerNutzer) throws ServletException {
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
@@ -129,9 +111,27 @@ public class BilderMemorieAjax extends HttpServlet {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// Dateien aus Session in neues Objekt einfügen
+		SpielStartenBean bilderMemorieAjax = (SpielStartenBean) request.getSession().getAttribute("spielStartenBean");
+
+		// Daten aus Request lesen
+		bilderMemorieAjax.setZeit(Integer.valueOf(request.getParameter("zeit")));
+		bilderMemorieAjax.setVersuche(Integer.valueOf(request.getParameter("versuche")));
+
+		NutzerViewBean aktuellerNutzer = (NutzerViewBean) request.getSession().getAttribute("nutzer");
+
+		// Daten zum Spiel in der Datenbank speichern
+		safeGame(bilderMemorieAjax, aktuellerNutzer);
+
+		// Wenn Spiel gewerten: anzahl der vom Nutzer benötigten Versuche und Zeit in der Datenbank speichern
+		if (bilderMemorieAjax.getGewertet().equals("gewertetAn")) {
+			safeUserStats(bilderMemorieAjax, aktuellerNutzer);
+		}
 	}
 
 }

@@ -16,14 +16,11 @@ Erstellt von Lukas Theinert
     <title>Kategorie hinzufügen</title>
 </head>
 <body>
-
-<h1>Kategorie hinzufügen</h1>
-
-	<nav>
-		<%@include file="../jspf/navigation.jspf"%>
-	</nav>
-
 <%@include file="../jspf/aktuellerNutzer.jspf"%>
+<header>
+	<h1>Kategorie hinzufügen</h1>
+	<%@include file="../jspf/navigation.jspf"%>
+</header>
 
 <!-- Begin der FLEXBOX = Flex-Container -->
 <div id="flexarea">
@@ -39,7 +36,7 @@ Erstellt von Lukas Theinert
 				<br>
 				<div>
 					<label for="eingabeKategorie">Kategorie eingeben:</label>
-	  				<input name="eingabeKategorie" type="text" id="eingabeKategorie"/><br><br>
+	  				<input name="eingabeKategorie" type="text" id="eingabeKategorie" maxlength="64" pattern="[^ &lt;&gt;&#34;']+" title="Bitte geben Sie eine Kategorie an (Keine Leerzeichen, &lt, &gt, &#34)."required /><br><br>
 				</div>
 				<br>				
 				<br>

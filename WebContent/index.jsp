@@ -26,16 +26,12 @@ Erstellt von Lukas Theinert
 </head>
 
 <body>
-
-<noscript>Sie haben JavaScript deaktiviert!</noscript>
-
+<%@include file="html/jspf/aktuellerNutzer.jspf"%>
 <header>
     <h1>Lernplattform</h1>
     <%@include file="html/jspf/navigation.jspf" %>
 </header>
-
-<%@include file="html/jspf/aktuellerNutzer.jspf"%>
-
+<noscript>Sie haben JavaScript deaktiviert!</noscript>
 <div id="content">
     <!-- Begin der FLEXBOX = Flex-Container -->
     <div id="flexarea">

@@ -4,13 +4,17 @@
 /* 
  * Erstellt von Lukas Theinert
  */
+ 
+/* Bilder-Ordnen-Idee von Tutorial: https://codepen.io/Coding_Journey/pen/YzKpLvE */
 
+/* Hintergrund */
 html {
     background: linear-gradient(325deg,  #6f00fc 0%,#fc7900 50%,#fcc700 100%);
     background-repeat: no-repeat;
 	background-attachment: fixed;    
 }
 
+/* Informationsfeld */
 .controls {
 	position: absolute;
     left: 50%;
@@ -22,18 +26,24 @@ html {
 }
 
 
+/* Bilder-Ordnen-Idee: */
+/* ----------- Anfang ---------------------- */
+
+/* Spielbereich-Bilder */
 .draggable-elements {
   display: flex;
   justify-content: center;
   margin: 2rem;
 }
 
+/* Spielbereich-Kategorien */
 .droppable-elements {
   display: flex;
   justify-content: center;
   margin: 2rem;
 }
 
+/* Bilder */
 .draggable {
   height: 128px;
   width: 128px;
@@ -45,9 +55,13 @@ html {
   cursor: move;
   transition: opacity 0.2s;
 }
+
+/* Bilder hovern */
 .draggable:hover {
   opacity: 0.5;
 }
+
+/* Kategorien */
 .droppable {
   height: 128px;
   width: 128px;
@@ -63,31 +77,39 @@ html {
   border: 3px dashed #111;
   transition: border-width 0.2s, transform 0.2s, background-color 0.4s;
 }
+
+/* Kategorie-Text */
 .droppable span {
   font-size: 1.25rem;
   pointer-events: none;
 }
 
-/* Bild auf Kategorie hovern */
 .droppable.droppable-hover {
   transform: scale(1.1);
 }
+
 .droppable.dropped {
   border-style: solid;
   color: #fff;
 }
+
 .droppable.dropped span {
   font-size: 0.75rem;
   margin-top: 0.5rem;
 }
+
 .droppable.dropped i {
   pointer-events: none;
 }
+
 .draggable.dragged {
   user-select: none;
   opacity: 0.1;
   cursor: default;
 }
+
 .draggable.dragged:hover {
   opacity: 0.1;
 }
+
+/* ----------- Ende ---------------------- */

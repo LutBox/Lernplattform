@@ -45,168 +45,13 @@ public class SpielStartenServlet extends HttpServlet {
 	private DataSource ds;
 	
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *
+	 *
+	 *	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 *		
+	 *	}
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		// Parameter aus Request holen und als String speichern
-		String spielartServlet = request.getParameter("Spielart");
-		String schwierigkeitServlet = request.getParameter("Schwierigkeit");
-
-		// ---------- SERVLET ------------------------------
-		// Attribute (Schwierigkeit & Spieleart) von gaming_main_page.jsp abholen
-		// Infos werden nur für einen Request gespeichert
-		request.setAttribute("schwierigkeitServlet", schwierigkeitServlet);
-		request.setAttribute("spielartServlet", spielartServlet);
-
-		// ---------- BEAN ------------------------------
-		// Neues Bean-Objekt erstellen und Informationen speichern
-		SpielStartenBean spielStartenBean = new SpielStartenBean();
-		spielStartenBean.setSchwierigkeit(request.getParameter("Schwierigkeit"));
-		spielStartenBean.setSpielart(request.getParameter("Spielart"));
-		spielStartenBean.setTimer(request.getParameter("Timer"));
-		spielStartenBean.setGewertet(request.getParameter("Gewertet"));
-
-		// Infos werden für mehrere Requests in einer Session gespeichert 
-		final HttpSession session = request.getSession();
-		session.setAttribute("spielStartenBean", spielStartenBean);
-
-		// Je nach ausgewählter Spielart an jeweilige JSP weiterleiten
-		// -------------------------------------------------
-		// ---------- Mathe ------------------------------
-		// -------------------------------------------------
-		if (spielartServlet.equals("mathe")) {
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_mathe_starten.jsp");
-			dispatcher.forward(request, response);
-
-		// -------------------------------------------------
-		// ---------- 4 Bilder 1 Wort --------------------
-		// -------------------------------------------------
-		} else if (spielartServlet.equals("bilderWort")) {
-			// Clean up, damit die Punkte aus dem Spiel
-			VierBilderEinWortScoreBean bean = new VierBilderEinWortScoreBean();
-			//
-			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			bean.setSchwierigkeit(schwierigkeitServlet);
-			bean.setGewertet(request.getParameter("Gewertet"));
-
-			int sekunden = 60;
-			if (schwierigkeitServlet.equals("mittel")) {
-				sekunden = 45;
-			}
-			if (schwierigkeitServlet.equals("schwer")) {
-				sekunden = 30;
-			}
-			// Formatierungsstring wird hier angepasst
-			bean.setZeit(format.format(addSecondsToJavaUtilDate(new Date(), sekunden)));
-
-			session.setAttribute("vierBilderEinWort", bean);
-
-			// Aufruf von VierBilderEinWortServlet --> alles zurueckgesetzt
-			response.sendRedirect("VierBilderEinWortServlet");
-
-		// -------------------------------------------------
-		// ---------- Bilder ordnen ----------------------
-		// -------------------------------------------------
-		} else if (spielartServlet.equals("bilderOrdnen")) {
-			// 8 - 16 Zufällige Bilder in Bean speichern
-			SpielBilderOrdnenBean spielBilderOrdnen;
-			// Bilder aus Datenbank auslesen
-			spielBilderOrdnen = spielBilderOrdnen();
-
-			session.setAttribute("spielBilderOrdnen", spielBilderOrdnen);
-
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
-			dispatcher.forward(request, response);
-
-		// -------------------------------------------------
-		// ---------- Bildermemorie ----------------------
-		// -------------------------------------------------
-		} else if (spielartServlet.equals("bilderMemorie")) {
-			// 8 - 16 Zufällige Bilder in Bean speichern
-			SpielBilderMemorieBean spielBilderMemorieBean;
-			// Bilder aus Datenbank auslesen
-			spielBilderMemorieBean = spielBilderMemorie();
-
-			session.setAttribute("spielBilderMemorieBean", spielBilderMemorieBean);
-
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderMemorie_starten.jsp");
-			dispatcher.forward(request, response);
-
-		// -------------------------------------------------
-		// ---------- Jump n run -------------------------
-		// -------------------------------------------------
-		} else if (spielartServlet.equals("jumpnrun")) {
-			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_jumpnrun_starten.jsp");
-			dispatcher.forward(request, response);
-
-		// -------------------------------------------------
-		// ---------- Zufall -----------------------------
-		// -------------------------------------------------
-		} else {
-			int min = 2;
-			int max = 5;
-			Random random = new Random();
-			int value = random.nextInt(max + min) + min;
-			
-			// Spiel: 4 Bilder 1 Wort -> Aus Zufallsgenerator ausgeschlossen, weil noch nicht fertig
-			if (value == 1) {
-				VierBilderEinWortScoreBean bean = new VierBilderEinWortScoreBean();
-				DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-				int sekunden = 60;
-				if (schwierigkeitServlet.equals("mittel")) {
-					sekunden = 45;
-				}
-				if (schwierigkeitServlet.equals("schwer")) {
-					sekunden = 30;
-				}
-
-				bean.setZeit(format.format(addSecondsToJavaUtilDate(new Date(), sekunden)));
-
-				session.setAttribute("vierBilderEinWort", bean);
-
-				response.sendRedirect("VierBilderEinWortServlet");
-
-			// Spiel: Mathe	
-			} else if (value == 2) {
-				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_mathe_starten.jsp");
-				dispatcher.forward(request, response);
-
-			// Spiel: Bilder ordnen	
-			} else if (value == 3) {
-				// 8 - 16 Zufällige Bilder in Bean speichern
-				SpielBilderOrdnenBean spielBilderOrdnen;
-				// Bilder aus der Datenbank auslesen
-				spielBilderOrdnen = spielBilderOrdnen();
-
-				session.setAttribute("spielBilderOrdnen", spielBilderOrdnen);
-
-				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
-				dispatcher.forward(request, response);
-
-			// Spiel: Bildermemorie	
-			} else if (value == 4) {
-				// 8 - 16 Zufällige Bilder in Bean speichern
-				SpielBilderMemorieBean spielBilderMemorieBean;
-				// Bilder aus der Datenbank auslesen
-				spielBilderMemorieBean = spielBilderMemorie();
-
-				session.setAttribute("spielBilderMemorieBean", spielBilderMemorieBean);
-
-				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderMemorie_starten.jsp");
-				dispatcher.forward(request, response);
-
-			// Spiel: Jump n run
-			} else {
-				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_jumpnrun_starten.jsp");
-				dispatcher.forward(request, response);
-			}
-		}
-
-	}
 
 	// Quelle: https://www.baeldung.com/java-add-hours-date
 	// Abgewandelt
@@ -375,7 +220,6 @@ public class SpielStartenServlet extends HttpServlet {
 				log("Kategorie-ID: " + imageIds[i]);
 			}
 		} catch (SQLException ex) {
-			// TODO Auto-generated catch block
 			ex.printStackTrace();
 			throw new ServletException(ex);
 		}
@@ -392,10 +236,166 @@ public class SpielStartenServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)   
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 
+		// Parameter aus Request holen und als String speichern
+		String spielartServlet = request.getParameter("Spielart");
+		String schwierigkeitServlet = request.getParameter("Schwierigkeit");
+
+		// ---------- SERVLET ------------------------------
+		// Attribute (Schwierigkeit & Spieleart) von gaming_main_page.jsp abholen
+		// Infos werden nur für einen Request gespeichert
+		request.setAttribute("schwierigkeitServlet", schwierigkeitServlet);
+		request.setAttribute("spielartServlet", spielartServlet);
+
+		// ---------- BEAN ------------------------------
+		// Neues Bean-Objekt erstellen und Informationen speichern
+		SpielStartenBean spielStartenBean = new SpielStartenBean();
+		spielStartenBean.setSchwierigkeit(request.getParameter("Schwierigkeit"));
+		spielStartenBean.setSpielart(request.getParameter("Spielart"));
+		spielStartenBean.setTimer(request.getParameter("Timer"));
+		spielStartenBean.setGewertet(request.getParameter("Gewertet"));
+
+		// Infos werden für mehrere Requests in einer Session gespeichert 
+		final HttpSession session = request.getSession();
+		session.setAttribute("spielStartenBean", spielStartenBean);
+
+		// Je nach ausgewählter Spielart an jeweilige JSP weiterleiten
+		// -------------------------------------------------
+		// ---------- Mathe ------------------------------
+		// -------------------------------------------------
+		if (spielartServlet.equals("mathe")) {
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_mathe_starten.jsp");
+			dispatcher.forward(request, response);
+
+		// -------------------------------------------------
+		// ---------- 4 Bilder 1 Wort --------------------
+		// -------------------------------------------------
+		} else if (spielartServlet.equals("bilderWort")) {
+			// Clean up, damit die Punkte aus dem Spiel
+			VierBilderEinWortScoreBean bean = new VierBilderEinWortScoreBean();
+			//
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			bean.setSchwierigkeit(schwierigkeitServlet);
+			bean.setGewertet(request.getParameter("Gewertet"));
+
+			int sekunden = 60;
+			if (schwierigkeitServlet.equals("mittel")) {
+				sekunden = 45;
+			}
+			if (schwierigkeitServlet.equals("schwer")) {
+				sekunden = 30;
+			}
+			// Formatierungsstring wird hier angepasst
+			bean.setZeit(format.format(addSecondsToJavaUtilDate(new Date(), sekunden)));
+
+			session.setAttribute("vierBilderEinWort", bean);
+
+			// Aufruf von VierBilderEinWortServlet --> alles zurueckgesetzt
+			response.sendRedirect("VierBilderEinWortServlet");
+
+		// -------------------------------------------------
+		// ---------- Bilder ordnen ----------------------
+		// -------------------------------------------------
+		} else if (spielartServlet.equals("bilderOrdnen")) {
+			// 8 - 16 Zufällige Bilder in Bean speichern
+			SpielBilderOrdnenBean spielBilderOrdnen;
+			// Bilder aus Datenbank auslesen
+			spielBilderOrdnen = spielBilderOrdnen();
+
+			session.setAttribute("spielBilderOrdnen", spielBilderOrdnen);
+
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
+			dispatcher.forward(request, response);
+
+		// -------------------------------------------------
+		// ---------- Bildermemorie ----------------------
+		// -------------------------------------------------
+		} else if (spielartServlet.equals("bilderMemorie")) {
+			// 8 - 16 Zufällige Bilder in Bean speichern
+			SpielBilderMemorieBean spielBilderMemorieBean;
+			// Bilder aus Datenbank auslesen
+			spielBilderMemorieBean = spielBilderMemorie();
+
+			session.setAttribute("spielBilderMemorieBean", spielBilderMemorieBean);
+
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderMemorie_starten.jsp");
+			dispatcher.forward(request, response);
+
+		// -------------------------------------------------
+		// ---------- Jump n run -------------------------
+		// -------------------------------------------------
+		} else if (spielartServlet.equals("jumpnrun")) {
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_jumpnrun_starten.jsp");
+			dispatcher.forward(request, response);
+
+		// -------------------------------------------------
+		// ---------- Zufall -----------------------------
+		// -------------------------------------------------
+		} else {
+			int min = 2;
+			int max = 5;
+			Random random = new Random();
+			int value = random.nextInt(max + min) + min;
+			
+			// Spiel: 4 Bilder 1 Wort -> Aus Zufallsgenerator ausgeschlossen, weil noch nicht fertig
+			if (value == 1) {
+				VierBilderEinWortScoreBean bean = new VierBilderEinWortScoreBean();
+				DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+				int sekunden = 60;
+				if (schwierigkeitServlet.equals("mittel")) {
+					sekunden = 45;
+				}
+				if (schwierigkeitServlet.equals("schwer")) {
+					sekunden = 30;
+				}
+
+				bean.setZeit(format.format(addSecondsToJavaUtilDate(new Date(), sekunden)));
+
+				session.setAttribute("vierBilderEinWort", bean);
+
+				response.sendRedirect("VierBilderEinWortServlet");
+
+			// Spiel: Mathe	
+			} else if (value == 2) {
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_mathe_starten.jsp");
+				dispatcher.forward(request, response);
+
+			// Spiel: Bilder ordnen	
+			} else if (value == 3) {
+				// 8 - 16 Zufällige Bilder in Bean speichern
+				SpielBilderOrdnenBean spielBilderOrdnen;
+				// Bilder aus der Datenbank auslesen
+				spielBilderOrdnen = spielBilderOrdnen();
+
+				session.setAttribute("spielBilderOrdnen", spielBilderOrdnen);
+
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderOrdnen_starten.jsp");
+				dispatcher.forward(request, response);
+
+			// Spiel: Bildermemorie	
+			} else if (value == 4) {
+				// 8 - 16 Zufällige Bilder in Bean speichern
+				SpielBilderMemorieBean spielBilderMemorieBean;
+				// Bilder aus der Datenbank auslesen
+				spielBilderMemorieBean = spielBilderMemorie();
+
+				session.setAttribute("spielBilderMemorieBean", spielBilderMemorieBean);
+
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_bilderMemorie_starten.jsp");
+				dispatcher.forward(request, response);
+
+			// Spiel: Jump n run
+			} else {
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("html/spieleseiten/spiel_jumpnrun_starten.jsp");
+				dispatcher.forward(request, response);
+			}
+		}
 	}
 
 }

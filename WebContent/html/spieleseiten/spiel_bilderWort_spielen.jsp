@@ -25,14 +25,12 @@ Erstellt von Zohal Mohammadi
 </head>
 <body>
 
+<%@include file="../jspf/aktuellerNutzer.jspf"%>
 
 	<header>
 		<h1>4 Bilder Ein Wort</h1>
 		<%@include file="../jspf/navigation.jspf"%>
 	</header>
-
-
-<%@include file="../jspf/aktuellerNutzer.jspf"%>
 
 	<div id="temp" hidden></div>
 	<div id="nutzer" hidden>${nutzer.name}</div>

@@ -35,27 +35,13 @@ public class BesteSpielerAjax extends HttpServlet {
 	private DataSource ds;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 *
+	 *
+	 *	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 *		
+	 *	}
 	 */
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		// Neues Liste erstellen
-		ArrayList<Bestenliste> besteSpielerAjax = new ArrayList<>();
-
-		// Liste mit Nutzer befüllen, absteigend nach Gesamtpunktezahl aller Spiele
-		besteSpielerAjax = readNutzer(besteSpielerAjax);
-
-		// Infos werden nur für diesen Request speichern
-		request.setAttribute("besteSpielerAjax", besteSpielerAjax);
-
-		// Weiterleiten an JSP
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/hauptseiten/besteSpielerListe.jsp");
-		dispatcher.forward(request, response);
-
-	}
 
 	private ArrayList<Bestenliste> readNutzer(ArrayList<Bestenliste> besteSpielerAjax) throws ServletException {
 		// DB-Zugriff
@@ -81,9 +67,24 @@ public class BesteSpielerAjax extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response) 
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// Neues Liste erstellen
+		ArrayList<Bestenliste> besteSpielerAjax = new ArrayList<>();
+
+		// Liste mit Nutzer befüllen, absteigend nach Gesamtpunktezahl aller Spiele
+		besteSpielerAjax = readNutzer(besteSpielerAjax);
+
+		// Infos werden nur für diesen Request speichern
+		request.setAttribute("besteSpielerAjax", besteSpielerAjax);
+
+		// Weiterleiten an JSP
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("html/hauptseiten/besteSpielerListe.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 }
