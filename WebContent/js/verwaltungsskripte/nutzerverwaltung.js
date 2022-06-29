@@ -63,7 +63,7 @@ function loeschenBestaetigen(evt){
 }
 
 /**
- * @source https://dillionmegida.com/p/default-image-src/ 
+ * @source https://dillionmegida.com/p/default-image-src/  START
  */
 function keinProfilbild(){
 	var profilbilder = document.getElementsByClassName("profilbild");
@@ -76,3 +76,7 @@ function keinProfilbild(){
 		);
 	}
 }
+
+/**
+ * @source https://dillionmegida.com/p/default-image-src/  END
+ */

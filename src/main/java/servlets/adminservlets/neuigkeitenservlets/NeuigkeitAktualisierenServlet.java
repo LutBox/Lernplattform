@@ -26,7 +26,7 @@ public class NeuigkeitAktualisierenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		String neueNachricht = request.getParameter("neuigkeitAktualisiert");
 		Integer zennr = Integer.parseInt(request.getParameter("zennr"));
 		NeuigkeitSQLDienst.neuigkeitMitNrXAendern(zennr, neueNachricht);

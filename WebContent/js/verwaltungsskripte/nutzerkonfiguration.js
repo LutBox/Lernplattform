@@ -16,7 +16,7 @@ function init() {
 	document.getElementById("neuesProfilbild").onchange = function(event) {
 		var imgSize = this.files[0].size;
 		if (imgSize > 64 * 1024){
-			alert("Das Nutzerprofilbild darf maximal 64 KB groß sein!");
+			alert("Das Nutzerprofilbild darf maximal 64KB groß sein!");
 			document.getElementById("neuesProfilbild").value = '';
 		}
 	};
@@ -66,7 +66,7 @@ function aktuellenStatusSetzen(){
 }
 
 /**
- * @source https://dillionmegida.com/p/default-image-src/
+ * @source https://dillionmegida.com/p/default-image-src/ START
  */
 function keinProfilbild(){
 	document.getElementById("profilbild").addEventListener("error", function(evt) {
@@ -75,3 +75,7 @@ function keinProfilbild(){
 		}
 	);
 }
+
+/**
+ * @source https://dillionmegida.com/p/default-image-src/ END
+ */

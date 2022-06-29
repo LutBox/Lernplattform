@@ -12,13 +12,18 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * @author Merlin
+ * @source https://www.youtube.com/watch?v=yOhmJ497EWs START
+ */
+
 @jakarta.servlet.annotation.WebFilter(
 	urlPatterns = {
 		"/html/nutzerseiten/nutzerHauptseite.jsp",
 		"/html/nutzerseiten/profilbearbeiten.jsp"},
 	servletNames = "servlets.nutzerservlets.ProfilAktualisierenServlet",
 	filterName = "NutzerFilter",
-	description = "Dieser Filter prüft ob jemand als Admin angemeldet ist bevor er eine Adminfunktin aufrufen kann.")
+	description = "Dieser Filter prï¿½ft ob jemand als Admin angemeldet ist bevor er eine Adminfunktin aufrufen kann.")
 public class NutzerFilter implements Filter {
 
 	@Override
@@ -37,3 +42,7 @@ public class NutzerFilter implements Filter {
 		}
 	}
 }
+
+/**
+ * @source https://www.youtube.com/watch?v=yOhmJ497EWs END
+ */

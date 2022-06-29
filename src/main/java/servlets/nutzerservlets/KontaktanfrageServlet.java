@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * @author Merlin Servlet implementation class KontaktanfrageServlet
+ * @author Lukas Theinert
  */
 @WebServlet("/KontaktanfrageServlet")
 public class KontaktanfrageServlet extends HttpServlet {

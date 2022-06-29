@@ -22,8 +22,7 @@ function loeschenbestaetigen(evt) {
 }
 
 /**
- * @source https://www.codegrepper.com/code-examples/javascript/javascript+button+click+scroll+to+id
- * @param evt
+ * @source https://www.codegrepper.com/code-examples/javascript/javascript+button+click+scroll+to+id START
  */
 function postfach(evt){
 	document.getElementById("postfachheaderrow").scrollIntoView();
@@ -32,3 +31,7 @@ function postfach(evt){
 function archiv(evt) {
 	document.getElementById("archivheaderrow").scrollIntoView();
 }
+
+/**
+ * @source https://www.codegrepper.com/code-examples/javascript/javascript+button+click+scroll+to+id END
+ */
