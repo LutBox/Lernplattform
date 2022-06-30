@@ -25,8 +25,8 @@ div#display {
 
 div#neuAnlegenMaske, div#aktualisierenMaske {
 	position: fixed;
-	top: 300px;
-	left: 785px;
+    top: 40%; 
+	left: calc(50% - 175px); 
 	z-index: 99999;
 	background-color: #ffffff;
 	border-radius: 10px;

@@ -34,8 +34,8 @@
 						title="Bitte geben Sie Ihr Passwort an." required />
 				</div>
 				<div class="buttonbox inputfeld">
-					<button type="submit">Absenden</button>
-					<button type="reset">Zurücksetzen</button>
+					<button type="submit" title="Klicken, um Anmeldung durchzuführen.">Absenden</button>
+					<button type="reset" title="Klicken, um das Formular zurückzusetzen.">Zurücksetzen</button>
 				</div>
 			</fieldset>
 		</form>

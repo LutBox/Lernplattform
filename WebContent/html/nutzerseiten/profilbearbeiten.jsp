@@ -58,9 +58,9 @@
 						title="Bitte laden Sie hier ihr neues Profilbild hoch" />
 				</div>
 				<div class="buttonbox inputfeld">
-					<button id="absenden" type="submit">Absenden</button>
-					<button type="reset">Zurücksetzen</button>
-					<a class="buttonLink" href="./nutzerHauptseite.jsp">Abbrechen</a>
+					<button id="absenden" type="submit" title="Klicken, um Änderungen abzusenden.">Absenden</button>
+					<button type="reset" title="Klicken, um das Formular zu leeren.">Zurücksetzen</button>
+					<a class="buttonLink" href="./nutzerHauptseite.jsp" title="Klicken, um zum Nutzerbereichen zurückzukehren.">Abbrechen</a>
 				</div>
 			</fieldset>
 		</form>

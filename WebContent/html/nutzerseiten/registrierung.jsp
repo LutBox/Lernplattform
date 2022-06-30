@@ -57,8 +57,8 @@
 						accept="image/*" title="Bitte laden Sie hier Ihr Profilbild hoch" />
 				</div>
 				<div class="buttonbox inputfeld">
-					<button id="absenden" type="submit">Absenden</button>
-					<button type="reset">Zurücksetzen</button>
+					<button id="absenden" type="submit" title="Klicken, um Registrierung durchzuführen.">Absenden</button>
+					<button type="reset" title="Klicken, um Formular zurückzusetzen.">Zurücksetzen</button>
 				</div>
 			</fieldset>
 		</form>
