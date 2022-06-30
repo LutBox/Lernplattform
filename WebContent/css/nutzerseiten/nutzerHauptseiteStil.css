@@ -7,6 +7,7 @@
 @import url("../standard/standardFooter.css");
 @import url("../standard/cookiemonsterStil.css");
 @import url("../standard/aktuellerNutzerStil.css");
+@import url("../standard/standardGoToTop.css");
 
 div#flexarea {
 	justify-content: center;
@@ -111,4 +112,27 @@ p.nachrichttext {
 p.zeitstempel {
 	color: #808080;
 	text-align: left;
+}
+
+button.noStandardButton {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	height: 28px;
+	background: none;
+}
+
+.buttonImg {
+	background: #000000;
+	border-radius: 50%;
+	width: 28px;
+	height: auto;
+}
+
+.buttonImg:hover {
+	transform: scale(1.5);
+}
+
+.buttonImg:active {
+	box-shadow: 0 0 16px 5px #00ffff;
 }
