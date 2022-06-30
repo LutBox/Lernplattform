@@ -88,8 +88,11 @@
 			<p id="beliebtesteSpiele">Listeneinträge</p>
 		</aside>
 	</div>
-	<button type="button" class="goToTopButton noStandardButton" id="goToTopButton" title="Klicken um zum Seitenanfang zu springen">
-			<img class="buttonImg" src="../../bilder/verwaltung/goToTopIcon.png" alt="Zum Seitenanfang springen"/>
+	<button type="button" class="goToTopButton noStandardButton fade-in"
+			id="goToTopButton"
+			title="Klicken um zum Seitenanfang zurück zu springen.">
+			<img class="buttonImg" src="../../bilder/verwaltung/goToTopIcon.png"
+				alt="Zum Seitenanfang springen" />
 		</button>
 	<footer>
 		<%@include file="../jspf/footer.jspf"%>

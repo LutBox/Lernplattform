@@ -13,6 +13,6 @@ public class NachZeitstempelSortieren implements Comparator<Neuigkeit> {
 
 	@Override
 	public int compare(Neuigkeit a, Neuigkeit b) {
-		return (a.getZeitstempel().compareTo(b.getZeitstempel()))*-1;
+		return -1* a.getZeitstempel().compareTo(b.getZeitstempel());
 	}
 }

@@ -29,6 +29,7 @@ public class NeuigkeitSQLDienst extends SQLDienst {
 						.prepareStatement("INSERT INTO " + tabellenname + " (nachricht,zeitstempel) VALUES (?,?)")) {
 			pstmt.setString(1, nachricht);
 			pstmt.setTimestamp(2, new Timestamp(new Date().getTime()));
+			System.out.println(new Timestamp(new Date().getTime()));
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
 			throw new ServletException(ex.getMessage());
@@ -37,8 +38,8 @@ public class NeuigkeitSQLDienst extends SQLDienst {
 
 	public static void neuigkeitMitNrXAendern(Integer nnr, String neueNachricht) throws ServletException {
 		try (Connection con = ds.getConnection();
-				PreparedStatement pstmt = con
-						.prepareStatement("UPDATE " + tabellenname + " SET nachricht = ?, zeitstempel = zeitstempel where nnr = ?")) {
+				PreparedStatement pstmt = con.prepareStatement(
+						"UPDATE " + tabellenname + " SET nachricht = ?, zeitstempel = zeitstempel where nnr = ?")) {
 			pstmt.setString(1, neueNachricht);
 			pstmt.setInt(2, nnr);
 			pstmt.executeUpdate();
@@ -86,7 +87,7 @@ public class NeuigkeitSQLDienst extends SQLDienst {
 						Neuigkeit neuigkeit = new Neuigkeit();
 						neuigkeit.setNnr(rs.getInt("nnr"));
 						neuigkeit.setNachricht(rs.getString("nachricht"));
-						neuigkeit.setZeitstempel(new Date(rs.getTime("zeitstempel").getTime()));
+						neuigkeit.setZeitstempel(rs.getTimestamp("zeitstempel"));
 						ergebnis.add(neuigkeit);
 					}
 				}

@@ -38,8 +38,6 @@ function pwKontrolle(evt) {
 	if (!gueltig) {
 		evt.preventDefault();
 		alert("Die Passwörter müssen übereinstimmen!");
-	} else {
-		alert("Nutzer wurde aktualisiert!");
 	}
 }
 
