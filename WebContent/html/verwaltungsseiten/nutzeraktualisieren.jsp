@@ -41,14 +41,14 @@
 					</div>
 					<div class="inputfeld">
 						<label for="neuesPasswort">Neues Passwort</label> <input
-							name="passwort" id="neuesPasswort" type="text" maxlength="128"
+							name="passwort" id="neuesPasswort" type="password" maxlength="128"
 							value="${zuverwaltendernutzer.passwort}" pattern="[A-Za-z0-9_]+"
 							title="Bitte geben Sie das neue Passwort des Nutzers an (Maximal 128 Zeichen, A-Z, a-z, 0-9)."
 							required />
 					</div>
 					<div class="inputfeld">
 						<label for="passwort2">Neues Passwort wiederholen</label> <input
-							name="passwort2" id="passwort2" type="text" maxlength="128"
+							name="passwort2" id="passwort2" type="password" maxlength="128"
 							value="${zuverwaltendernutzer.passwort}"
 							title="Bitte wiederholen Sie das neue Passwort des Nutzers"
 							required />
@@ -70,9 +70,9 @@
 							title="Bitte laden Sie hier das neue Profilbild des Nutzers hoch" />
 					</div>
 					<div class="buttonbox inputfeld">
-						<button id="absenden" type="submit">Absenden</button>
-						<button type="reset">Zurücksetzen</button>
-						<a class="buttonLink" href="./nutzerverwaltung.jsp">Abbrechen</a>
+						<button id="absenden" type="submit" title="Klicken, um Änderungen abzusenden.">Absenden</button>
+						<button type="reset" title="Klicken, um Formular zu leeren.">Zurücksetzen</button>
+						<a class="buttonLink" href="./nutzerverwaltung.jsp" title="Klicken um zur Nutzerverwaltung zurückzukehren.">Abbrechen</a>
 					</div>
 				</fieldset>
 			</form>
